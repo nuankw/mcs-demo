@@ -42,8 +42,8 @@ const SCENARIOS = {
 const styles = theme => ({
   '@global': {
     body: {
-      background: 'linear-gradient(150deg, #EC6A5A, #A662D6)',
-      backgroundSize: '100% 150%',
+      background: 'linear-gradient(180deg, #3f87a6, #f6c53cb5, #556B2F)',
+      backgroundSize: '100% 120%',
       padding: theme.spacing(3, 1),
       height: '100vh',
     },
@@ -58,7 +58,7 @@ const styles = theme => ({
     paddingLeft: theme.spacing(4),
     paddingRight: theme.spacing(4),
     paddingBottom: theme.spacing(6),
-    backgroundColor: 'rgba(254, 254, 254, 0.25)',
+    backgroundColor: 'rgba(254, 254, 254, 0.2)',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
