@@ -13,6 +13,7 @@ import Scores from './components/Scores'
 import Evaluate from './components/Evaluate'
 import ExitSurvey from './components/ExitSurvey'
 import ProgressBar from './components/ProgressBar'
+import Instructions from './components/Instructions'
 import scramble from './utils/scramble'
 import UserEval from './components/UserEval'
 import { withStyles, createMuiTheme, responsiveFontSizes, ThemeProvider } from '@material-ui/core/styles'
@@ -413,6 +414,9 @@ class App extends React.Component {
               </span>
             )}
           </Typography>
+
+          <Instructions />
+
           <form className={classes.form} noValidate onSubmit={this.submit.bind(this)}>
             <Grid container spacing={3}>
               <Grid item xs={12}>
