@@ -1,0 +1,273 @@
+<!-- You must include this JavaScript file -->
+<script src="https://assets.crowd.aws/crowd-html-elements.js"></script>
+
+<!-- For the full list of available Crowd HTML Elements and their input/output documentation,
+      please refer to https://docs.aws.amazon.com/sagemaker/latest/dg/sms-ui-template-reference.html -->
+<style>
+  crowd-radio-button {
+    /* margin: 3px; */
+    padding-bottom: 0px;
+  }
+</style>
+
+<!-- You must include crowd-form so that your task submits answers to MTurk -->
+<crowd-form answer-format="flatten-objects">
+  
+  <!-- The Head -->
+  <div>
+    <h2 style="padding-left: 0.5em;">Qualification Test for Commonsense Dataset Collection</h2>
+    <h4 style="padding-left: 1em;">Welcome! Please read the guidelines provided below carefully.</h4>
+    <p style="padding-left: 1em;">(rewrite this part) In this HIT, we would need your help answering a few simple questions, 
+      based on the concepts introduced below.</p>
+  </div>
+
+  <!-- The Quiz Tabs Wrapped-->
+  <div style="padding-left: 2em; padding-right: 2em;">
+    <!-- The Quiz Tabs -->
+    <crowd-tabs>
+
+      <!-- Quiz 1 -->
+      <crowd-tab header="Quiz 1: Common sense / specific?">
+        <!-- The Instruction Part -->
+        <div class="Instruction">
+          
+          <!-- Overview for Part 1` -->
+          <div>
+            <p><mark>First, we want to assess whether the given sentence relies on everyday, <b>common sense</b> understanding <u>OR</u> factual, <b>specialized</b> knowledge.</p>
+            <hr>
+          
+          
+          </div>
+          
+          <!-- Commonsense Defined -->
+          <div>
+            <h3>Commonsense</mark></h3>
+            <ul>
+              <li>Knowledge of common, everyday ideas that people learn just from experience.</li>
+              <div style="padding-left: 1em;">
+                <p><i>e.g.</i> It is easier to climb over three feet compared to a six feet fence.</p>
+                <p><i>e.g.</i> If one can earn more per month than they spend, then they can save money.</p>
+              </div>
+            </ul>
+          </div>
+          
+          <!-- Specified Knowledge Defined-->
+          <div>
+            <h3>Specified</h3>
+            <ul>
+              <li>Knowledge of subjects such as physics, biology, engineering, etc. -- i.e. topics that require formal education, and are thus likely to contain technical jargons.</li>
+              <div style="padding-left: 1em;">
+                <p><i>e.g.</i> One needs to manually configure the port number for providing remote access through the data link layer.</p>
+              </div>
+              <li>We also consider news, i.e. current or historical events as specialized.</li>
+              <div style="padding-left: 1em;">
+                <p><i>e.g.</i> People are hopeful towards expecting a vaccine for covid-19 by the end of the year.</p>
+                <p><i>e.g.</i> Carbon monoxide was used on a large scale during the Holocaust at some Nazi German extermination camps</p>
+              </div>
+            </ul>
+          </div>
+        </div>
+        <!-- End of the Instruction Part -->
+
+        <hr style="text-align:left;margin-left:0;height:2px;border-width:0;color:gray;background-color:gray">
+
+        <!-- The Quiz Part -->
+        <div class="Quiz">
+          <div>
+            <h3>Here comes the quiz 1 ...</h3>
+            <p>Do you think the follwing statements are common sense of specific knowlegde?</p>
+            <ol>
+
+              <li>Infrared light has a longer wavelength than ultraviolet light.</li>
+              <crowd-radio-group id="common-or-specific">
+                  <crowd-radio-button name="isCommon" value="isCommon">common sense</crowd-radio-button>
+                  <crowd-radio-button name="isSpecific" value="isSpecific">specific</crowd-radio-button>
+              </crowd-radio-group>
+              
+              <p></p>
+
+              <li>People are hopeful towards expecting a vaccine for covid-19 by the end of the year.</li>
+              <crowd-radio-group id="common-or-specific">
+                <crowd-radio-button name="isCommon" value="isCommon">common sense</crowd-radio-button>
+                <crowd-radio-button name="isSpecific" value="isSpecific">specific</crowd-radio-button>
+              </crowd-radio-group>
+
+            </ol>
+          </div>
+        </div> 
+        <!-- End of the Quiz Part -->
+
+      </crowd-tab>
+
+      <!-- Quiz 2-->
+      <crowd-tab header="Quiz 2: Which domain & scenario?">
+        <!-- The Instruction Part -->
+        <div class="Instruction">
+          <!-- Overview for Part 2 -->
+          <div>
+            <p><mark>Secondly, we define that a desired sentence will have two features associated with it – <b>Scenario</b> <u>AND</u> <b>Domain</b>. 
+              We will illustrate them and their subtypes with examples below.</mark></p>
+            <hr>
+          </div>
+          
+          <!-- Scenarios Defined -->
+          <div>
+            <h3>Scenarios</h3>
+            <p>Refers to the type of reasoning that sentence requires in order to assess its correctness (True/False). 
+              There are three types of scenarios as follows:</p>
+            <ul>
+              <div>
+                <li><u>Cause & Effect</u>: It answers the “Why” question or predicts what is likely to happen next (effect), 
+                  given an event that has occurred (cause).</li>
+                <div style="padding-left: 2em;">
+                  <p><i>e.g.</i> Given the hour long queue at the entrance (C), we can't shop within minutes (E). [True]</p>
+                </div>
+              </div>
+              
+              <div>
+                <li><u>Comparison</u>: It aims to compare two plausible reasons or concepts, for a given daily event.</li>
+                <div style="padding-left: 2em;">
+                  <p><i>e.g.</i> If we spill over milk on the floor, it’s better to clean it with a mop instead of a broom. [True]</p>
+                </div>
+              </div>
+
+              <div>
+                <li><u>Numeracy</u>: It focuses on simple arithmetic skills (add, multiply, etc.) 
+                  and concepts such as rate, percentage, probability, etc.</li>
+                <div style="padding-left: 2em;">
+                  <p><i>e.g.</i> Given his $1000 monthly income and no money in savings, a rent of $1500 raises the risk of facing an eviction. [True]</p>
+                </div>
+              </div>
+            </ul>
+          </div>
+          
+          <!-- Domains Defined -->
+          <div>
+            <h3>Domains</h3>
+            <p>Refers to the type of knowledge, primarily categorized as social, physical and time domain. 
+              The three types are explained as follows:</p>
+            
+            <ul>
+              
+              <div>
+                <li><u>Social</u>: It focuses on people and social behavior, particularly attributes like personality, 
+                  emotions and actions.</li>
+                <div style="padding-left: 2em;">
+                  <p><i>e.g.</i> Sam being an orderly person, cannot withstand the litter in his kitchen. [True]</p>
+                </div>
+              </div>
+              
+              <div>
+                <li><u>Physical</u>: Key aspects include the knowledge of objects, location, motion, etc.</li>
+                <div style="padding-left: 2em;">
+                  <p><i>e.g.</i> If we spill over milk on the floor, 
+                    it’s better to clean it with a mop instead of a broom. [True]</p>
+                </div>
+              </div>
+              
+              <div>
+                <li><u>Time</u>: Knowledge regarding scheduling activities and their durations.</li>
+                <div style="padding-left: 2em;">
+                  <p><i>e.g.</i> Given the hour long queue at the entrance, we can't shop within minutes. [True]</p>
+                </div>
+              </div>
+
+            </ul>
+          </div>
+        </div>
+        <!-- End of the Instruction Part -->
+
+        <hr style="text-align:left;margin-left:0;height:2px;border-width:0;color:gray;background-color:gray">
+
+        <!-- The Quiz Part -->
+        <div class="Quiz">
+          <div>
+            <h3>Here comes the quiz 2 ...</h3>
+            <p>Which scenario and domain do you think best descrbes each of the follwing statements?</p>
+            <ol>
+
+              <div>
+                <li>Infrared light has a longer wavelength than ultraviolet light.</li>
+                <div style="padding-left: 1.5em;">
+                  <p style="display:inline">Belongs to scenario:</p>
+                  <crowd-radio-group id="scenarios">
+                      <crowd-radio-button name="cause_effect" value="cause_effect">Cause & Effect</crowd-radio-button>
+                      <crowd-radio-button name="comparison" value="comparison">Comparison</crowd-radio-button>
+                      <crowd-radio-button name="numeracy" value="numeracy">Numeracy</crowd-radio-button>
+                      <crowd-radio-button name="other_scenario" value="other_scenario">Other</crowd-radio-button>
+                  </crowd-radio-group>
+                </div>
+  
+                <div style="padding-left: 1.5em;">
+                  <p style="display:inline">Belongs to domain:</p>
+                  <crowd-radio-group id="scenarios">
+                      <crowd-radio-button name="social" value="social">Social</crowd-radio-button>
+                      <crowd-radio-button name="physical" value="physical">Physical</crowd-radio-button>
+                      <crowd-radio-button name="time" value="time">Time</crowd-radio-button>
+                      <crowd-radio-button name="other_domain" value="other_domain">Other</crowd-radio-button>
+                  </crowd-radio-group>
+                </div>
+              </div>
+
+              <p></p>
+
+              <div>
+                <li>Infrared light has a longer wavelength than ultraviolet light.</li>
+                <div style="padding-left: 1.5em;">
+                  <p style="display:inline">Belongs to scenario:</p>
+                  <crowd-radio-group id="scenarios">
+                      <crowd-radio-button name="cause_effect" value="cause_effect">Cause & Effect</crowd-radio-button>
+                      <crowd-radio-button name="comparison" value="comparison">Comparison</crowd-radio-button>
+                      <crowd-radio-button name="numeracy" value="numeracy">Numeracy</crowd-radio-button>
+                      <crowd-radio-button name="other_scenario" value="other_scenario">Other</crowd-radio-button>
+                  </crowd-radio-group>
+                </div>
+  
+                <div style="padding-left: 1.5em;">
+                  <p style="display:inline">Belongs to domain:</p>
+                  <crowd-radio-group id="scenarios">
+                      <crowd-radio-button name="social" value="social">Social</crowd-radio-button>
+                      <crowd-radio-button name="physical" value="physical">Physical</crowd-radio-button>
+                      <crowd-radio-button name="time" value="time">Time</crowd-radio-button>
+                      <crowd-radio-button name="other_domain" value="other_domain">Other</crowd-radio-button>
+                  </crowd-radio-group>
+                </div>
+              </div>
+
+              <p></p>
+
+              <div>
+                <li>Infrared light has a longer wavelength than ultraviolet light.</li>
+                <div style="padding-left: 1.5em;">
+                  <p style="display:inline">Belongs to scenario:</p>
+                  <crowd-radio-group id="scenarios">
+                      <crowd-radio-button name="cause_effect" value="cause_effect">Cause & Effect</crowd-radio-button>
+                      <crowd-radio-button name="comparison" value="comparison">Comparison</crowd-radio-button>
+                      <crowd-radio-button name="numeracy" value="numeracy">Numeracy</crowd-radio-button>
+                      <crowd-radio-button name="other_scenario" value="other_scenario">Other</crowd-radio-button>
+                  </crowd-radio-group>
+                </div>
+                
+                <div style="padding-left: 1.5em;">
+                  <p style="display:inline">Belongs to domain:</p>
+                  <crowd-radio-group id="scenarios">
+                      <crowd-radio-button name="social" value="social">Social</crowd-radio-button>
+                      <crowd-radio-button name="physical" value="physical">Physical</crowd-radio-button>
+                      <crowd-radio-button name="time" value="time">Time</crowd-radio-button>
+                      <crowd-radio-button name="other_domain" value="other_domain">Other</crowd-radio-button>
+                  </crowd-radio-group>
+                </div>
+              </div>
+            </ol>
+          </div>
+        </div> 
+        <!-- End of the Quiz Part -->
+
+      </crowd-tab>
+
+    </crowd-tabs>
+  </div>
+
+  <p style="padding-left: 2em">Before you submit, please make sure that you've completed all questions in both tabs. 
+    Otherwise you could miss the ...</p>
+</crowd-form>
