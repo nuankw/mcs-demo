@@ -16,6 +16,7 @@ import ProgressBar from './components/ProgressBar'
 import Instructions from './components/Instructions'
 import scramble from './utils/scramble'
 import UserEval from './components/UserEval'
+import Validation from './components/Validation'
 import { withStyles, createMuiTheme, responsiveFontSizes, ThemeProvider } from '@material-ui/core/styles'
 
 
