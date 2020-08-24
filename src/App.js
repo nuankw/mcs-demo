@@ -3,19 +3,14 @@ import CssBaseline from '@material-ui/core/CssBaseline'
 import Typography from '@material-ui/core/Typography'
 import Container from '@material-ui/core/Container'
 import Button from '@material-ui/core/Button'
-import Paper from '@material-ui/core/Paper'
 import Grid from '@material-ui/core/Grid'
 import Submit from './components/Submit'
 import Rules from './components/Rules'
-import Input from './components/Input'
-import Output from './components/Output'
-import Scores from './components/Scores'
 import Evaluate from './components/Evaluate'
 import ExitSurvey from './components/ExitSurvey'
 import ProgressBar from './components/ProgressBar'
 import Instructions from './components/Instructions'
 import scramble from './utils/scramble'
-import UserEval from './components/UserEval'
 import Validation from './components/Validation'
 import { withStyles, createMuiTheme, responsiveFontSizes, ThemeProvider } from '@material-ui/core/styles'
 
@@ -25,7 +20,6 @@ theme = responsiveFontSizes(theme);
 
 
 const MIN_NUM_TRIALS = 5
-const MAX_NUM_TRIALS = 15
 const MIN_NUM_EVALUATIONS = 0
 const MAX_NUM_EVALUATIONS = 15
 const EVAL_QUESTIONS = ['evalQ1', 'evalQ2', 'evalQ3']
@@ -391,7 +385,7 @@ class App extends React.Component {
       <ThemeProvider theme={theme}>
         <Container maxWidth="xl">
 
-          {/* <CssBaseline /> */}
+          <CssBaseline />
 
           <ProgressBar progress={progress} />
 
@@ -430,39 +424,21 @@ class App extends React.Component {
             )}
           </Typography>
 
+          {userEval && (
+            <Validation
+              inputs={inputs}
+              scenario={scenario}
+              evalCount={evalCount}
+              evalQuestions={evalQuestions}
+              handleOnEval={(q, a) => this.handleOnEval(q, a)} />
+          )}
+
           <form className={classes.form} noValidate onSubmit={this.submit.bind(this)}>
             <Grid container spacing={3}>
-              {/* Input Box 1 */}
-              <Grid item xs={12}>
-                <Paper component="div" className={classes.paper} square>
-                  {inputs.s1.output != null && <Output statement={inputs.s1} />}
-                  <Input text={inputs.s1} autoFocus={true} disabled={inputs.s1.output != null} updateText={this.handleUpdate.bind(this)} passInputRef={this.getInputRef.bind(this)} />
-                  {inputs.s1.scores != null && <Scores statement={inputs.s1} />}
-                </Paper>
-              </Grid>
-
-              {/* Input Box 2 */}
-              <Grid item xs={12}>
-                <Paper component="div" className={classes.paper} square>
-                  {inputs.s2.output != null && <Output statement={inputs.s2} />}
-                  <Input text={inputs.s2} disabled={inputs.s2.output != null} updateText={this.handleUpdate.bind(this)} />
-                  {inputs.s2.scores != null && <Scores statement={inputs.s2} />}
-                </Paper>
-              </Grid>
 
               <Grid item xs={12} align="center">
 
-                {/* For Part 1: validation questions */}
-                {inputs.s1.output != null && userEval &&(
-                  <UserEval
-                  scenario={SCENARIOS[scenario]}
-                  questions={evalQuestions}
-                  onSelect={this.handleOnEval.bind(this)} />
-                )}
-
-                {/*
-                  For Part 2: creation question: was the machine output correct
-                */}
+                {/* For Part 2: creation question: was the machine output correct */}
                 {inputs.s1.output != null && !userEval && (
                   <Evaluate evaluated={evaluated}
                   onSelect={this.handleEvaluate.bind(this)}
