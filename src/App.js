@@ -84,7 +84,7 @@ const styles = theme => ({
 })
 
 
-class Validation extends React.Component {
+class App extends React.Component {
 
   constructor(props) {
     super(props)
@@ -540,4 +540,4 @@ class Validation extends React.Component {
   }
 }
 
-export default withStyles(styles)(Validation)
+export default withStyles(styles)(App)
