@@ -1,7 +1,7 @@
 # models
 /api/models
 /api/__pycache__
-
+api/models.zip
 # dependencies
 /node_modules
 /.pnp

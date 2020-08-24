@@ -12,12 +12,14 @@ const useStyles = makeStyles((theme) => ({
   root: {
     width: '100%',
   },
+  accordion: {
+    backgroundColor: "rgba(240, 240, 240, 0.3)",
+  },
   heading: {
-    fontSize: theme.typography.pxToRem(15),
+    fontSize: theme.typography.pxToRem(30),
     fontWeight: theme.typography.fontWeightRegular,
   },
 }));
-
 
 export default function Instructions() {
   const classes = useStyles();
@@ -26,7 +28,7 @@ export default function Instructions() {
 
   return (
     <div className={classes.root}>
-      <Accordion expanded={expanded}>
+      <Accordion expanded={expanded} className={classes.accordion} defaultExpanded>
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
           onClick={() => setExpanded(!expanded)}
@@ -43,9 +45,9 @@ export default function Instructions() {
               <li>do this</li>
               <li>do this</li>
             </ol>
-            <a style={{'cursor': 'pointer'}} onClick={() => setExpanded(!expanded)}>
-              Hide the instruction
-            </a>
+            <Button className={classes.got_it} style={{'cursor': 'pointer'}} onClick={() => setExpanded(!expanded)}>
+              Got it!
+            </Button>
           </Typography>
         </AccordionDetails>
       </Accordion>
