@@ -39,9 +39,8 @@ export default function Instructions() {
         <AccordionDetails>
           <Typography>
             <ol>
-              <li>do this</li>
-              <li>do this</li>
-              <li>do this</li>
+              <li>review 6 previous users inputs</li>
+              <li>machine predictions are on the RIGHT side</li>
               <li>do this</li>
               <li>do this</li>
             </ol>

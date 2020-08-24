@@ -25,7 +25,7 @@ theme = responsiveFontSizes(theme);
 
 const MIN_NUM_TRIALS = 5
 const MAX_NUM_TRIALS = 15
-const MIN_NUM_EVALUATIONS = 5
+const MIN_NUM_EVALUATIONS = 6
 const MAX_NUM_EVALUATIONS = 15
 const EVAL_QUESTIONS = ['evalQ1', 'evalQ2', 'evalQ3']
 
@@ -394,7 +394,7 @@ class Validation extends React.Component {
                 {/* <CssBaseline /> */}
                 
                 <ProgressBar progress={progress} />
-                
+                               
                 <Rules open={openRules} onClose={this.handleCloseRules.bind(this)} />
                 
                 <ExitSurvey open={openSurvey}
@@ -406,13 +406,23 @@ class Validation extends React.Component {
                     component="h3"
                     variant="h3"
                     className={classes.header}>
-                    {userEval ? (
+                    {/* {userEval ? ( */}
+                    {userEval && (
                         <span>
-                            <span className={classes.underlined}>Part 1:</span>
-                            Please review 5 previous users inputs (machine predictions are on the RIGHT side)
+                            <span className={classes.underlined}>Part 1</span>
+                            : Validation.
+                            
+                            {/* newly added instructions collapse/expand box */}
+                            <div style={{'padding-top': '1em'}}>
+                                <Instructions />
+                                
+                            </div>  
+                            
+                            
                             <br/>
-                            Currently reviewing {evalCount} out of 5 statement pairs 
-                            (you can review up to 15 statements)
+                            {/* Currently reviewing {evalCount} out of 5 statement pairs  */}
+                            Currently reviewing {evalCount} out of 6 statements
+                            {/* (you can review up to 15 statements) */}
                             <br/>
                             {evalCount > MIN_NUM_EVALUATIONS && (
                                 <span className={classes.link} 
@@ -422,14 +432,20 @@ class Validation extends React.Component {
                             )}
                             
                         </span>
-                    ) : (
-                        <span>
-                            <span className={classes.underlined}>Part 2:</span> 
-                            Enter 2 common sense statements {!!scenario && `about ${SCENARIOS[scenario]}`} (1 TRUE and 1 FALSE)
-                        </span>
                     )}
+                    {/* // ) 
+                    // :(
+                    //     <span>
+                    //         <span className={classes.underlined}>Part 2:</span> 
+                    //         Enter 2 common sense statements {!!scenario && `about ${SCENARIOS[scenario]}`} (1 TRUE and 1 FALSE)
+                    //     </span>
+                    // )
+                    // } */}
+                
                 </Typography>
-                            
+
+                
+
                 <form className={classes.form} noValidate onSubmit={this.submit.bind(this)}>
                     <Grid container spacing={3}>
                         {/* Input Box 1 */}
@@ -442,13 +458,13 @@ class Validation extends React.Component {
                         </Grid>
                         
                         {/* Input Box 2 */}
-                        <Grid item xs={12}>
+                        {/* <Grid item xs={12}>
                             <Paper component="div" className={classes.paper} square>
                                 {inputs.s2.output != null && <Output statement={inputs.s2} />}
                                 <Input text={inputs.s2} disabled={inputs.s2.output != null} updateText={this.handleUpdate.bind(this)} />
                                 {inputs.s2.scores != null && <Scores statement={inputs.s2} />}
                             </Paper>
-                        </Grid>
+                        </Grid> */}
                             
                         <Grid item xs={12} align="center">
 
@@ -463,14 +479,14 @@ class Validation extends React.Component {
                             {/* 
                                 For Part 2: creation question: was the machine output correct
                             */}
-                            {inputs.s1.output != null && !userEval && (
+                            {/* {inputs.s1.output != null && !userEval && (
                                 <Evaluate evaluated={evaluated}
                                 onSelect={this.handleEvaluate.bind(this)}
                                 onReset={this.handleOnClear.bind(this)} />
-                            )}
+                            )} */}
                             
                             {/* For Part 2: creation submit */}
-                            {!userEval && inputs.s1.output === null && <Submit />}
+                            {/* {!userEval && inputs.s1.output === null && <Submit />} */}
                         </Grid>
                                     
                         {/* For both part 1 and 2: the rules */}
@@ -528,11 +544,6 @@ class Validation extends React.Component {
                         )}
                     </Grid>
                 </form>
-                
-                {/* newly added instructions collapse/expand box */}
-                <div style={{'padding': '2em'}}>
-                    <Instructions />
-                </div>  
                                                     
                 </Container>
                 </ThemeProvider>
