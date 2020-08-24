@@ -389,153 +389,152 @@ class App extends React.Component {
     const { code, inputs, openRules, openSurvey, evaluated, progress, scenario, count, userEval, evalCount, evalQuestions } = this.state
     return (
       <ThemeProvider theme={theme}>
+        <Container maxWidth="xl">
 
-      <Container maxWidth="xl">
+          {/* <CssBaseline /> */}
 
-      {/* <CssBaseline /> */}
+          <ProgressBar progress={progress} />
 
-      <ProgressBar progress={progress} />
+          <Rules open={openRules} onClose={this.handleCloseRules.bind(this)} />
 
-      <Rules open={openRules} onClose={this.handleCloseRules.bind(this)} />
+          <ExitSurvey open={openSurvey}
+            code={code}
+            onAnswer={this.handleAnswer.bind(this)}
+            onClose={this.handleCloseSurvey.bind(this)} />
 
-      <ExitSurvey open={openSurvey}
-        code={code}
-        onAnswer={this.handleAnswer.bind(this)}
-        onClose={this.handleCloseSurvey.bind(this)} />
+          <Typography
+            component="h3"
+            variant="h3"
+            className={classes.header}>
+            {userEval ? (
+              <span>
+                <span className={classes.underlined}>Part 1:</span>
+                Please review 5 previous users inputs (machine predictions are on the RIGHT side)
+                <br/>
+                Currently reviewing {evalCount} out of 5 statement pairs
+                (you can review up to 15 statements)
+                <br/>
+                {evalCount > MIN_NUM_EVALUATIONS && (
+                  <span className={classes.link}
+                    onClick={this.skipUserEval.bind(this)}
+                    >> You can now proceed to Part 2
+                  </span>
+                )}
 
-      <Typography
-        component="h3"
-        variant="h3"
-        className={classes.header}>
-        {userEval ? (
-          <span>
-            <span className={classes.underlined}>Part 1:</span>
-            Please review 5 previous users inputs (machine predictions are on the RIGHT side)
-            <br/>
-            Currently reviewing {evalCount} out of 5 statement pairs
-            (you can review up to 15 statements)
-            <br/>
-            {evalCount > MIN_NUM_EVALUATIONS && (
-              <span className={classes.link}
-                onClick={this.skipUserEval.bind(this)}
-                >> You can now proceed to Part 2
+              </span>
+            ) : (
+              <span>
+                <span className={classes.underlined}>Part 2:</span>
+                Enter 2 common sense statements {!!scenario && `about ${SCENARIOS[scenario]}`} (1 TRUE and 1 FALSE)
               </span>
             )}
+          </Typography>
 
-          </span>
-        ) : (
-          <span>
-            <span className={classes.underlined}>Part 2:</span>
-            Enter 2 common sense statements {!!scenario && `about ${SCENARIOS[scenario]}`} (1 TRUE and 1 FALSE)
-          </span>
-        )}
-      </Typography>
+          <form className={classes.form} noValidate onSubmit={this.submit.bind(this)}>
+            <Grid container spacing={3}>
+              {/* Input Box 1 */}
+              <Grid item xs={12}>
+                <Paper component="div" className={classes.paper} square>
+                  {inputs.s1.output != null && <Output statement={inputs.s1} />}
+                  <Input text={inputs.s1} autoFocus={true} disabled={inputs.s1.output != null} updateText={this.handleUpdate.bind(this)} passInputRef={this.getInputRef.bind(this)} />
+                  {inputs.s1.scores != null && <Scores statement={inputs.s1} />}
+                </Paper>
+              </Grid>
 
-      <form className={classes.form} noValidate onSubmit={this.submit.bind(this)}>
-        <Grid container spacing={3}>
-          {/* Input Box 1 */}
-          <Grid item xs={12}>
-            <Paper component="div" className={classes.paper} square>
-              {inputs.s1.output != null && <Output statement={inputs.s1} />}
-              <Input text={inputs.s1} autoFocus={true} disabled={inputs.s1.output != null} updateText={this.handleUpdate.bind(this)} passInputRef={this.getInputRef.bind(this)} />
-              {inputs.s1.scores != null && <Scores statement={inputs.s1} />}
-            </Paper>
-          </Grid>
+              {/* Input Box 2 */}
+              <Grid item xs={12}>
+                <Paper component="div" className={classes.paper} square>
+                  {inputs.s2.output != null && <Output statement={inputs.s2} />}
+                  <Input text={inputs.s2} disabled={inputs.s2.output != null} updateText={this.handleUpdate.bind(this)} />
+                  {inputs.s2.scores != null && <Scores statement={inputs.s2} />}
+                </Paper>
+              </Grid>
 
-          {/* Input Box 2 */}
-          <Grid item xs={12}>
-            <Paper component="div" className={classes.paper} square>
-              {inputs.s2.output != null && <Output statement={inputs.s2} />}
-              <Input text={inputs.s2} disabled={inputs.s2.output != null} updateText={this.handleUpdate.bind(this)} />
-              {inputs.s2.scores != null && <Scores statement={inputs.s2} />}
-            </Paper>
-          </Grid>
+              <Grid item xs={12} align="center">
 
-          <Grid item xs={12} align="center">
+                {/* For Part 1: validation questions */}
+                {inputs.s1.output != null && userEval &&(
+                  <UserEval
+                  scenario={SCENARIOS[scenario]}
+                  questions={evalQuestions}
+                  onSelect={this.handleOnEval.bind(this)} />
+                )}
 
-            {/* For Part 1: validation questions */}
-            {inputs.s1.output != null && userEval &&(
-              <UserEval
-              scenario={SCENARIOS[scenario]}
-              questions={evalQuestions}
-              onSelect={this.handleOnEval.bind(this)} />
-            )}
+                {/*
+                  For Part 2: creation question: was the machine output correct
+                */}
+                {inputs.s1.output != null && !userEval && (
+                  <Evaluate evaluated={evaluated}
+                  onSelect={this.handleEvaluate.bind(this)}
+                  onReset={this.handleOnClear.bind(this)} />
+                )}
 
-            {/*
-              For Part 2: creation question: was the machine output correct
-            */}
-            {inputs.s1.output != null && !userEval && (
-              <Evaluate evaluated={evaluated}
-              onSelect={this.handleEvaluate.bind(this)}
-              onReset={this.handleOnClear.bind(this)} />
-            )}
+                {/* For Part 2: creation submit */}
+                {!userEval && inputs.s1.output === null && <Submit />}
+              </Grid>
 
-            {/* For Part 2: creation submit */}
-            {!userEval && inputs.s1.output === null && <Submit />}
-          </Grid>
-
-          {/* For both part 1 and 2: the rules */}
-          <Grid item xs={6} align="left">
-            <Button
-            variant="outlined"
-            className={classes.button}
-            onClick={this.handleOpenRules.bind(this)}>
-            Rules
-            </Button>
-          </Grid>
-
-          {/* For Part 2: clear input */}
-          <Grid item xs={6} align="right">
-            {!userEval && (
-              <Button
+              {/* For both part 1 and 2: the rules */}
+              <Grid item xs={6} align="left">
+                <Button
                 variant="outlined"
                 className={classes.button}
-                onClick={this.handleOnClear.bind(this)}>
-                  Clear
-              </Button>
-            )}
-          </Grid>
+                onClick={this.handleOpenRules.bind(this)}>
+                Rules
+                </Button>
+              </Grid>
 
-          {/* For Part 2: creation information */}
-          {!!count && (
-            <Grid item xs={12} align="center" style={{marginTop: '-24px'}}>
-              {!!code && (
-                <Typography
-                  component="h4"
-                  variant="h4"
-                  className={classes.header}
-                  style={{textDecoration: 'underline', cursor: 'pointer'}}
-                  onClick={this.handleOpenSurvey.bind(this)}>
-                  Complete the HIT and get the completion code
-                </Typography>
-              )}
+              {/* For Part 2: clear input */}
+              <Grid item xs={6} align="right">
+                {!userEval && (
+                  <Button
+                    variant="outlined"
+                    className={classes.button}
+                    onClick={this.handleOnClear.bind(this)}>
+                      Clear
+                  </Button>
+                )}
+              </Grid>
 
-              <Typography
-                component="h5"
-                variant="h5"
-                className={classes.header}>
-                Generated {count} out of 5 (minimally) required statements.
-              </Typography>
+              {/* For Part 2: creation information */}
+              {!!count && (
+                <Grid item xs={12} align="center" style={{marginTop: '-24px'}}>
+                  {!!code && (
+                    <Typography
+                      component="h4"
+                      variant="h4"
+                      className={classes.header}
+                      style={{textDecoration: 'underline', cursor: 'pointer'}}
+                      onClick={this.handleOpenSurvey.bind(this)}>
+                      Complete the HIT and get the completion code
+                    </Typography>
+                  )}
 
-              {count >= 5 && (
-                <Typography
-                component="h5"
-                variant="h5"
-                className={classes.header}>
-                Current payout: {`${Math.min(0.5 + 0.05 * (count-5), 1).toFixed(2)} $`}
-                </Typography>
+                  <Typography
+                    component="h5"
+                    variant="h5"
+                    className={classes.header}>
+                    Generated {count} out of 5 (minimally) required statements.
+                  </Typography>
+
+                  {count >= 5 && (
+                    <Typography
+                    component="h5"
+                    variant="h5"
+                    className={classes.header}>
+                    Current payout: {`${Math.min(0.5 + 0.05 * (count-5), 1).toFixed(2)} $`}
+                    </Typography>
+                  )}
+                </Grid>
               )}
             </Grid>
-          )}
-        </Grid>
-      </form>
+          </form>
 
-      {/* newly added instructions collapse/expand box */}
-      <div style={{'padding': '2em'}}>
-        <Instructions />
-      </div>
+          {/* newly added instructions collapse/expand box */}
+          <div style={{'padding': '2em'}}>
+            <Instructions />
+          </div>
 
-      </Container>
+        </Container>
       </ThemeProvider>
     )
   }
