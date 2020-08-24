@@ -37,7 +37,7 @@ export default function Instructions() {
           <Typography className={classes.heading}>Instructions</Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <Typography>
+          <Typography component="div">
             <ol>
               <li>review 6 previous users inputs</li>
               <li>machine predictions are on the RIGHT side</li>
