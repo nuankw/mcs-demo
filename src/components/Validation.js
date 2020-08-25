@@ -68,6 +68,11 @@ class Validation extends React.Component {
 
   render() {
     const { classes, inputs, handleOnEval, scenario, evalCount, evalQuestions, loadNextTrial } = this.props
+
+    const enableNext = (
+      evalQuestions['evalQ1'].answer === 'no' ||
+      Object.keys(evalQuestions).every(key => !!evalQuestions[key].answer))
+
     return (
       <React.Fragment>
 
@@ -105,6 +110,7 @@ class Validation extends React.Component {
           <Button
             variant="contained"
             className={classes.button}
+            disabled={!enableNext}
             onClick={() => loadNextTrial()}>
             Next Statement
           </Button>
