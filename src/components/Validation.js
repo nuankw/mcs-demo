@@ -1,6 +1,7 @@
 import React from 'react'
 import Grid from '@material-ui/core/Grid'
 import Paper from '@material-ui/core/Paper'
+import Button from '@material-ui/core/Button'
 import Typography from '@material-ui/core/Typography'
 import { withStyles } from '@material-ui/core/styles'
 
@@ -41,9 +42,17 @@ const styles = theme => ({
     marginTop: theme.spacing(3),
   },
   button: {
-    color: 'white',
-    borderColor: 'whitesmoke',
-    marginTop: theme.spacing(3),
+    color: 'black',
+    fontSize: theme.spacing(3),
+    background: 'rgba(104, 159, 56, 0.6)',
+    fontSize: theme.spacing(2.8),
+    margin: theme.spacing(2, 3),
+    padding: theme.spacing(1.5, 6),
+    textTransform: "none",
+    '&:hover': {
+      background: 'rgba(32, 40, 24, 0.6)',
+      color: '#dae1c5',
+    },
   },
   underlined: {
     textDecoration: 'underline',
@@ -79,19 +88,25 @@ class Validation extends React.Component {
         <Grid item xs={12}>
           <Paper component="div" className={classes.paper} square>
             {inputs.s1.output != null && <Output statement={inputs.s1} />}
-            <Input text={inputs.s1} autoFocus={true} disabled={true} />
+            <Input text={inputs.s1} autoFocus={false} disabled={true} />
           </Paper>
         </Grid>
 
         <Grid item xs={12} align="center">
-
           {inputs.s1.output != null && (
             <UserEval
               scenario={scenario}
               questions={evalQuestions}
               onSelect={(q, a) => handleOnEval(q, a)} />
           )}
+        </Grid>
 
+        <Grid item xs={12} align="center">
+          <Button
+            variant="contained"
+            className={classes.button}>
+            Next Statement
+          </Button>
         </Grid>
       </React.Fragment>
     )
