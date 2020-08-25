@@ -15,6 +15,7 @@ const styles = theme => ({
     fontSize: theme.spacing(2),
     margin: theme.spacing(2, 3),
     padding: theme.spacing(1.5, 6),
+    textTransform: "none",
     '&:hover': {
       background: 'rgba(32, 40, 24, 0.6)',
     },
