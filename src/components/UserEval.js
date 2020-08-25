@@ -1,6 +1,6 @@
 import React from 'react'
-import Typography from '@material-ui/core/Typography'
 import Button from '@material-ui/core/Button'
+import Typography from '@material-ui/core/Typography'
 import { withStyles } from '@material-ui/core/styles'
 
 const styles = theme => ({
@@ -9,7 +9,7 @@ const styles = theme => ({
     padding: theme.spacing(1,4),
     fontSize: theme.spacing(3.5),
   },
-  allButton: {
+  button: {
     color: 'black',
     fontSize: theme.spacing(3),
     background: 'rgba(104, 159, 56, 0.6)',
@@ -47,13 +47,13 @@ class Evaluate extends React.Component {
             <br/>
             <Button
               variant="contained"
-              className={classes.allButton}
+              className={classes.button}
               onClick={() => onSelect('evalQ1', 'yes')}>
               Yes
             </Button>
             <Button
               variant="contained"
-              className={classes.allButton}
+              className={classes.button}
               onClick={() => onSelect('evalQ1', 'no')}>
               No
             </Button>
@@ -69,13 +69,13 @@ class Evaluate extends React.Component {
             <br/>
             <Button
               variant="contained"
-              className={classes.allButton}
+              className={classes.button}
               onClick={() => onSelect('evalQ2', 'yes')}>
               Yes
             </Button>
             <Button
               variant="contained"
-              className={classes.allButton}
+              className={classes.button}
               onClick={() => onSelect('evalQ2', 'no')}>
               No
             </Button>
@@ -91,25 +91,25 @@ class Evaluate extends React.Component {
             <br/>
             <Button
               variant="contained"
-              className={classes.allButton}
+              className={classes.button}
               onClick={() => onSelect('evalQ3', 'social')}>
               Social
             </Button>
             <Button
               variant="contained"
-              className={classes.allButton}
+              className={classes.button}
               onClick={() => onSelect('evalQ3', 'physical')}>
               Physical
             </Button>
             <Button
               variant="contained"
-              className={classes.allButton}
+              className={classes.button}
               onClick={() => onSelect('evalQ3', 'time')}>
               Time
             </Button>
             <Button
               variant="contained"
-              className={classes.allButton}
+              className={classes.button}
               onClick={() => onSelect('evalQ3', 'none')}>
               None of the 3
             </Button>
@@ -125,25 +125,25 @@ class Evaluate extends React.Component {
             <br/>
             <Button
               variant="contained"
-              className={classes.allButton}
+              className={classes.button}
               onClick={() => onSelect('evalQ4', 'causal')}>
               Cause & Effect
             </Button>
             <Button
               variant="contained"
-              className={classes.allButton}
+              className={classes.button}
               onClick={() => onSelect('evalQ4', 'comparison')}>
               Comparison
             </Button>
             <Button
               variant="contained"
-              className={classes.allButton}
+              className={classes.button}
               onClick={() => onSelect('evalQ4', 'numeracy')}>
               Numeracy
             </Button>
             <Button
               variant="contained"
-              className={classes.allButton}
+              className={classes.button}
               onClick={() => onSelect('evalQ4', 'none')}>
               None of the 3
             </Button>
