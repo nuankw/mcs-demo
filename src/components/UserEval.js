@@ -11,13 +11,15 @@ const styles = theme => ({
   },
   allButton: {
     color: 'black',
+    fontSize: theme.spacing(3),
     background: 'rgba(104, 159, 56, 0.6)',
-    fontSize: theme.spacing(2),
+    fontSize: theme.spacing(2.8),
     margin: theme.spacing(2, 3),
     padding: theme.spacing(1.5, 6),
     textTransform: "none",
     '&:hover': {
       background: 'rgba(32, 40, 24, 0.6)',
+      color: '#dae1c5',
     },
   },
   link: {
