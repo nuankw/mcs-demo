@@ -1,46 +1,48 @@
 import React, { useState } from 'react'
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles'
 import Button from '@material-ui/core/Button'
-import Accordion from '@material-ui/core/Accordion';
-import AccordionSummary from '@material-ui/core/AccordionSummary';
-import AccordionDetails from '@material-ui/core/AccordionDetails';
-import Typography from '@material-ui/core/Typography';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import Accordion from '@material-ui/core/Accordion'
+import AccordionSummary from '@material-ui/core/AccordionSummary'
+import AccordionDetails from '@material-ui/core/AccordionDetails'
+import Typography from '@material-ui/core/Typography'
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
+
 
 class DomainInstruction extends React.Component {
 
   render() {
     return (
       <Typography component="div">
-            <h3>Domains</h3>
-            <p>Refers to the type of knowledge, primarily categorized as social, physical and time domain.
-              The three types are explained as follows:</p>
-            <ul>
-              <div>
-                <li><u>Social</u>: It focuses on people and social behavior, particularly attributes like personality,
-                  emotions and actions.</li>
-                <div style={{paddingLeft: "2em"}}>
-                  <p><i>e.g.</i> Sam being an orderly person, cannot withstand the litter in his kitchen. [True]</p>
-                </div>
-              </div>
-              <div>
-                <li><u>Physical</u>: Key aspects include the knowledge of objects, location, motion, etc.</li>
-                <div style={{paddingLeft: "2em"}}>
-                  <p><i>e.g.</i> If we spill over milk on the floor,
-                    it’s better to clean it with a mop instead of a broom. [True]</p>
-                </div>
-              </div>
-              <div>
-                <li><u>Time</u>: Knowledge regarding scheduling activities and their durations.</li>
-                <div style={{paddingLeft: "2em"}}>
-                  <p><i>e.g.</i> Given the hour long queue at the entrance, we can't shop within minutes. [True]</p>
-                </div>
-              </div>
-            </ul>
-          </Typography>
+        <h3>Domains</h3>
+        <p>Refers to the type of knowledge, primarily categorized as social, physical and time domain.
+          The three types are explained as follows:</p>
+        <ul>
+          <div>
+            <li><u>Social</u>: It focuses on people and social behavior, particularly attributes like personality,
+              emotions and actions.</li>
+            <div style={{paddingLeft: "2em"}}>
+              <p><i>e.g.</i> Sam being an orderly person, cannot withstand the litter in his kitchen. [True]</p>
+            </div>
+          </div>
+          <div>
+            <li><u>Physical</u>: Key aspects include the knowledge of objects, location, motion, etc.</li>
+            <div style={{paddingLeft: "2em"}}>
+              <p><i>e.g.</i> If we spill over milk on the floor,
+                it’s better to clean it with a mop instead of a broom. [True]</p>
+            </div>
+          </div>
+          <div>
+            <li><u>Time</u>: Knowledge regarding scheduling activities and their durations.</li>
+            <div style={{paddingLeft: "2em"}}>
+              <p><i>e.g.</i> Given the hour long queue at the entrance, we can't shop within minutes. [True]</p>
+            </div>
+          </div>
+        </ul>
+      </Typography>
     )
   }
 }
+
 
 class ScenarioInstruction extends React.Component {
 
@@ -79,6 +81,7 @@ class ScenarioInstruction extends React.Component {
   }
 }
 
+
 const useStyles = makeStyles((theme) => ({
   root: {
     width: '100%',
@@ -96,12 +99,13 @@ const useStyles = makeStyles((theme) => ({
     color: "#ffffff",
     textTransform: "none",
   }
-}));
+}))
+
 
 export default function Instructions() {
-  const classes = useStyles();
+  const classes = useStyles()
 
-  const [expanded, setExpanded] = useState(true);
+  const [expanded, setExpanded] = useState(true)
 
   return (
     <div className={classes.root}>
@@ -122,5 +126,5 @@ export default function Instructions() {
           </Button>
       </Accordion>
     </div>
-  );
+  )
 }
