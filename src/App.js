@@ -98,6 +98,8 @@ class App extends React.Component {
     const s1_value = 'roses are red'
     const s2_value = 'roses are blue'
 
+    const evalQuestions = JSON.parse(JSON.stringify(EVAL_QUESTIONS))
+
     this.state = {
       processing: false,
       evaluated: false,
@@ -109,7 +111,7 @@ class App extends React.Component {
       count: null,
       code: '',
       evalCount: 1,
-      evalQuestions: EVAL_QUESTIONS,
+      evalQuestions,
       scenario: scenario,
       inputs: {
         s1: {
@@ -369,11 +371,12 @@ class App extends React.Component {
 
   loadNextTrial() {
     const { evalCount } = this.state
+    const evalQuestions = JSON.parse(JSON.stringify(EVAL_QUESTIONS))
     this.fetchPrevTrial()
     .then(
       this.setState({
+        evalQuestions,
         evalCount: evalCount + 1,
-        evalQuestions: EVAL_QUESTIONS,
       })
     )
   }
