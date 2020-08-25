@@ -6,7 +6,6 @@ import Container from '@material-ui/core/Container'
 import scramble from './utils/scramble'
 import Creation from './components/Creation'
 import ExitSurvey from './components/ExitSurvey'
-import ProgressBar from './components/ProgressBar'
 import Validation from './components/Validation'
 import { withStyles, createMuiTheme, responsiveFontSizes, ThemeProvider } from '@material-ui/core/styles'
 
@@ -381,8 +380,6 @@ class App extends React.Component {
         <Container maxWidth="xl">
 
           <CssBaseline />
-
-          <ProgressBar progress={progress} />
 
           <ExitSurvey open={openSurvey}
             code={code}
