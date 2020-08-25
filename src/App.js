@@ -399,17 +399,6 @@ class App extends React.Component {
             />
           )}
 
-          {!!code && (
-            <Typography
-              component="h4"
-              variant="h4"
-              className={classes.header}
-              style={{textDecoration: 'underline', cursor: 'pointer'}}
-              onClick={this.handleOpenSurvey.bind(this)}>
-              Complete the HIT and get the completion code
-            </Typography>
-          )}
-
         </Container>
       </ThemeProvider>
     )
