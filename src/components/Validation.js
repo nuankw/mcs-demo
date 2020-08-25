@@ -7,7 +7,6 @@ import { withStyles } from '@material-ui/core/styles'
 
 import Input from './Input'
 import Output from './Output'
-import Scores from './Scores'
 import UserEval from './UserEval'
 import Instructions from './Instructions'
 
@@ -81,7 +80,6 @@ class Validation extends React.Component {
           <Paper component="div" className={classes.paper} square>
             {inputs.s1.output != null && <Output statement={inputs.s1} />}
             <Input text={inputs.s1} autoFocus={true} disabled={true} />
-            {/* {inputs.s1.scores != null && <Scores statement={inputs.s1} />} */}
           </Paper>
         </Grid>
 
