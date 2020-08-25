@@ -326,8 +326,27 @@ class App extends React.Component {
     })
   }
 
-  handleOnEval(question, answer) {
+  handleOnEval(question, selection) {
     const { dataID, evalQuestions } = this.state
+
+    // support multiple choice answers
+    const update = {...evalQuestions}
+    if ( update[question].type === 'multiple' ) {
+      const index = update[question]['answer'].indexOf(selection)
+      if ( index >= 0 ) {
+        update[question]['answer'].splice(index, 1)
+      } else {
+        if ( selection === 'none' ) {
+          update[question]['answer'] = ['none']
+        } else {
+          update[question]['answer'] = (
+            update[question]['answer'].filter(s => s !== 'none'))
+          update[question]['answer'].push(selection)
+        }
+      }
+    } else {
+      update[question]['answer'] = selection
+    }
 
     fetch('/set_eval', {
       method: 'POST',
@@ -337,26 +356,13 @@ class App extends React.Component {
       body: JSON.stringify({
         'dataID': dataID,
         'question': question,
-        'answer': answer,
+        'answer': update[question]['answer'].toString(),
       }),
     })
     .then(response => response.json())
     .then(data => {
       if ( data['status'] === 'ok' ) {
-        const updatedQuestions = evalQuestions.filter(q => q !== question)
-        if ( !updatedQuestions.length ) {
-          this.fetchPrevTrial()
-          .then(
-            this.setState({
-              evalCount: evalCount + 1,
-              evalQuestions: EVAL_QUESTIONS,
-            })
-          )
-        } else{
-          this.setState({
-            evalQuestions: updatedQuestions,
-          })
-        }
+        this.setState({'evalQuestions': update})
       }
     })
   }
