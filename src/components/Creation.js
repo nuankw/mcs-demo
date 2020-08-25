@@ -7,16 +7,6 @@ import Evaluate from './Evaluate'
 import Submit from './Submit'
 
 
-const SCENARIOS = {
-  'null': 'general',
-  's1': 'negation',
-  's2': 'active/passive expressions',
-  's3': 'logic exist/all',
-  's4': 'event temporal relation',
-  's5': 'cultural common sense',
-}
-
-
 const styles = theme => ({
   '@global': {
     body: {
@@ -75,7 +65,7 @@ class Creation extends React.Component {
           variant="h3"
           className={classes.header}>
           <span className={classes.underlined}>Part 2:</span>
-          Enter 2 common sense statements {!!scenario && `about ${SCENARIOS[scenario]}`} (1 TRUE and 1 FALSE)
+          Enter 2 common sense statements {!!scenario && `about ${scenario}`} (1 TRUE and 1 FALSE)
         </Typography>
 
           <form className={classes.form} noValidate onSubmit={this.submit.bind(this)}>

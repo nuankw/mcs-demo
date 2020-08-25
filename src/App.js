@@ -389,13 +389,13 @@ class App extends React.Component {
           {userEval ? (
             <Validation
               inputs={inputs}
-              scenario={scenario}
+              scenario={SCENARIOS[scenario]}
               evalCount={evalCount}
               evalQuestions={evalQuestions}
               handleOnEval={(q, a) => this.handleOnEval(q, a)} />
           ) : (
             <Creation
-              scenario={scenario}
+              scenario={SCENARIOS[scenario]}
             />
           )}
 

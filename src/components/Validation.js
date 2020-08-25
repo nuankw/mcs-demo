@@ -12,16 +12,6 @@ import UserEval from './UserEval'
 import Instructions from './Instructions'
 
 
-const SCENARIOS = {
-  'null': 'general',
-  's1': 'negation',
-  's2': 'active/passive expressions',
-  's3': 'logic exist/all',
-  's4': 'event temporal relation',
-  's5': 'cultural common sense',
-}
-
-
 const styles = theme => ({
   '@global': {
     body: {
@@ -99,7 +89,7 @@ class Validation extends React.Component {
 
           {inputs.s1.output != null && (
             <UserEval
-              scenario={SCENARIOS[scenario]}
+              scenario={scenario}
               questions={evalQuestions}
               onSelect={(q, a) => handleOnEval(q, a)} />
           )}
