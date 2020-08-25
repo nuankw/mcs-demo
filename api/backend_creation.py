@@ -114,9 +114,9 @@ def get_system_output(system, all_statements):
         score = max(softmax(scores)[0])
 
         result_key = 's' + str(idx + 1)
-        results[result_key] = {"pred_label": pred, "prob": round(score, 2)}
+        results[result_key] = {"vote": pred, "prob": round(score, 2)}
 
-    # output format: {'s1': {'pred_label': 1, 'prob': 0.87}, 's2': {'pred_label': 1, 'prob': 0.87} ...}
+    # output format: {'s1': {'vote': 1, 'prob': 0.87}, 's2': {'vote': 1, 'prob': 0.87} ...}
     return results
 
 
@@ -152,7 +152,7 @@ def classify():
     # output format: {'s1': {
     #                           'input': "statement ...",
     #                           'output': True,
-    #                           'scores': {'pred_label': 1, 'prob': 0.87}
+    #                           'scores': {'vote': 1, 'prob': 0.87}
     #                       },
     #                  's2': ....
     return jsonify(data)
