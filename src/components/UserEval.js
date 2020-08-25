@@ -53,7 +53,7 @@ class Evaluate extends React.Component {
             <Button
               variant="contained"
               className={classNames(classes.button, {
-                'selected': questions['evalQ1'] === 'yes',
+                'selected': questions['evalQ1']['answer'] === 'yes',
               })}
               onClick={() => onSelect('evalQ1', 'yes')}>
               Yes
@@ -61,14 +61,14 @@ class Evaluate extends React.Component {
             <Button
               variant="contained"
               className={classNames(classes.button, {
-                'selected': questions['evalQ1'] === 'no',
+                'selected': questions['evalQ1']['answer'] === 'no',
               })}
               onClick={() => onSelect('evalQ1', 'no')}>
               No
             </Button>
           </Typography>
 
-        {questions['evalQ1'] === 'yes' && (
+        {questions['evalQ1']['answer'] === 'yes' && (
           <Typography
             component="h3"
             variant="h3"
@@ -78,7 +78,7 @@ class Evaluate extends React.Component {
             <Button
               variant="contained"
               className={classNames(classes.button, {
-                'selected': questions['evalQ2'] === 'yes',
+                'selected': questions['evalQ2']['answer'] === 'yes',
               })}
               onClick={() => onSelect('evalQ2', 'yes')}>
               Yes
@@ -86,7 +86,7 @@ class Evaluate extends React.Component {
             <Button
               variant="contained"
               className={classNames(classes.button, {
-                'selected': questions['evalQ2'] === 'no',
+                'selected': questions['evalQ2']['answer'] === 'no',
               })}
               onClick={() => onSelect('evalQ2', 'no')}>
               No
@@ -94,7 +94,7 @@ class Evaluate extends React.Component {
           </Typography>
         )}
 
-        {questions['evalQ1'] === 'yes' && (
+        {questions['evalQ1']['answer'] === 'yes' && (
           <Typography
             component="h3"
             variant="h3"
@@ -104,7 +104,7 @@ class Evaluate extends React.Component {
             <Button
               variant="contained"
               className={classNames(classes.button, {
-                'selected': questions['evalQ3'] === 'social',
+                'selected': questions['evalQ3']['answer'].indexOf('social') >= 0,
               })}
               onClick={() => onSelect('evalQ3', 'social')}>
               Social
@@ -112,7 +112,7 @@ class Evaluate extends React.Component {
             <Button
               variant="contained"
               className={classNames(classes.button, {
-                'selected': questions['evalQ3'] === 'physical',
+                'selected': questions['evalQ3']['answer'].indexOf('physical') >= 0,
               })}
               onClick={() => onSelect('evalQ3', 'physical')}>
               Physical
@@ -120,7 +120,7 @@ class Evaluate extends React.Component {
             <Button
               variant="contained"
               className={classNames(classes.button, {
-                'selected': questions['evalQ3'] === 'time',
+                'selected': questions['evalQ3']['answer'].indexOf('time') >= 0,
               })}
               onClick={() => onSelect('evalQ3', 'time')}>
               Time
@@ -128,7 +128,7 @@ class Evaluate extends React.Component {
             <Button
               variant="contained"
               className={classNames(classes.button, {
-                'selected': questions['evalQ3'] === 'none',
+                'selected': questions['evalQ3']['answer'].indexOf('none') >= 0,
               })}
               onClick={() => onSelect('evalQ3', 'none')}>
               None of the 3
@@ -136,7 +136,7 @@ class Evaluate extends React.Component {
           </Typography>
         )}
 
-        {questions['evalQ1'] === 'yes' && (
+        {questions['evalQ1']['answer'] === 'yes' && (
           <Typography
             component="h3"
             variant="h3"
@@ -146,7 +146,7 @@ class Evaluate extends React.Component {
             <Button
               variant="contained"
               className={classNames(classes.button, {
-                'selected': questions['evalQ4'] === 'causal',
+                'selected': questions['evalQ4']['answer'].indexOf('causal') >= 0,
               })}
               onClick={() => onSelect('evalQ4', 'causal')}>
               Cause & Effect
@@ -154,7 +154,7 @@ class Evaluate extends React.Component {
             <Button
               variant="contained"
               className={classNames(classes.button, {
-                'selected': questions['evalQ4'] === 'comparison',
+                'selected': questions['evalQ4']['answer'].indexOf('comparison') >= 0,
               })}
               onClick={() => onSelect('evalQ4', 'comparison')}>
               Comparison
@@ -162,7 +162,7 @@ class Evaluate extends React.Component {
             <Button
               variant="contained"
               className={classNames(classes.button, {
-                'selected': questions['evalQ4'] === 'numeracy',
+                'selected': questions['evalQ4']['answer'].indexOf('numeracy') >= 0,
               })}
               onClick={() => onSelect('evalQ4', 'numeracy')}>
               Numeracy
@@ -170,7 +170,7 @@ class Evaluate extends React.Component {
             <Button
               variant="contained"
               className={classNames(classes.button, {
-                'selected': questions['evalQ4'] === 'none',
+                'selected': questions['evalQ4']['answer'].indexOf('none') >= 0,
               })}
               onClick={() => onSelect('evalQ4', 'none')}>
               None of the 3

@@ -14,7 +14,24 @@ theme = responsiveFontSizes(theme);
 
 
 const REQUIRED_NUM_EVALUATIONS = 6
-const EVAL_QUESTIONS = ['evalQ1', 'evalQ2', 'evalQ3', 'evalQ4']
+const EVAL_QUESTIONS = {
+  'evalQ1': {
+    'type': 'single',
+    'answer': '',
+  },
+  'evalQ2': {
+    'type': 'single',
+    'answer': '',
+  },
+  'evalQ3': {
+    'type': 'multiple',
+    'answer': [],
+  },
+  'evalQ4': {
+    'type': 'multiple',
+    'answer': [],
+  },
+}
 
 
 const SCENARIOS = {
