@@ -1,12 +1,15 @@
 import React from 'react'
 import Grid from '@material-ui/core/Grid'
 import Paper from '@material-ui/core/Paper'
+import Typography from '@material-ui/core/Typography'
 import { withStyles } from '@material-ui/core/styles'
+
 
 import Input from './Input'
 import Output from './Output'
 import Scores from './Scores'
 import UserEval from './UserEval'
+import Instructions from './Instructions'
 
 
 const SCENARIOS = {
@@ -66,9 +69,22 @@ const styles = theme => ({
 class Validation extends React.Component {
 
   render() {
-    const { classes, inputs, handleOnEval, scenario, evalQuestions } = this.props
+    const { classes, inputs, handleOnEval, scenario, evalCount, evalQuestions } = this.props
     return (
       <React.Fragment>
+
+        <Typography
+          component="h3"
+          variant="h3"
+          className={classes.header}>
+          <span style={{marginBottom: "10px", align: "center"}}>Part 1: Validation </span>
+          <p style={{fontSize: "28px"}}>NOTE: Please take 5 minutes to read this instruction carefully.
+              We will have another user to examine your inputs and will reject your HITs
+               if you fail to provide inputs that are compliant with the instruction.</p>
+          <p> Reviewing {evalCount} out of 6 statements. </p>
+        </Typography>
+
+        <Instructions/>
 
         {/* Input Box 1 */}
         <Grid item xs={12}>

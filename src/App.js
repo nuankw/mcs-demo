@@ -2,17 +2,11 @@ import React from 'react'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import Typography from '@material-ui/core/Typography'
 import Container from '@material-ui/core/Container'
-import Button from '@material-ui/core/Button'
-import Grid from '@material-ui/core/Grid'
 
 import scramble from './utils/scramble'
 import Creation from './components/Creation'
-import Evaluate from './components/Evaluate'
 import ExitSurvey from './components/ExitSurvey'
-import Instructions from './components/Instructions'
 import ProgressBar from './components/ProgressBar'
-import Rules from './components/Rules'
-import Submit from './components/Submit'
 import Validation from './components/Validation'
 import { withStyles, createMuiTheme, responsiveFontSizes, ThemeProvider } from '@material-ui/core/styles'
 
@@ -365,7 +359,7 @@ class App extends React.Component {
     })
   }
 
-  handleOnClear() {
+  clearInputs() {
     const { inputs } = this.state
     inputs.s1 = {...inputs.s1, value: '', changed: false, output: null, scores: null}
     inputs.s2 = {...inputs.s2, value: '', changed: false, output: null, scores: null}
@@ -375,13 +369,13 @@ class App extends React.Component {
   }
 
   skipUserEval() {
-    this.handleOnClear()
+    this.clearInputs()
     this.setInputDefaults()
   }
 
   render() {
     const { classes } = this.props
-    const { code, inputs, openRules, openSurvey, evaluated, progress, scenario, count, userEval, evalCount, evalQuestions } = this.state
+    const { code, inputs, openSurvey, progress, scenario, userEval, evalCount, evalQuestions } = this.state
     return (
       <ThemeProvider theme={theme}>
         <Container maxWidth="xl">
@@ -390,114 +384,34 @@ class App extends React.Component {
 
           <ProgressBar progress={progress} />
 
-          <Rules open={openRules} onClose={this.handleCloseRules.bind(this)} />
-
           <ExitSurvey open={openSurvey}
             code={code}
             onAnswer={this.handleAnswer.bind(this)}
             onClose={this.handleCloseSurvey.bind(this)} />
 
-          <Typography
-            component="h3"
-            variant="h3"
-            className={classes.header}>
-            {userEval && evalCount <= MIN_NUM_EVALUATIONS ? (
-              <span>
-                <span style={{marginBottom: "10px", align: "center"}}>Part 1: Validation </span>
-                <p style={{fontSize: "28px"}}>NOTE: Please take 5 minutes to read this instruction carefully.
-                    We will have another user to examine your inputs and will reject your HITs
-                     if you fail to provide inputs that are compliant with the instruction.</p>
-                <Instructions/>
-                <p style={{fontSize: theme.spacing(4)}}> Reviewing {evalCount} out of 6 statements. </p>
-              </span>
-            ) : (
-              <span>
-                <span className={classes.underlined}>Part 2:</span>
-                Enter 2 common sense statements {!!scenario && `about ${SCENARIOS[scenario]}`} (1 TRUE and 1 FALSE)
-              </span>
-            )}
-          </Typography>
-
-          {userEval && (
+          {userEval ? (
             <Validation
               inputs={inputs}
               scenario={scenario}
               evalCount={evalCount}
               evalQuestions={evalQuestions}
               handleOnEval={(q, a) => this.handleOnEval(q, a)} />
+          ) : (
+            <Creation
+              scenario={scenario}
+            />
           )}
 
-          <form className={classes.form} noValidate onSubmit={this.submit.bind(this)}>
-            <Grid container spacing={3}>
-
-              <Grid item xs={12} align="center">
-
-                {/* For Part 2: creation question: was the machine output correct */}
-                {inputs.s1.output != null && !userEval && (
-                  <Evaluate evaluated={evaluated}
-                  onSelect={this.handleEvaluate.bind(this)}
-                  onReset={this.handleOnClear.bind(this)} />
-                )}
-
-                {/* For Part 2: creation submit */}
-                {!userEval && inputs.s1.output === null && <Submit />}
-              </Grid>
-
-              {/* For both part 1 and 2: the rules */}
-              <Grid item xs={6} align="left">
-                <Button
-                variant="outlined"
-                className={classes.button}
-                onClick={this.handleOpenRules.bind(this)}>
-                Rules
-                </Button>
-              </Grid>
-
-              {/* For Part 2: clear input */}
-              <Grid item xs={6} align="right">
-                {!userEval && (
-                  <Button
-                    variant="outlined"
-                    className={classes.button}
-                    onClick={this.handleOnClear.bind(this)}>
-                      Clear
-                  </Button>
-                )}
-              </Grid>
-
-              {/* For Part 2: creation information */}
-              {!!count && (
-                <Grid item xs={12} align="center" style={{marginTop: '-24px'}}>
-                  {!!code && (
-                    <Typography
-                      component="h4"
-                      variant="h4"
-                      className={classes.header}
-                      style={{textDecoration: 'underline', cursor: 'pointer'}}
-                      onClick={this.handleOpenSurvey.bind(this)}>
-                      Complete the HIT and get the completion code
-                    </Typography>
-                  )}
-
-                  <Typography
-                    component="h5"
-                    variant="h5"
-                    className={classes.header}>
-                    Generated {count} out of 5 (minimally) required statements.
-                  </Typography>
-
-                  {count >= 5 && (
-                    <Typography
-                    component="h5"
-                    variant="h5"
-                    className={classes.header}>
-                    Current payout: {`${Math.min(0.5 + 0.05 * (count-5), 1).toFixed(2)} $`}
-                    </Typography>
-                  )}
-                </Grid>
-              )}
-            </Grid>
-          </form>
+          {!!code && (
+            <Typography
+              component="h4"
+              variant="h4"
+              className={classes.header}
+              style={{textDecoration: 'underline', cursor: 'pointer'}}
+              onClick={this.handleOpenSurvey.bind(this)}>
+              Complete the HIT and get the completion code
+            </Typography>
+          )}
 
         </Container>
       </ThemeProvider>
