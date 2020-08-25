@@ -367,6 +367,17 @@ class App extends React.Component {
     })
   }
 
+  loadNextTrial() {
+    const { evalCount } = this.state
+    this.fetchPrevTrial()
+    .then(
+      this.setState({
+        evalCount: evalCount + 1,
+        evalQuestions: EVAL_QUESTIONS,
+      })
+    )
+  }
+
   clearInputs() {
     const { inputs } = this.state
     inputs.s1 = {...inputs.s1, value: '', changed: false, output: null, scores: null}
@@ -396,7 +407,8 @@ class App extends React.Component {
               scenario={SCENARIOS[scenario]}
               evalCount={evalCount}
               evalQuestions={evalQuestions}
-              handleOnEval={(q, a) => this.handleOnEval(q, a)} />
+              loadNextTrial={this.loadNextTrial.bind(this)}
+              handleOnEval={(q, s) => this.handleOnEval(q, s)} />
           ) : (
             <Creation
               scenario={SCENARIOS[scenario]}

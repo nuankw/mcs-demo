@@ -67,7 +67,7 @@ const styles = theme => ({
 class Validation extends React.Component {
 
   render() {
-    const { classes, inputs, handleOnEval, scenario, evalCount, evalQuestions } = this.props
+    const { classes, inputs, handleOnEval, scenario, evalCount, evalQuestions, loadNextTrial } = this.props
     return (
       <React.Fragment>
 
@@ -104,7 +104,8 @@ class Validation extends React.Component {
         <Grid item xs={12} align="center">
           <Button
             variant="contained"
-            className={classes.button}>
+            className={classes.button}
+            onClick={() => loadNextTrial()}>
             Next Statement
           </Button>
         </Grid>
