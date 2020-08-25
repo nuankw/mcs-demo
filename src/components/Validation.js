@@ -75,16 +75,7 @@ class Validation extends React.Component {
           <Paper component="div" className={classes.paper} square>
             {inputs.s1.output != null && <Output statement={inputs.s1} />}
             <Input text={inputs.s1} autoFocus={true} disabled={true} />
-            {inputs.s1.scores != null && <Scores statement={inputs.s1} />}
-          </Paper>
-        </Grid>
-
-        {/* Input Box 2 */}
-        <Grid item xs={12}>
-          <Paper component="div" className={classes.paper} square>
-            {inputs.s2.output != null && <Output statement={inputs.s2} />}
-            <Input text={inputs.s2} disabled={true} />
-            {inputs.s2.scores != null && <Scores statement={inputs.s2} />}
+            {/* {inputs.s1.scores != null && <Scores statement={inputs.s1} />} */}
           </Paper>
         </Grid>
 

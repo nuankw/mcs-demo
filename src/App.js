@@ -19,10 +19,10 @@ let theme = createMuiTheme();
 theme = responsiveFontSizes(theme);
 
 
-const MIN_NUM_TRIALS = 5
-const MIN_NUM_EVALUATIONS = 0
+const MIN_NUM_TRIALS = 6
+const MIN_NUM_EVALUATIONS = 6
 const MAX_NUM_EVALUATIONS = 15
-const EVAL_QUESTIONS = ['evalQ1', 'evalQ2', 'evalQ3']
+const EVAL_QUESTIONS = ['evalQ1', 'evalQ2', 'evalQ3', 'evalQ4']
 
 
 const SCENARIOS = {
@@ -45,7 +45,6 @@ const styles = theme => ({
     },
   },
   header: {
-    color: '#fefefe',
     marginTop: theme.spacing(3),
   },
   paper: {
@@ -400,21 +399,14 @@ class App extends React.Component {
             component="h3"
             variant="h3"
             className={classes.header}>
-            {userEval ? (
+            {userEval && evalCount <= MIN_NUM_EVALUATIONS ? (
               <span>
-                <span className={classes.underlined}>Part 1:</span>
-                Please review 5 previous users inputs (machine predictions are on the RIGHT side)
-                <br/>
-                Currently reviewing {evalCount} out of 5 statement pairs
-                (you can review up to 15 statements)
-                <br/>
-                {evalCount > MIN_NUM_EVALUATIONS && (
-                  <span className={classes.link}
-                    onClick={this.skipUserEval.bind(this)}
-                    >> You can now proceed to Part 2
-                  </span>
-                )}
-
+                <span style={{marginBottom: "10px", align: "center"}}>Part 1: Validation </span>
+                <p style={{fontSize: "28px"}}>NOTE: Please take 5 minutes to read this instruction carefully.
+                    We will have another user to examine your inputs and will reject your HITs
+                     if you fail to provide inputs that are compliant with the instruction.</p>
+                <Instructions/>
+                <p style={{fontSize: theme.spacing(4)}}> Reviewing {evalCount} out of 6 statements. </p>
               </span>
             ) : (
               <span>
@@ -504,11 +496,6 @@ class App extends React.Component {
               )}
             </Grid>
           </form>
-
-          {/* newly added instructions collapse/expand box */}
-          <div style={{'padding': '2em'}}>
-            <Instructions />
-          </div>
 
         </Container>
       </ThemeProvider>

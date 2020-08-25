@@ -5,27 +5,18 @@ import { withStyles } from '@material-ui/core/styles'
 
 const styles = theme => ({
   header: {
-    color: '#fefefe',
-    padding: theme.spacing(2, 5),
+    color: 'dark',
+    padding: theme.spacing(1,4),
+    fontSize: theme.spacing(3.5),
   },
-  buttonYes: {
-    color: 'whitesmoke',
-    background: 'darkgreen',
-    fontSize: theme.spacing(3),
-    margin: theme.spacing(2, 5),
-    padding: theme.spacing(2, 10),
+  allButton: {
+    color: 'black',
+    background: 'rgba(104, 159, 56, 0.6)',
+    fontSize: theme.spacing(2),
+    margin: theme.spacing(2, 3),
+    padding: theme.spacing(1.5, 6),
     '&:hover': {
-      background: 'limegreen',
-    },
-  },
-  buttonNo: {
-    color: 'whitesmoke',
-    background: 'darkred',
-    fontSize: theme.spacing(3),
-    margin: theme.spacing(2, 5),
-    padding: theme.spacing(2, 10),
-    '&:hover': {
-      background: 'red',
+      background: 'rgba(32, 40, 24, 0.6)',
     },
   },
   link: {
@@ -49,17 +40,17 @@ class Evaluate extends React.Component {
             component="h3"
             variant="h3"
             className={classes.header}>
-            Are these user input statements common sense?
+            Q1. Do you think this statement requires commonsense to infer True/False?
             <br/>
             <Button
               variant="contained"
-              className={classes.buttonYes}
+              className={classes.allButton}
               onClick={() => onSelect('evalQ1', 'yes')}>
               Yes
             </Button>
             <Button
               variant="contained"
-              className={classes.buttonNo}
+              className={classes.allButton}
               onClick={() => onSelect('evalQ1', 'no')}>
               No
             </Button>
@@ -71,17 +62,17 @@ class Evaluate extends React.Component {
             component="h3"
             variant="h3"
             className={classes.header}>
-            Do these user input statements fit in the scenario: {scenario}
+            Q2. Do you think this statement is True?
             <br/>
             <Button
               variant="contained"
-              className={classes.buttonYes}
+              className={classes.allButton}
               onClick={() => onSelect('evalQ2', 'yes')}>
               Yes
             </Button>
             <Button
               variant="contained"
-              className={classes.buttonNo}
+              className={classes.allButton}
               onClick={() => onSelect('evalQ2', 'no')}>
               No
             </Button>
@@ -93,19 +84,65 @@ class Evaluate extends React.Component {
             component="h3"
             variant="h3"
             className={classes.header}>
-            Was the machine output correct?
+            Q3. Please select <u>all the <b>domains</b></u> that you think this statement can be categorized into:
             <br/>
             <Button
               variant="contained"
-              className={classes.buttonYes}
-              onClick={() => onSelect('evalQ3', 'yes')}>
-              Yes
+              className={classes.allButton}
+              onClick={() => onSelect('evalQ3', 'social')}>
+              Social
             </Button>
             <Button
               variant="contained"
-              className={classes.buttonNo}
-              onClick={() => onSelect('evalQ3', 'no')}>
-              No
+              className={classes.allButton}
+              onClick={() => onSelect('evalQ3', 'physical')}>
+              Physical
+            </Button>
+            <Button
+              variant="contained"
+              className={classes.allButton}
+              onClick={() => onSelect('evalQ3', 'time')}>
+              Time
+            </Button>
+            <Button
+              variant="contained"
+              className={classes.allButton}
+              onClick={() => onSelect('evalQ3', 'none')}>
+              None of the 3
+            </Button>
+          </Typography>
+        )}
+
+        {questions.indexOf('evalQ4') >= 0 && (
+          <Typography
+            component="h3"
+            variant="h3"
+            className={classes.header}>
+            Q4. Please select <u>all the <b>scenarios</b></u> that you think this statement can be categorized into:
+            <br/>
+            <Button
+              variant="contained"
+              className={classes.allButton}
+              onClick={() => onSelect('evalQ4', 'causal')}>
+              Cause & Effect
+            </Button>
+            <Button
+              variant="contained"
+              className={classes.allButton}
+              onClick={() => onSelect('evalQ4', 'comparison')}>
+              Comparison
+            </Button>
+            <Button
+              variant="contained"
+              className={classes.allButton}
+              onClick={() => onSelect('evalQ4', 'numeracy')}>
+              Numeracy
+            </Button>
+            <Button
+              variant="contained"
+              className={classes.allButton}
+              onClick={() => onSelect('evalQ4', 'none')}>
+              None of the 3
             </Button>
           </Typography>
         )}

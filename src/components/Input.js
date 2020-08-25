@@ -12,17 +12,16 @@ const CustomTextField = withStyles({
         fontSize: '1.25rem',
         opacity: 0.85,
       },
-      color: '#fefefe',
     },
     '& .MuiInput-input': {
       '@media (min-width:600px)': {
         fontSize: '2rem',
       },
-      color: '#fefefe',
+      color: '#000000',
       transition: 'background 0.3s ease',
     },
     '& label.Mui-focused': {
-      color: '#fefefe',
+      color: '#000000',
     },
     '&:hover .MuiInput-input': {
       background: 'rgba(255, 255, 255, 0.1)',
