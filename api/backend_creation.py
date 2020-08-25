@@ -11,7 +11,7 @@ from flask_cors import CORS
 
 import torch
 from transformers import AutoTokenizer
-from model import Transformer
+from .model import Transformer
 from scipy.special import softmax
 
 from datetime import datetime
@@ -44,7 +44,7 @@ SYSTEMS = {
     'system_1': {
         'system_name': 'roberta',
         'model_name': 'roberta-large',
-        'model_path': '../model_ckpt/ep_13_16k_acc_87.2984_roberta_large.pth',
+        'model_path': 'model_ckpt/ep_13_16k_acc_87.2984_roberta_large.pth',
         'num_cls': 2,
         'tokenizer': None,
         'device': None,
@@ -222,7 +222,7 @@ if __name__ == "__main__":
         load_models(system)
         # get_system_output(system, ["test"])
 
-    # host = os.environ.get('MCS_SERVER_HOST', 'localhost')
-    # port = int(os.environ.get('MCS_SERVER_PORT', '15005'))
+    host = os.environ.get('MCS_SERVER_HOST', 'localhost')
+    port = int(os.environ.get('MCS_SERVER_PORT', '15005'))
 
-    # app.run(host=host, port=port, debug=True)
+    app.run(host=host, port=port, debug=True)
