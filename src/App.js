@@ -1,6 +1,5 @@
 import React from 'react'
 import CssBaseline from '@material-ui/core/CssBaseline'
-import Typography from '@material-ui/core/Typography'
 import Container from '@material-ui/core/Container'
 
 import scramble from './utils/scramble'
@@ -14,7 +13,6 @@ let theme = createMuiTheme();
 theme = responsiveFontSizes(theme);
 
 
-const MIN_NUM_TRIALS = 6
 const REQUIRED_NUM_EVALUATIONS = 6
 const EVAL_QUESTIONS = ['evalQ1', 'evalQ2', 'evalQ3', 'evalQ4']
 
@@ -91,7 +89,6 @@ class App extends React.Component {
       returning: null,
       openRules: false,
       dataID: null,
-      progress: 0,
       count: null,
       code: '',
       evalCount: 1,
@@ -282,14 +279,9 @@ class App extends React.Component {
     })
     .then((response) => response.json())
     .then((data) => {
-      let progress = 0
-      if ( !!data['count'] ) {
-        progress = Math.min(Math.round(data['count'] / MIN_NUM_TRIALS * 100), 100)
-      }
       this.setState({
         evaluated: true,
         count: data['count'],
-        progress: progress,
         code: data['code']
       })
     })
@@ -318,7 +310,7 @@ class App extends React.Component {
   }
 
   handleOnEval(question, answer) {
-    const { dataID, evalQuestions, evalCount } = this.state
+    const { dataID, evalQuestions } = this.state
 
     fetch('/set_eval', {
       method: 'POST',
@@ -363,7 +355,7 @@ class App extends React.Component {
 
   render() {
     const { classes } = this.props
-    const { code, inputs, openSurvey, progress, scenario, evalCount, evalQuestions } = this.state
+    const { code, inputs, openSurvey, scenario, evalCount, evalQuestions } = this.state
     return (
       <ThemeProvider theme={theme}>
         <Container maxWidth="xl">
