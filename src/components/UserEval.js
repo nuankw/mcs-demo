@@ -3,6 +3,8 @@ import Button from '@material-ui/core/Button'
 import Typography from '@material-ui/core/Typography'
 import { withStyles } from '@material-ui/core/styles'
 
+import classNames from '../utils/classes'
+
 const styles = theme => ({
   header: {
     color: 'dark',
@@ -17,6 +19,10 @@ const styles = theme => ({
     margin: theme.spacing(2, 3),
     padding: theme.spacing(1.5, 6),
     textTransform: "none",
+    '&.selected': {
+      background: 'rgba(32, 40, 24, 0.6)',
+      color: '#dae1c5',
+    },
     '&:hover': {
       background: 'rgba(32, 40, 24, 0.6)',
       color: '#dae1c5',
@@ -46,13 +52,17 @@ class Evaluate extends React.Component {
             <br/>
             <Button
               variant="contained"
-              className={classes.button}
+              className={classNames(classes.button, {
+                'selected': questions['evalQ1'] == 'yes',
+              })}
               onClick={() => onSelect('evalQ1', 'yes')}>
               Yes
             </Button>
             <Button
               variant="contained"
-              className={classes.button}
+              className={classNames(classes.button, {
+                'selected': questions['evalQ1'] == 'no',
+              })}
               onClick={() => onSelect('evalQ1', 'no')}>
               No
             </Button>
@@ -67,13 +77,17 @@ class Evaluate extends React.Component {
             <br/>
             <Button
               variant="contained"
-              className={classes.button}
+              className={classNames(classes.button, {
+                'selected': questions['evalQ2'] == 'yes',
+              })}
               onClick={() => onSelect('evalQ2', 'yes')}>
               Yes
             </Button>
             <Button
               variant="contained"
-              className={classes.button}
+              className={classNames(classes.button, {
+                'selected': questions['evalQ2'] == 'no',
+              })}
               onClick={() => onSelect('evalQ2', 'no')}>
               No
             </Button>
@@ -89,25 +103,33 @@ class Evaluate extends React.Component {
             <br/>
             <Button
               variant="contained"
-              className={classes.button}
+              className={classNames(classes.button, {
+                'selected': questions['evalQ3'] == 'social',
+              })}
               onClick={() => onSelect('evalQ3', 'social')}>
               Social
             </Button>
             <Button
               variant="contained"
-              className={classes.button}
+              className={classNames(classes.button, {
+                'selected': questions['evalQ3'] == 'physical',
+              })}
               onClick={() => onSelect('evalQ3', 'physical')}>
               Physical
             </Button>
             <Button
               variant="contained"
-              className={classes.button}
+              className={classNames(classes.button, {
+                'selected': questions['evalQ3'] == 'time',
+              })}
               onClick={() => onSelect('evalQ3', 'time')}>
               Time
             </Button>
             <Button
               variant="contained"
-              className={classes.button}
+              className={classNames(classes.button, {
+                'selected': questions['evalQ3'] == 'none',
+              })}
               onClick={() => onSelect('evalQ3', 'none')}>
               None of the 3
             </Button>
@@ -123,25 +145,33 @@ class Evaluate extends React.Component {
             <br/>
             <Button
               variant="contained"
-              className={classes.button}
+              className={classNames(classes.button, {
+                'selected': questions['evalQ4'] == 'causal',
+              })}
               onClick={() => onSelect('evalQ4', 'causal')}>
               Cause & Effect
             </Button>
             <Button
               variant="contained"
-              className={classes.button}
+              className={classNames(classes.button, {
+                'selected': questions['evalQ4'] == 'comparison',
+              })}
               onClick={() => onSelect('evalQ4', 'comparison')}>
               Comparison
             </Button>
             <Button
               variant="contained"
-              className={classes.button}
+              className={classNames(classes.button, {
+                'selected': questions['evalQ4'] == 'numeracy',
+              })}
               onClick={() => onSelect('evalQ4', 'numeracy')}>
               Numeracy
             </Button>
             <Button
               variant="contained"
-              className={classes.button}
+              className={classNames(classes.button, {
+                'selected': questions['evalQ4'] == 'none',
+              })}
               onClick={() => onSelect('evalQ4', 'none')}>
               None of the 3
             </Button>
