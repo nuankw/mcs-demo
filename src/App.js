@@ -15,8 +15,7 @@ theme = responsiveFontSizes(theme);
 
 
 const MIN_NUM_TRIALS = 6
-const MIN_NUM_EVALUATIONS = 6
-const MAX_NUM_EVALUATIONS = 15
+const REQUIRED_NUM_EVALUATIONS = 6
 const EVAL_QUESTIONS = ['evalQ1', 'evalQ2', 'evalQ3', 'evalQ4']
 
 
@@ -95,7 +94,6 @@ class App extends React.Component {
       progress: 0,
       count: null,
       code: '',
-      userEval: true,
       evalCount: 1,
       evalQuestions: EVAL_QUESTIONS,
       scenario: scenario,
@@ -338,17 +336,13 @@ class App extends React.Component {
       if ( data['status'] === 'ok' ) {
         const updatedQuestions = evalQuestions.filter(q => q !== question)
         if ( !updatedQuestions.length ) {
-          if ( this.state.evalCount >= MAX_NUM_EVALUATIONS ) {
-            this.skipUserEval()
-          } else {
-            this.fetchPrevTrial()
-            .then(
-              this.setState({
-                evalCount: evalCount + 1,
-                evalQuestions: EVAL_QUESTIONS,
-              })
-            )
-          }
+          this.fetchPrevTrial()
+          .then(
+            this.setState({
+              evalCount: evalCount + 1,
+              evalQuestions: EVAL_QUESTIONS,
+            })
+          )
         } else{
           this.setState({
             evalQuestions: updatedQuestions,
@@ -362,19 +356,14 @@ class App extends React.Component {
     const { inputs } = this.state
     inputs.s1 = {...inputs.s1, value: '', changed: false, output: null, scores: null}
     inputs.s2 = {...inputs.s2, value: '', changed: false, output: null, scores: null}
-    this.setState({dataID: null, evaluated: false, userEval: false, inputs}, () => {
+    this.setState({dataID: null, evaluated: false, inputs}, () => {
       this.inputField.focus()
     })
   }
 
-  skipUserEval() {
-    this.clearInputs()
-    this.setInputDefaults()
-  }
-
   render() {
     const { classes } = this.props
-    const { code, inputs, openSurvey, progress, scenario, userEval, evalCount, evalQuestions } = this.state
+    const { code, inputs, openSurvey, progress, scenario, evalCount, evalQuestions } = this.state
     return (
       <ThemeProvider theme={theme}>
         <Container maxWidth="xl">
@@ -386,7 +375,7 @@ class App extends React.Component {
             onAnswer={this.handleAnswer.bind(this)}
             onClose={this.handleCloseSurvey.bind(this)} />
 
-          {userEval ? (
+          {evalCount <= REQUIRED_NUM_EVALUATIONS ? (
             <Validation
               inputs={inputs}
               scenario={SCENARIOS[scenario]}
