@@ -38,7 +38,6 @@ class Evaluate extends React.Component {
     return (
       <div>
 
-        {questions.indexOf('evalQ1') >= 0 && (
           <Typography
             component="h3"
             variant="h3"
@@ -58,9 +57,8 @@ class Evaluate extends React.Component {
               No
             </Button>
           </Typography>
-        )}
 
-        {questions.indexOf('evalQ2') >= 0 && (
+        {questions['evalQ1'] == 'yes' && (
           <Typography
             component="h3"
             variant="h3"
@@ -82,7 +80,7 @@ class Evaluate extends React.Component {
           </Typography>
         )}
 
-        {questions.indexOf('evalQ3') >= 0 && (
+        {questions['evalQ1'] == 'yes' && (
           <Typography
             component="h3"
             variant="h3"
@@ -116,7 +114,7 @@ class Evaluate extends React.Component {
           </Typography>
         )}
 
-        {questions.indexOf('evalQ4') >= 0 && (
+        {questions['evalQ1'] == 'yes' && (
           <Typography
             component="h3"
             variant="h3"
