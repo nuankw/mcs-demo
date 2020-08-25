@@ -59,7 +59,6 @@ class Creation extends React.Component {
     return (
       <React.Fragment>
 
-
         <Typography
           component="h3"
           variant="h3"
@@ -68,24 +67,24 @@ class Creation extends React.Component {
           Enter 2 common sense statements {!!scenario && `about ${scenario}`} (1 TRUE and 1 FALSE)
         </Typography>
 
-          <form className={classes.form} noValidate onSubmit={this.submit.bind(this)}>
-            <Grid container spacing={3}>
+        <form className={classes.form} noValidate onSubmit={this.submit.bind(this)}>
+          <Grid container spacing={3}>
 
-              <Grid item xs={12} align="center">
+            <Grid item xs={12} align="center">
 
-                {/* For Part 2: creation question: was the machine output correct */}
-                {inputs.s1.output != null && (
-                  <Evaluate evaluated={false}
-                  onSelect={this.handleEvaluate.bind(this)}
-                  onReset={this.handleOnClear.bind(this)} />
-                )}
+              {/* For Part 2: creation question: was the machine output correct */}
+              {inputs.s1.output != null && (
+                <Evaluate evaluated={false}
+                onSelect={this.handleEvaluate.bind(this)}
+                onReset={this.handleOnClear.bind(this)} />
+              )}
 
-                {/* For Part 2: creation submit */}
-                {inputs.s1.output === null && <Submit />}
-              </Grid>
-
+              {/* For Part 2: creation submit */}
+              {inputs.s1.output === null && <Submit />}
             </Grid>
-          </form>
+
+          </Grid>
+        </form>
 
       </React.Fragment>
     )
