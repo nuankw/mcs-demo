@@ -95,9 +95,6 @@ class App extends React.Component {
     const locationQuery = new URLSearchParams(window.location.search)
     const scenario = locationQuery.get('scenario')
 
-    const s1_value = 'roses are red'
-    const s2_value = 'roses are blue'
-
     const evalQuestions = JSON.parse(JSON.stringify(EVAL_QUESTIONS))
 
     this.state = {
@@ -106,7 +103,6 @@ class App extends React.Component {
       openSurvey: false,
       enjoyment: null,
       returning: null,
-      openRules: false,
       dataID: null,
       count: null,
       code: '',
@@ -131,51 +127,8 @@ class App extends React.Component {
     this.setState({openSurvey: false})
   }
 
-  handleOpenRules() {
-    this.setState({openRules: true})
-  }
-
-  handleCloseRules() {
-    this.setState({openRules: false})
-  }
-
-  setInputDefaults() {
-    const { inputs, scenario } = this.state
-
-    let s1_value = 'roses are red'
-    let s2_value = 'roses are blue'
-
-    if ( scenario === 's1' ) {
-      s1_value = 'Basketball is not non-sports'
-      s2_value = 'Singing is not non-sports'
-    }
-    if ( scenario === 's2' ) {
-      s1_value = 'Cars are manufactured by factory workers'
-      s2_value = 'Factory workers are manufactured by cars'
-    }
-    if ( scenario === 's3' ) {
-      s1_value = 'Some fish are mammals'
-      s2_value = 'All fish are mammals'
-    }
-    if ( scenario === 's4' ) {
-      s1_value = 'We have lunch before dinner'
-      s2_value = 'We have dinner before lunch'
-    }
-    if ( scenario === 's5' ) {
-      s1_value = 'Sushi is Japanese food'
-      s2_value = 'Tofu is American food'
-    }
-
-    this.setState({
-      inputs: {
-        s1: {...inputs.s1, value: s1_value},
-        s2: {...inputs.s2, value: s2_value},
-      }
-    })
-  }
-
   fetchPrevTrial() {
-    const { inputs, scenario } = this.state
+    const { scenario } = this.state
     return fetch(`/get_eval?scenario=${scenario}`, {
       method: 'GET',
       headers: {
@@ -346,15 +299,6 @@ class App extends React.Component {
     )
   }
 
-  clearInputs() {
-    const { inputs } = this.state
-    inputs.s1 = {...inputs.s1, value: '', changed: false, output: null, scores: null}
-    inputs.s2 = {...inputs.s2, value: '', changed: false, output: null, scores: null}
-    this.setState({dataID: null, evaluated: false, inputs}, () => {
-      this.inputField.focus()
-    })
-  }
-
   render() {
     const { classes } = this.props
     const { code, prevInput, prevOutput, prevOptional, openSurvey, scenario, evalCount, evalQuestions } = this.state
@@ -382,7 +326,8 @@ class App extends React.Component {
               handleOnEval={(q, s) => this.handleOnEval(q, s)} />
           ) : (
             <Creation
-              inputs={inputs}
+              // inputs={inputs}
+              inputs={null}
               submit={this.submit.bind(this)}
               scenario={SCENARIOS[scenario]}
             />
