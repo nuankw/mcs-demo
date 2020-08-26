@@ -156,24 +156,6 @@ class App extends React.Component {
     this.setState({openRules: false})
   }
 
-  handleUpdate(id, value) {
-    let inputs = {...this.state.inputs}
-    inputs[id] = {...inputs[id], value, changed: true}
-    this.setState({inputs}, () => {
-      const count = Object.keys(inputs).reduce((c, id) => {
-        return c + (+inputs[id]['changed'])
-      }, 0)
-      if ( count === 1 ) {
-        Object.keys(inputs).forEach(id => {
-          if ( !inputs[id].changed ) {
-            inputs[id] = {...inputs[id], value}
-            this.setState({inputs})
-          }
-        })
-      }
-    })
-  }
-
   setInputDefaults() {
     const { inputs, scenario } = this.state
 
