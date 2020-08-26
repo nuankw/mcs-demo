@@ -3,6 +3,7 @@ import Grid from '@material-ui/core/Grid'
 import Typography from '@material-ui/core/Typography'
 import { withStyles } from '@material-ui/core/styles'
 
+import InputGroup from './InputGroup'
 import Evaluate from './Evaluate'
 import Submit from './Submit'
 
@@ -55,7 +56,7 @@ const styles = theme => ({
 class Creation extends React.Component {
 
   render() {
-    const { classes, scenario, inputs } = this.props
+    const { classes, scenario, submit, inputs } = this.props
     return (
       <React.Fragment>
 
@@ -63,14 +64,17 @@ class Creation extends React.Component {
           component="h3"
           variant="h3"
           className={classes.header}>
-          <span className={classes.underlined}>Part 2:</span>
+          <span className={classes.underlined}>Part 2:</span>&nbsp;
           Enter 2 common sense statements {!!scenario && `about ${scenario}`} (1 TRUE and 1 FALSE)
         </Typography>
 
-        <form className={classes.form} noValidate onSubmit={this.submit.bind(this)}>
+        <form className={classes.form} noValidate onSubmit={submit}>
           <Grid container spacing={3}>
 
             <Grid item xs={12} align="center">
+
+              <InputGroup>
+              </InputGroup>
 
               {/* For Part 2: creation question: was the machine output correct */}
               {inputs.s1.output != null && (
