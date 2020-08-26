@@ -570,8 +570,9 @@ def get_eval():
         return jsonify({
             'status': 'ok',
             'id': str(data['_id']),
-            's1': data['s1'],
-            's2': data['s2'],
+            'input': data['s1']['input'],
+            'output': data['s1']['output'],
+            # 'optional': data['s1']['optional'],
         })
     return jsonify({'status': 'not ok'})
 
