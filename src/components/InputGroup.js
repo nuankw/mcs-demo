@@ -7,6 +7,7 @@ import { withStyles } from '@material-ui/core/styles'
 
 import Input from './Input'
 import Output from './Output'
+import classNames from '../utils/classes'
 
 
 const styles = theme => ({
@@ -34,6 +35,22 @@ const styles = theme => ({
     justifyContent: 'center',
     height: theme.spacing(12),
   },
+  buttonTrue: {
+    '&:hover': {
+      background: 'rgba(0, 255, 0, 0.5)',
+    },
+    '&.selected': {
+      background: 'rgba(0, 255, 0, 0.5)',
+    },
+  },
+  buttonFalse: {
+    '&:hover': {
+      background: 'rgba(255, 0, 0, 0.5)',
+    },
+    '&.selected': {
+      background: 'rgba(255, 0, 0, 0.5)',
+    },
+  },
 })
 
 
@@ -48,6 +65,7 @@ class InputGroup extends React.Component {
           name: 's1',
           value: 'Roses are red',
           label: 'input 1',
+          selected: null,
           changed: true,
           output: null,
         },
@@ -56,6 +74,7 @@ class InputGroup extends React.Component {
           name: 's2',
           value: 'Roses are blue',
           label: 'input 2',
+          selected: null,
           changed: true,
           output: null,
         },
@@ -93,10 +112,21 @@ class InputGroup extends React.Component {
     })
   }
 
+  select(id, label) {
+    const inputs = {...this.state.inputs}
+    inputs[id] = {...inputs[id], ...{'selected': label}}
+    if ( id === 's1' ) {
+      inputs['s2'] = {...inputs[id], ...{'selected': !label}}
+    }
+    if ( id === 's2' ) {
+      inputs['s1'] = {...inputs[id], ...{'selected': !label}}
+    }
+    this.setState({inputs})
+  }
+
   render () {
     const { inputs } = this.state
     const { classes } = this.props
-
     return (
       <Paper component="div" className={classes.paper} square>
         <Grid container spacing={3}>
@@ -111,8 +141,16 @@ class InputGroup extends React.Component {
           </Grid>
           <Grid item xs={2} className={classes.buttonWrapper}>
             <ButtonGroup className={classes.buttonGroup}>
-              <Button>True</Button>
-              <Button>False</Button>
+              <Button
+                className={classNames(classes.buttonTrue, {
+                  'selected': inputs.s1.selected === true,
+                })}
+                onClick={() => this.select('s1', true)}>True</Button>
+              <Button
+                className={classNames(classes.buttonFalse, {
+                  'selected': inputs.s1.selected === false,
+                })}
+                onClick={() => this.select('s1', false)}>False</Button>
             </ButtonGroup>
           </Grid>
 
@@ -125,8 +163,16 @@ class InputGroup extends React.Component {
           </Grid>
           <Grid item xs={2} className={classes.buttonWrapper}>
             <ButtonGroup className={classes.buttonGroup}>
-              <Button>True</Button>
-              <Button>False</Button>
+              <Button
+                className={classNames(classes.buttonTrue, {
+                  'selected': inputs.s2.selected === true,
+                })}
+                onClick={() => this.select('s2', true)}>True</Button>
+              <Button
+                className={classNames(classes.buttonFalse, {
+                  'selected': inputs.s2.selected === false,
+                })}
+                onClick={() => this.select('s2', false)}>False</Button>
             </ButtonGroup>
           </Grid>
 
