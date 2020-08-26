@@ -61,13 +61,25 @@ const styles = theme => ({
     cursor: 'pointer',
     textDecoration: 'underline',
   },
+  title: {
+    marginBottom: "10px",
+    align: "center",
+    color: "black",
+  },
+  note: {
+    fontSize: theme.spacing(3),
+    color: "black",
+  },
+  progress: {
+    fontSize: theme.spacing(4),
+  },
 })
 
 
 class Validation extends React.Component {
 
   render() {
-    const { classes, inputs, handleOnEval, scenario, evalCount, evalQuestions, loadNextTrial } = this.props
+    const { classes, prevInput, prevOutput, prevOptional, handleOnEval, scenario, evalCount, evalQuestions, loadNextTrial } = this.props
 
     const enableNext = (
       evalQuestions['evalQ1'].answer === 'no' ||

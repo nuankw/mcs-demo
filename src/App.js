@@ -113,26 +113,9 @@ class App extends React.Component {
       evalCount: 1,
       evalQuestions,
       scenario: scenario,
-      inputs: {
-        s1: {
-          id: 's1',
-          name: 's1',
-          label: 'input 1',
-          changed: true,
-          value: s1_value,
-          output: null,
-          scores: null,
-        },
-        s2: {
-          id: 's2',
-          name: 's2',
-          label: 'input 2',
-          changed: true,
-          value: s2_value,
-          output: null,
-          scores: null,
-        },
-      },
+      prevInput: "will see previous input here",
+      prevOptional: "optional explanation",
+      prevOutput: null,
     }
   }
 
@@ -392,7 +375,7 @@ class App extends React.Component {
 
   render() {
     const { classes } = this.props
-    const { code, inputs, openSurvey, scenario, evalCount, evalQuestions } = this.state
+    const { code, prevInput, prevOutput, prevOptional, openSurvey, scenario, evalCount, evalQuestions } = this.state
     return (
       <ThemeProvider theme={theme}>
         <Container maxWidth="xl">
@@ -404,9 +387,12 @@ class App extends React.Component {
             onAnswer={this.handleAnswer.bind(this)}
             onClose={this.handleCloseSurvey.bind(this)} />
 
+          {/* TODO: change inputs */}
           {evalCount <= REQUIRED_NUM_EVALUATIONS ? (
             <Validation
-              inputs={inputs}
+              prevInput={prevInput}
+              prevOutput={prevOutput}
+              prevOptional={prevOptional}
               scenario={SCENARIOS[scenario]}
               evalCount={evalCount}
               evalQuestions={evalQuestions}

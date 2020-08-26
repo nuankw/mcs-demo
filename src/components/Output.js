@@ -21,11 +21,11 @@ const styles = theme => ({
 class Output extends React.Component {
 
   renderOutputLabels() {
-    const { classes, statement } = this.props
+    const { classes, output } = this.props
     return (
       <div className={classes.outputLabels}>
-        {statement.output && <True />}
-        {!statement.output && <False />}
+        {output && <True />}
+        {!output && <False />}
       </div>
     )
   }
