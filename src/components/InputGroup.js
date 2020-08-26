@@ -1,6 +1,8 @@
 import React from 'react'
 import Grid from '@material-ui/core/Grid'
 import Paper from '@material-ui/core/Paper'
+import Button from '@material-ui/core/Button'
+import ButtonGroup from '@material-ui/core/ButtonGroup'
 import { withStyles } from '@material-ui/core/styles'
 
 import Input from './Input'
@@ -19,6 +21,18 @@ const styles = theme => ({
     flexDirection: 'column',
     alignItems: 'center',
     position: 'relative',
+  },
+  inputWrapper: {
+    display: 'flex',
+    justifyContent: 'flex-start',
+    height: theme.spacing(12),
+  },
+  buttonWrapper: {
+    display: 'flex',
+    alignItems: 'center',
+    alignContent: 'space-around',
+    justifyContent: 'center',
+    height: theme.spacing(12),
   },
 })
 
@@ -86,7 +100,7 @@ class InputGroup extends React.Component {
     return (
       <Paper component="div" className={classes.paper} square>
         <Grid container spacing={3}>
-          <Grid item xs={8}>
+          <Grid item xs={10} className={classes.inputWrapper}>
             {inputs.s1.output != null && <Output statement={inputs.s1} />}
             <Input
               text={inputs.s1}
@@ -95,19 +109,25 @@ class InputGroup extends React.Component {
               passInputRef={this.getInputRef.bind(this)}
               updateText={this.handleUpdate.bind(this)} />
           </Grid>
-          <Grid item xs={4}>
-            True/False
+          <Grid item xs={2} className={classes.buttonWrapper}>
+            <ButtonGroup className={classes.buttonGroup}>
+              <Button>True</Button>
+              <Button>False</Button>
+            </ButtonGroup>
           </Grid>
 
-          <Grid item xs={8}>
+          <Grid item xs={10} className={classes.inputWrapper}>
             {inputs.s2.output != null && <Output statement={inputs.s2} />}
             <Input
               text={inputs.s2}
               disabled={false}
               updateText={this.handleUpdate.bind(this)} />
           </Grid>
-          <Grid item xs={4}>
-            True/False
+          <Grid item xs={2} className={classes.buttonWrapper}>
+            <ButtonGroup className={classes.buttonGroup}>
+              <Button>True</Button>
+              <Button>False</Button>
+            </ButtonGroup>
           </Grid>
 
           <Grid item xs={12}>
