@@ -414,6 +414,8 @@ class App extends React.Component {
               handleOnEval={(q, s) => this.handleOnEval(q, s)} />
           ) : (
             <Creation
+              inputs={inputs}
+              submit={this.submit.bind(this)}
               scenario={SCENARIOS[scenario]}
             />
           )}
