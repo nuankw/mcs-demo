@@ -222,24 +222,24 @@ class App extends React.Component {
       if ( data['status'] === 'ok' ) {
         this.setState({
           dataID: data['id'],
-          inputs: {
-            s1: {...inputs.s1, value: data['s1']['input'], output: data['s1']['output'], scores: data['s1']['scores']},
-            s2: {...inputs.s2, value: data['s2']['input'], output: data['s2']['output'], scores: data['s2']['scores']},
-          },
+          prevInput: data['input'],
+          prevOutput: data['output'],
+          // prevOptional: data['optional'],
+
         })
       }
     })
   }
 
-  scrambleText() {
-    const { inputs } = this.state
-    this.setState({
-      inputs: {
-        s1: {...inputs.s1, value: scramble(inputs.s1.value)},
-        s2: {...inputs.s2, value: scramble(inputs.s2.value)},
-      }
-    })
-  }
+  // scrambleText() {
+  //   const { inputs } = this.state
+  //   this.setState({
+  //     inputs: {
+  //       s1: {...inputs.s1, value: scramble(inputs.s1.value)},
+  //       s2: {...inputs.s2, value: scramble(inputs.s2.value)},
+  //     }
+  //   })
+  // }
 
   postData(inputs) {
     return new Promise((resolve, reject) => {
