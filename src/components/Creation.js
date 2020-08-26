@@ -63,7 +63,7 @@ class Creation extends React.Component {
           component="h3"
           variant="h3"
           className={classes.header}>
-          <span className={classes.underlined}>Part 2:</span>
+          <span className={classes.underlined}>Part 2:</span>&nbsp;
           Enter 2 common sense statements {!!scenario && `about ${scenario}`} (1 TRUE and 1 FALSE)
         </Typography>
 
