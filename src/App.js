@@ -47,7 +47,7 @@ const SCENARIOS = {
 const styles = theme => ({
   '@global': {
     body: {
-      background: 'rgba(104, 159, 56, 0.6)',
+      background: 'rgba(78, 163, 191, 0.73)',
       backgroundSize: '100% 120%',
       padding: theme.spacing(3, 1),
       height: '100vh',

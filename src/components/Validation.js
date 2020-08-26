@@ -3,14 +3,15 @@ import Grid from '@material-ui/core/Grid'
 import Paper from '@material-ui/core/Paper'
 import Button from '@material-ui/core/Button'
 import Typography from '@material-ui/core/Typography'
-import { withStyles } from '@material-ui/core/styles'
-
+import { withStyles, createMuiTheme, responsiveFontSizes, ThemeProvider } from '@material-ui/core/styles'
 
 import Input from './Input'
 import Output from './Output'
 import UserEval from './UserEval'
 import Instructions from './Instructions'
 
+let theme = createMuiTheme();
+theme = responsiveFontSizes(theme);
 
 const styles = theme => ({
   '@global': {
@@ -43,7 +44,6 @@ const styles = theme => ({
   },
   button: {
     color: 'black',
-    fontSize: theme.spacing(3),
     background: 'rgba(104, 159, 56, 0.6)',
     fontSize: theme.spacing(2.8),
     margin: theme.spacing(2, 3),
@@ -75,46 +75,57 @@ class Validation extends React.Component {
 
     return (
       <React.Fragment>
+        <ThemeProvider theme={theme}>
 
-        <Typography
-          component="h3"
-          variant="h3"
-          className={classes.header}>
-          <span style={{marginBottom: "10px", align: "center"}}>Part 1: Validation </span>
-          <p style={{fontSize: "28px"}}>NOTE: Please take 5 minutes to read this instruction carefully.
-              We will have another user to examine your inputs and will reject your HITs
-               if you fail to provide inputs that are compliant with the instruction.</p>
-          <p> Reviewing {evalCount} out of 6 statements. </p>
-        </Typography>
+          <Typography
+            component="h3"
+            variant="h3"
+            className={classes.header}>
+            <span className={classes.title}>Part 1: Validation </span>
+            <p className={classes.note}>NOTE: Please take 5 minutes to read this instruction carefully.
+                We will have another user to examine your inputs and will reject your HITs
+                if you fail to provide inputs that are compliant with the instruction.</p>
+          </Typography>
 
-        <Instructions/>
+          <Instructions/>
 
-        {/* Input Box 1 */}
-        <Grid item xs={12}>
-          <Paper component="div" className={classes.paper} square>
-            {inputs.s1.output != null && <Output statement={inputs.s1} />}
-            <Input text={inputs.s1} autoFocus={false} disabled={true} />
-          </Paper>
-        </Grid>
+          <Typography
+            component="h3"
+            variant="h3">
+            <p className={classes.progress}> Reviewing {evalCount} out of 6 statements. </p>
+          </Typography>
 
-        <Grid item xs={12} align="center">
-          {inputs.s1.output != null && (
-            <UserEval
-              scenario={scenario}
-              questions={evalQuestions}
-              onSelect={(q, a) => handleOnEval(q, a)} />
-          )}
-        </Grid>
+          {/* Input Box 1 */}
+          <Grid item xs={12}>
+            <Paper component="div" className={classes.paper} square>
+              {prevOutput != null && <Output output={prevOutput} />}
+              <Typography
+                component="h3"
+                variant="h3">
+                  {prevInput}
+              </Typography>
+            </Paper>
+          </Grid>
 
-        <Grid item xs={12} align="center">
-          <Button
-            variant="contained"
-            className={classes.button}
-            disabled={!enableNext}
-            onClick={() => loadNextTrial()}>
-            Next Statement
-          </Button>
-        </Grid>
+          <Grid item xs={12} align="center">
+            {prevOutput != null && (
+              <UserEval
+                scenario={scenario}
+                questions={evalQuestions}
+                onSelect={(q, a) => handleOnEval(q, a)} />
+            )}
+          </Grid>
+
+          <Grid item xs={12} align="center">
+            <Button
+              variant="contained"
+              className={classes.button}
+              disabled={!enableNext}
+              onClick={() => loadNextTrial()}>
+              Next Statement
+            </Button>
+          </Grid>
+        </ThemeProvider>
       </React.Fragment>
     )
   }
