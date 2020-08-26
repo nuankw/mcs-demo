@@ -36,7 +36,6 @@ class InputGroup extends React.Component {
           label: 'input 1',
           changed: true,
           output: null,
-          scores: null,
         },
         s2: {
           id: 's2',
@@ -45,16 +44,14 @@ class InputGroup extends React.Component {
           label: 'input 2',
           changed: true,
           output: null,
-          scores: null,
         },
         s3: {
           id: 's3',
           name: 's3',
-          value: '[optional input statement]',
-          label: 'input 3',
+          value: '',
+          label: 'optional input 3',
           changed: true,
           output: null,
-          scores: null,
         },
       },
     }
