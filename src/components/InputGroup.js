@@ -87,34 +87,42 @@ class InputGroup extends React.Component {
     const { classes } = this.props
 
     return (
-      <Grid item xs={12}>
-        <Paper component="div" className={classes.paper} square>
+      <Paper component="div" className={classes.paper} square>
+        <Grid container spacing={3}>
+          <Grid item xs={8}>
+            {inputs.s1.output != null && <Output statement={inputs.s1} />}
+            <Input
+              text={inputs.s1}
+              autoFocus={true}
+              disabled={false}
+              passInputRef={this.getInputRef.bind(this)}
+              updateText={this.handleUpdate.bind(this)} />
+          </Grid>
+          <Grid item xs={4}>
+            True/False
+          </Grid>
 
-          {/* input statement 1 */}
-          {inputs.s1.output != null && <Output statement={inputs.s1} />}
-          <Input
-            text={inputs.s1}
-            autoFocus={true}
-            disabled={false}
-            passInputRef={this.getInputRef.bind(this)}
-            updateText={this.handleUpdate.bind(this)} />
+          <Grid item xs={8}>
+            {inputs.s2.output != null && <Output statement={inputs.s2} />}
+            <Input
+              text={inputs.s2}
+              disabled={false}
+              updateText={this.handleUpdate.bind(this)} />
+          </Grid>
+          <Grid item xs={4}>
+            True/False
+          </Grid>
 
-          {/* input statement 2 */}
-          {inputs.s2.output != null && <Output statement={inputs.s2} />}
-          <Input
-            text={inputs.s2}
-            disabled={false}
-            updateText={this.handleUpdate.bind(this)} />
+          <Grid item xs={12}>
+            {inputs.s3.output != null && <Output statement={inputs.s3} />}
+            <Input
+              text={inputs.s3}
+              disabled={false}
+              updateText={this.handleUpdate.bind(this)} />
+          </Grid>
 
-          {/* optional input statement 3 */}
-          {inputs.s3.output != null && <Output statement={inputs.s3} />}
-          <Input
-            text={inputs.s3}
-            disabled={false}
-            updateText={this.handleUpdate.bind(this)} />
-
-        </Paper>
-      </Grid>
+        </Grid>
+      </Paper>
     )
   }
 }
