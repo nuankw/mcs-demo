@@ -76,15 +76,7 @@ class Creation extends React.Component {
               <InputGroup>
               </InputGroup>
 
-              {/* For Part 2: creation question: was the machine output correct */}
-              {inputs.s1.output != null && (
-                <Evaluate evaluated={false}
-                onSelect={this.handleEvaluate.bind(this)}
-                onReset={this.handleOnClear.bind(this)} />
-              )}
-
-              {/* For Part 2: creation submit */}
-              {inputs.s1.output === null && <Submit />}
+              {<Submit />}
             </Grid>
 
           </Grid>

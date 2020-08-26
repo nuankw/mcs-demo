@@ -204,26 +204,6 @@ class App extends React.Component {
     this.inputField = inputRef
   }
 
-  handleEvaluate(evaluation) {
-    const { dataID } = this.state
-    if ( !dataID ) { return }
-    fetch('/evaluate', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({dataID, evaluation}),
-    })
-    .then((response) => response.json())
-    .then((data) => {
-      this.setState({
-        evaluated: true,
-        count: data['count'],
-        code: data['code']
-      })
-    })
-  }
-
   handleAnswer(question, value) {
     let update = {}
     update[question] = value
@@ -326,8 +306,6 @@ class App extends React.Component {
               handleOnEval={(q, s) => this.handleOnEval(q, s)} />
           ) : (
             <Creation
-              // inputs={inputs}
-              inputs={null}
               submit={this.submit.bind(this)}
               scenario={SCENARIOS[scenario]}
             />
