@@ -3,6 +3,7 @@ import Grid from '@material-ui/core/Grid'
 import Typography from '@material-ui/core/Typography'
 import { withStyles } from '@material-ui/core/styles'
 
+import InputGroup from './InputGroup'
 import Evaluate from './Evaluate'
 import Submit from './Submit'
 
@@ -71,6 +72,9 @@ class Creation extends React.Component {
           <Grid container spacing={3}>
 
             <Grid item xs={12} align="center">
+
+              <InputGroup>
+              </InputGroup>
 
               {/* For Part 2: creation question: was the machine output correct */}
               {inputs.s1.output != null && (
