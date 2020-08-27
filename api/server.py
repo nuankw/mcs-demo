@@ -203,9 +203,11 @@ def submit():
 
     # TODO update DB
     # store trial data in the mongo db
-    for item in data:
+    for idx, item in enumerate(data):
+        pair_id = idx // 2 + 1
         mongo.db.trials.insert_one({
             's1': data[item],
+            'pair_id': pair_id,
             'ts': ts,
             'session': uid,
             'hit_id': session.get('hit_id', ''),
@@ -270,7 +272,7 @@ def get_eval():
                 'hit_id': None,
             }, {
                 'hit_id': {
-                    "$ne": hit_id,  # TODO ?
+                    "$ne": hit_id,  # TODO the meaning of hit_id?
                 },
             }]},
             {"$or": [{
@@ -297,6 +299,7 @@ def get_eval():
 def set_eval():
     # 'next' button
     # TODO check para names, update is the dictionary for all questions & answers
+    # TODO ensure all responses are valid
     data_id = request.json.get('dataID')
     question = request.json.get('question')
     answer = request.json.get('answer')
@@ -305,12 +308,8 @@ def set_eval():
 
     mongo.db.trials.update_one(
         {"_id": ObjectId(data_id)},
-        {'$push': {'validation': {**updated}}}
-    )
-
-    mongo.db.trials.update_one(
-        {"_id": ObjectId(data_id)},
-        {'$inc': {'validator': 1}}
+        {'$push': {'validation': {**updated}},
+         '$inc': {'validator': 1}}
     )
 
     curr_val_num = mongo.db.trials.find_one({"_id": ObjectId(data_id)})['validator']
