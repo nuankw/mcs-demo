@@ -144,7 +144,7 @@ class Evaluate extends React.Component {
                 'selected': questions['evalQ3']['answer'].indexOf('none') >= 0,
               })}
               onClick={() => onSelect('evalQ3', 'none')}>
-              None of the 3
+              None of the above
             </Button>
           </Typography>
         )}
@@ -186,7 +186,7 @@ class Evaluate extends React.Component {
                 'selected': questions['evalQ4']['answer'].indexOf('none') >= 0,
               })}
               onClick={() => onSelect('evalQ4', 'none')}>
-              None of the 3
+              None of the above
             </Button>
           </Typography>
         )}
