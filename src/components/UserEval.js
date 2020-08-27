@@ -6,16 +6,24 @@ import { withStyles } from '@material-ui/core/styles'
 import classNames from '../utils/classes'
 
 const styles = theme => ({
-  header: {
+  root: {
+    border: '3px solid green',
+  },
+  question: {
+    display: "autp",
+    justifyContent: "left",
     color: 'dark',
     padding: theme.spacing(1,4),
     fontSize: theme.spacing(3.5),
   },
   button: {
+    width: '25%',
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
     color: 'black',
     fontSize: theme.spacing(3),
     background: 'rgba(104, 159, 56, 0.6)',
-    fontSize: theme.spacing(2.8),
     margin: theme.spacing(2, 3),
     padding: theme.spacing(1.5, 6),
     textTransform: "none",
