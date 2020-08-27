@@ -4,8 +4,8 @@ import Typography from '@material-ui/core/Typography'
 import { withStyles } from '@material-ui/core/styles'
 
 import InputGroup from './InputGroup'
-import Evaluate from './Evaluate'
 import Submit from './Submit'
+import Instructions from './CreationInstruction'
 
 
 const styles = theme => ({
