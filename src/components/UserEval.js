@@ -10,7 +10,6 @@ const styles = theme => ({
     border: '3px solid green',
   },
   question: {
-    display: "autp",
     justifyContent: "left",
     color: 'dark',
     padding: theme.spacing(1,4),
@@ -55,12 +54,12 @@ class Evaluate extends React.Component {
     const { classes, optional, questions, onSelect } = this.props
 
     return (
-      <div>
+      <div className={classes.root}>
 
           <Typography
             component="h3"
             variant="h3"
-            className={classes.header}>
+            className={classes.question}>
             Q1. Do you think this statement requires commonsense to infer True/False?
             <br/>
             <Button
@@ -85,7 +84,7 @@ class Evaluate extends React.Component {
           <Typography
             component="h3"
             variant="h3"
-            className={classes.header}>
+            className={classes.question}>
             Q2. Do you think this statement is True?
             <br/>
             <Button
@@ -111,7 +110,7 @@ class Evaluate extends React.Component {
           <Typography
             component="h3"
             variant="h3"
-            className={classes.header}>
+            className={classes.question}>
             Q3. Please select <u>all the <b>domains</b></u> that you think this statement can be categorized into:
             <br/>
             <Button
@@ -153,7 +152,7 @@ class Evaluate extends React.Component {
           <Typography
             component="h3"
             variant="h3"
-            className={classes.header}>
+            className={classes.question}>
             Q4. Please select <u>all the <b>scenarios</b></u> that you think this statement can be categorized into:
             <br/>
             <Button
@@ -195,7 +194,7 @@ class Evaluate extends React.Component {
           <Typography
             component="h3"
             variant="h3"
-            className={classes.header}>
+            className={classes.question}>
             Q5. Will the following knowledge piece help explain the above statement?
             <div className={classes.optional}>{optional}</div>
             <Button
