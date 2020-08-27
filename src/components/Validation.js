@@ -79,7 +79,7 @@ const styles = theme => ({
 class Validation extends React.Component {
 
   render() {
-    const { classes, prevInput, prevOutput, prevOptional, handleOnEval, scenario, evalCount, evalQuestions, loadNextTrial } = this.props
+    const { classes, prevInput, prevOutput, prevOptional, handleOnEval, scenario, evalCount, requiredEval, evalQuestions, loadNextTrial } = this.props
 
     const enableNext = (
       evalQuestions['evalQ1'].answer === 'no' ||
@@ -104,7 +104,7 @@ class Validation extends React.Component {
           <Typography
             component="h3"
             variant="h3">
-            <p className={classes.progress}> Reviewing {evalCount} out of 6 statements. </p>
+            <p className={classes.progress}> Reviewing {evalCount} out of {requiredEval} statements. </p>
           </Typography>
 
           {/* Input Box 1 */}
@@ -134,7 +134,7 @@ class Validation extends React.Component {
               className={classes.button}
               disabled={!enableNext}
               onClick={() => loadNextTrial()}>
-              Next Statement
+              { evalCount < requiredEval ? ("Next Statement") : ("Let's proceed to creation step!") }
             </Button>
           </Grid>
         </ThemeProvider>

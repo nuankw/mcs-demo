@@ -305,6 +305,7 @@ class App extends React.Component {
               prevOptional={prevOptional}
               scenario={SCENARIOS[scenario]}
               evalCount={evalCount}
+              requiredEval={REQUIRED_NUM_EVALUATIONS}
               evalQuestions={evalQuestions}
               loadNextTrial={this.loadNextTrial.bind(this)}
               handleOnEval={(q, s) => this.handleOnEval(q, s)} />
