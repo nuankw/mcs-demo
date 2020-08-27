@@ -300,6 +300,7 @@ def set_eval():
     # 'next' button
     # TODO check para names, update is the dictionary for all questions & answers
     # TODO ensure all responses are valid
+    # TODO user_id info
     data_id = request.json.get('dataID')
     question = request.json.get('question')
     answer = request.json.get('answer')
