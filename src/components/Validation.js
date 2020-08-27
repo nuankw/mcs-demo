@@ -8,7 +8,7 @@ import { withStyles, createMuiTheme, responsiveFontSizes, ThemeProvider } from '
 import Input from './Input'
 import Output from './Output'
 import UserEval from './UserEval'
-import Instructions from './Instructions'
+import Instructions from './ValidationInstruction'
 
 let theme = createMuiTheme();
 theme = responsiveFontSizes(theme);
