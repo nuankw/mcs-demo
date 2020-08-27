@@ -112,8 +112,8 @@ class Validation extends React.Component {
             <Paper component="div" className={classes.paper} square>
               {prevOutput != null && <Output output={prevOutput} />}
               <Typography
-                component="h3"
-                variant="h3">
+                component="h4"
+                variant="h4">
                   {prevInput}
               </Typography>
             </Paper>
