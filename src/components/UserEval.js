@@ -33,13 +33,18 @@ const styles = theme => ({
     marginTop: theme.spacing(5),
     textDecoration: 'underline',
   },
+  optional: {
+    background: 'rgba(32, 40, 24, 0.6)',
+    width: '80%',
+    color: 'white',
+  }
 })
 
 
 class Evaluate extends React.Component {
 
   renderEvalButtons() {
-    const { classes, questions, scenario, onSelect } = this.props
+    const { classes, optional, questions, onSelect } = this.props
 
     return (
       <div>
@@ -174,6 +179,40 @@ class Evaluate extends React.Component {
               })}
               onClick={() => onSelect('evalQ4', 'none')}>
               None of the 3
+            </Button>
+          </Typography>
+        )}
+
+        {questions['evalQ1']['answer'] === 'yes' && optional !== null && (
+          <Typography
+            component="h3"
+            variant="h3"
+            className={classes.header}>
+            Q5. Will the following knowledge piece help explain the above statement?
+            <div className={classes.optional}>{optional}</div>
+            <Button
+              variant="contained"
+              className={classNames(classes.button, {
+                'selected': questions['evalQ5']['answer'] === 'yes',
+              })}
+              onClick={() => onSelect('evalQ5', 'yes')}>
+              Yes
+            </Button>
+            <Button
+              variant="contained"
+              className={classNames(classes.button, {
+                'selected': questions['evalQ5']['answer'] === 'maybe',
+              })}
+              onClick={() => onSelect('evalQ5', 'maybe')}>
+              Maybe
+            </Button>
+            <Button
+              variant="contained"
+              className={classNames(classes.button, {
+                'selected': questions['evalQ5']['answer'] === 'no',
+              })}
+              onClick={() => onSelect('evalQ5', 'no')}>
+              No
             </Button>
           </Typography>
         )}

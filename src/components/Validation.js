@@ -122,7 +122,7 @@ class Validation extends React.Component {
           <Grid item xs={12} align="center">
             {prevOutput != null && (
               <UserEval
-                scenario={scenario}
+                optional={prevOptional}
                 questions={evalQuestions}
                 onSelect={(q, a) => handleOnEval(q, a)} />
             )}

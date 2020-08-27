@@ -31,6 +31,10 @@ const EVAL_QUESTIONS = {
     'type': 'multiple',
     'answer': [],
   },
+  'evalQ5': {
+    'type': 'single',
+    'answer': '',
+  },
 }
 
 
@@ -110,7 +114,7 @@ class App extends React.Component {
       evalQuestions,
       scenario: scenario,
       prevInput: "will see previous input here",
-      prevOptional: "optional explanation",
+      prevOptional: "This is an additional knowledge piece provided by the same annotator. We should be able to use this knowledge piece to infer the above statement.",
       prevOutput: null,
     }
   }
