@@ -57,7 +57,7 @@ class Instructions extends React.Component {
             onClick={this.toggle.bind(this)}
             aria-controls="panel1a-content"
             id="instructions">
-            <Typography className={classes.heading}>Instructions</Typography>
+            <Typography className={classes.heading}>Instruction</Typography>
           </AccordionSummary>
           <AccordionDetails>
               <DomainInstructions />

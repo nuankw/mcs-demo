@@ -45,6 +45,15 @@ const styles = theme => ({
   underlined: {
     textDecoration: 'underline',
   },
+  title: {
+    marginBottom: "10px",
+    align: "center",
+    color: "black",
+  },
+  note: {
+    fontSize: theme.spacing(3),
+    color: "black",
+  },
   link: {
     cursor: 'pointer',
     textDecoration: 'underline',
@@ -56,7 +65,7 @@ const styles = theme => ({
 class Creation extends React.Component {
 
   render() {
-    const { classes, scenario, submit, inputs } = this.props
+    const { classes, scenario, submit } = this.props
     return (
       <React.Fragment>
 
@@ -64,8 +73,11 @@ class Creation extends React.Component {
           component="h3"
           variant="h3"
           className={classes.header}>
-          <span className={classes.underlined}>Part 2:</span>&nbsp;
-          Enter 2 common sense statements {!!scenario && `about ${scenario}`} (1 TRUE and 1 FALSE)
+          <span className={classes.title}>Part 2: Creation</span>
+          <p className={classes.note}>NOTE: Please take 5 minutes to read this instruction carefully.
+                We will have another user to examine your inputs {!!scenario && `about ${scenario}`} and will reject your HITs
+                if you fail to provide inputs that are compliant with the instruction. {scenario}</p>
+          <Instructions/>
         </Typography>
 
         <form className={classes.form} noValidate onSubmit={submit}>
@@ -73,8 +85,16 @@ class Creation extends React.Component {
 
             <Grid item xs={12} align="center">
 
-              <InputGroup>
-              </InputGroup>
+              <div>
+                <InputGroup>
+                </InputGroup>
+
+                <InputGroup>
+                </InputGroup>
+
+                <InputGroup>
+                </InputGroup>
+              </div>
 
               {<Submit />}
             </Grid>
