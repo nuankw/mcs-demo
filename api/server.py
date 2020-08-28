@@ -222,7 +222,8 @@ def submit():
 
     # Return json output
     # TODO: whether it is a valid submission (if there is empty string or duplication, return 'not ok') or use code
-    return jsonify({'status': 'ok'})
+    code = str(uuid.uuid4())
+    return jsonify({'code': code})
 
 
 @app.route('/survey', methods=['POST'])
@@ -272,7 +273,7 @@ def get_eval():
                 'hit_id': None,
             }, {
                 'hit_id': {
-                    "$ne": hit_id,  # TODO the meaning of hit_id?
+                    "$ne": hit_id,  # figure it out
                 },
             }]},
             {"$or": [{
@@ -298,14 +299,15 @@ def get_eval():
 @app.route('/set_eval', methods=['POST'])
 def set_eval():
     # 'next' button
-    # TODO check para names, update is the dictionary for all questions & answers
+    # TODO check para names, update is the dictionary for all questions & answers [* need update]
     # TODO ensure all responses are valid
     # TODO user_id info
     data_id = request.json.get('dataID')
     question = request.json.get('question')
     answer = request.json.get('answer')
+    worker_id = session.get('worker_id')
 
-    updated = {question: answer}
+    updated = {'workerID': worker_id, 'qas': {question: answer}}
 
     mongo.db.trials.update_one(
         {"_id": ObjectId(data_id)},
