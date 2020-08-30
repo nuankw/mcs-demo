@@ -2,7 +2,6 @@ import React from 'react'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import Container from '@material-ui/core/Container'
 
-import scramble from './utils/scramble'
 import Creation from './components/Creation'
 import ExitSurvey from './components/ExitSurvey'
 import Validation from './components/Validation'
@@ -153,16 +152,6 @@ class App extends React.Component {
     })
   }
 
-  // scrambleText() {
-  //   const { inputs } = this.state
-  //   this.setState({
-  //     inputs: {
-  //       s1: {...inputs.s1, value: scramble(inputs.s1.value)},
-  //       s2: {...inputs.s2, value: scramble(inputs.s2.value)},
-  //     }
-  //   })
-  // }
-
   postData(inputs) {
     return new Promise((resolve, reject) => {
       const s1 = inputs.s1.value
@@ -189,9 +178,7 @@ class App extends React.Component {
     }
 
     this.setState({processing: true}, () => {
-      this.interval = setInterval(this.scrambleText.bind(this), 50)
       this.postData(inputs).then(data => {
-        clearInterval(this.interval)
         this.setState({
           processing: false,
           dataID: data['id'],
