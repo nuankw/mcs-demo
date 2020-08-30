@@ -152,45 +152,6 @@ class App extends React.Component {
     })
   }
 
-  postData(inputs) {
-    return new Promise((resolve, reject) => {
-      const s1 = inputs.s1.value
-      const s2 = inputs.s2.value
-      fetch('/classify', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({s1, s2}),
-      })
-      .then(response => response.json())
-      .then(data => resolve(data))
-      .catch(error => reject(error))
-    })
-  }
-
-  submit(event) {
-    event.preventDefault()
-    const { inputs } = this.state
-
-    if ( !Object.keys(inputs).every(key => !!inputs[key].value) ) {
-      return
-    }
-
-    this.setState({processing: true}, () => {
-      this.postData(inputs).then(data => {
-        this.setState({
-          processing: false,
-          dataID: data['id'],
-          inputs: {
-            s1: {...inputs.s1, output: data['s1']['output'], scores: data['s1']['scores']},
-            s2: {...inputs.s2, output: data['s2']['output'], scores: data['s2']['scores']},
-          },
-        })
-      })
-    })
-  }
-
   getInputRef(inputRef) {
     this.inputField = inputRef
   }
@@ -296,10 +257,7 @@ class App extends React.Component {
               loadNextTrial={this.loadNextTrial.bind(this)}
               handleOnEval={(q, s) => this.handleOnEval(q, s)} />
           ) : (
-            <Creation
-              submit={this.submit.bind(this)}
-              scenario={SCENARIOS[scenario]}
-            />
+            <Creation scenario={SCENARIOS[scenario]} />
           )}
 
         </Container>
