@@ -43,43 +43,15 @@ class App extends React.Component {
     const scenario = locationQuery.get('scenario')
 
     this.state = {
-      openSurvey: false,
-      enjoyment: null,
-      returning: null,
       code: '',
+      openSurvey: false,
       mode: 'validation',
       scenario: scenario,
     }
   }
 
-  handleOpenSurvey() {
-    this.setState({openSurvey: true})
-  }
-
   handleCloseSurvey() {
     this.setState({openSurvey: false})
-  }
-
-  handleSurveyAnswer(question, value) {
-    let update = {}
-    update[question] = value
-    this.setState({...update}, () => {
-      const {enjoyment, returning} = this.state
-      fetch('/survey', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({enjoyment, returning}),
-      })
-      .then((response) => response.json())
-      .then((data) => {
-        this.setState({
-          surveyComplete: true,
-          ...data,
-        })
-      })
-    })
   }
 
   handleOnSwitch(mode) {
@@ -101,7 +73,6 @@ class App extends React.Component {
           <CssBaseline />
 
           <ExitSurvey open={openSurvey} code={code}
-            onAnswer={this.handleSurveyAnswer.bind(this)}
             onClose={this.handleCloseSurvey.bind(this)} />
 
           {mode === 'validation' ? (

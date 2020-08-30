@@ -65,8 +65,39 @@ const styles = theme => ({
 
 class ExitSurvey extends React.Component {
 
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      enjoyment: null,
+      returning: null,
+    }
+  }
+
+  handleAnswer(question, value) {
+    let update = {}
+    update[question] = value
+    this.setState({...update}, () => {
+      const {enjoyment, returning} = this.state
+      fetch('/survey', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({enjoyment, returning}),
+      })
+      .then((response) => response.json())
+      .then((data) => {
+        this.setState({
+          surveyComplete: true,
+          ...data,
+        })
+      })
+    })
+  }
+
   render() {
-    const { classes, open, code, onAnswer, onClose } = this.props
+    const { classes, open, code, onClose } = this.props
 
     return (
       <Modal
@@ -96,7 +127,7 @@ class ExitSurvey extends React.Component {
               </Typography>
               <p>How much did you enjoy participating in this experiment?</p>
               <p>(from 1 being not at all to 10 being very much)</p>
-              <RadioGroup name="q1" className={classes.radioGroup} onChange={(e, val) => onAnswer('enjoyment', val)}>
+              <RadioGroup name="q1" className={classes.radioGroup} onChange={(e, val) => this.handleAnswer('enjoyment', val)}>
                 <FormControlLabel value="1" control={<RadioButton />} label="1" />
                 <FormControlLabel value="2" control={<RadioButton />} label="2" />
                 <FormControlLabel value="3" control={<RadioButton />} label="3" />
@@ -111,7 +142,7 @@ class ExitSurvey extends React.Component {
               <br/>
               <p>How likely are you to participate again in a similar experiment?</p>
               <p>(from 1 being very unlikely to 10 being very likely)</p>
-              <RadioGroup name="q1" className={classes.radioGroup}  onChange={(e, val) => onAnswer('returning', val)}>
+              <RadioGroup name="q1" className={classes.radioGroup}  onChange={(e, val) => this.handleAnswer('returning', val)}>
                 <FormControlLabel value="1" control={<RadioButton />} label="1" />
                 <FormControlLabel value="2" control={<RadioButton />} label="2" />
                 <FormControlLabel value="3" control={<RadioButton />} label="3" />
