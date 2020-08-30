@@ -271,7 +271,6 @@ class App extends React.Component {
   }
 
   render() {
-    const { classes } = this.props
     const { code, prevInput, prevOutput, prevOptional, openSurvey, scenario, evalCount, evalQuestions } = this.state
     return (
       <ThemeProvider theme={theme}>

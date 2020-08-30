@@ -78,7 +78,7 @@ const styles = theme => ({
 class Validation extends React.Component {
 
   render() {
-    const { classes, prevInput, prevOutput, prevOptional, handleOnEval, scenario, evalCount, requiredEval, evalQuestions, loadNextTrial } = this.props
+    const { classes, prevInput, prevOutput, prevOptional, handleOnEval, evalCount, requiredEval, evalQuestions, loadNextTrial } = this.props
 
     const enableNext = (
       evalQuestions['evalQ1'].answer === 'no' ||
