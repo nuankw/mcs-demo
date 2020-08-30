@@ -119,7 +119,7 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    this.fetchPrevTrial()
+    this.loadEvaluationData()
   }
 
   handleOpenSurvey() {
@@ -130,7 +130,7 @@ class App extends React.Component {
     this.setState({openSurvey: false})
   }
 
-  fetchPrevTrial() {
+  loadEvaluationData() {
     const { scenario } = this.state
     return fetch(`/get_eval?scenario=${scenario}`, {
       method: 'GET',
@@ -145,11 +145,22 @@ class App extends React.Component {
           dataID: data['id'],
           prevInput: data['input'],
           prevOutput: data['output'],
-          // prevOptional: data['optional'],
-
+          //prevOptional: data['optional'],
         })
       }
     })
+  }
+
+  loadMoreEvaluationData() {
+    const { evalCount } = this.state
+    const evalQuestions = JSON.parse(JSON.stringify(EVAL_QUESTIONS))
+    this.loadEvaluationData()
+    .then(
+      this.setState({
+        evalQuestions,
+        evalCount: evalCount + 1,
+      })
+    )
   }
 
   getInputRef(inputRef) {
@@ -219,18 +230,6 @@ class App extends React.Component {
     })
   }
 
-  loadNextTrial() {
-    const { evalCount } = this.state
-    const evalQuestions = JSON.parse(JSON.stringify(EVAL_QUESTIONS))
-    this.fetchPrevTrial()
-    .then(
-      this.setState({
-        evalQuestions,
-        evalCount: evalCount + 1,
-      })
-    )
-  }
-
   render() {
     const { code, prevInput, prevOutput, prevOptional, openSurvey, scenario, evalCount, evalQuestions } = this.state
     return (
@@ -254,7 +253,7 @@ class App extends React.Component {
               evalCount={evalCount}
               requiredEval={REQUIRED_NUM_EVALUATIONS}
               evalQuestions={evalQuestions}
-              loadNextTrial={this.loadNextTrial.bind(this)}
+              loadMore={this.loadMoreEvaluationData.bind(this)}
               handleOnEval={(q, s) => this.handleOnEval(q, s)} />
           ) : (
             <Creation scenario={SCENARIOS[scenario]} />

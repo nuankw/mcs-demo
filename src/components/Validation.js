@@ -12,6 +12,7 @@ import Instructions from './ValidationInstruction'
 let theme = createMuiTheme();
 theme = responsiveFontSizes(theme);
 
+
 const styles = theme => ({
   '@global': {
     body: {
@@ -78,7 +79,7 @@ const styles = theme => ({
 class Validation extends React.Component {
 
   render() {
-    const { classes, prevInput, prevOutput, prevOptional, handleOnEval, evalCount, requiredEval, evalQuestions, loadNextTrial } = this.props
+    const { classes, prevInput, prevOutput, prevOptional, handleOnEval, evalCount, requiredEval, evalQuestions, loadMore } = this.props
 
     const enableNext = (
       evalQuestions['evalQ1'].answer === 'no' ||
@@ -132,7 +133,7 @@ class Validation extends React.Component {
               variant="contained"
               className={classes.button}
               disabled={!enableNext}
-              onClick={() => loadNextTrial()}>
+              onClick={() => loadMore()}>
               { evalCount < requiredEval ? ("Next Statement") : ("Let's proceed to creation step!") }
             </Button>
           </Grid>
