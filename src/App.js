@@ -31,37 +31,6 @@ const styles = theme => ({
       height: '100vh',
     },
   },
-  header: {
-    marginTop: theme.spacing(3),
-  },
-  paper: {
-    marginTop: theme.spacing(3),
-    paddingTop: theme.spacing(6),
-    paddingLeft: theme.spacing(4),
-    paddingRight: theme.spacing(4),
-    paddingBottom: theme.spacing(6),
-    backgroundColor: 'rgba(254, 254, 254, 0.2)',
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    position: 'relative',
-  },
-  form: {
-    width: '100%', // Fix IE 11 issue.
-    marginTop: theme.spacing(3),
-  },
-  button: {
-    color: 'white',
-    borderColor: 'whitesmoke',
-    marginTop: theme.spacing(3),
-  },
-  underlined: {
-    textDecoration: 'underline',
-  },
-  link: {
-    cursor: 'pointer',
-    textDecoration: 'underline',
-  },
 })
 
 
