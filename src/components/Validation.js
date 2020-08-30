@@ -76,10 +76,141 @@ const styles = theme => ({
 })
 
 
+const REQUIRED_NUM_EVALUATIONS = 6
+
+
+const EVAL_QUESTIONS = {
+  'evalQ1': {
+    'type': 'single',
+    'answer': '',
+  },
+  'evalQ2': {
+    'type': 'single',
+    'answer': '',
+  },
+  'evalQ3': {
+    'type': 'multiple',
+    'answer': [],
+  },
+  'evalQ4': {
+    'type': 'multiple',
+    'answer': [],
+  },
+  'evalQ5': {
+    'type': 'single',
+    'answer': '',
+  },
+}
+
+
 class Validation extends React.Component {
 
+  constructor(props) {
+    super(props)
+
+    const evalQuestions = JSON.parse(JSON.stringify(EVAL_QUESTIONS))
+
+    this.state = {
+      dataID: null,
+
+      prevInput: '',
+      prevOutput: null,
+      prevOptional: '',
+
+      evalCount: 1,
+      evalQuestions,
+    }
+  }
+
+  componentDidMount() {
+    this.loadEvaluationData()
+  }
+
+  loadEvaluationData() {
+    return fetch('/get_eval', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      }
+    })
+    .then((response) => response.json())
+    .then((data) => {
+      if ( data['status'] === 'ok' ) {
+        this.setState({
+          dataID: data['id'],
+          prevInput: data['input'],
+          prevOutput: data['output'],
+          //prevOptional: data['optional'],
+        })
+      }
+    })
+  }
+
+  loadMoreEvaluationData() {
+    const { evalCount } = this.state
+    if ( evalCount >=  REQUIRED_NUM_EVALUATIONS ) {
+      this.props.onSwitch('creation')
+    } else {
+      this.loadEvaluationData()
+      .then(
+        this.setState({
+          evalQuestions: JSON.parse(JSON.stringify(EVAL_QUESTIONS)),
+          evalCount: evalCount + 1,
+        })
+      )
+    }
+  }
+
+  handleOnSelect(question, selection) {
+    const { dataID, evalQuestions } = this.state
+
+    // support multiple choice answers
+    const update = {...evalQuestions}
+    if ( update[question].type === 'multiple' ) {
+      const index = update[question]['answer'].indexOf(selection)
+      if ( index >= 0 ) {
+        update[question]['answer'].splice(index, 1)
+      } else {
+        if ( selection === 'none' ) {
+          update[question]['answer'] = ['none']
+        } else {
+          update[question]['answer'] = (
+            update[question]['answer'].filter(s => s !== 'none'))
+          update[question]['answer'].push(selection)
+        }
+      }
+    } else {
+      update[question]['answer'] = selection
+    }
+
+    fetch('/set_eval', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        'dataID': dataID,
+        'question': question,
+        'answer': update[question]['answer'].toString(),
+      }),
+    })
+    .then(response => response.json())
+    .then(data => {
+      if ( data['status'] === 'ok' ) {
+        this.setState({'evalQuestions': update})
+      }
+    })
+  }
+
   render() {
-    const { classes, prevInput, prevOutput, prevOptional, handleOnEval, evalCount, requiredEval, evalQuestions, loadMore } = this.props
+    const { classes } = this.props
+    const {
+      evalCount,
+      prevInput,
+      prevOutput,
+      prevOptional,
+      evalQuestions,
+    } = this.state
 
     const enableNext = (
       evalQuestions['evalQ1'].answer === 'no' ||
@@ -104,10 +235,9 @@ class Validation extends React.Component {
           <Typography
             component="h3"
             variant="h3">
-            <p className={classes.progress}> Reviewing {evalCount} out of {requiredEval} statements. </p>
+            <p className={classes.progress}> Reviewing {evalCount} out of {REQUIRED_NUM_EVALUATIONS} statements. </p>
           </Typography>
 
-          {/* Input Box 1 */}
           <Grid item xs={12}>
             <Paper component="div" className={classes.paper} square>
               {prevOutput != null && <Output output={prevOutput} />}
@@ -124,7 +254,7 @@ class Validation extends React.Component {
               <UserEval
                 optional={prevOptional}
                 questions={evalQuestions}
-                onSelect={(q, a) => handleOnEval(q, a)} />
+                onSelect={this.handleOnSelect.bind(this)} />
             )}
           </Grid>
 
@@ -133,8 +263,8 @@ class Validation extends React.Component {
               variant="contained"
               className={classes.button}
               disabled={!enableNext}
-              onClick={() => loadMore()}>
-              { evalCount < requiredEval ? ("Next Statement") : ("Let's proceed to creation step!") }
+              onClick={this.loadMoreEvaluationData.bind(this)}>
+              { evalCount < REQUIRED_NUM_EVALUATIONS ? ("Next Statement") : ("Let's proceed to creation step!") }
             </Button>
           </Grid>
         </ThemeProvider>
