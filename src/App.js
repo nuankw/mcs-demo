@@ -131,8 +131,7 @@ class App extends React.Component {
   }
 
   loadEvaluationData() {
-    const { scenario } = this.state
-    return fetch(`/get_eval?scenario=${scenario}`, {
+    return fetch(`/get_eval`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
