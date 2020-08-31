@@ -7,7 +7,7 @@ from flask import (
 import uuid
 from bson import ObjectId
 from flask import session
-from flask_pymongo import PyMongo
+from flask_pymongo import PyMongo, ASCENDING, DESCENDING
 from flask_session import Session
 from flask_cors import CORS
 
@@ -280,7 +280,7 @@ def get_eval():
                 }
             }]},
         ]
-    }, sort=[('validator', PyMongo.ASCENDING), ('ts', PyMongo.DESCENDING)])
+    }, sort=[('validator', ASCENDING), ('ts', DESCENDING)])
     if data:
         return jsonify({
             'status': 'ok',
