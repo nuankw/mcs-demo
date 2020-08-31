@@ -13,7 +13,7 @@ from flask_cors import CORS
 
 import torch
 from transformers import AutoTokenizer
-from .model import Transformer
+from model import Transformer
 from scipy.special import softmax
 
 from datetime import datetime
