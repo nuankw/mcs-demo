@@ -65,172 +65,207 @@ class Evaluate extends React.Component {
     return (
       <div className={classes.root}>
 
+        {/* Q1 */}
+        <div>
           <Typography
-            component="h3"
-            variant="h3"
-            className={classes.question}>
-            Q1. Do you think this statement requires commonsense to infer True/False?
-            <br/>
-            <Button
-              variant="contained"
-              className={classNames(classes.button, {
-                'selected': questions['evalQ1']['answer'] === 'yes',
-              })}
-              onClick={() => onSelect('evalQ1', 'yes')}>
-              Yes
-            </Button>
-            <Button
-              variant="contained"
-              className={classNames(classes.button, {
-                'selected': questions['evalQ1']['answer'] === 'no',
-              })}
-              onClick={() => onSelect('evalQ1', 'no')}>
-              No
-            </Button>
+              component="h3"
+              variant="h3"
+              className={classes.question}>
+              1. Do you think this statement requires commonsense to infer True/False?
           </Typography>
+          <div className={classes.buttonRow}>
+            <Button
+                variant="contained"
+                className={classNames(classes.button, {
+                  'selected': questions['evalQ1']['answer'] === 'yes',
+                })}
+                onClick={() => onSelect('evalQ1', 'yes')}>
+                Yes
+            </Button>
 
+            <Button
+                variant="contained"
+                className={classNames(classes.button, {
+                  'selected': questions['evalQ1']['answer'] === 'no',
+                })}
+                onClick={() => onSelect('evalQ1', 'no')}>
+                No
+            </Button>
+          </div>
+        </div>
+
+        {/* Q2 */}
         {questions['evalQ1']['answer'] === 'yes' && (
-          <Typography
-            component="h3"
-            variant="h3"
-            className={classes.question}>
-            Q2. Do you think this statement is True?
-            <br/>
-            <Button
-              variant="contained"
-              className={classNames(classes.button, {
-                'selected': questions['evalQ2']['answer'] === 'yes',
-              })}
-              onClick={() => onSelect('evalQ2', 'yes')}>
-              Yes
-            </Button>
-            <Button
-              variant="contained"
-              className={classNames(classes.button, {
-                'selected': questions['evalQ2']['answer'] === 'no',
-              })}
-              onClick={() => onSelect('evalQ2', 'no')}>
-              No
-            </Button>
-          </Typography>
+          <div>
+            <Typography
+              component="h3"
+              variant="h3"
+              className={classes.question}>
+              2. Do you think this statement is True?
+            </Typography>
+
+            <div className={classes.buttonRow}>
+              <Button
+                variant="contained"
+                className={classNames(classes.button, {
+                  'selected': questions['evalQ2']['answer'] === 'yes',
+                })}
+                onClick={() => onSelect('evalQ2', 'yes')}>
+                Yes
+              </Button>
+
+              <Button
+                variant="contained"
+                className={classNames(classes.button, {
+                  'selected': questions['evalQ2']['answer'] === 'no',
+                })}
+                onClick={() => onSelect('evalQ2', 'no')}>
+                No
+              </Button>
+            </div>
+          </div>
         )}
 
+        {/* Q3 */}
         {questions['evalQ1']['answer'] === 'yes' && (
-          <Typography
-            component="h3"
-            variant="h3"
-            className={classes.question}>
-            Q3. Please select <u>all the <b>domains</b></u> that you think this statement can be categorized into:
-            <br/>
-            <Button
-              variant="contained"
-              className={classNames(classes.button, {
-                'selected': questions['evalQ3']['answer'].indexOf('social') >= 0,
-              })}
-              onClick={() => onSelect('evalQ3', 'social')}>
-              Social
-            </Button>
-            <Button
-              variant="contained"
-              className={classNames(classes.button, {
-                'selected': questions['evalQ3']['answer'].indexOf('physical') >= 0,
-              })}
-              onClick={() => onSelect('evalQ3', 'physical')}>
-              Physical
-            </Button>
-            <Button
-              variant="contained"
-              className={classNames(classes.button, {
-                'selected': questions['evalQ3']['answer'].indexOf('time') >= 0,
-              })}
-              onClick={() => onSelect('evalQ3', 'time')}>
-              Time
-            </Button>
-            <Button
-              variant="contained"
-              className={classNames(classes.button, {
-                'selected': questions['evalQ3']['answer'].indexOf('none') >= 0,
-              })}
-              onClick={() => onSelect('evalQ3', 'none')}>
-              None of the above
-            </Button>
-          </Typography>
+          <div>
+            <Typography
+              component="h3"
+              variant="h3"
+              className={classes.question}>
+              3. Please select all the domains that you think this statement can be categorized into:
+            </Typography>
+
+            <div className={classes.buttonRow}>
+              <Button
+                variant="contained"
+                className={classNames(classes.button, {
+                  'selected': questions['evalQ3']['answer'].indexOf('social') >= 0,
+                })}
+                onClick={() => onSelect('evalQ3', 'social')}>
+                Social
+              </Button>
+
+              <Button
+                variant="contained"
+                className={classNames(classes.button, {
+                  'selected': questions['evalQ3']['answer'].indexOf('physical') >= 0,
+                })}
+                onClick={() => onSelect('evalQ3', 'physical')}>
+                Physical
+              </Button>
+
+              <Button
+                variant="contained"
+                className={classNames(classes.button, {
+                  'selected': questions['evalQ3']['answer'].indexOf('time') >= 0,
+                })}
+                onClick={() => onSelect('evalQ3', 'time')}>
+                Time
+              </Button>
+
+              <Button
+                variant="contained"
+                className={classNames(classes.button, {
+                  'selected': questions['evalQ3']['answer'].indexOf('other') >= 0,
+                })}
+                onClick={() => onSelect('evalQ3', 'other')}>
+                Other
+              </Button>
+            </div>
+          </div>
         )}
 
+        {/* Q4 */}
         {questions['evalQ1']['answer'] === 'yes' && (
-          <Typography
-            component="h3"
-            variant="h3"
-            className={classes.question}>
-            Q4. Please select <u>all the <b>scenarios</b></u> that you think this statement can be categorized into:
-            <br/>
-            <Button
-              variant="contained"
-              className={classNames(classes.button, {
-                'selected': questions['evalQ4']['answer'].indexOf('causal') >= 0,
-              })}
-              onClick={() => onSelect('evalQ4', 'causal')}>
-              Cause & Effect
-            </Button>
-            <Button
-              variant="contained"
-              className={classNames(classes.button, {
-                'selected': questions['evalQ4']['answer'].indexOf('comparison') >= 0,
-              })}
-              onClick={() => onSelect('evalQ4', 'comparison')}>
-              Comparison
-            </Button>
-            <Button
-              variant="contained"
-              className={classNames(classes.button, {
-                'selected': questions['evalQ4']['answer'].indexOf('numeracy') >= 0,
-              })}
-              onClick={() => onSelect('evalQ4', 'numeracy')}>
-              Numeracy
-            </Button>
-            <Button
-              variant="contained"
-              className={classNames(classes.button, {
-                'selected': questions['evalQ4']['answer'].indexOf('none') >= 0,
-              })}
-              onClick={() => onSelect('evalQ4', 'none')}>
-              None of the above
-            </Button>
-          </Typography>
+          <div>
+            <Typography
+              component="h3"
+              variant="h3"
+              className={classes.question}>
+              4. Please select all the scenarios that you think this statement can be categorized into:
+            </Typography>
+
+            <div className={classes.buttonRow}>
+              <Button
+                variant="contained"
+                className={classNames(classes.button, {
+                  'selected': questions['evalQ4']['answer'].indexOf('causal') >= 0,
+                })}
+                onClick={() => onSelect('evalQ4', 'causal')}>
+                Cause & Effect
+              </Button>
+
+              <Button
+                variant="contained"
+                className={classNames(classes.button, {
+                  'selected': questions['evalQ4']['answer'].indexOf('comparison') >= 0,
+                })}
+                onClick={() => onSelect('evalQ4', 'comparison')}>
+                Comparison
+              </Button>
+
+              <Button
+                variant="contained"
+                className={classNames(classes.button, {
+                  'selected': questions['evalQ4']['answer'].indexOf('numeracy') >= 0,
+                })}
+                onClick={() => onSelect('evalQ4', 'numeracy')}>
+                Numeracy
+              </Button>
+
+              <Button
+                variant="contained"
+                className={classNames(classes.button, {
+                  'selected': questions['evalQ4']['answer'].indexOf('other') >= 0,
+                })}
+                onClick={() => onSelect('evalQ4', 'other')}>
+                Other
+              </Button>
+            </div>
+          </div>
         )}
 
-        {questions['evalQ1']['answer'] === 'yes' && optional !== null && (
-          <Typography
-            component="h3"
-            variant="h3"
-            className={classes.question}>
-            Q5. Will the following knowledge piece help explain the above statement?
+        {/* Q5 */}
+        {questions['evalQ1']['answer'] === 'yes' && optional !== null && optional !== "" && (
+          <div>
+            <Typography
+              component="h3"
+              variant="h3"
+              className={classes.question}>
+              5. Will the following knowledge piece help explain the above statement?
+            </Typography>
             <div className={classes.optional}>{optional}</div>
-            <Button
-              variant="contained"
-              className={classNames(classes.button, {
-                'selected': questions['evalQ5']['answer'] === 'yes',
-              })}
-              onClick={() => onSelect('evalQ5', 'yes')}>
-              Yes
-            </Button>
-            <Button
-              variant="contained"
-              className={classNames(classes.button, {
-                'selected': questions['evalQ5']['answer'] === 'maybe',
-              })}
-              onClick={() => onSelect('evalQ5', 'maybe')}>
-              Maybe
-            </Button>
-            <Button
-              variant="contained"
-              className={classNames(classes.button, {
-                'selected': questions['evalQ5']['answer'] === 'no',
-              })}
-              onClick={() => onSelect('evalQ5', 'no')}>
-              No
-            </Button>
-          </Typography>
+
+            <div className={classes.buttonRow}>
+              <Button
+                variant="contained"
+                className={classNames(classes.button, {
+                  'selected': questions['evalQ5']['answer'] === 'yes',
+                })}
+                onClick={() => onSelect('evalQ5', 'yes')}>
+                Yes
+              </Button>
+
+              <Button
+                variant="contained"
+                className={classNames(classes.button, {
+                  'selected': questions['evalQ5']['answer'] === 'maybe',
+                })}
+                onClick={() => onSelect('evalQ5', 'maybe')}>
+                Maybe
+              </Button>
+
+              <Button
+                variant="contained"
+                className={classNames(classes.button, {
+                  'selected': questions['evalQ5']['answer'] === 'no',
+                })}
+                onClick={() => onSelect('evalQ5', 'no')}>
+                No
+              </Button>
+            </div>
+          </div>
         )}
 
       </div>
