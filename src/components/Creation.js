@@ -68,20 +68,44 @@ class Creation extends React.Component {
     super(props)
 
     this.state = {
-      tested: false,
+      inputs: {
+        s1: {
+          1: { input: 'default text 1.1', output: null, label: null },
+          2: { input: 'default text 1.2', output: null, label: null },
+          3: { input: '', output: null, label: null },
+        },
+        s2: {
+          1: { input: 'default text 2.1', output: null, label: null },
+          2: { input: 'default text 2.2', output: null, label: null },
+          3: { input: '', output: null, label: null },
+        },
+        s3: {
+          1: { input: 'default text 3.1', output: null, label: null },
+          2: { input: 'default text 3.2', output: null, label: null },
+          3: { input: '', output: null, label: null },
+        },
+      },
     }
+  }
+
+  updateInputs(id, input) {
+    const inputs = {...this.state.inputs}
+    inputs[id] = {...inputs[id], ...input}
+    this.setState({inputs})
   }
 
   postData(inputs) {
     return new Promise((resolve, reject) => {
-      const s1 = inputs.s1.value
-      const s2 = inputs.s2.value
+      const s1 = inputs.s1
+      const s2 = inputs.s2
+      const s3 = inputs.s3
+      debugger
       fetch('/classify', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({s1, s2}),
+        body: JSON.stringify({s1, s2, s3}),
       })
       .then(response => response.json())
       .then(data => resolve(data))
@@ -100,11 +124,11 @@ class Creation extends React.Component {
     this.setState({processing: true}, () => {
       this.postData(inputs).then(data => {
         this.setState({
-          processing: false,
           dataID: data['id'],
           inputs: {
             s1: {...inputs.s1, output: data['s1']['output'], scores: data['s1']['scores']},
             s2: {...inputs.s2, output: data['s2']['output'], scores: data['s2']['scores']},
+            s3: {...inputs.s3, output: data['s3']['output'], scores: data['s3']['scores']},
           },
         })
       })
@@ -112,8 +136,11 @@ class Creation extends React.Component {
   }
 
   render() {
-    const { tested } = this.state
+    const { inputs } = this.state
     const { classes, scenario } = this.props
+
+    const tested = false
+
     return (
       <React.Fragment>
 
@@ -134,19 +161,28 @@ class Creation extends React.Component {
             <Grid item xs={12} align="center">
 
               <div>
-                <InputGroup>
+                <InputGroup
+                  index='1'
+                  inputs={inputs['s1']}
+                  onChange={(inputs) => this.updateInputs('s1', inputs)}>
                 </InputGroup>
 
-                <InputGroup>
+                <InputGroup
+                  index='2'
+                  inputs={inputs['s2']}
+                  onChange={(inputs) => this.updateInputs('s2', inputs)}>
                 </InputGroup>
 
-                <InputGroup>
+                <InputGroup
+                  index='3'
+                  inputs={inputs['s3']}
+                  onChange={(inputs) => this.updateInputs('s3', inputs)}>
                 </InputGroup>
               </div>
 
               <Grid container spacing={5}>
                 <Grid item xs={6} align="left">
-                  {<Submit type='submit' text='Test' />}
+                  {<Submit type='submit' text='Test All' />}
                 </Grid>
                 <Grid item xs={6} align="right">
                   {<Submit type='button' text='Submit' disabled={!tested} />}

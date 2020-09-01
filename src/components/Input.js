@@ -53,20 +53,18 @@ class Input extends React.Component {
   }
 
   handleOnChange(e) {
-    const {updateText, text} = this.props
+    const { updateText } = this.props
     const value = e.target.value
-    updateText(text.id, value)
+    updateText(value)
   }
 
   render() {
-    const { autoFocus, text, disabled } = this.props
+    const { autoFocus, disabled, label, text } = this.props
     return (
       <CustomTextField
         ref="input"
-        id={text.id}
-        name={text.name}
-        label={text.label}
-        value={text.value}
+        label={label}
+        value={text}
         disabled={disabled}
         autoFocus={autoFocus}
         autoComplete="off"

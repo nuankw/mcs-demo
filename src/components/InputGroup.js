@@ -56,132 +56,88 @@ const styles = theme => ({
 
 class InputGroup extends React.Component {
 
-  constructor(props) {
-    super(props)
-    this.state = {
-      inputs: {
-        s1: {
-          id: 's1',
-          name: 's1',
-          value: 'Roses are red',
-          label: 'input 1',
-          selected: null,
-          changed: true,
-          output: null,
-        },
-        s2: {
-          id: 's2',
-          name: 's2',
-          value: 'Roses are blue',
-          label: 'input 2',
-          selected: null,
-          changed: true,
-          output: null,
-        },
-        s3: {
-          id: 's3',
-          name: 's3',
-          value: '',
-          label: 'optional input 3',
-          changed: true,
-          output: null,
-        },
-      },
-    }
-  }
-
   getInputRef(inputRef) {
     this.inputField = inputRef
   }
 
-  handleUpdate(id, value) {
-    let inputs = {...this.state.inputs}
-    inputs[id] = {...inputs[id], value, changed: true}
-    this.setState({inputs}, () => {
-      const count = Object.keys(inputs).reduce((c, id) => {
-        return c + (+inputs[id]['changed'])
-      }, 0)
-      if ( count === 1 ) {
-        Object.keys(inputs).forEach(id => {
-          if ( !inputs[id].changed ) {
-            inputs[id] = {...inputs[id], value}
-            this.setState({inputs})
-          }
-        })
-      }
-    })
+  handleUpdate(id, input) {
+    const inputs = {...this.props.inputs}
+    inputs[id] = {...inputs[id], ...{input}}
+    this.props.onChange(inputs)
   }
 
   select(id, label) {
-    const inputs = {...this.state.inputs}
-    inputs[id] = {...inputs[id], ...{'selected': label}}
-    if ( id === 's1' ) {
-      inputs['s2'] = {...inputs[id], ...{'selected': !label}}
+    const inputs = {...this.props.inputs}
+    inputs[id] = {...inputs[id], ...{'label': label}}
+    if ( id === 1 ) {
+      inputs[2] = {...inputs[id], ...{'label': !label}}
     }
-    if ( id === 's2' ) {
-      inputs['s1'] = {...inputs[id], ...{'selected': !label}}
+    if ( id === 2 ) {
+      inputs[1] = {...inputs[id], ...{'label': !label}}
     }
-    this.setState({inputs})
+    this.props.onChange(inputs)
   }
 
   render () {
-    const { inputs } = this.state
-    const { classes } = this.props
+    const { classes, index, inputs } = this.props
     return (
       <Paper component="div" className={classes.paper} square>
         <Grid container spacing={3}>
           <Grid item xs={10} className={classes.inputWrapper}>
-            {inputs.s1.output != null && <Output statement={inputs.s1} />}
+            {inputs[1].output != null && <Output statement={inputs[1].output} />}
             <Input
-              text={inputs.s1}
-              autoFocus={true}
+              label={`input ${index}.1`}
+              text={inputs[1].input}
+              autoFocus={false}
               disabled={false}
               passInputRef={this.getInputRef.bind(this)}
-              updateText={this.handleUpdate.bind(this)} />
+              updateText={(text) => this.handleUpdate(1, text)} />
           </Grid>
           <Grid item xs={2} className={classes.buttonWrapper}>
             <ButtonGroup className={classes.buttonGroup}>
               <Button
                 className={classNames(classes.buttonTrue, {
-                  'selected': inputs.s1.selected === true,
+                  'selected': inputs[1].label === true,
                 })}
-                onClick={() => this.select('s1', true)}>True</Button>
+                onClick={() => this.select(1, true)}>True</Button>
               <Button
                 className={classNames(classes.buttonFalse, {
-                  'selected': inputs.s1.selected === false,
+                  'selected': inputs[1].label === false,
                 })}
-                onClick={() => this.select('s1', false)}>False</Button>
+                onClick={() => this.select(1, false)}>False</Button>
             </ButtonGroup>
           </Grid>
 
           <Grid item xs={10} className={classes.inputWrapper}>
-            {inputs.s2.output != null && <Output statement={inputs.s2} />}
+            {inputs[2].output != null && <Output statement={inputs[2].output} />}
             <Input
-              text={inputs.s2}
+              label={`input ${index}.2`}
+              text={inputs[2].input}
               disabled={false}
-              updateText={this.handleUpdate.bind(this)} />
+              updateText={(text) => this.handleUpdate(2, text)} />
           </Grid>
           <Grid item xs={2} className={classes.buttonWrapper}>
             <ButtonGroup className={classes.buttonGroup}>
               <Button
                 className={classNames(classes.buttonTrue, {
-                  'selected': inputs.s2.selected === true,
+                  'selected': inputs[2].label === true,
                 })}
-                onClick={() => this.select('s2', true)}>True</Button>
+                onClick={() => this.select(2, true)}>True</Button>
               <Button
                 className={classNames(classes.buttonFalse, {
-                  'selected': inputs.s2.selected === false,
+                  'selected': inputs[2].label === false,
                 })}
-                onClick={() => this.select('s2', false)}>False</Button>
+                onClick={() => this.select(2, false)}>False</Button>
             </ButtonGroup>
           </Grid>
 
           <Grid item xs={12}>
-            {inputs.s3.output != null && <Output statement={inputs.s3} />}
+            {inputs[3].output != null && <Output statement={inputs[3].output} />}
             <Input
-              text={inputs.s3}
+              label='optional input'
+              text={inputs[3].input}
               disabled={false}
-              updateText={this.handleUpdate.bind(this)} />
+              updateText={(text) => this.handleUpdate(3, text)} />
           </Grid>
 
         </Grid>
