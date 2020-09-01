@@ -64,6 +64,13 @@ const styles = theme => ({
 
 class Creation extends React.Component {
 
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      tested: false,
+    }
+  }
 
   postData(inputs) {
     return new Promise((resolve, reject) => {
@@ -105,6 +112,7 @@ class Creation extends React.Component {
   }
 
   render() {
+    const { tested } = this.state
     const { classes, scenario } = this.props
     return (
       <React.Fragment>
@@ -136,7 +144,14 @@ class Creation extends React.Component {
                 </InputGroup>
               </div>
 
-              {<Submit />}
+              <Grid container spacing={5}>
+                <Grid item xs={6} align="left">
+                  {<Submit type='submit' text='Test' />}
+                </Grid>
+                <Grid item xs={6} align="right">
+                  {<Submit type='button' text='Submit' disabled={!tested} />}
+                </Grid>
+              </Grid>
             </Grid>
 
           </Grid>
