@@ -24,9 +24,13 @@ const styles = theme => ({
     fontWeight: theme.typography.fontWeightRegular,
   },
   got_it: {
-    backgroundColor: '#51843c',
-    color: "#ffffff",
+    backgroundColor: 'transparent',
+    color: "dark",
     textTransform: "none",
+    '&:hover': {
+      background: 'rgba(45, 184, 188, 0.6)',
+      color: 'black',
+    },
   }
 })
 

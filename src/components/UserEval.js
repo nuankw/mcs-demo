@@ -7,32 +7,37 @@ import classNames from '../utils/classes'
 
 const styles = theme => ({
   root: {
-    border: '3px solid green',
+    marginTop: '1em',
   },
   question: {
+    display: 'flex',
     justifyContent: "left",
     color: 'dark',
-    padding: theme.spacing(1,4),
-    fontSize: theme.spacing(3.5),
+    padding: theme.spacing(1,1,1,6),
+    fontSize: theme.spacing(3),
+  },
+  buttonRow: {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "left",
+    padding: theme.spacing(0,0,0,10),
   },
   button: {
-    width: '25%',
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "center",
+    width: '20%',
     color: 'black',
-    fontSize: theme.spacing(3),
-    background: 'rgba(104, 159, 56, 0.6)',
-    margin: theme.spacing(2, 3),
-    padding: theme.spacing(1.5, 6),
+    fontSize: theme.spacing(2),
+    background: 'rgba(254, 254, 254, 0.2)',
+    border: '1px solid black',
+    margin: theme.spacing(1, 2),
+    padding: theme.spacing(1, 4),
     textTransform: "none",
     '&.selected': {
-      background: 'rgba(32, 40, 24, 0.6)',
+      background: 'rgba(48, 57, 139, 0.6)',
       color: '#dae1c5',
     },
     '&:hover': {
-      background: 'rgba(32, 40, 24, 0.6)',
-      color: '#dae1c5',
+      background: 'rgba(45, 184, 188, 0.6)',
+      color: 'black',
     },
   },
   link: {
@@ -41,9 +46,13 @@ const styles = theme => ({
     textDecoration: 'underline',
   },
   optional: {
-    background: 'rgba(32, 40, 24, 0.6)',
-    width: '80%',
-    color: 'white',
+    fontSize: theme.spacing(3),
+    display: 'flex',
+    justifyContent: "center",
+    padding: theme.spacing(1),
+    background: 'rgba(41, 28, 51, 0.26)',
+    margin: theme.spacing(1,12,1,12),// width: '80%',
+    // color: 'white',
   }
 })
 

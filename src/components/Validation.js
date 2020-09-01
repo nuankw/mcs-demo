@@ -42,16 +42,15 @@ const styles = theme => ({
     width: '100%', // Fix IE 11 issue.
     marginTop: theme.spacing(3),
   },
-  button: {
-    color: 'black',
-    background: 'rgba(104, 159, 56, 0.6)',
+  nextButton: {
+    color: 'white',
+    background: 'rgba(48, 57, 139, 0.6)', // TODO
     fontSize: theme.spacing(2.8),
     margin: theme.spacing(2, 3),
     padding: theme.spacing(1.5, 6),
     textTransform: "none",
     '&:hover': {
-      background: 'rgba(32, 40, 24, 0.6)',
-      color: '#dae1c5',
+      background: 'rgba(45, 184, 188, 0.6)',
     },
   },
   underlined: {
@@ -73,10 +72,18 @@ const styles = theme => ({
   progress: {
     fontSize: theme.spacing(4),
   },
+  linebreak: {
+    textAlign: 'left',
+    marginLeft: '0',
+    height: '2px',
+    borderWidth: '0',
+    color: 'bllack',
+    backgroundColor: 'black',
+  }
 })
 
 
-const REQUIRED_NUM_EVALUATIONS = 6
+const REQUIRED_NUM_EVALUATIONS = 3
 
 
 const EVAL_QUESTIONS = {
