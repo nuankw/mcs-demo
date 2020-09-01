@@ -127,15 +127,22 @@ def classify():
     max_statements = 6
     inputs = []
     data = {}
-    for i in range(max_statements):
-        para = 's' + str(i+1)
-        sent = request.json.get(para)
-        label = request.json.get(para + '_label')    # TODO check para name & value
-        if sent != '':  # empty check
-            inputs.append(sent)
-            data[para] = {
-                "input": inputs[i],
-                "output": False,
+
+    for key, all_inputs in request.json.items():
+
+        for index, value in all_inputs.items():
+
+            label = request.json.get(key + '_' + index + '_label')
+            text = value['input']
+
+            # Don't bother with empty inputs
+            if not text and index != '3':
+                return jsonify({'status': 'not ok'})
+
+            inputs.append(text)
+            data[key] = {
+                "input": text,
+                "output": None,
                 "scores": {},
                 "label": label,
             }
