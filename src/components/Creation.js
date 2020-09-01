@@ -96,16 +96,12 @@ class Creation extends React.Component {
 
   postData(inputs) {
     return new Promise((resolve, reject) => {
-      const s1 = inputs.s1
-      const s2 = inputs.s2
-      const s3 = inputs.s3
-      debugger
       fetch('/classify', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({s1, s2, s3}),
+        body: JSON.stringify(inputs),
       })
       .then(response => response.json())
       .then(data => resolve(data))
@@ -117,11 +113,7 @@ class Creation extends React.Component {
     event.preventDefault()
     const { inputs } = this.state
 
-    if ( !Object.keys(inputs).every(key => !!inputs[key].value) ) {
-      return
-    }
-
-    this.setState({processing: true}, () => {
+    this.setState({loading: true}, () => {
       this.postData(inputs).then(data => {
         this.setState({
           dataID: data['id'],
