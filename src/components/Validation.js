@@ -170,7 +170,7 @@ class Validation extends React.Component {
   }
 
   handleOnSelect(question, selection) {
-    const { dataID, evalQuestions } = this.state
+    const { evalQuestions } = this.state
 
     // support multiple choice answers
     const update = {...evalQuestions}
@@ -191,6 +191,12 @@ class Validation extends React.Component {
       update[question]['answer'] = selection
     }
 
+    this.setState({'evalQuestions': update})
+
+  }
+
+  handleOnNext() {
+    const { dataID, evalQuestions } = this.state
     fetch('/set_eval', {
       method: 'POST',
       headers: {
@@ -198,14 +204,21 @@ class Validation extends React.Component {
       },
       body: JSON.stringify({
         'dataID': dataID,
-        'question': question,
-        'answer': update[question]['answer'].toString(),
+        'evalQ1': evalQuestions['evalQ1']['answer'],
+        'evalQ2': evalQuestions['evalQ2']['answer'],
+        'evalQ3': evalQuestions['evalQ3']['answer'],
+        'evalQ4': evalQuestions['evalQ4']['answer'],
+        'evalQ5': evalQuestions['evalQ5']['answer'],
       }),
     })
     .then(response => response.json())
     .then(data => {
       if ( data['status'] === 'ok' ) {
-        this.setState({'evalQuestions': update})
+        this.loadMoreEvaluationData()
+      } else {
+        // what should we do here? disable "next statement" for sure but anything else?
+        // e.g. we apologize for inconvenience but currently experiencing server error.
+        //      please refresh if not working / come back later?
       }
     })
   }
@@ -262,16 +275,19 @@ class Validation extends React.Component {
               <UserEval
                 optional={prevOptional}
                 questions={evalQuestions}
-                onSelect={this.handleOnSelect.bind(this)} />
+                onSelect={this.handleOnSelect.bind(this)}
+                onNext={this.handleOnNext.bind(this)} />
             )}
           </Grid>
+
+          <hr className={classes.linebreak} />
 
           <Grid item xs={12} align="center">
             <Button
               variant="contained"
-              className={classes.button}
+              className={classes.nextButton}
               disabled={!enableNext}
-              onClick={this.loadMoreEvaluationData.bind(this)}>
+              onClick={this.handleOnNext.bind(this)}>
               { evalCount < REQUIRED_NUM_EVALUATIONS ? ("Next Statement") : ("Let's proceed to creation step!") }
             </Button>
           </Grid>
