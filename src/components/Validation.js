@@ -179,11 +179,11 @@ class Validation extends React.Component {
       if ( index >= 0 ) {
         update[question]['answer'].splice(index, 1)
       } else {
-        if ( selection === 'none' ) {
-          update[question]['answer'] = ['none']
+        if ( selection === 'other' ) {
+          update[question]['answer'] = ['other']
         } else {
           update[question]['answer'] = (
-            update[question]['answer'].filter(s => s !== 'none'))
+            update[question]['answer'].filter(s => s !== 'other'))
           update[question]['answer'].push(selection)
         }
       }
@@ -275,8 +275,7 @@ class Validation extends React.Component {
               <UserEval
                 optional={prevOptional}
                 questions={evalQuestions}
-                onSelect={this.handleOnSelect.bind(this)}
-                onNext={this.handleOnNext.bind(this)} />
+                onSelect={this.handleOnSelect.bind(this)}/>
             )}
           </Grid>
 

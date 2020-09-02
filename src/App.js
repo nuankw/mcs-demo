@@ -41,6 +41,7 @@ class App extends React.Component {
 
     const locationQuery = new URLSearchParams(window.location.search)
     const scenario = locationQuery.get('scenario')
+    // const do_val = locationQuery.get('do_val')
 
     this.state = {
       code: '',
