@@ -189,9 +189,11 @@ def classify():
 
                 # store trial data in the mongo db
                 new_entry = mongo.db.trials.insert_one({
-                    's1': data[key][idx],
-                    'real_key': key,
-                    'real_key_idx': idx,
+                    'input': data[key][idx]['input'],
+                    'output': data[key][idx]['output'],
+                    'label': data[key][idx]['label'],
+                    'key': key,
+                    'key_idx': idx,
                     'optional': data[key]['3']['input'],
                     'ts': ts,
                     'hit_id': session.get('hit_id', ''),
@@ -217,7 +219,7 @@ def submit():
     for key in ['s1', 's2', 's3']:
         for idx in ['1', '2', '3']:
             data = mongo.db.trials.find_one({
-                {'hit_id': hit_id, 'worker_id': worker_id, 'real_key': key, 'real_key_idx': idx}
+                {'hit_id': hit_id, 'worker_id': worker_id, 'key': key, 'key_idx': idx}
             }, sort=[('ts', -1)])
 
             mongo.db.trials.update_one(
@@ -273,7 +275,7 @@ def get_eval():
     data = mongo.db.trials.find_one({
         "$and": [
             {'num_val': {
-                "$lte": max_val_num,    # <=
+                "$lt": max_val_num,    # <
             }},
             {'session': {
                 "$ne": uid,
@@ -298,9 +300,9 @@ def get_eval():
         return jsonify({
             'status': 'ok',
             'id': str(data['_id']),
-            'input': data['s1']['input'],
-            'output': data['s1']['output'],
-            # 'optional': data['s1']['optional'],
+            'input': data['input'],
+            'output': data['output'],
+            # 'optional': data['optional'],
         })
     return jsonify({'status': 'not ok'})
 
@@ -319,7 +321,7 @@ def set_eval():
     print('worker_id:', worker_id, "-- it shouldn't be None!")
 
     updated = ques_ans
-    updated.update({'workerID': worker_id, 'dataID': data_id})
+    updated.update({'workerID': worker_id})
     print(updated)
 
     mongo.db.trials.update_one(
