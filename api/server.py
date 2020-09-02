@@ -53,6 +53,7 @@ SYSTEMS = {
     },
 }
 
+NUM_QUESTIONS = 5
 
 # load trained models
 def load_models(system):
@@ -301,17 +302,24 @@ def get_eval():
 
 @app.route('/set_eval', methods=['POST'])
 def set_eval():
-    # 'next' button
-    # TODO check para names, update is the dictionary for all questions & answers [* need update]
-    # TODO ensure all responses are valid
-    # TODO user_id info
+
+    ques_ans = {}
+    for i in range(1, NUM_QUESTIONS + 1):
+        question = 'evalQ' + str(i)
+        ques_ans[question] = request.json.get(question)
+
     data_id = request.json.get('dataID')
-    question = request.json.get('question')
-    answer = request.json.get('answer')
     worker_id = session.get('worker_id')
 
-    updated = {'workerID': worker_id, 'qas': {question: answer}}
+    # TODO: worker_id == None when url is: http://localhost:3000/?hit_id=0&scenario=s3&worker_id=0%27
+    print('worker_id:', worker_id, "-- it shouldn't be None!")
 
+    updated = ques_ans
+    updated.update({'workerID': worker_id, 'dataID': data_id})
+    print(updated)
+
+    # TODO
+    """ please comment this line to update the following commented-out code
     mongo.db.trials.update_one(
         {"_id": ObjectId(data_id)},
         {'$push': {'validation': {**updated}},
@@ -325,6 +333,7 @@ def set_eval():
             {"_id": ObjectId(data_id)},
             {'$set': {'need_validate': False}}
         )
+    # """
 
     return jsonify({'status': 'ok'})
 
