@@ -357,4 +357,4 @@ if __name__ == "__main__":
     host = os.environ.get('MCS_SERVER_HOST', '0.0.0.0')
     port = int(os.environ.get('MCS_SERVER_PORT', '5005'))
 
-    app.run(host=host, port=port, debug=False)
+    app.run(host=host, port=port, debug=True)
