@@ -229,6 +229,9 @@ def submit():
                 'key_idx': idx,
             }, sort=[('ts', -1)])
 
+            if not data:
+                return jsonify({'status': 'not ok'})
+
             mongo.db.trials.update_one(
                 {"_id": ObjectId(data[0].inserted_id)},
                 {'$set': {
