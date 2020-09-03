@@ -210,7 +210,6 @@ def classify():
 
     bonus_rate = 1
     bonus_payment = round(bonus_rate * num_fool_model, 2)
-    data['bonus_payment'] = bonus_payment   # maybe use for inspiration
 
     return jsonify(data)
 
