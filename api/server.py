@@ -223,7 +223,10 @@ def submit():
     for key in ['s1', 's2', 's3']:
         for idx in ['1', '2', '3']:
             data = mongo.db.trials.find_one({
-                {'hit_id': hit_id, 'worker_id': worker_id, 'key': key, 'key_idx': idx}
+                'hit_id': hit_id,
+                'worker_id': worker_id,
+                'key': key,
+                'key_idx': idx,
             }, sort=[('ts', -1)])
 
             mongo.db.trials.update_one(
