@@ -135,6 +135,12 @@ def get_system_output(system, all_statements):
 
 @app.route('/classify', methods=['POST'])
 def classify():
+
+    worker_id = session.get('worker_id')
+    scenario = session.get('scenario')
+    hit_id = session.get('hit_id')
+    uid = session.get('uid')
+
     inputs = []     # [{s1_1: "statement 1"}, {s1_2: "statement 2"}...]
 
     # initialize response data format
@@ -201,10 +207,11 @@ def classify():
                     'key_idx': idx,
                     'optional': data[key]['3']['input'],
                     'ts': ts,
-                    'hit_id': session.get('hit_id', ''),
-                    'worker_id': session.get('worker_id', ''),
-                    'scenario': session.get('scenario', ''),
-                    'need_validate': False
+                    'session': uid,
+                    'hit_id': hit_id,
+                    'scenario': scenario,
+                    'worker_id': worker_id,
+                    'need_validate': False,
                 })
                 # data[key][idx]["id"] = str(new_entry.inserted_id)
 
