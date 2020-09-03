@@ -131,7 +131,8 @@ class Creation extends React.Component {
     const { inputs } = this.state
     const { classes, scenario } = this.props
 
-    const tested = false
+    const testBtnDisabled = false
+    const submitBtnDisabled = true
 
     return (
       <React.Fragment>
@@ -174,10 +175,10 @@ class Creation extends React.Component {
 
               <Grid container spacing={5}>
                 <Grid item xs={6} align="left">
-                  {<Submit type='submit' text='Test All' />}
+                  {<Submit type='submit' text='Test All' disabled={testBtnDisabled} />}
                 </Grid>
                 <Grid item xs={6} align="right">
-                  {<Submit type='button' text='Submit' disabled={!tested} />}
+                  {<Submit type='button' text='Submit' disabled={submitBtnDisabled} />}
                 </Grid>
               </Grid>
             </Grid>
