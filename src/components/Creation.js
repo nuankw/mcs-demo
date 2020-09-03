@@ -127,11 +127,18 @@ class Creation extends React.Component {
     })
   }
 
+  checkInputs() {
+    const { inputs } = this.state
+    return Object.keys(inputs).every(key =>
+      (!inputs[key][1].input && !inputs[key][2].input) ||
+      (!!inputs[key][1].input && !!inputs[key][2].input && inputs[key][1].label !== null))
+  }
+
   render() {
     const { inputs } = this.state
     const { classes, scenario } = this.props
 
-    const testBtnDisabled = false
+    const testBtnDisabled = !this.checkInputs()
     const submitBtnDisabled = true
 
     return (
