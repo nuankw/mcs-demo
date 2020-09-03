@@ -84,7 +84,7 @@ class InputGroup extends React.Component {
       <Paper component="div" className={classes.paper} square>
         <Grid container spacing={3}>
           <Grid item xs={10} className={classes.inputWrapper}>
-            {inputs[1].output != null && <Output statement={inputs[1].output} />}
+            {inputs[1].output != null && <Output output={inputs[1].output} />}
             <Input
               label={'Please provide the first sentence of your input pair:'}
               text={inputs[1].input}
@@ -109,7 +109,7 @@ class InputGroup extends React.Component {
           </Grid>
 
           <Grid item xs={10} className={classes.inputWrapper}>
-            {inputs[2].output != null && <Output statement={inputs[2].output} />}
+            {inputs[2].output != null && <Output output={inputs[2].output} />}
             <Input
               label={'and the other sentence of the pair:'}
               text={inputs[2].input}
@@ -132,7 +132,7 @@ class InputGroup extends React.Component {
           </Grid>
 
           <Grid item xs={12}>
-            {inputs[3].output != null && <Output statement={inputs[3].output} />}
+            {inputs[3].output != null && <Output output={inputs[3].output} />}
             <Input
               label='(optional, please leave it blank if no input) the common sense knowledge piece you used to create the above sentence pair:'
               text={inputs[3].input}

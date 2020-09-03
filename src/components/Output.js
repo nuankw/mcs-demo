@@ -6,35 +6,20 @@ import False from './False'
 
 const styles = theme => ({
   output: {
-    position: 'relative',
-    cursor: 'pointer',
-    width: '100%',
-  },
-  outputLabels: {
     position: 'absolute',
-    top: -1 * theme.spacing(3),
-    right: 0,
+    right: '20vw',
   },
 })
 
 
 class Output extends React.Component {
 
-  renderOutputLabels() {
+  render() {
     const { classes, output } = this.props
     return (
-      <div className={classes.outputLabels}>
+      <div className={classes.output}>
         {output && <True />}
         {!output && <False />}
-      </div>
-    )
-  }
-
-  render() {
-    const { classes } = this.props
-    return (
-      <div className={classes.output}>
-        {this.renderOutputLabels()}
       </div>
     )
   }

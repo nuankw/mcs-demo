@@ -107,17 +107,9 @@ class Creation extends React.Component {
   submit(event) {
     event.preventDefault()
     const { inputs } = this.state
-
     this.setState({loading: true}, () => {
       this.postData(inputs).then(data => {
-        this.setState({
-          dataID: data['id'],
-          inputs: {
-            s1: {...inputs.s1, output: data['s1']['output'], scores: data['s1']['scores']},
-            s2: {...inputs.s2, output: data['s2']['output'], scores: data['s2']['scores']},
-            s3: {...inputs.s3, output: data['s3']['output'], scores: data['s3']['scores']},
-          },
-        })
+        this.setState({inputs: {...data}})
       })
     })
   }
@@ -126,15 +118,24 @@ class Creation extends React.Component {
     const { inputs } = this.state
     return Object.keys(inputs).every(key =>
       (!inputs[key][1].input && !inputs[key][2].input) ||
-      (!!inputs[key][1].input && !!inputs[key][2].input && inputs[key][1].label !== null))
+      (!!inputs[key][1].input && !!inputs[key][2].input && inputs[key][1].label !== null)
+    )
+  }
+
+  checkOutputs() {
+    const { inputs } = this.state
+    return Object.keys(inputs).every(key =>
+      !inputs[key][1].input ||
+      (!!inputs[key][1].input && inputs[key][1].output !== null)
+    )
   }
 
   render() {
     const { inputs } = this.state
-    const { classes, scenario } = this.props
+    const { classes, scenario, onSubmit } = this.props
 
     const testBtnDisabled = !this.checkInputs()
-    const submitBtnDisabled = true
+    const submitBtnDisabled = !this.checkOutputs()
 
     return (
       <React.Fragment>
@@ -180,7 +181,7 @@ class Creation extends React.Component {
                   {<Submit type='submit' text='Test what I got!' disabled={testBtnDisabled} />}
                 </Grid>
                 <Grid item xs={6} align="center">
-                  {<Submit type='button' text='Inputs confirmed. Submit' disabled={submitBtnDisabled} />}
+                  {<Submit type='button' text='Inputs confirmed. Submit' disabled={submitBtnDisabled} onClick={onSubmit}/>}
                 </Grid>
               </Grid>
             </Grid>

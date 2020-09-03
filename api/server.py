@@ -210,7 +210,6 @@ def classify():
 
     bonus_rate = 1
     bonus_payment = round(bonus_rate * num_fool_model, 2)
-    data['bonus_payment'] = bonus_payment   # maybe use for inspiration
 
     return jsonify(data)
 
@@ -224,8 +223,14 @@ def submit():
     for key in ['s1', 's2', 's3']:
         for idx in ['1', '2', '3']:
             data = mongo.db.trials.find_one({
-                {'hit_id': hit_id, 'worker_id': worker_id, 'key': key, 'key_idx': idx}
+                'hit_id': hit_id,
+                'worker_id': worker_id,
+                'key': key,
+                'key_idx': idx,
             }, sort=[('ts', -1)])
+
+            if not data:
+                return jsonify({'status': 'not ok'})
 
             mongo.db.trials.update_one(
                 {"_id": ObjectId(data[0].inserted_id)},
