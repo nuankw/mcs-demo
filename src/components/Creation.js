@@ -112,17 +112,9 @@ class Creation extends React.Component {
   submit(event) {
     event.preventDefault()
     const { inputs } = this.state
-
     this.setState({loading: true}, () => {
       this.postData(inputs).then(data => {
-        this.setState({
-          dataID: data['id'],
-          inputs: {
-            s1: {...inputs.s1, output: data['s1']['output'], scores: data['s1']['scores']},
-            s2: {...inputs.s2, output: data['s2']['output'], scores: data['s2']['scores']},
-            s3: {...inputs.s3, output: data['s3']['output'], scores: data['s3']['scores']},
-          },
-        })
+        this.setState({inputs: {...data}})
       })
     })
   }
