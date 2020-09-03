@@ -70,18 +70,18 @@ class Creation extends React.Component {
     this.state = {
       inputs: {
         s1: {
-          1: { input: 'default text 1.1', output: null, label: null },
-          2: { input: 'default text 1.2', output: null, label: null },
+          1: { input: '', output: null, label: null },
+          2: { input: '', output: null, label: null },
           3: { input: '', output: null, label: null },
         },
         s2: {
-          1: { input: 'default text 2.1', output: null, label: null },
-          2: { input: 'default text 2.2', output: null, label: null },
+          1: { input: '', output: null, label: null },
+          2: { input: '', output: null, label: null },
           3: { input: '', output: null, label: null },
         },
         s3: {
-          1: { input: 'default text 3.1', output: null, label: null },
-          2: { input: 'default text 3.2', output: null, label: null },
+          1: { input: '', output: null, label: null },
+          2: { input: '', output: null, label: null },
           3: { input: '', output: null, label: null },
         },
       },

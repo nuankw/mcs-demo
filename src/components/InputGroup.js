@@ -86,7 +86,7 @@ class InputGroup extends React.Component {
           <Grid item xs={10} className={classes.inputWrapper}>
             {inputs[1].output != null && <Output statement={inputs[1].output} />}
             <Input
-              label={`input ${index}.1`}
+              label={'Please provide the first sentence of your input pair:'}
               text={inputs[1].input}
               autoFocus={false}
               disabled={false}
@@ -111,7 +111,7 @@ class InputGroup extends React.Component {
           <Grid item xs={10} className={classes.inputWrapper}>
             {inputs[2].output != null && <Output statement={inputs[2].output} />}
             <Input
-              label={`input ${index}.2`}
+              label={'and the other sentence of the pair:'}
               text={inputs[2].input}
               disabled={false}
               updateText={(text) => this.handleUpdate(2, text)} />
@@ -134,7 +134,7 @@ class InputGroup extends React.Component {
           <Grid item xs={12}>
             {inputs[3].output != null && <Output statement={inputs[3].output} />}
             <Input
-              label='optional input'
+              label='(optional, please leave it blank if no input) the common sense knowledge piece you used to create the above sentence pair:'
               text={inputs[3].input}
               disabled={false}
               updateText={(text) => this.handleUpdate(3, text)} />
