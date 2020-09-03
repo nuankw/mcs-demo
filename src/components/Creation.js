@@ -37,11 +37,6 @@ const styles = theme => ({
     width: '100%', // Fix IE 11 issue.
     marginTop: theme.spacing(3),
   },
-  button: {
-    color: 'white',
-    borderColor: 'whitesmoke',
-    marginTop: theme.spacing(3),
-  },
   underlined: {
     textDecoration: 'underline',
   },
@@ -180,12 +175,12 @@ class Creation extends React.Component {
                 </InputGroup>
               </div>
 
-              <Grid container spacing={5}>
-                <Grid item xs={6} align="left">
-                  {<Submit type='submit' text='Test All' disabled={testBtnDisabled} />}
+              <Grid container>
+                <Grid item xs={6} align="center">
+                  {<Submit type='submit' text='Test what I got!' disabled={testBtnDisabled} />}
                 </Grid>
-                <Grid item xs={6} align="right">
-                  {<Submit type='button' text='Submit' disabled={submitBtnDisabled} />}
+                <Grid item xs={6} align="center">
+                  {<Submit type='button' text='Inputs confirmed. Submit' disabled={submitBtnDisabled} />}
                 </Grid>
               </Grid>
             </Grid>
