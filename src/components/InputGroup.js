@@ -70,10 +70,10 @@ class InputGroup extends React.Component {
     const inputs = {...this.props.inputs}
     inputs[id] = {...inputs[id], ...{'label': label}}
     if ( id === 1 ) {
-      inputs[2] = {...inputs[id], ...{'label': !label}}
+      inputs[2] = {...inputs[2], ...{'label': !label}}
     }
     if ( id === 2 ) {
-      inputs[1] = {...inputs[id], ...{'label': !label}}
+      inputs[1] = {...inputs[1], ...{'label': !label}}
     }
     this.props.onChange(inputs)
   }

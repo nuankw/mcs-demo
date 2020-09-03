@@ -135,6 +135,12 @@ def get_system_output(system, all_statements):
 
 @app.route('/classify', methods=['POST'])
 def classify():
+
+    worker_id = session.get('worker_id')
+    scenario = session.get('scenario')
+    hit_id = session.get('hit_id')
+    uid = session.get('uid')
+
     inputs = []     # [{s1_1: "statement 1"}, {s1_2: "statement 2"}...]
 
     # initialize response data format
@@ -201,10 +207,11 @@ def classify():
                     'key_idx': idx,
                     'optional': data[key]['3']['input'],
                     'ts': ts,
-                    'hit_id': session.get('hit_id', ''),
-                    'worker_id': session.get('worker_id', ''),
-                    'scenario': session.get('scenario', ''),
-                    'need_validate': False
+                    'session': uid,
+                    'hit_id': hit_id,
+                    'scenario': scenario,
+                    'worker_id': worker_id,
+                    'need_validate': False,
                 })
                 # data[key][idx]["id"] = str(new_entry.inserted_id)
 
@@ -223,24 +230,24 @@ def submit():
     for key in ['s1', 's2', 's3']:
         for idx in ['1', '2', '3']:
             data = mongo.db.trials.find_one({
-                'hit_id': hit_id,
                 'worker_id': worker_id,
+                'hit_id': hit_id,
                 'key': key,
                 'key_idx': idx,
-            }, sort=[('ts', -1)])
+            }, sort=[('ts', DESCENDING)])
 
             if not data:
-                return jsonify({'status': 'not ok'})
-
-            mongo.db.trials.update_one(
-                {"_id": ObjectId(data[0].inserted_id)},
-                {'$set': {
-                    'session': uid,
-                    'need_validate': True,
-                    'validation': [],
-                    'num_val': 0
-                }}
-            )
+                if idx in ['1', '2']:
+                    return jsonify({'status': 'not ok'})
+            else:
+                mongo.db.trials.update_one(
+                    {"_id": data['_id']},
+                    {'$set': {
+                        'need_validate': True,
+                        'validation': [],
+                        'num_val': 0,
+                    }}
+                )
 
     # where to do duplicate detection
     code = str(uuid.uuid4())

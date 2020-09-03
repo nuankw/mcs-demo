@@ -60,8 +60,25 @@ class App extends React.Component {
     this.setState({mode})
   }
 
+  submit() {
+    return new Promise((resolve, reject) => {
+      fetch('/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({}),
+      })
+      .then(response => response.json())
+      .then(data => resolve(data))
+      .catch(error => reject(error))
+    })
+  }
+
   handleOnSubmit() {
-    console.log('on submit')
+    this.submit().then(data => {
+      this.setState({openSurvey: true, ...data})
+    })
   }
 
   render() {
