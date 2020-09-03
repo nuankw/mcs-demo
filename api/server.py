@@ -234,7 +234,7 @@ def submit():
                 'hit_id': hit_id,
                 'key': key,
                 'key_idx': idx,
-            }, sort=[('ts', -1)])
+            }, sort=[('ts', DESCENDING)])
 
             if not data:
                 return jsonify({'status': 'not ok'})
