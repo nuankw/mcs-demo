@@ -161,9 +161,9 @@ def classify():
             label = value["label"]
             text = value['input']
 
-            # Don't bother with empty inputs
+            # Skip empty inputs
             if not text and index != '3':
-                return jsonify({'status': 'not ok'})
+                continue
 
             if index != '3':
                 inputs.append({"_".join([key, index]): text})
@@ -179,6 +179,11 @@ def classify():
 
         for key, all_outputs in system_output.items():
             for idx, value in all_outputs.items():
+
+                # Skip empty input/output
+                if not value:
+                    continue
+
                 # data[key][idx]["scores"][model_name] = {**value}
                 data[key][idx]["output"] = (system_output[key][idx]["vote"] == 1)
                 if data[key][idx]["label"] != data[key][idx]["output"]:
