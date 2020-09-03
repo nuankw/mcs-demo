@@ -137,7 +137,7 @@ class Creation extends React.Component {
 
   render() {
     const { inputs } = this.state
-    const { classes, scenario } = this.props
+    const { classes, scenario, onSubmit } = this.props
 
     const testBtnDisabled = !this.checkInputs()
     const submitBtnDisabled = !this.checkOutputs()
@@ -186,7 +186,7 @@ class Creation extends React.Component {
                   {<Submit type='submit' text='Test All' disabled={testBtnDisabled} />}
                 </Grid>
                 <Grid item xs={6} align="right">
-                  {<Submit type='button' text='Submit' disabled={submitBtnDisabled} />}
+                  {<Submit type='button' text='Submit' disabled={submitBtnDisabled} onClick={onSubmit} />}
                 </Grid>
               </Grid>
             </Grid>

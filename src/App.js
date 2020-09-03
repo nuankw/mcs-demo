@@ -59,6 +59,10 @@ class App extends React.Component {
     this.setState({mode})
   }
 
+  handleOnSubmit() {
+    console.log('on submit')
+  }
+
   render() {
     const {
       code,
@@ -79,7 +83,9 @@ class App extends React.Component {
           {mode === 'validation' ? (
             <Validation onSwitch={this.handleOnSwitch.bind(this)} />
           ) : (
-            <Creation scenario={SCENARIOS[scenario]} />
+            <Creation
+              scenario={SCENARIOS[scenario]}
+              onSubmit={this.handleOnSubmit.bind(this)} />
           )}
 
         </Container>
