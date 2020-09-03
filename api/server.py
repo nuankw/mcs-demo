@@ -237,16 +237,17 @@ def submit():
             }, sort=[('ts', DESCENDING)])
 
             if not data:
-                return jsonify({'status': 'not ok'})
-
-            mongo.db.trials.update_one(
-                {"_id": data['_id']},
-                {'$set': {
-                    'need_validate': True,
-                    'validation': [],
-                    'num_val': 0,
-                }}
-            )
+                if idx in ['1', '2']:
+                    return jsonify({'status': 'not ok'})
+            else:
+                mongo.db.trials.update_one(
+                    {"_id": data['_id']},
+                    {'$set': {
+                        'need_validate': True,
+                        'validation': [],
+                        'num_val': 0,
+                    }}
+                )
 
     # where to do duplicate detection
     code = str(uuid.uuid4())
