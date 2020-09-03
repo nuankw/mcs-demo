@@ -123,7 +123,16 @@ class Creation extends React.Component {
     const { inputs } = this.state
     return Object.keys(inputs).every(key =>
       (!inputs[key][1].input && !inputs[key][2].input) ||
-      (!!inputs[key][1].input && !!inputs[key][2].input && inputs[key][1].label !== null))
+      (!!inputs[key][1].input && !!inputs[key][2].input && inputs[key][1].label !== null)
+    )
+  }
+
+  checkOutputs() {
+    const { inputs } = this.state
+    return Object.keys(inputs).every(key =>
+      !inputs[key][1].input ||
+      (!!inputs[key][1].input && inputs[key][1].output !== null)
+    )
   }
 
   render() {
@@ -131,7 +140,7 @@ class Creation extends React.Component {
     const { classes, scenario } = this.props
 
     const testBtnDisabled = !this.checkInputs()
-    const submitBtnDisabled = true
+    const submitBtnDisabled = !this.checkOutputs()
 
     return (
       <React.Fragment>
