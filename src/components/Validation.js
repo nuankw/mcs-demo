@@ -246,7 +246,7 @@ class Validation extends React.Component {
             variant="h3"
             className={classes.header}>
             <span className={classes.title}>Part 1: Validation </span>
-            <p className={classes.note}>NOTE: Please take 5 minutes to read this instruction carefully.
+            <p className={classes.note}>Please read the guidelines provided below.
                 We will have another user to examine your inputs and will reject your HITs
                 if you fail to provide inputs that are compliant with the instruction.</p>
           </Typography>

@@ -9,6 +9,7 @@ import { withStyles } from '@material-ui/core/styles'
 
 import DomainInstructions from './DomainInstructions'
 import ScenarioInstructions from './ScenarioInstructions'
+import { Grid } from '@material-ui/core'
 
 
 const styles = theme => ({
@@ -31,6 +32,9 @@ const styles = theme => ({
       background: 'rgba(45, 184, 188, 0.6)',
       color: 'black',
     },
+    instructions: {
+      display: 'flex',
+    }
   }
 })
 
@@ -63,10 +67,60 @@ class Instructions extends React.Component {
             id="instructions">
             <Typography className={classes.heading}>Instruction</Typography>
           </AccordionSummary>
+
           <AccordionDetails>
-              <DomainInstructions />
-              <ScenarioInstructions />
+            <Grid container
+              style={{'fontSize': '18px'}}>
+                <Grid item xs={12}>
+                  <div className={classes.instructions}>
+                    <p>In this HIT, you will be required to answer a few multiple
+                        choice questions for a given sentence
+                        (similar to the Qualification Quiz HIT).</p>
+                    <p>You will be paid Cost_per_Assign to complete one assignment,
+                      and validate Samples_per_Assign sentences.</p>
+                    <p>In summary, we have 4 (or 5) types of questions, described as follows:</p>
+
+                    <ol>
+                      <li>
+                        To assess whether the given sentence relies on everyday, common sense understanding OR factual, specialized knowledge.
+                        Commonsense: Knowledge of common, everyday concepts and activities that people learn just from experience.
+                        Specialized: Knowledge of subjects such as physics, biology, engineering, etc. as well as News events (current & historical).
+
+                      </li>
+
+                      <li>
+                        Simply check if the given statement is True or False.
+                      </li>
+
+                      <li>
+                        placeholder
+                      </li>
+
+                      <li>
+                        placeholder
+                      </li>
+
+                      <li>
+                        placeholder
+                      </li>
+
+                    </ol>
+
+                  </div>
+              </Grid>
+
+              <Grid item xs={6}>
+                <DomainInstructions />
+              </Grid>
+
+              <Grid item xs={6}>
+                <ScenarioInstructions />
+              </Grid>
+            </Grid>
+
           </AccordionDetails>
+
+
           <Button
             className={classes.got_it}
             variant="contained"
