@@ -83,7 +83,7 @@ const styles = theme => ({
 })
 
 
-const REQUIRED_NUM_EVALUATIONS = 3
+const REQUIRED_NUM_EVALUATIONS = 6
 
 
 const EVAL_QUESTIONS = {

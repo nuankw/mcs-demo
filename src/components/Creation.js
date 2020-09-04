@@ -181,7 +181,7 @@ class Creation extends React.Component {
                   {<Submit type='submit' text='Test what I got!' disabled={testBtnDisabled} />}
                 </Grid>
                 <Grid item xs={6} align="center">
-                  {<Submit type='button' text='Inputs confirmed. Submit' disabled={submitBtnDisabled} onClick={onSubmit}/>}
+                  {<Submit type='button' text='Inputs confirmed, submit!' disabled={submitBtnDisabled} onClick={onSubmit}/>}
                 </Grid>
               </Grid>
             </Grid>
