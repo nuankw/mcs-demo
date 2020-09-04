@@ -11,7 +11,7 @@
 </style>
 
 <!-- You must include crowd-form so that your task submits answers to MTurk -->
-<crowd-form answer-format="flatten-objects">
+<crowd-form>
 
   <!-- The Head -->
   <div>
@@ -85,26 +85,26 @@
 
               <li>Infrared light has a longer wavelength than ultraviolet light.</li>
               <crowd-radio-group>
-                  <crowd-radio-button name="isCommon-1" value=""><b>common sense</b></crowd-radio-button>
-                  <crowd-radio-button name="isSpecialized-1" value=""><b>specialized</b></crowd-radio-button>
+                  <crowd-radio-button name="quiz1-q1-c1" value="isCommon"><b>common sense</b></crowd-radio-button>
+                  <crowd-radio-button name="quiz1-q1-c2" value="isSpecialized"><b>specialized</b></crowd-radio-button>
               </crowd-radio-group>
 
               <li>People who lose weight, tend to diet and exercise.</li>
               <crowd-radio-group>
-                <crowd-radio-button name="isCommon-2" value=""><b>common sense</b></crowd-radio-button>
-                <crowd-radio-button name="isSpecialized-2" value=""><b>specialized</b></crowd-radio-button>
+                <crowd-radio-button name="quiz1-q2-c1" value="isCommon"><b>common sense</b></crowd-radio-button>
+                <crowd-radio-button name="quiz1-q2-c2" value="isSpecialized"><b>specialized</b></crowd-radio-button>
               </crowd-radio-group>
 
               <li>If there’s a doctor’s appointment at 3pm, one should reach the clinic minutes before it.</li>
               <crowd-radio-group>
-                <crowd-radio-button name="isCommon-3" value=""><b>common sense</b></crowd-radio-button>
-                <crowd-radio-button name="isSpecialized-3" value=""><b>specialized</b></crowd-radio-button>
+                <crowd-radio-button name="quiz1-q3-c1" value="isCommon"><b>common sense</b></crowd-radio-button>
+                <crowd-radio-button name="quiz1-q3-c2" value="isSpecialized"><b>specialized</b></crowd-radio-button>
               </crowd-radio-group>
 
               <li>The sharp recession and spending increases approved recently, has exacerbated the deficit issue.</li>
               <crowd-radio-group>
-                <crowd-radio-button name="isCommon-4" value=""><b>common sense</b></crowd-radio-button>
-                <crowd-radio-button name="isSpecialized-4" value=""><b>specialized</b></crowd-radio-button>
+                <crowd-radio-button name="quiz1-q4-c1" value="isCommon"><b>common sense</b></crowd-radio-button>
+                <crowd-radio-button name="quiz1-q4-c2" value="isSpecialized"><b>specialized</b></crowd-radio-button>
               </crowd-radio-group>
 
             </ol>
@@ -135,26 +135,26 @@
 
               <li>Helmets compared to seat belts, offer better protection in four-wheelers.</li>
               <crowd-radio-group>
-                  <crowd-radio-button name="true-1" value=""><b>True</b></crowd-radio-button>
-                  <crowd-radio-button name="false-1" value=""><b>False</b></crowd-radio-button>
+                  <crowd-radio-button name="quiz2-q1-c1" value="true"><b>True</b></crowd-radio-button>
+                  <crowd-radio-button name="quiz2-q1-c2" value="false"><b>False</b></crowd-radio-button>
               </crowd-radio-group>
 
               <li>Owners of luxurious cars also tend to travel business class, because they are rich.</li>
               <crowd-radio-group>
-                <crowd-radio-button name="true-2" value=""><b>True</b></crowd-radio-button>
-                <crowd-radio-button name="false-2" value=""><b>False</b></crowd-radio-button>
+                <crowd-radio-button name="quiz2-q2-c1" value="true"><b>True</b></crowd-radio-button>
+                <crowd-radio-button name="quiz2-q2-c2" value="false"><b>False</b></crowd-radio-button>
               </crowd-radio-group>
 
               <li>If one needs to change the bulb at the ceiling, it’s better to climb using a rope instead of a ladder.</li>
               <crowd-radio-group>
-                <crowd-radio-button name="true-3" value=""><b>True</b></crowd-radio-button>
-                <crowd-radio-button name="false-3" value=""><b>False</b></crowd-radio-button>
+                <crowd-radio-button name="quiz2-q3-c1" value="true"><b>True</b></crowd-radio-button>
+                <crowd-radio-button name="quiz2-q3-c2" value="false"><b>False</b></crowd-radio-button>
               </crowd-radio-group>
 
               <li>If your delivery arrived very late, then the food is unlikely to be warm.</li>
               <crowd-radio-group>
-                <crowd-radio-button name="true-4" value=""><b>True</b></crowd-radio-button>
-                <crowd-radio-button name="false-4" value=""><b>False</b></crowd-radio-button>
+                <crowd-radio-button name="quiz2-q4-c1" value="true"><b>True</b></crowd-radio-button>
+                <crowd-radio-button name="quiz2-q4-c2" value="false"><b>False</b></crowd-radio-button>
               </crowd-radio-group>
 
             </ol>
@@ -259,18 +259,18 @@
                 <div style="padding-left: 1.5em;">
                   <p style="display:inline">scenario:</p>
                   <crowd-radio-group>
-                      <crowd-radio-button class="multi-line" name="cause_effect-1" value=""><b>Cause & Effect</b></crowd-radio-button>
-                      <crowd-radio-button class="multi-line" name="comparison-1" value=""><b>Comparison</b></crowd-radio-button>
-                      <crowd-radio-button class="multi-line" name="numeracy-1" value=""><b>Numeracy</b></crowd-radio-button>
+                      <crowd-radio-button class="multi-line" name="quiz3-q1-c1" value="cause_effect"><b>Cause & Effect</b></crowd-radio-button>
+                      <crowd-radio-button class="multi-line" name="quiz3-q1-c2" value="comparison"><b>Comparison</b></crowd-radio-button>
+                      <crowd-radio-button class="multi-line" name="quiz3-q1-c3" value="numeracy"><b>Numeracy</b></crowd-radio-button>
                   </crowd-radio-group>
                 </div>
 
                 <div style="padding-left: 1.5em;">
                   <p style="display:inline">domain:</p>
                   <crowd-radio-group>
-                      <crowd-radio-button class="multi-line" name="social-1" value=""><b>Social</b></crowd-radio-button>
-                      <crowd-radio-button class="multi-line" name="physical-1" value=""><b>Physical</b></crowd-radio-button>
-                      <crowd-radio-button class="multi-line" name="time-1" value=""><b>Time</b></crowd-radio-button>
+                      <crowd-radio-button class="multi-line" name="quiz3-q1-c4" value="social"><b>Social</b></crowd-radio-button>
+                      <crowd-radio-button class="multi-line" name="quiz3-q1-c5" value="physical"><b>Physical</b></crowd-radio-button>
+                      <crowd-radio-button class="multi-line" name="quiz3-q1-c6" value="time"><b>Time</b></crowd-radio-button>
                   </crowd-radio-group>
                 </div>
               </div>
@@ -282,18 +282,18 @@
                 <div style="padding-left: 1.5em;">
                   <p style="display:inline">scenario:</p>
                   <crowd-radio-group>
-                      <crowd-radio-button class="multi-line" name="cause_effect-2" value=""><b>Cause & Effect</b></crowd-radio-button>
-                      <crowd-radio-button class="multi-line" name="comparison-2" value=""><b>Comparison</b></crowd-radio-button>
-                      <crowd-radio-button class="multi-line" name="numeracy-2" value=""><b>Numeracy</b></crowd-radio-button>
+                      <crowd-radio-button class="multi-line" name="quiz3-q2-c1" value="cause_effect"><b>Cause & Effect</b></crowd-radio-button>
+                      <crowd-radio-button class="multi-line" name="quiz3-q2-c2" value="comparison"><b>Comparison</b></crowd-radio-button>
+                      <crowd-radio-button class="multi-line" name="quiz3-q2-c3" value="numeracy"><b>Numeracy</b></crowd-radio-button>
                   </crowd-radio-group>
                 </div>
 
                 <div style="padding-left: 1.5em;">
                   <p style="display:inline">domain:</p>
                   <crowd-radio-group>
-                      <crowd-radio-button class="multi-line" name="social-2" value=""><b>Social</b></crowd-radio-button>
-                      <crowd-radio-button class="multi-line" name="physical-2" value=""><b>Physical</b></crowd-radio-button>
-                      <crowd-radio-button class="multi-line" name="time-2" value=""><b>Time</b></crowd-radio-button>
+                      <crowd-radio-button class="multi-line" name="quiz3-q2-c4" value="social"><b>Social</b></crowd-radio-button>
+                      <crowd-radio-button class="multi-line" name="quiz3-q2-c5" value="physical"><b>Physical</b></crowd-radio-button>
+                      <crowd-radio-button class="multi-line" name="quiz3-q2-c6" value="time"><b>Time</b></crowd-radio-button>
                   </crowd-radio-group>
                 </div>
               </div>
@@ -305,18 +305,18 @@
                 <div style="padding-left: 1.5em;">
                   <p style="display:inline">scenario:</p>
                   <crowd-radio-group>
-                      <crowd-radio-button class="multi-line" name="cause_effect-3" value=""><b>Cause & Effect</b></crowd-radio-button>
-                      <crowd-radio-button class="multi-line" name="comparison-3" value=""><b>Comparison</b></crowd-radio-button>
-                      <crowd-radio-button class="multi-line" name="numeracy-3" value=""><b>Numeracy</b></crowd-radio-button>
+                      <crowd-radio-button class="multi-line" name="quiz3-q3-c1" value="cause_effect"><b>Cause & Effect</b></crowd-radio-button>
+                      <crowd-radio-button class="multi-line" name="quiz3-q3-c2" value="comparison"><b>Comparison</b></crowd-radio-button>
+                      <crowd-radio-button class="multi-line" name="quiz3-q3-c3" value="numeracy"><b>Numeracy</b></crowd-radio-button>
                   </crowd-radio-group>
                 </div>
 
                 <div style="padding-left: 1.5em;">
                   <p style="display:inline">domain:</p>
                   <crowd-radio-group>
-                      <crowd-radio-button class="multi-line" name="social-3" value=""><b>Social</b></crowd-radio-button>
-                      <crowd-radio-button class="multi-line" name="physical-3" value=""><b>Physical</b></crowd-radio-button>
-                      <crowd-radio-button class="multi-line" name="time-3" value=""><b>Time</b></crowd-radio-button>
+                      <crowd-radio-button class="multi-line" name="quiz3-q3-c4" value="social"><b>Social</b></crowd-radio-button>
+                      <crowd-radio-button class="multi-line" name="quiz3-q3-c5" value="physical"><b>Physical</b></crowd-radio-button>
+                      <crowd-radio-button class="multi-line" name="quiz3-q3-c6" value="time"><b>Time</b></crowd-radio-button>
                   </crowd-radio-group>
                 </div>
               </div>
@@ -328,18 +328,18 @@
                 <div style="padding-left: 1.5em;">
                   <p style="display:inline">scenario:</p>
                   <crowd-radio-group>
-                      <crowd-radio-button class="multi-line" name="cause_effect-4" value=""><b>Cause & Effect</b></crowd-radio-button>
-                      <crowd-radio-button class="multi-line" name="comparison-4" value=""><b>Comparison</b></crowd-radio-button>
-                      <crowd-radio-button class="multi-line" name="numeracy-4" value=""><b>Numeracy</b></crowd-radio-button>
+                      <crowd-radio-button class="multi-line" name="quiz3-q4-c1" value="cause_effect"><b>Cause & Effect</b></crowd-radio-button>
+                      <crowd-radio-button class="multi-line" name="quiz3-q4-c2" value="comparison"><b>Comparison</b></crowd-radio-button>
+                      <crowd-radio-button class="multi-line" name="quiz3-q4-c3" value="numeracy"><b>Numeracy</b></crowd-radio-button>
                   </crowd-radio-group>
                 </div>
 
                 <div style="padding-left: 1.5em;">
                   <p style="display:inline">domain:</p>
                   <crowd-radio-group>
-                      <crowd-radio-button class="multi-line" name="social-4" value=""><b>Social</b></crowd-radio-button>
-                      <crowd-radio-button class="multi-line" name="physical-4" value=""><b>Physical</b></crowd-radio-button>
-                      <crowd-radio-button class="multi-line" name="time-4" value=""><b>Time</b></crowd-radio-button>
+                      <crowd-radio-button class="multi-line" name="quiz3-q4-c4" value="social"><b>Social</b></crowd-radio-button>
+                      <crowd-radio-button class="multi-line" name="quiz3-q4-c5" value="physical"><b>Physical</b></crowd-radio-button>
+                      <crowd-radio-button class="multi-line" name="quiz3-q4-c6" value="time"><b>Time</b></crowd-radio-button>
                   </crowd-radio-group>
                 </div>
               </div>
@@ -351,18 +351,18 @@
                 <div style="padding-left: 1.5em;">
                   <p style="display:inline">scenario:</p>
                   <crowd-radio-group>
-                      <crowd-radio-button class="multi-line" name="cause_effect-5" value=""><b>Cause & Effect</b></crowd-radio-button>
-                      <crowd-radio-button class="multi-line" name="comparison-5" value=""><b>Comparison</b></crowd-radio-button>
-                      <crowd-radio-button class="multi-line" name="numeracy-5" value=""><b>Numeracy</b></crowd-radio-button>
+                      <crowd-radio-button class="multi-line" name="quiz3-q5-c1" value="cause_effect"><b>Cause & Effect</b></crowd-radio-button>
+                      <crowd-radio-button class="multi-line" name="quiz3-q5-c2" value="comparison"><b>Comparison</b></crowd-radio-button>
+                      <crowd-radio-button class="multi-line" name="quiz3-q5-c3" value="numeracy"><b>Numeracy</b></crowd-radio-button>
                   </crowd-radio-group>
                 </div>
 
                 <div style="padding-left: 1.5em;">
                   <p style="display:inline">domain:</p>
                   <crowd-radio-group>
-                      <crowd-radio-button class="multi-line" name="social-5" value=""><b>Social</b></crowd-radio-button>
-                      <crowd-radio-button class="multi-line" name="physical-5" value=""><b>Physical</b></crowd-radio-button>
-                      <crowd-radio-button class="multi-line" name="time-5" value=""><b>Time</b></crowd-radio-button>
+                      <crowd-radio-button class="multi-line" name="quiz3-q5-c4" value="social"><b>Social</b></crowd-radio-button>
+                      <crowd-radio-button class="multi-line" name="quiz3-q5-c5" value="physical"><b>Physical</b></crowd-radio-button>
+                      <crowd-radio-button class="multi-line" name="quiz3-q5-c6" value="time"><b>Time</b></crowd-radio-button>
                   </crowd-radio-group>
                 </div>
               </div>
@@ -374,18 +374,18 @@
                 <div style="padding-left: 1.5em;">
                   <p style="display:inline">scenario:</p>
                   <crowd-radio-group>
-                      <crowd-radio-button class="multi-line" name="cause_effect-6" value=""><b>Cause & Effect</b></crowd-radio-button>
-                      <crowd-radio-button class="multi-line" name="comparison-6" value=""><b>Comparison</b></crowd-radio-button>
-                      <crowd-radio-button class="multi-line" name="numeracy-6" value=""><b>Numeracy</b></crowd-radio-button>
+                      <crowd-radio-button class="multi-line" name="quiz3-q6-cq" value="cause_effect"><b>Cause & Effect</b></crowd-radio-button>
+                      <crowd-radio-button class="multi-line" name="quiz3-q6-c2" value="comparison"><b>Comparison</b></crowd-radio-button>
+                      <crowd-radio-button class="multi-line" name="quiz3-q6-c3" value="numeracy"><b>Numeracy</b></crowd-radio-button>
                   </crowd-radio-group>
                 </div>
 
                 <div style="padding-left: 1.5em;">
                   <p style="display:inline">domain:</p>
                   <crowd-radio-group>
-                      <crowd-radio-button class="multi-line" name="social-6" value=""><b>Social</b></crowd-radio-button>
-                      <crowd-radio-button class="multi-line" name="physical-6" value=""><b>Physical</b></crowd-radio-button>
-                      <crowd-radio-button class="multi-line" name="time-6" value=""><b>Time</b></crowd-radio-button>
+                      <crowd-radio-button class="multi-line" name="quiz3-q6-c4" value="social"><b>Social</b></crowd-radio-button>
+                      <crowd-radio-button class="multi-line" name="quiz3-q6-c5" value="physical"><b>Physical</b></crowd-radio-button>
+                      <crowd-radio-button class="multi-line" name="quiz3-q6-c6" value="time"><b>Time</b></crowd-radio-button>
                   </crowd-radio-group>
                 </div>
               </div>
@@ -397,18 +397,18 @@
                 <div style="padding-left: 1.5em;">
                   <p style="display:inline">scenario:</p>
                   <crowd-radio-group>
-                      <crowd-radio-button class="multi-line" name="cause_effect-7" value=""><b>Cause & Effect</b></crowd-radio-button>
-                      <crowd-radio-button class="multi-line" name="comparison-7" value=""><b>Comparison</b></crowd-radio-button>
-                      <crowd-radio-button class="multi-line" name="numeracy-7" value=""><b>Numeracy</b></crowd-radio-button>
+                      <crowd-radio-button class="multi-line" name="quiz3-q7-c1" value="cause_effect"><b>Cause & Effect</b></crowd-radio-button>
+                      <crowd-radio-button class="multi-line" name="quiz3-q7-c2" value="comparison"><b>Comparison</b></crowd-radio-button>
+                      <crowd-radio-button class="multi-line" name="quiz3-q7-c3" value="numeracy"><b>Numeracy</b></crowd-radio-button>
                   </crowd-radio-group>
                 </div>
 
                 <div style="padding-left: 1.5em;">
                   <p style="display:inline">domain:</p>
                   <crowd-radio-group>
-                      <crowd-radio-button class="multi-line" name="social-7" value=""><b>Social</b></crowd-radio-button>
-                      <crowd-radio-button class="multi-line" name="physical-7" value=""><b>Physical</b></crowd-radio-button>
-                      <crowd-radio-button class="multi-line" name="time-7" value=""><b>Time</b></crowd-radio-button>
+                      <crowd-radio-button class="multi-line" name="quiz3-q7-c4" value="social"><b>Social</b></crowd-radio-button>
+                      <crowd-radio-button class="multi-line" name="quiz3-q7-c5" value="physical"><b>Physical</b></crowd-radio-button>
+                      <crowd-radio-button class="multi-line" name="quiz3-q7-c6" value="time"><b>Time</b></crowd-radio-button>
                   </crowd-radio-group>
                 </div>
               </div>
@@ -420,18 +420,18 @@
                 <div style="padding-left: 1.5em;">
                   <p style="display:inline">scenario:</p>
                   <crowd-radio-group>
-                      <crowd-radio-button class="multi-line" name="cause_effect-8" value=""><b>Cause & Effect</b></crowd-radio-button>
-                      <crowd-radio-button class="multi-line" name="comparison-8" value=""><b>Comparison</b></crowd-radio-button>
-                      <crowd-radio-button class="multi-line" name="numeracy-8" value=""><b>Numeracy</b></crowd-radio-button>
+                      <crowd-radio-button class="multi-line" name="quiz3-q8-c1" value="cause_effect"><b>Cause & Effect</b></crowd-radio-button>
+                      <crowd-radio-button class="multi-line" name="quiz3-q8-c2" value="comparison"><b>Comparison</b></crowd-radio-button>
+                      <crowd-radio-button class="multi-line" name="quiz3-q8-c3" value="numeracy"><b>Numeracy</b></crowd-radio-button>
                   </crowd-radio-group>
                 </div>
 
                 <div style="padding-left: 1.5em;">
                   <p style="display:inline">domain:</p>
                   <crowd-radio-group>
-                      <crowd-radio-button class="multi-line" name="social-8" value=""><b>Social</b></crowd-radio-button>
-                      <crowd-radio-button class="multi-line" name="physical-8" value=""><b>Physical</b></crowd-radio-button>
-                      <crowd-radio-button class="multi-line" name="time-8" value=""><b>Time</b></crowd-radio-button>
+                      <crowd-radio-button class="multi-line" name="quiz3-q8-c4" value="social"><b>Social</b></crowd-radio-button>
+                      <crowd-radio-button class="multi-line" name="quiz3-q8-c5" value="physical"><b>Physical</b></crowd-radio-button>
+                      <crowd-radio-button class="multi-line" name="quiz3-q8-c6" value="time"><b>Time</b></crowd-radio-button>
                   </crowd-radio-group>
                 </div>
               </div>
