@@ -19,10 +19,21 @@ const styles = theme => ({
   accordion: {
     backgroundColor: "rgba(240, 240, 240, 0.3)",
     color: "#000000",
+    // '&$expanded': {
+        // margin: '0',
+    // },
   },
   heading: {
     fontSize: theme.typography.pxToRem(30),
     fontWeight: theme.typography.fontWeightRegular,
+  },
+  question: {
+    fontWeight: 'bold',
+  },
+  questionExplanation: {
+    padding: '0em 8em 0em 2em',
+    marginTop: theme.spacing(0.2),
+    marginBottom: theme.spacing(0.8),
   },
   got_it: {
     backgroundColor: 'transparent',
@@ -64,7 +75,8 @@ class Instructions extends React.Component {
             expandIcon={<ExpandMoreIcon />}
             onClick={this.toggle.bind(this)}
             aria-controls="panel1a-content"
-            id="instructions">
+            id="instructions"
+            style={{'margin': '0px'}}>
             <Typography className={classes.heading}>Instruction</Typography>
           </AccordionSummary>
 
