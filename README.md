@@ -2,7 +2,7 @@
 
 This demo presents an interactive system for common sense reasoning that takes a pair of common sense statements (one true and one false) and determines which one is correct.
 
-Visit http://mcs.isi.edu/ for a live preview of the demo!
+Visit http://<TBA>.isi.edu/ for a live preview of the demo!
 
 # Demo Instructions
 
