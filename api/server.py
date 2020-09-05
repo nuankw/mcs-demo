@@ -263,8 +263,8 @@ def survey():
     uid = session.get('uid')
 
     # Get survey values from the request body
-    enjoyment = request.json.get('enjoyment', None)
-    returning = request.json.get('returning', None)
+    commonsense = request.json.get('commonsense', None)
+    challenging = request.json.get('challenging', None)
 
     # store trial data in the mongo db
     updated = mongo.db.survey.update_one(   # new database collection
@@ -274,11 +274,11 @@ def survey():
             'session': uid,
             'hit_id': hit_id,
             'worker_id': worker_id,
-            'enjoyment': enjoyment,
-            'returning': returning,
+            'commonsense': commonsense,
+            'challenging': challenging,
         }}, upsert=True
     )
-    return jsonify({'enjoyment': enjoyment, 'returning': returning})
+    return jsonify({'commonsense': commonsense, 'challenging': challenging})
 
 
 @app.route('/get_eval', methods=['GET'])

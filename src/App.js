@@ -46,6 +46,7 @@ class App extends React.Component {
     this.state = {
       code: '',
       openSurvey: false,
+      // openSurvey: true,
       // mode: 'not validation',
       mode: 'validation',
       scenario: scenario,

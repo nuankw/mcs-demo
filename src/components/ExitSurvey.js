@@ -16,10 +16,10 @@ const styles = theme => ({
       padding: theme.spacing(5),
       width: '60vw',
       left: '20vw',
-      top: '10vh',
+      top: '20vh',
     },
     boxShadow: '0px 3px 5px -1px rgba(0,0,0,0.2), 0px 6px 10px 0px rgba(0,0,0,0.14), 0px 1px 18px 0px rgba(0,0,0,0.12)',
-    background: 'linear-gradient(150deg, #EC6A5A, #A662D6)',
+    background: 'rgb(34 60 95)',
     backgroundSize: '100% 150%',
     border: 0,
     borderRadius: 3,
@@ -69,8 +69,8 @@ class ExitSurvey extends React.Component {
     super(props)
 
     this.state = {
-      enjoyment: null,
-      returning: null,
+      commonsense: null,
+      challenging: null,
     }
   }
 
@@ -78,13 +78,13 @@ class ExitSurvey extends React.Component {
     let update = {}
     update[question] = value
     this.setState({...update}, () => {
-      const {enjoyment, returning} = this.state
+      const {commonsense, challenging} = this.state
       fetch('/survey', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({enjoyment, returning}),
+        body: JSON.stringify({commonsense, challenging}),
       })
       .then((response) => response.json())
       .then((data) => {
@@ -97,24 +97,20 @@ class ExitSurvey extends React.Component {
   }
 
   render() {
-    const { classes, open, code, onClose } = this.props
+    const { classes, open, code} = this.props
+    const { commonsense, challenging} = this.state
 
     return (
       <Modal
+        shouldCloseOnOverlayClick={false}
         aria-labelledby="simple-modal-title"
         aria-describedby="simple-modal-description"
-        open={open}
-        onClose={() => onClose()}>
+        open={open}>
         <Grid container spacing={5} className={classes.root}>
-          <Hidden smDown>
-            <CloseIcon
-              className={classes.closeIcon}
-              onClick={() => onClose()} />
-          </Hidden>
           <Grid item xs={12}>
             <div className={classes.content}>
               <Typography component="h5" variant="h5" className={classes.header}>
-                Thank you for participating! <br/>Use this code to complete your HIT:
+                Thank you for participating! <br/>Don't forget to copy this code to complete your HIT:
               </Typography>
               <Typography component="h5" variant="h5" className={classes.code}>
                 {code}
@@ -125,9 +121,9 @@ class ExitSurvey extends React.Component {
               <Typography component="h5" variant="h5" className={classes.header}>
                 Exit Survey
               </Typography>
-              <p>How much did you enjoy participating in this experiment?</p>
-              <p>(from 1 being not at all to 10 being very much)</p>
-              <RadioGroup name="q1" className={classes.radioGroup} onChange={(e, val) => this.handleAnswer('enjoyment', val)}>
+              <p>How good do you think our model is at commonsense reasoning based on the model prediction you see?</p>
+              <p>(from 1 being not good at all to 10 very good)</p>
+              <RadioGroup name="q1" className={classes.radioGroup} onChange={(e, val) => this.handleAnswer('commonsense', val)}>
                 <FormControlLabel value="1" control={<RadioButton />} label="1" />
                 <FormControlLabel value="2" control={<RadioButton />} label="2" />
                 <FormControlLabel value="3" control={<RadioButton />} label="3" />
@@ -140,9 +136,9 @@ class ExitSurvey extends React.Component {
                 <FormControlLabel value="10" control={<RadioButton />} label="10" />
               </RadioGroup>
               <br/>
-              <p>How likely are you to participate again in a similar experiment?</p>
-              <p>(from 1 being very unlikely to 10 being very likely)</p>
-              <RadioGroup name="q1" className={classes.radioGroup}  onChange={(e, val) => this.handleAnswer('returning', val)}>
+              <p>How challenging was it to fool the model?</p>
+              <p>(from 1 being not challenging at all to 10 being very challenging)</p>
+              <RadioGroup name="q1" className={classes.radioGroup}  onChange={(e, val) => this.handleAnswer('challenging', val)}>
                 <FormControlLabel value="1" control={<RadioButton />} label="1" />
                 <FormControlLabel value="2" control={<RadioButton />} label="2" />
                 <FormControlLabel value="3" control={<RadioButton />} label="3" />
@@ -155,16 +151,17 @@ class ExitSurvey extends React.Component {
                 <FormControlLabel value="10" control={<RadioButton />} label="10" />
               </RadioGroup>
               <br/>
+              {(challenging !== null) && (commonsense !== null) && <p>Thanks! You may close this entire page and return back to the MTurk page now.</p> }
             </div>
           </Grid>
-          <Grid item xs={12} align="left">
+          {/* <Grid item xs={12} align="left">
             <Button
               variant="outlined"
               className={classes.button}
               onClick={() => onClose()}>
               Close
             </Button>
-          </Grid>
+          </Grid> */}
         </Grid>
       </Modal>
     )
