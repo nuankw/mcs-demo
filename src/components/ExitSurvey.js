@@ -88,11 +88,7 @@ class ExitSurvey extends React.Component {
     const { commonsense, challenging} = this.state
 
     return (
-      <Modal
-        shouldCloseOnOverlayClick={false}
-        aria-labelledby="simple-modal-title"
-        aria-describedby="simple-modal-description"
-        open={open}>
+      <Modal open={open}>
         <Grid container spacing={5} className={classes.root}>
           <Grid item xs={12}>
             <div className={classes.content}>
