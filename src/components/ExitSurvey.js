@@ -1,9 +1,8 @@
 import React from 'react'
-import { Grid, Modal, Typography, Hidden, Button } from '@material-ui/core/'
+import { Grid, Modal, Typography } from '@material-ui/core/'
 import FormControlLabel from '@material-ui/core/FormControlLabel'
 import RadioGroup from '@material-ui/core/RadioGroup'
 import RadioButton from './RadioButton'
-import CloseIcon from '@material-ui/icons/Close'
 import { withStyles } from '@material-ui/core/styles'
 
 
@@ -47,18 +46,6 @@ const styles = theme => ({
   radioGroup: {
     color: 'white',
     display: 'inline',
-  },
-  closeIcon: {
-    color: '#fefefe',
-    cursor: 'pointer',
-    fontSize: theme.spacing(6),
-    position: 'absolute',
-    top: theme.spacing(2),
-    right: theme.spacing(2),
-  },
-  button: {
-    color: 'white',
-    borderColor: 'whitesmoke',
   },
 })
 
@@ -154,14 +141,6 @@ class ExitSurvey extends React.Component {
               {(challenging !== null) && (commonsense !== null) && <p>Thanks! You may close this entire page and return back to the MTurk page now.</p> }
             </div>
           </Grid>
-          {/* <Grid item xs={12} align="left">
-            <Button
-              variant="outlined"
-              className={classes.button}
-              onClick={() => onClose()}>
-              Close
-            </Button>
-          </Grid> */}
         </Grid>
       </Modal>
     )
