@@ -66,8 +66,9 @@ const styles = theme => ({
     color: "black",
   },
   note: {
-    fontSize: theme.spacing(3),
-    color: "black",
+    fontSize: theme.spacing(2.8),
+    color: "#8b341d",
+    fontWeight: "bold",
   },
   progress: {
     fontSize: theme.spacing(4),
