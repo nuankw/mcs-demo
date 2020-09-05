@@ -110,7 +110,7 @@ class Creation extends React.Component {
     const { inputs } = this.state
     this.setState({loading: true}, () => {
       this.postData(inputs).then(data => {
-        this.setState({inputs: {...data}})
+        this.setState({loading: false, inputs: {...data}})
       })
     })
   }
