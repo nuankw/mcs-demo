@@ -252,7 +252,10 @@ class Validation extends React.Component {
                 if you fail to provide inputs that are compliant with the instruction.</p>
           </Typography>
 
-          <Instructions/>
+          <Instructions
+            cost_per_assignment='<$TBD>'
+            samples_per_assignment='<TBD>'
+            number_questions='<TBD: 4/5>'/>
 
           <Typography
             component="h3"
