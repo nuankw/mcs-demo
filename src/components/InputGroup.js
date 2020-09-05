@@ -79,7 +79,7 @@ class InputGroup extends React.Component {
   }
 
   render () {
-    const { classes, index, inputs, loading } = this.props
+    const { classes, inputs, loading } = this.props
     return (
       <Paper component="div" className={classes.paper} square>
         <Grid container spacing={3}>

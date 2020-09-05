@@ -162,21 +162,18 @@ class Creation extends React.Component {
 
               <div>
                 <InputGroup
-                  index='1'
                   loading={loading}
                   inputs={inputs['s1']}
                   onChange={(inputs) => this.updateInputs('s1', inputs)}>
                 </InputGroup>
 
                 <InputGroup
-                  index='2'
                   loading={loading}
                   inputs={inputs['s2']}
                   onChange={(inputs) => this.updateInputs('s2', inputs)}>
                 </InputGroup>
 
                 <InputGroup
-                  index='3'
                   loading={loading}
                   inputs={inputs['s3']}
                   onChange={(inputs) => this.updateInputs('s3', inputs)}>
