@@ -28,14 +28,14 @@ CORS(app)
 app.secret_key = os.environ.get('APP_SECRET', '')
 
 # Add mongo db settings for logging
-MONGO_URI = os.environ.get('MONGO_URI', 'mongodb://0.0.0.0:27017/mcs')
+MONGO_URI = os.environ.get('MONGO_URI', 'mongodb://0.0.0.0:27017/mcs2')
 app.config["MONGO_URI"] = MONGO_URI
 mongo = PyMongo(app)
 
 # Initialize the flask session
 SESSION_TYPE = 'mongodb'
 SESSION_MONGODB = mongo.cx
-SESSION_MONGODB_DB = 'mcs'
+SESSION_MONGODB_DB = 'mcs2'
 SESSION_MONGODB_COLLECT = 'sessions'
 SESSION_USE_SIGNER = True
 app.config.from_object(__name__)
@@ -319,7 +319,7 @@ def get_eval():
             'id': str(data['_id']),
             'input': data['input'],
             'output': data['output'],
-            # 'optional': data['optional'],
+            'optional': data['optional'],
         })
     return jsonify({'status': 'not ok'})
 
