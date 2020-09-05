@@ -120,13 +120,12 @@ class Creation extends React.Component {
     return Object.keys(inputs).every(key =>
       (!inputs[key][1].input && !inputs[key][2].input) ||
       (!!inputs[key][1].input && !!inputs[key][2].input && inputs[key][1].label !== null)
-    )
+    ) && !Object.keys(inputs).every(key => !inputs[key][1].input && !inputs[key][2].input)
   }
 
   checkOutputs() {
     const { inputs } = this.state
     return Object.keys(inputs).every(key =>
-      !inputs[key][1].input ||
       (!!inputs[key][1].input && inputs[key][1].output !== null)
     )
   }
