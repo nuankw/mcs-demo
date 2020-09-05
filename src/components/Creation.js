@@ -5,7 +5,7 @@ import { withStyles } from '@material-ui/core/styles'
 
 import InputGroup from './InputGroup'
 import Submit from './Submit'
-import Instructions from './CreationInstruction'
+import CreationInstruction from './CreationInstruction'
 
 
 const styles = theme => ({
@@ -46,8 +46,9 @@ const styles = theme => ({
     color: "black",
   },
   note: {
-    fontSize: theme.spacing(3),
-    color: "black",
+    fontSize: theme.spacing(2.8),
+    color: "#8b341d",
+    fontWeight: "bold",
   },
   link: {
     cursor: 'pointer',
@@ -132,7 +133,7 @@ class Creation extends React.Component {
 
   render() {
     const { inputs } = this.state
-    const { classes, scenario, onSubmit } = this.props
+    const { classes, scenario, domain, onSubmit, cost_per_assignment, samples_per_assignment } = this.props
 
     const testBtnDisabled = !this.checkInputs()
     const submitBtnDisabled = !this.checkOutputs()
@@ -146,9 +147,13 @@ class Creation extends React.Component {
           className={classes.header}>
           <span className={classes.title}>Part 2: Creation</span>
           <p className={classes.note}>NOTE: Please take 5 minutes to read this instruction carefully.
-            We will have another user to examine your inputs {!!scenario && `about ${scenario}`} and will reject your HITs
-            if you fail to provide inputs that are compliant with the instruction. {scenario}</p>
-          <Instructions/>
+            We will have another user to examine your inputs {!!scenario && `about ${scenario} scenario`} and will reject your HITs
+            if you fail to provide inputs that are compliant with the instruction.</p>
+          <CreationInstruction
+            scenario={scenario}
+            domain={domain}
+            cost_per_assignment={cost_per_assignment}
+            samples_per_assignment={samples_per_assignment}/>
         </Typography>
 
         <form className={classes.form} noValidate onSubmit={this.submit.bind(this)}>

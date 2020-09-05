@@ -7,8 +7,6 @@ import Typography from '@material-ui/core/Typography'
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
 import { withStyles } from '@material-ui/core/styles'
 
-import DomainInstructions from './DomainInstructions'
-import ScenarioInstructions from './ScenarioInstructions'
 import { Grid } from '@material-ui/core'
 
 
@@ -43,14 +41,14 @@ const styles = theme => ({
       background: 'rgba(45, 184, 188, 0.6)',
       color: 'black',
     },
-    instructions: {
-      display: 'flex',
-    }
+  },
+  instructions: {
+    paddingLeft: theme.spacing(3),
   }
 })
 
 
-class Instructions extends React.Component {
+class ValidationInstruction extends React.Component {
 
   constructor(props) {
     super(props)
@@ -185,4 +183,4 @@ class Instructions extends React.Component {
 }
 
 
-export default withStyles(styles)(Instructions)
+export default withStyles(styles)(ValidationInstruction)

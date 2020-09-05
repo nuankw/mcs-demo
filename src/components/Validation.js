@@ -7,7 +7,7 @@ import { withStyles, createMuiTheme, responsiveFontSizes, ThemeProvider } from '
 
 import Output from './Output'
 import UserEval from './UserEval'
-import Instructions from './ValidationInstruction'
+import ValidationInstruction from './ValidationInstruction'
 
 let theme = createMuiTheme();
 theme = responsiveFontSizes(theme);
@@ -44,7 +44,7 @@ const styles = theme => ({
   },
   nextButton: {
     color: 'white',
-    background: 'rgba(48, 57, 139, 0.6)', // TODO
+    background: 'rgba(48, 57, 139, 0.6)',
     fontSize: theme.spacing(2.8),
     margin: theme.spacing(2, 3),
     padding: theme.spacing(1.5, 6),
@@ -252,7 +252,7 @@ class Validation extends React.Component {
                 if you fail to provide inputs that are compliant with the instruction.</p>
           </Typography>
 
-          <Instructions
+          <ValidationInstruction
             cost_per_assignment='<$TBD>'
             samples_per_assignment='<TBD>'
             number_questions='<TBD: 4/5>'/>
