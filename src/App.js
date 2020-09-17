@@ -13,14 +13,18 @@ theme = responsiveFontSizes(theme);
 
 
 const SCENARIOS = {
-  'null': 'general',
-  's1': 'negation',
-  's2': 'active/passive expressions',
-  's3': 'logic exist/all',
-  's4': 'event temporal relation',
-  's5': 'cultural common sense',
+  'null': 'causality',
+  's1': 'causality',
+  's2': 'comparison',
+  's3': 'numeracy',
 }
 
+const DOMAINS = {
+  'null': 'pysical',
+  'd1': 'physical',
+  'd2': 'social',
+  'd3': 'temporal'
+}
 
 const styles = theme => ({
   '@global': {
@@ -40,16 +44,16 @@ class App extends React.Component {
     super(props)
 
     const locationQuery = new URLSearchParams(window.location.search)
+    const mode = locationQuery.get('mode') // either 'validation' or 'creation'
     const scenario = locationQuery.get('scenario')
-    // const do_val = locationQuery.get('do_val')
+    const domain = locationQuery.get('domain')
 
     this.state = {
       code: '',
       openSurvey: false,
-      // openSurvey: true,
-      // mode: 'not validation',
-      mode: 'validation',
+      mode: mode,
       scenario: scenario,
+      domain: domain,
     }
   }
 
@@ -87,6 +91,7 @@ class App extends React.Component {
       code,
       mode,
       scenario,
+      domain,
       openSurvey,
     } = this.state
 
