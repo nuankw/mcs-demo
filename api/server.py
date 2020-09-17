@@ -250,8 +250,7 @@ def submit():
                 )
 
     # where to do duplicate detection
-    code = str(uuid.uuid4())
-    return jsonify({'code': code})
+    return jsonify({'code': uid})
 
 
 @app.route('/survey', methods=['POST'])
