@@ -138,7 +138,9 @@ def classify():
 
     worker_id = session.get('worker_id')
     scenario = session.get('scenario')
+    domain = session.get('domain')
     hit_id = session.get('hit_id')
+    assignment_id = session.get('assignment_id')
     uid = session.get('uid')
 
     inputs = []     # [{s1_1: "statement 1"}, {s1_2: "statement 2"}...]
@@ -206,10 +208,12 @@ def classify():
                     'key': key,
                     'key_idx': idx,
                     'optional': data[key]['3']['input'],
-                    'ts': ts,
-                    'session': uid,
+                    'time_stamp': ts,
+                    'code': uid,
                     'hit_id': hit_id,
+                    'assignment_id': assignment_id,
                     'scenario': scenario,
+                    'domain': domain,
                     'worker_id': worker_id,
                     'need_validate': False,
                 })
@@ -225,6 +229,7 @@ def classify():
 def submit():
     worker_id = session.get('worker_id')
     hit_id = session.get('hit_id')
+    assignment_id = session.get('assignment_id')
     uid = session.get('uid')
 
     for key in ['s1', 's2', 's3']:
@@ -234,7 +239,7 @@ def submit():
                 'hit_id': hit_id,
                 'key': key,
                 'key_idx': idx,
-            }, sort=[('ts', DESCENDING)])
+            }, sort=[('time_stamp', DESCENDING)])
 
             if not data:
                 if idx in ['1', '2']:
@@ -259,6 +264,7 @@ def survey():
     ts = datetime.now().isoformat()
     worker_id = session.get('worker_id')
     hit_id = session.get('hit_id')
+    assignment_id = session.get('assignment_id')
     uid = session.get('uid')
 
     # Get survey values from the request body
@@ -269,10 +275,11 @@ def survey():
     updated = mongo.db.survey.update_one(   # new database collection
         {'hit_id': hit_id, 'worker_id': worker_id},
         {'$set': {
-            'ts': ts,
-            'session': uid,
+            'time_stamp': ts,
+            'code': uid,
             'hit_id': hit_id,
             'worker_id': worker_id,
+            'assignment_id': assignment_id,
             'commonsense': commonsense,
             'challenging': challenging,
         }}, upsert=True
@@ -293,7 +300,7 @@ def get_eval():
             {'num_val': {
                 "$lt": max_val_num,    # <
             }},
-            {'session': {
+            {'code': {
                 "$ne": uid,
             }},
             {"$or": [{
@@ -311,7 +318,7 @@ def get_eval():
                 }
             }]},
         ]
-    }, sort=[('num_val', ASCENDING), ('ts', DESCENDING)])
+    }, sort=[('num_val', ASCENDING), ('time_stamp', DESCENDING)])
     if data:
         return jsonify({
             'status': 'ok',
@@ -351,13 +358,13 @@ def set_eval():
 
 @app.route('/')
 def index():
-    ts = datetime.now().isoformat()
     uid = uuid.uuid4()
-    session['ts'] = ts
-    session['uid'] = uid
+    session['uid'] = uid # this is the code
     session['hit_id'] = request.args.get('hit_id')
     session['worker_id'] = request.args.get('worker_id')
+    session['assignment_id'] = request.args.get('assignment_id')
     session['scenario'] = request.args.get('scenario')
+    session['domain'] = request.args.get('domain')
     return app.send_static_file('index.html')
 
 
