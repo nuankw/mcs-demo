@@ -20,7 +20,7 @@ const SCENARIOS = {
 }
 
 const DOMAINS = {
-  'null': 'pysical',
+  'null': 'physical',
   'd1': 'physical',
   'd2': 'social',
   'd3': 'temporal'
