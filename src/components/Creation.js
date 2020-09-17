@@ -66,19 +66,19 @@ class Creation extends React.Component {
     this.state = {
       inputs: {
         s1: {
-          1: { input: '', output: null, label: null },
-          2: { input: '', output: null, label: null },
-          3: { input: '', output: null, label: null },
+          1: { input: '', output: null, label: null, input_change_not_tested: false, },
+          2: { input: '', output: null, label: null, input_change_not_tested: false, },
+          3: { input: '', output: null, label: null, input_change_not_tested: false, },
         },
         s2: {
-          1: { input: '', output: null, label: null },
-          2: { input: '', output: null, label: null },
-          3: { input: '', output: null, label: null },
+          1: { input: '', output: null, label: null, input_change_not_tested: false, },
+          2: { input: '', output: null, label: null, input_change_not_tested: false, },
+          3: { input: '', output: null, label: null, input_change_not_tested: false, },
         },
         s3: {
-          1: { input: '', output: null, label: null },
-          2: { input: '', output: null, label: null },
-          3: { input: '', output: null, label: null },
+          1: { input: '', output: null, label: null, input_change_not_tested: false, },
+          2: { input: '', output: null, label: null, input_change_not_tested: false, },
+          3: { input: '', output: null, label: null, input_change_not_tested: false, },
         },
       },
     }
@@ -116,11 +116,11 @@ class Creation extends React.Component {
   }
 
   checkInputs() {
+    // return false to disable test button
+    // which means we only return false when all input_change_not_tested is false
     const { inputs } = this.state
-    return Object.keys(inputs).every(key =>
-      (!inputs[key][1].input && !inputs[key][2].input) ||
-      (!!inputs[key][1].input && !!inputs[key][2].input && inputs[key][1].label !== null)
-    ) && !Object.keys(inputs).every(key => !inputs[key][1].input && !inputs[key][2].input)
+    return !Object.keys(inputs).every(key => (!inputs[key][1].input_change_not_tested
+      && !inputs[key][2].input_change_not_tested && !inputs[key][3].input_change_not_tested))
   }
 
   checkOutputs() {

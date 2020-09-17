@@ -63,6 +63,7 @@ class InputGroup extends React.Component {
   handleUpdate(id, input) {
     const inputs = {...this.props.inputs}
     inputs[id] = {...inputs[id], ...{input}}
+    inputs[id] = {...inputs[id], ...{'input_change_not_tested': true}}
     this.props.onChange(inputs)
   }
 
