@@ -236,6 +236,7 @@ def submit():
         for idx in ['1', '2', '3']:
             data = mongo.db.trials.find_one({
                 'worker_id': worker_id,
+                "assignment_id": assignment_id,
                 'hit_id': hit_id,
                 'key': key,
                 'key_idx': idx,

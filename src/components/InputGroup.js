@@ -132,14 +132,14 @@ class InputGroup extends React.Component {
             </ButtonGroup>
           </Grid>
 
-          <Grid item xs={12}>
+          {/* <Grid item xs={12}>
             {inputs[3].output != null && !loading && <Output output={inputs[3].output} />}
             <Input
               label='(optional, please leave it blank if no input) the common sense knowledge piece you used to create the above sentence pair:'
               text={inputs[3].input}
               disabled={false}
               updateText={(text) => this.handleUpdate(3, text)} />
-          </Grid>
+          </Grid> */}
 
         </Grid>
       </Paper>

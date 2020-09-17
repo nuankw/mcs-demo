@@ -148,8 +148,7 @@ class Validation extends React.Component {
           dataID: data['id'],
           prevInput: data['input'],
           prevOutput: data['output'],
-          // prevOptional: data['optional'],
-          prevOptional: "// prevOptional: data['optional'] won't display this ques if null or empty",
+          prevOptional: data['optional'], // won't display this ques if null or empty",
         })
       }
     })
