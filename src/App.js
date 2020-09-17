@@ -109,6 +109,7 @@ class App extends React.Component {
           ) : (
             <Creation
               scenario={SCENARIOS[scenario]}
+              domain={DOMAINS[domain]}
               onSubmit={this.handleOnSubmit.bind(this)} />
           )}
 

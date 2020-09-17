@@ -144,9 +144,9 @@ class Creation extends React.Component {
           component="h3"
           variant="h3"
           className={classes.header}>
-          <span className={classes.title}>Part 2: Creation</span>
+          <span className={classes.title}>[Common Sense Reasoning] Creation HIT {!!scenario && !!domain && `on ${scenario} scenario and ${domain} domain`}</span>
           <p className={classes.note}>NOTE: Please take 5 minutes to read this instruction carefully.
-            We will have another user to examine your inputs {!!scenario && `about ${scenario} scenario`} and will reject your HITs
+            We will have another user to examine your inputs and will reject your HITs
             if you fail to provide inputs that are compliant with the instruction.</p>
           <CreationInstruction
             scenario={scenario}
