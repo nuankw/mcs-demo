@@ -116,17 +116,48 @@ class Creation extends React.Component {
   }
 
   checkInputs() {
-    // return false to disable test button
-    // which means we only return false when all input_change_not_tested is false
-    const { inputs } = this.state
-    return !Object.keys(inputs).every(key => (!inputs[key][1].input_change_not_tested
-      && !inputs[key][2].input_change_not_tested && !inputs[key][3].input_change_not_tested))
+    // return true to enable test button
+    // which means we only return True / enable test button when:
+    //  1. not all input_change_not_tested is false, and
+    //  2. not all inputs are empty, and
+    //  3. not loading
+    const { inputs, loading } = this.state
+    return (
+      !Object.keys(inputs).every(key => (
+        !inputs[key][1].input_change_not_tested
+        && !inputs[key][2].input_change_not_tested
+        // && !inputs[key][3].input_change_not_tested // we decided to not show model prediction for the optional sentence even if we include the optional piece
+        )
+      )
+      && !Object.keys(inputs).every(key => (
+          inputs[key][1].input === ''
+          && inputs[key][2].input === ''
+        )
+      )
+      && !loading
+    )
   }
 
   checkOutputs() {
-    const { inputs } = this.state
-    return Object.keys(inputs).every(key =>
-      (!!inputs[key][1].input && inputs[key][1].output !== null)
+    // return true to enable submit button
+    // which means we only return True / enable submit button when:
+    //  1. all input_change_not_tested is false, and
+    //  2. all mandatory text fields are filled and all labels selected, and
+    //  3. not loading
+    const { inputs, loading } = this.state
+    return (
+      Object.keys(inputs).every(key => (
+        !inputs[key][1].input_change_not_tested
+        && !inputs[key][2].input_change_not_tested
+        // && !inputs[key][3].input_change_not_tested // we decided to not show model prediction for the optional sentence even if we include the optional piece
+        )
+      )
+      && Object.keys(inputs).every(key => (
+        !!inputs[key][1].input && inputs[key][1].output !== null && inputs[key][1].label !== null
+        && !!inputs[key][2].input && inputs[key][2].output !== null && inputs[key][2].label !== null
+        )
+      )
+      && !loading
     )
   }
 
