@@ -264,7 +264,6 @@ class Validation extends React.Component {
 
           <Grid item xs={12}>
             <Paper component="div" className={classes.paper} square>
-              {prevOutput != null && <Output output={prevOutput} />}
               <Typography
                 component="h4"
                 variant="h4">
