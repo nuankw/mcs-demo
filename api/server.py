@@ -148,19 +148,19 @@ def classify():
     # initialize response data format
     data = {
         "s1": {
-            "1": {"input": '', "output": None, "label": None},
-            "2": {"input": '', "output": None, "label": None},
-            "3": {"input": '', "output": None, "label": None},
+            "1": {"input": '', "output": None, "label": None, "input_change_not_tested": False},
+            "2": {"input": '', "output": None, "label": None, "input_change_not_tested": False},
+            "3": {"input": '', "output": None, "label": None, "input_change_not_tested": False},
         },
         "s2": {
-            "1": {"input": '', "output": None, "label": None},
-            "2": {"input": '', "output": None, "label": None},
-            "3": {"input": '', "output": None, "label": None},
+            "1": {"input": '', "output": None, "label": None, "input_change_not_tested": False},
+            "2": {"input": '', "output": None, "label": None, "input_change_not_tested": False},
+            "3": {"input": '', "output": None, "label": None, "input_change_not_tested": False},
         },
         "s3": {
-            "1": {"input": '', "output": None, "label": None},
-            "2": {"input": '', "output": None, "label": None},
-            "3": {"input": '', "output": None, "label": None},
+            "1": {"input": '', "output": None, "label": None, "input_change_not_tested": False},
+            "2": {"input": '', "output": None, "label": None, "input_change_not_tested": False},
+            "3": {"input": '', "output": None, "label": None, "input_change_not_tested": False},
         }
     }
 
