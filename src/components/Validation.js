@@ -233,8 +233,12 @@ class Validation extends React.Component {
     } = this.state
 
     const enableNext = (
-      evalQuestions['evalQ1'].answer === 'no' ||
-      Object.keys(evalQuestions).every(key => !!evalQuestions[key].answer))
+      evalQuestions['evalQ1'].answer === 'no'
+      || (evalQuestions['evalQ1'].answer && evalQuestions['evalQ2'].answer && evalQuestions['evalQ5'].answer
+      && evalQuestions['evalQ3'].answer.length >= 1 && evalQuestions['evalQ4'].answer.length >= 1)
+      || (!prevOptional && evalQuestions['evalQ1'].answer && evalQuestions['evalQ2'].answer
+        && evalQuestions['evalQ3'].answer.length >= 1 && evalQuestions['evalQ4'].answer.length >= 1)
+      )
 
     return (
       <React.Fragment>
