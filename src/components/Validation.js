@@ -83,7 +83,7 @@ const styles = theme => ({
 })
 
 
-const REQUIRED_NUM_EVALUATIONS = 6
+const REQUIRED_NUM_EVALUATIONS = 10
 
 
 const EVAL_QUESTIONS = {
@@ -147,7 +147,7 @@ class Validation extends React.Component {
           dataID: data['id'],
           prevInput: data['input'],
           prevOutput: data['output'],
-          prevOptional: data['optional'], // won't display this ques if null or empty",
+          prevOptional: data['optional'], // won't display this ques if null or empty,
         })
       }
     })
