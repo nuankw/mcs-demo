@@ -301,6 +301,10 @@ def get_eval():
             {'num_val': {
                 "$lt": max_val_num,    # <
             }},
+            # if local:
+            # comment out the following filters since session does not work on local
+            # i.e. uid/hit/assignment/work ids from session.get() will always be null on local
+            # or see next function, can manually assign a different value to those
             {'code': {
                 "$ne": uid,
             }},
@@ -341,12 +345,14 @@ def set_eval():
     data_id = request.json.get('dataID')
     worker_id = session.get('worker_id')
 
-    # TODO: worker_id == None when url is: http://localhost:3000/?hit_id=0&scenario=s3&worker_id=0%27
-    print('worker_id:', worker_id, "-- it shouldn't be None!")
+    # session doesn't work locally
+    # worker_id = 'asdf' # local test only
+    # assignment_id = 'asdf' # local test only
+    # hit_id = 'asdf' # local test only
+
 
     updated = ques_ans
     updated.update({'workerID': worker_id})
-    print(updated)
 
     mongo.db.trials.update_one(
         {"_id": ObjectId(data_id)},
@@ -376,4 +382,5 @@ if __name__ == "__main__":
     host = os.environ.get('MCS_SERVER_HOST', '0.0.0.0')
     port = int(os.environ.get('MCS_SERVER_PORT', '5005'))
 
-    app.run(host=host, port=port, debug=True)
+    # app.run(host=host, port=port, debug=True) # local
+    app.run(host=host, port=port, debug=False) # server
