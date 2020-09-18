@@ -124,31 +124,31 @@ class ValidationInstruction extends React.Component {
                         </li>
                         <p className={classes.questionExplanation}>
                           Scratching head to recall the definition of domains? Here you go:
-                          <ul>
-                            <li><u>Social</u>: It focuses on people and social behavior, particularly attributes like personality,
-                              emotions and actions.</li>
-                            <li><u>Physical</u>: Key aspects include the knowledge of daily objects, location, motion, etc.
-                            Btw information about animals fits here too!
-                            (we know this is controversial but let nature & non-artificial all be part of physical.)</li>
-                            <li><u>Time</u>: Knowledge regarding scheduling activities and their durations.</li>
-                          </ul>
                         </p>
+                        <ul>
+                          <li><u>Social</u>: It focuses on people and social behavior, particularly attributes like personality,
+                            emotions and actions.</li>
+                          <li><u>Physical</u>: Key aspects include the knowledge of daily objects, location, motion, etc.
+                          Btw information about animals fits here too!
+                          (we know this is controversial but let nature & non-artificial all be part of physical.)</li>
+                          <li><u>Time</u>: Knowledge regarding scheduling activities and their durations.</li>
+                        </ul>
 
                         <li className={classes.question}>
                           Question 4. Please select all the scenarios that you think this statement can be categorized into.
                         </li>
                         <p className={classes.questionExplanation}>
                           (You are welcome:D)
-                          <ul>
-                            <li><u>Cause & Effect</u>: It answers the “Why” question or predicts what is likely to happen next (effect),
-                              given an event that has occurred (cause).</li>
-
-                            <li><u>Comparison</u>: It aims to compare two plausible reasons or concepts, for a given daily event.</li>
-
-                            <li><u>Numeracy</u>: It focuses on simple arithmetic skills (add, multiply, etc.)
-                              and concepts such as rate, percentage, probability, etc.</li>
-                          </ul>
                         </p>
+                        <ul>
+                          <li><u>Cause & Effect</u>: It answers the “Why” question or predicts what is likely to happen next (effect),
+                            given an event that has occurred (cause).</li>
+
+                          <li><u>Comparison</u>: It aims to compare two plausible reasons or concepts, for a given daily event.</li>
+
+                          <li><u>Numeracy</u>: It focuses on simple arithmetic skills (add, multiply, etc.)
+                            and concepts such as rate, percentage, probability, etc.</li>
+                        </ul>
 
                         <li className={classes.question}>
                           Question 5. Will the following knowledge piece help explain the above (actually, 'below' as you are reading this instruction :p) statement?
