@@ -40,9 +40,6 @@ class True extends React.Component {
     const { classes } = this.props
     return (
       <span>
-        <Hidden smDown>
-          <Typography component="h1" variant="h4" className={classes.h1}>TRUE!</Typography>
-        </Hidden>
         <CheckCircleIcon className={classes.shadowIcon} />
         <CheckCircleIcon className={classes.checkIcon} />
       </span>
