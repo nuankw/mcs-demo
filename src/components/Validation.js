@@ -5,7 +5,6 @@ import Button from '@material-ui/core/Button'
 import Typography from '@material-ui/core/Typography'
 import { withStyles, createMuiTheme, responsiveFontSizes, ThemeProvider } from '@material-ui/core/styles'
 
-import Output from './Output'
 import UserEval from './UserEval'
 import ValidationInstruction from './ValidationInstruction'
 
@@ -157,7 +156,7 @@ class Validation extends React.Component {
   loadMoreEvaluationData() {
     const { evalCount } = this.state
     if ( evalCount >=  REQUIRED_NUM_EVALUATIONS ) {
-      this.props.onSwitch('creation')
+      this.props.onSubmit()
     } else {
       this.loadEvaluationData()
       .then(
@@ -289,7 +288,7 @@ class Validation extends React.Component {
               className={classes.nextButton}
               disabled={!enableNext}
               onClick={this.handleOnNext.bind(this)}>
-              { evalCount < REQUIRED_NUM_EVALUATIONS ? ("Next Statement") : ("Let's proceed to creation step!") }
+              { evalCount < REQUIRED_NUM_EVALUATIONS ? ("Next Statement") : ("All done! Click to submit") }
             </Button>
           </Grid>
         </ThemeProvider>

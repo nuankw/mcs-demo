@@ -3,7 +3,8 @@ import CssBaseline from '@material-ui/core/CssBaseline'
 import Container from '@material-ui/core/Container'
 
 import Creation from './components/Creation'
-import ExitSurvey from './components/ExitSurvey'
+import CreationExitSurvey from './components/CreationExitSurvey'
+import ValidationExit from './components/ValidationExit'
 import Validation from './components/Validation'
 import { withStyles, createMuiTheme, responsiveFontSizes, ThemeProvider } from '@material-ui/core/styles'
 
@@ -20,7 +21,7 @@ const SCENARIOS = {
 }
 
 const DOMAINS = {
-  'null': 'pysical',
+  'null': 'physical',
   'd1': 'physical',
   'd2': 'social',
   'd3': 'temporal'
@@ -101,11 +102,16 @@ class App extends React.Component {
 
           <CssBaseline />
 
-          <ExitSurvey open={openSurvey} code={code}
-            onClose={this.handleCloseSurvey.bind(this)} />
+          {mode === 'validation' ? (
+            <ValidationExit open={openSurvey} code={code}
+              onClose={this.handleCloseSurvey.bind(this)} />
+          ) : (
+            <CreationExitSurvey open={openSurvey} code={code}
+              onClose={this.handleCloseSurvey.bind(this)} />
+          )}
 
           {mode === 'validation' ? (
-            <Validation onSwitch={this.handleOnSwitch.bind(this)} />
+            <Validation onSubmit={this.handleOnSubmit.bind(this)} />
           ) : (
             <Creation
               scenario={SCENARIOS[scenario]}
