@@ -54,6 +54,7 @@ SYSTEMS = {
 }
 
 NUM_QUESTIONS = 5
+MAX_VAL_VALUE = 2
 
 # load trained models
 def load_models(system):
@@ -294,17 +295,14 @@ def get_eval():
     hit_id = session.get('hit_id')
     worker_id = session.get('worker_id')
 
-    max_val_num = 3
-
     data = mongo.db.trials.find_one({
         "$and": [
             {'num_val': {
-                "$lt": max_val_num,    # <
+                "$lt": MAX_VAL_VALUE,    # <
             }},
             # if local:
-            # comment out the following filters since session does not work on local
-            # i.e. uid/hit/assignment/work ids from session.get() will always be null on local
-            # or see next function, can manually assign a different value to those
+            # comment out following filters since session does not work on local
+            # or can manually assign a different value to each session.get('xx')
             {'code': {
                 "$ne": uid,
             }},
@@ -350,9 +348,8 @@ def set_eval():
     # assignment_id = 'asdf' # local test only
     # hit_id = 'asdf' # local test only
 
-
     updated = ques_ans
-    updated.update({'workerID': worker_id})
+    updated.update({'worker_id': worker_id})
 
     mongo.db.trials.update_one(
         {"_id": ObjectId(data_id)},
