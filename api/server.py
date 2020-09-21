@@ -232,32 +232,44 @@ def submit():
     hit_id = session.get('hit_id')
     assignment_id = session.get('assignment_id')
     uid = session.get('uid')
+    mode = session.get('mode')
 
-    for key in ['s1', 's2', 's3']:
-        for idx in ['1', '2', '3']:
-            data = mongo.db.trials.find_one({
-                'worker_id': worker_id,
-                "assignment_id": assignment_id,
-                'hit_id': hit_id,
-                'key': key,
-                'key_idx': idx,
-            }, sort=[('time_stamp', DESCENDING)])
+    # session doesn't work locally
+    # worker_id = 'fdsa' # local test only
+    # assignment_id = 'fdsa' # local test only
+    # hit_id = 'fdsa' # local test only
+    # mode = 'validation' # local test only
+    # uid = 'uiduiduid' # local test only
 
-            if not data:
-                if idx in ['1', '2']:
-                    return jsonify({'status': 'not ok'})
-            else:
-                mongo.db.trials.update_one(
-                    {"_id": data['_id']},
-                    {'$set': {
-                        'need_validate': True,
-                        'validation': [],
-                        'num_val': 0,
-                    }}
-                )
+    if mode == 'creation':
+        for key in ['s1', 's2', 's3']:
+            for idx in ['1', '2', '3']:
+                data = mongo.db.trials.find_one({
+                    'worker_id': worker_id,
+                    "assignment_id": assignment_id,
+                    'hit_id': hit_id,
+                    'key': key,
+                    'key_idx': idx,
+                }, sort=[('time_stamp', DESCENDING)])
+
+                if not data:
+                    if idx in ['1', '2']:
+                        return jsonify({'status': 'not ok'})
+                else:
+                    mongo.db.trials.update_one(
+                        {"_id": data['_id']},
+                        {'$set': {
+                            'need_validate': True,
+                            'validation': [],
+                            'num_val': 0,
+                        }}
+                    )
+
+    return jsonify({'code': uid}) # return code in both mode
 
     # where to do duplicate detection
-    return jsonify({'code': uid})
+    # Nuan: I guess/wish not in submit since the front end
+    # has disabled returning to task after submit
 
 
 @app.route('/survey', methods=['POST'])
@@ -369,6 +381,7 @@ def index():
     session['assignment_id'] = request.args.get('assignment_id')
     session['scenario'] = request.args.get('scenario')
     session['domain'] = request.args.get('domain')
+    session['mode'] = request.args.get('mode')
     return app.send_static_file('index.html')
 
 
