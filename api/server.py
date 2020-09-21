@@ -325,8 +325,10 @@ def get_eval():
                     "$ne": hit_id,
                 },
             }]},
-            {"$or": [{
-                'worker_id': None,
+            {"$and": [{
+                'worker_id': {
+                    "$ne": "pluslab_testers",
+                },
             }, {
                 'worker_id': {
                     "$ne": worker_id,
