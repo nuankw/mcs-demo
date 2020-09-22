@@ -143,11 +143,6 @@ def classify():
     assignment_id = session.get('assignment_id')
     uid = session.get('uid')
 
-    # session doesn't work locally
-    worker_id = 'fdsa'  # local test only
-    assignment_id = 'fdsa'  # local test only
-    hit_id = 'fdsa'  # local test only
-
     inputs = []  # [{s1_1: "statement 1"}, {s1_2: "statement 2"}...]
 
     # initialize response data format
@@ -237,13 +232,6 @@ def submit():
     uid = session.get('uid')
     mode = session.get('mode')
 
-    # session doesn't work locally
-    worker_id = 'fdsa'  # local test only
-    assignment_id = 'fdsa'  # local test only
-    hit_id = 'fdsa'  # local test only
-    mode = 'creation'  # local test only
-    uid = 'uiduiduid'  # local test only
-
     if mode == 'creation':
         for key in ['s1', 's2', 's3']:
             for idx in ['1', '2', '3']:
@@ -309,10 +297,6 @@ def get_eval():
     hit_id = session.get('hit_id')
     assignment_id = session.get('assignment_id')
 
-    worker_id = 'asdf'  # local test only
-    assignment_id = 'asdf'  # local test only
-    hit_id = 'asdf'  # local test only
-
     worker_validated = mongo.db.validations.find({'worker_id': worker_id})  # return cursor (can only return once #)
     validated_unique_pairs = list(set([i['pair_id'] for i in worker_validated]))
 
@@ -369,11 +353,6 @@ def set_eval():
     ts = datetime.now().isoformat()
     worker_id = session.get('worker_id')
 
-    # session doesn't work locally
-    worker_id = 'asdf'  # local test only
-    assignment_id = 'asdf'  # local test only
-    hit_id = 'asdf'  # local test only
-
     mongo.db.trials.update_one(
         {"_id": ObjectId(data_id)},
         {'$inc': {'num_val': 1}}
@@ -413,5 +392,5 @@ if __name__ == "__main__":
     host = os.environ.get('MCS_SERVER_HOST', '0.0.0.0')
     port = int(os.environ.get('MCS_SERVER_PORT', '5005'))
 
-    app.run(host=host, port=port, debug=True)  # local
-    # app.run(host=host, port=port, debug=False)  # server
+    # app.run(host=host, port=port, debug=True)  # local
+    app.run(host=host, port=port, debug=False)  # server
