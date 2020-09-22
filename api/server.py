@@ -315,16 +315,6 @@ def get_eval():
             # if local:
             # comment out following filters since session does not work on local
             # or can manually assign a different value to each session.get('xx')
-            {'code': {
-                "$ne": uid,
-            }},
-            {"$or": [{
-                'hit_id': None,
-            }, {
-                'hit_id': {
-                    "$ne": hit_id,
-                },
-            }]},
             {"$and": [{
                 'worker_id': {
                     "$ne": "pluslab_testers",
