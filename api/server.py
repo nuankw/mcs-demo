@@ -22,7 +22,6 @@ import os
 
 logger = logging.getLogger(__name__)
 
-
 app = Flask(__name__, static_url_path='')
 CORS(app)
 app.secret_key = os.environ.get('APP_SECRET', '')
@@ -55,6 +54,21 @@ SYSTEMS = {
 
 NUM_QUESTIONS = 5
 MAX_VAL_VALUE = 2
+LOCAL = True
+DUMMY_INFO = {
+    'uid': 'asdf',
+    'hit_id': 'asdf',
+    'worker_id': 'asdf',
+    'assignment_id': 'asdf',
+    'scenario': 'test',
+    'domain': 'test',
+    'mode': 'creation'
+}
+
+# LOCAL TEST ONLY - Start
+app.secret_key = 'asdf'
+# LOCAL TEST ONLY - End
+
 
 # load trained models
 def load_models(system):
@@ -84,7 +98,7 @@ def get_system_output(system, all_statements):
 
     results = {
         "s1": {
-            "1": {},    # {'vote': 1, 'prob': 0.74} [vote is the pred_result]
+            "1": {},  # {'vote': 1, 'prob': 0.74} [vote is the pred_result]
             "2": {},
         },
         "s2": {
@@ -136,7 +150,6 @@ def get_system_output(system, all_statements):
 
 @app.route('/classify', methods=['POST'])
 def classify():
-
     worker_id = session.get('worker_id')
     scenario = session.get('scenario')
     domain = session.get('domain')
@@ -144,7 +157,17 @@ def classify():
     assignment_id = session.get('assignment_id')
     uid = session.get('uid')
 
-    inputs = []     # [{s1_1: "statement 1"}, {s1_2: "statement 2"}...]
+    # LOCAL TEST ONLY - Start
+    if LOCAL:
+        worker_id = DUMMY_INFO['worker_id']
+        scenario = DUMMY_INFO['scenario']
+        domain = DUMMY_INFO['domain']
+        hit_id = DUMMY_INFO['hit_id']
+        assignment_id = DUMMY_INFO['assignment_id']
+        uid = DUMMY_INFO['uid']
+    # LOCAL TEST ONLY - End
+
+    inputs = []  # [{s1_1: "statement 1"}, {s1_2: "statement 2"}...]
 
     # initialize response data format
     data = {
@@ -206,13 +229,13 @@ def classify():
                     'input': data[key][idx]['input'],
                     'output': data[key][idx]['output'],
                     'label': data[key][idx]['label'],
-                    'key': key,
-                    'key_idx': idx,
+                    'pair_id': str(assignment_id) + '_' + key,
+                    'pair_idx': idx,
                     'optional': data[key]['3']['input'],
                     'time_stamp': ts,
-                    'code': uid,
                     'hit_id': hit_id,
                     'assignment_id': assignment_id,
+                    'code': uid,
                     'scenario': scenario,
                     'domain': domain,
                     'worker_id': worker_id,
@@ -220,8 +243,10 @@ def classify():
                 })
                 # data[key][idx]["id"] = str(new_entry.inserted_id)
 
-    bonus_rate = 1
-    bonus_payment = round(bonus_rate * num_fool_model, 2)
+    # BONUS_PER_STATEMENT = 1
+    # bonus_payment = round(BONUS_PER_STATEMENT * num_fool_model, 2)
+    # data['bonus_payment'] = bonus_payment
+    # data['num_fool_model'] = num_fool_model
 
     return jsonify(data)
 
@@ -234,12 +259,14 @@ def submit():
     uid = session.get('uid')
     mode = session.get('mode')
 
-    # session doesn't work locally
-    # worker_id = 'fdsa' # local test only
-    # assignment_id = 'fdsa' # local test only
-    # hit_id = 'fdsa' # local test only
-    # mode = 'validation' # local test only
-    # uid = 'uiduiduid' # local test only
+    # LOCAL TEST ONLY - Start
+    if LOCAL:
+        worker_id = DUMMY_INFO['worker_id']
+        hit_id = DUMMY_INFO['hit_id']
+        assignment_id = DUMMY_INFO['assignment_id']
+        uid = DUMMY_INFO['uid']
+        mode = DUMMY_INFO['mode']
+    # LOCAL TEST ONLY - End
 
     if mode == 'creation':
         quality_checks_notify_via_slack()
@@ -247,10 +274,9 @@ def submit():
             for idx in ['1', '2', '3']:
                 data = mongo.db.trials.find_one({
                     'worker_id': worker_id,
-                    "assignment_id": assignment_id,
+                    "pair_id": str(assignment_id) + '_' + key,
                     'hit_id': hit_id,
-                    'key': key,
-                    'key_idx': idx,
+                    'pair_idx': idx,
                 }, sort=[('time_stamp', DESCENDING)])
 
                 if not data:
@@ -258,15 +284,27 @@ def submit():
                         return jsonify({'status': 'not ok'})
                 else:
                     mongo.db.trials.update_one(
-                        {"_id": data['_id']},
+                        {"_id": data["_id"]},  # data["_id"] is ObjectID("xxx")
                         {'$set': {
                             'need_validate': True,
-                            'validation': [],
                             'num_val': 0,
                         }}
                     )
+    elif mode == 'validation':
+        mongo.db.validations.update_many(
+            {
+                "assignment_id": assignment_id,
+                "worker_id": worker_id
+            },
+            {'$set': {
+                'code': uid
+            }}
+        )
+    else:
+        print("ERROR: check mode!")
+        return jsonify({'status': 'not ok'})
 
-    return jsonify({'code': uid}) # return code in both mode
+    return jsonify({'code': uid})  # return code in both mode
 
 # TODO
 def quality_checks_notify_via_slack():
@@ -290,7 +328,7 @@ def survey():
     challenging = request.json.get('challenging', None)
 
     # store trial data in the mongo db
-    updated = mongo.db.survey.update_one(   # new database collection
+    mongo.db.survey.update_one(  # new database collection
         {'hit_id': hit_id, 'worker_id': worker_id},
         {'$set': {
             'time_stamp': ts,
@@ -307,14 +345,29 @@ def survey():
 
 @app.route('/get_eval', methods=['GET'])
 def get_eval():
-    uid = session.get('uid')
-    hit_id = session.get('hit_id')
     worker_id = session.get('worker_id')
+    hit_id = session.get('hit_id')
+    assignment_id = session.get('assignment_id')
+
+    # LOCAL TEST ONLY - Start
+    if LOCAL:
+        worker_id = DUMMY_INFO['worker_id']
+        hit_id = DUMMY_INFO['hit_id']
+        assignment_id = DUMMY_INFO['assignment_id']
+    # LOCAL TEST ONLY - End
+
+    # return cursor (can only return once #)
+    worker_validated = mongo.db.validations.find({'worker_id': worker_id, 'status': True})
+    validated_unique_pairs = list(set([i['pair_id'] for i in worker_validated]))
 
     data = mongo.db.trials.find_one({
         "$and": [
+            {'need_validate': True},
             {'num_val': {
-                "$lt": MAX_VAL_VALUE,    # <
+                "$lt": MAX_VAL_VALUE,  # <
+            }},
+            {'pair_id': {
+                "$nin": validated_unique_pairs
             }},
             # if local:
             # comment out following filters since session does not work on local
@@ -327,10 +380,19 @@ def get_eval():
                 'worker_id': {
                     "$ne": worker_id,
                 }
-            }]},
+            }]}
         ]
     }, sort=[('num_val', ASCENDING), ('time_stamp', DESCENDING)])
+
     if data:
+        mongo.db.validations.insert_one({
+            'trial': data['_id'],
+            'pair_id': data['pair_id'],
+            'hit_id': hit_id,  # since we have separate HIT for validation
+            'worker_id': worker_id,
+            'assignment_id': assignment_id,
+            'status': False
+        })
         return jsonify({
             'status': 'ok',
             'id': str(data['_id']),
@@ -349,20 +411,29 @@ def set_eval():
         ques_ans[question] = request.json.get(question)
 
     data_id = request.json.get('dataID')
+    ts = datetime.now().isoformat()
     worker_id = session.get('worker_id')
 
-    # session doesn't work locally
-    # worker_id = 'asdf' # local test only
-    # assignment_id = 'asdf' # local test only
-    # hit_id = 'asdf' # local test only
-
-    updated = ques_ans
-    updated.update({'worker_id': worker_id})
+    # LOCAL TEST ONLY - Start
+    if LOCAL:
+        worker_id = DUMMY_INFO['worker_id']
+    # LOCAL TEST ONLY - End
 
     mongo.db.trials.update_one(
         {"_id": ObjectId(data_id)},
-        {'$push': {'validation': {**updated}},
-         '$inc': {'num_val': 1}}
+        {'$inc': {'num_val': 1}}
+    )
+
+    mongo.db.validations.update_one(
+        {
+            "trial": ObjectId(data_id),
+            "worker_id": worker_id
+        },
+        {'$set': {
+            **ques_ans,
+            'time_stamp': ts,
+            'status': True
+        }}
     )
 
     return jsonify({'status': 'ok'})
@@ -371,7 +442,7 @@ def set_eval():
 @app.route('/')
 def index():
     uid = uuid.uuid4()
-    session['uid'] = uid # this is the code
+    session['uid'] = str(uid)  # this is the code
     session['hit_id'] = request.args.get('hit_id')
     session['worker_id'] = request.args.get('worker_id')
     session['assignment_id'] = request.args.get('assignment_id')
@@ -388,5 +459,5 @@ if __name__ == "__main__":
     host = os.environ.get('MCS_SERVER_HOST', '0.0.0.0')
     port = int(os.environ.get('MCS_SERVER_PORT', '5005'))
 
-    # app.run(host=host, port=port, debug=True) # local
-    app.run(host=host, port=port, debug=False) # server
+    app.run(host=host, port=port, debug=True)  # local (don't forget change global LOCAL = True)
+    # app.run(host=host, port=port, debug=False)  # server

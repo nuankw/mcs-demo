@@ -13,6 +13,23 @@ db.trials.update({"hit_id": {$exists: true}, "scenario": {$exists: false} }, {},
 
 // Match, aggregate and sort nuumber of trials per scenario
 db.trials.aggregate([ { "$match": { "scenario": { "$exists": true, "$ne": "" }}}, {"$group": {"_id": "$scenario", "count": { "$sum": 1 }}}, { $sort: { "count": -1 }} ])
+db.trials.aggregate([
+  { "$match": {
+    "scenario": {
+      "$exists": true,
+      "$ne": ""
+    }
+  }},
+  { "$group": {
+    "_id": "$scenario",
+    "count": {
+      "$sum": 1
+    }
+  }},
+  { "$sort": {
+    "count": -1
+  }}
+])
 
 
 // Aggregate and match example
