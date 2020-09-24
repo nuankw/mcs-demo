@@ -242,6 +242,7 @@ def submit():
     # uid = 'uiduiduid' # local test only
 
     if mode == 'creation':
+        quality_checks_notify_via_slack()
         for key in ['s1', 's2', 's3']:
             for idx in ['1', '2', '3']:
                 data = mongo.db.trials.find_one({
@@ -267,10 +268,13 @@ def submit():
 
     return jsonify({'code': uid}) # return code in both mode
 
-    # where to do duplicate detection
-    # Nuan: I guess/wish not in submit since the front end
-    # has disabled returning to task after submit
-
+# TODO
+def quality_checks_notify_via_slack():
+    # checks:
+    # 1. length
+    # 2. minor changes (n-gram check)
+    # 3. full duplication check
+    pass
 
 @app.route('/survey', methods=['POST'])
 def survey():
