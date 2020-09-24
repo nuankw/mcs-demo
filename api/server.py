@@ -54,7 +54,7 @@ SYSTEMS = {
 
 NUM_QUESTIONS = 5
 MAX_VAL_VALUE = 2
-LOCAL = True
+LOCAL = False
 DUMMY_INFO = {
     'uid': 'asdf',
     'hit_id': 'asdf',
@@ -455,5 +455,4 @@ if __name__ == "__main__":
     host = os.environ.get('MCS_SERVER_HOST', '0.0.0.0')
     port = int(os.environ.get('MCS_SERVER_PORT', '5005'))
 
-    app.run(host=host, port=port, debug=True)  # local (don't forget change global LOCAL = True)
-    # app.run(host=host, port=port, debug=False)  # server
+    app.run(host=host, port=port, debug=False)
