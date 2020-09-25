@@ -229,7 +229,7 @@ def classify():
                     'input': data[key][idx]['input'],
                     'output': data[key][idx]['output'],
                     'label': data[key][idx]['label'],
-                    'pair_id': str(assignment_id) + '_' + key,
+                    'key': key,
                     'optional': data[key]['3']['input'],
                     'time_stamp': ts,
                     'hit_id': hit_id,
@@ -239,6 +239,7 @@ def classify():
                     'domain': domain,
                     'worker_id': worker_id,
                     'need_validate': False,
+                    'num_val': 0
                 })
                 # data[key][idx]["id"] = str(new_entry.inserted_id)
 
@@ -283,7 +284,6 @@ def submit():
                         {"_id": data["_id"]},  # data["_id"] is ObjectID("xxx")
                         {'$set': {
                             'need_validate': True,
-                            'num_val': 0,
                         }}
                     )
     elif mode == 'validation':
