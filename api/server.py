@@ -229,7 +229,8 @@ def classify():
                     'input': data[key][idx]['input'],
                     'output': data[key][idx]['output'],
                     'label': data[key][idx]['label'],
-                    'key': key,
+                    'group_id': key,
+                    'within_group_idx': idx,
                     'optional': data[key]['3']['input'],
                     'time_stamp': ts,
                     'hit_id': hit_id,
@@ -363,7 +364,7 @@ def get_eval():
     validated_trials = list(
         mongo.db.trials.find({
             '_id': {'$in': validated_trial_ids}},
-            {'_id': 0, 'assignment_id': 1, 'key': 1},
+            {'_id': 0, 'assignment_id': 1, 'group_id': 1},
         )
     )
 
@@ -373,7 +374,7 @@ def get_eval():
         exclude_trials.extend(list(map(lambda x: x['_id'],
             mongo.db.trials.find({
                 'assignment_id': trial['assignment_id'],
-                'key': trial['key']},
+                'group_id': trial['group_id']},
                 {},
             )
         )))
