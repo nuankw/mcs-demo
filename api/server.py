@@ -16,6 +16,15 @@ from transformers import AutoTokenizer
 from model import Transformer
 from scipy.special import softmax
 
+import re
+import string
+import nltk
+from nltk.util import ngrams
+nltk.download('punkt')
+
+from collections import Counter
+import math
+
 from datetime import datetime
 import logging
 import os
@@ -54,6 +63,14 @@ SYSTEMS = {
 
 NUM_QUESTIONS = 5
 MAX_VAL_VALUE = 2
+
+MIN_SENTENCE_LENGTH = 7
+N = 2 # N-gram
+INTRA_PAIR_MIN_SAFE_SIMILARITY_SCORE = 0.7
+INTRA_PAIR_MAX_SAFE_SIMILARITY_SCORE = 0.9
+INTER_PAIR_MAX_SAFE_SIMILARITY_SCORE = 0.4
+
+# LOCAL TEST ONLY - Start
 LOCAL = True
 DUMMY_INFO = {
     'uid': 'asdf',
@@ -64,11 +81,68 @@ DUMMY_INFO = {
     'domain': 'test',
     'mode': 'creation'
 }
-
-# LOCAL TEST ONLY - Start
 app.secret_key = 'asdf'
 # LOCAL TEST ONLY - End
 
+def tokenize(raw_sentence):
+    """
+        based on nltk.word_tokenize() but remove punctuations
+    """
+    tokens = nltk.word_tokenize(raw_sentence.lower())
+    # filter out non-alpabetic words
+    tokens = [token for token in tokens if any(letter in token for letter in string.ascii_lowercase)]
+    return tokens
+
+
+def jaccard_distance(a, b):
+    """Calculate the jaccard distance between n-gram lists A and B"""
+    a = set(a)
+    b = set(b)
+    return 1.0 * len(a&b)/len(a|b)
+
+
+def cosine_distance(a, b):
+    vec1 = Counter(a)
+    vec2 = Counter(b)
+
+    intersection = set(vec1.keys()) & set(vec2.keys())
+    numerator = sum([vec1[x] * vec2[x] for x in intersection])
+
+    sum1 = sum([vec1[x]**2 for x in vec1.keys()])
+    sum2 = sum([vec2[x]**2 for x in vec2.keys()])
+    denominator = math.sqrt(sum1) * math.sqrt(sum2)
+
+    if not denominator:
+        return 0.0
+    return float(numerator) / denominator
+
+
+def get_all_n_grams_sentences(worker_id, domain, scenario, N=2):
+    # get all the data created by this worker under the same domain and scenario
+    all_data = mongo.db.trials.find({
+        "worker_id": worker_id,
+        "domain": domain,
+        "scenario": scenario,
+        # "length_flag": False, # ignore already flagged entires
+        "within_group_idx": { "$in": ['1', '2']}, # skip optional
+        "need_validation": True
+    }, {"assignment_id": 1, "group_id": 1, "within_group_idx": 1, "input": 1})
+
+    # get all n-grams as {(assignment_id, group_id): {1: [], 2: []}}
+    id_tuples = list(set([(data['assignment_id'], data['group_id']) for data in all_data]))
+    # initialize
+    input_ngrams = {id_tuple: {'1': [], '2': []} for id_tuple in id_tuples}
+    input_sentences = {id_tuple: {'1': '', '2': ''} for id_tuple in id_tuples}
+    # store n-grams into input_ngrams
+    for data in all_data:
+        curr_words = tokenize(data['input'])
+        curr_n_grams = list(ngrams(curr_words, N))
+        curr_id_tuple = (data['assignment_id'], data['group_id'])
+        curr_idx = data['within_group_idx']
+        input_ngrams[curr_id_tuple][curr_idx] = curr_n_grams
+        input_sentences[curr_id_tuple][curr_idx] = data['input']
+
+    return input_ngrams, input_sentences
 
 # load trained models
 def load_models(system):
