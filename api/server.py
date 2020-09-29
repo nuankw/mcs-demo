@@ -144,6 +144,63 @@ def get_all_n_grams_sentences(worker_id, domain, scenario, N=2):
 
     return input_ngrams, input_sentences
 
+
+def get_suspicious_intra_pairs(worker_id, domain, scenario, input_ngrams, input_sentences, scoring=jaccard_distance):
+    """
+        return paired input that are either too irrelavant or the same
+    """
+    suspicious_intra_pairs = []
+    for id_tuple, pair in input_ngrams.items():
+        score = scoring(pair['1'], pair['2'])
+        if score < INTRA_PAIR_MIN_SAFE_SIMILARITY_SCORE or score > INTRA_PAIR_MAX_SAFE_SIMILARITY_SCORE:
+            suspicious_intra_pairs.append({
+                'assignment_id': id_tuple[0],
+                'group_id': id_tuple[1],
+                'sent1': input_sentences[id_tuple]['1'],
+                'sent2': input_sentences[id_tuple]['2'],
+                "worker_id": worker_id,
+                "domain": domain,
+                "scenario": scenario,
+                'score': score,
+            })
+    return suspicious_intra_pairs
+
+
+def get_suspicious_inter_pairs(worker_id, domain, scenario, input_ngrams, input_sentences, scoring=jaccard_distance):
+    suspicious_inter_pairs = []
+    id_tuples = input_ngrams.keys()
+    for i in range(len(id_tuples)):
+        n_grams_i = input_ngrams[(id_tuples[i])]
+        for j in range(i, len(id_tuples)):
+            n_grams_j = input_ngrams[(id_tuples[j])]
+            score_11 = scoring(n_grams_i['1'], n_grams_j['1'])
+            score = score_11
+            # score_12 = scoring(n_grams_i['1'], n_grams_j['2'])))    # skipped
+            # score_21 = scoring(n_grams_i['2'], n_grams_j['1'])))    # skipped
+            # score_22 = scoring(n_grams_i['2'], n_grams_j['2'])))    # skipped
+            # score = (score_11 + score_12 + score_21 + score_22) / 4 # skipped
+            if score > INTER_PAIR_MAX_SAFE_SIMILARITY_SCORE:
+                suspicious_inter_pairs.append({
+                    "input_group_1": {
+                        'assignment_id': id_tuples[i][0],
+                        'group_id': id_tuples[i][1],
+                        'sent1': input_sentences[id_tuples[i]]['1'],
+                        'sent2': input_sentences[id_tuples[i]]['2'],
+                    },
+                    "input_group_2": {
+                        'assignment_id': id_tuples[j][0],
+                        'group_id': id_tuples[j][1],
+                        'sent1': input_sentences[id_tuples[j]]['1'],
+                        'sent2': input_sentences[id_tuples[j]]['2'],
+                    },
+                    "worker_id": worker_id,
+                    "domain": domain,
+                    "scenario": scenario,
+                    'score': score,
+                })
+    return suspicious_inter_pairs
+
+
 # load trained models
 def load_models(system):
     system['device'] = torch.device("cuda" if torch.cuda.is_available() and not False else "cpu")
