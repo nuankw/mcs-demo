@@ -1,0 +1,252 @@
+<!-- For help on using this template, see the blog post: https://blog.mturk.com/editing-the-survey-link-project-template-in-the-ui-7c75285105fb#.py7towsdx -->
+<!-- HIT template: SurveyLink-v3.0 -->
+<!-- The following snippet enables the 'responsive' behavior on smaller screens -->
+<meta content="width=device-width,initial-scale=1" name="viewport" />
+<section class="container" id="SurveyLink">
+  <!-- Instructions -->
+  <div class="row">
+    <div class="col-xs-12 col-md-12">
+      <div class="panel panel-primary">
+        <!-- WARNING: the ids "collapseTrigger" and "instructionBody" are being used to enable expand/collapse feature -->
+        <a class="panel-heading" href="javascript:void(0);" id="collapseTrigger">
+          <strong>Instruction for ${domain} X ${scenario} creation</strong>
+          <span class="collapse-text">(Click to collapse)</span>
+        </a>
+        <div class="panel-body" id="instructionBody">
+
+          <div>
+            <h1>Common Sense Reasoning HIT - Creation</h1>
+            <p style="font-size: 1.2em; color: darkred;"><b>Welcome! Please read this guideline carefully.</b></p>
+            <hr style="text-align:left;margin-left:0;height:1px;border-width:0;color:lightgray;background-color:lightgray">
+          </div>
+
+          <div>
+            <h3>Task description</h3>
+            <p style="font-size: 1.2em;">
+              In this HIT, we ask you to help us test and challenge the ability
+              of common sense reasoning for our AI agent, NAME,
+              by constructing sentence pairs under scenario <span id="scenario">${scenario}</span>
+              and domain <span id="domain">${domain}</span>.
+            </p>
+
+            <div style="padding-left: 1em;">
+              <p>
+                Consider the following example,
+                for Scenario = ${scenario} and domain = ${domain}:
+              </p>
+              <p>e.g. ${eg_true}. [True]</p>
+              <p>e.g. ${eg_false}. [False]</p>
+            </div>
+
+          </div>
+
+          <div>
+
+            <h3>Screenshots walkthrough</h3>
+            <ol style="font-size: 1.2em;">
+              <li>
+                To begin this task, click the link below.
+                Do not change the url as doing so will disable proper recording of your annotation.
+                <br />
+                <p><img src="${image1}" style="" alt="placeholder"></p>
+              </li>
+
+              <li>
+                Read the instruction carefully
+                as it provides necessary detailed guidance
+                and inspirations on how to construct qualified sentences.
+                <br />
+                <p><img src="${image2}" style="" alt="placeholder"></p>
+              </li>
+
+              <li>
+                Enter sentence pairs which require common sense
+                only related to ${domain} and ${scenario} to
+                judge whether they are True/False,
+                and select the T/F labels accordingly.
+                <br />
+                <p><img src="${image3}" style="" alt="placeholder"></p>
+              </li>
+
+              <li>
+                To see if you successfully tricked our AI agent NAME,
+                click on the TEST button at the bottom.
+                The result will show up near the input fields.
+                You can choose to revise the sentences,
+                and click the button to test them again.
+                <br />
+                <p><img src="${image4}" style="" alt="placeholder"></p>
+              </li>
+
+              <li>
+                After you enter all {num_pairs} pairs
+                and have tested all your revision,
+                you can click SUBMIT.
+                A pop-up window will be displayed as below.
+                Notice you cannot go back to edit your inputs!!
+                <br />
+                <p><img src="${image5}" style="" alt="placeholder"></p>
+              </li>
+
+              <li>
+                To complete this HIT, please copy and paste the code.
+                Please kindly fill out the optional short survey if possible.
+                We appreciate your feedback!
+                <br />
+                <p><img src="${image6}" style="" alt="placeholder"></p>
+              </li>
+
+              <li>
+                For any uncovered questions or other assistance,
+                please don’t hesitate to reach out.
+                <br />
+                <p><img src="${image7}" style="" alt="placeholder"></p>
+              </li>
+            </ol>
+          </div>
+
+          <div></div>
+          <h3>Dos and Don’ts</h3>
+          <ul style="font-size: 1.2em;">
+            <li>All generated statement pairs should be grammatically correct </li>
+            <li>All generated statement pairs should be of a common sense nature (i.e. things that are shared by
+              (‘common to’) nearly all people and can reasonably be expected of nearly all people without need for
+              debate)</li>
+            <li>For all generated common sense statement pairs, one should be true and one false</li>
+            <li>Do not include any personal information about yourself or others in any of the generated statement pairs
+            </li>
+            <li>Please do not repeat any of your own statements -- we have to reject assignment or reduce bonus if you do so!</li>
+            <li>Each generated pair should be about the same subject</li>
+          </ul>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row" id="workContent">
+    <div class="col-xs-12 col-md-6 col-md-offset-3">
+      <table class="table table-condensed table-bordered">
+        <colgroup>
+          <col class="col-xs-4 col-md-4" />
+          <col class="col-xs-8 col-md-8" />
+        </colgroup>
+        <tbody>
+          <tr>
+            <td><label>Survey link:</label></td>
+            <td>
+              <div id="myelementLink" style="display: inline; font-family: Verdana;"><tt>URL not shown because there is
+                  an error with Javascript on your computer. To perform this HIT, you must have Javascript and cookies
+                  enabled on your browser.</tt></div>
+              <script type="text/javascript" language="JavaScript">
+                <!--
+                var assignment_id_field = document.getElementById('myelementLink');
+                // var domain_scenario_field = document.getElementById('domainScenarioInfo');
+                // var scenario_with_brakets = domain_scenario_field.innerText.split(' X ')[1]
+                // var scenario = scenario_with_brakets.substring(1, scenario_with_brakets.length - 1);
+                // var scenario = domain_scenario_field.innerText.split(' X ')[1]
+                // var domain_with_brakets = domain_scenario_field.innerText.split(' X ')[0].split('Constructing commom sense understanding statements for ')[1]
+                // var domain = domain_with_brakets.substring(1, domain_with_brakets.length - 1);
+                var scenario = document.getElementById('scenario').innerText
+                var domain = document.getElementById('domain').innerText
+                var paramstr = window.location.search.substring(1);
+                var parampairs = paramstr.split("&");
+                var workerID = "";
+                var ids = {};
+                for (i in parampairs) {
+                  var pair = parampairs[i].split("=");
+                  ids[pair[0]] = pair[1]
+                }
+                if (!ids['workerId'] || !ids['assignmentId'] || !ids['hitId']) {
+                  assignment_id_field.innerHTML = '<tt>The link will appear here only if you accept this HIT.</tt>';
+                } else {
+                  var domain_str_2_idx = {
+                    'physical': 'd1',
+                    'social': 'd2',
+                    'temporal': 'd3',
+                  }
+                  var scenario_str_2_idx = {
+                    'cause & effect': 's1',
+                    'comparison': 's2',
+                    'numeracy': 's3',
+                  }
+                  assignment_id_field.innerHTML = '<a target="_blank" href="https://cs-ddev.isi.edu?mode=creation&hit_id=' + ids[
+                    'hitId'] + '&worker_id=' + ids['workerId'] + '&assignment_id=' + ids['assignmentId']
+                    + '&domain=' + domain_str_2_idx[domain] + '&scenario=' + scenario_str_2_idx[scenario] +
+                    '"><h1><span style="color: rgb(255, 0, 0);"><span style="font-family: Courier New;"><b>Click here to begin!</b></span></span></h1></a>';
+                }
+                //
+                -->
+              </script>
+              <div class="link" id="linkDiv">&nbsp;</div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <!-- End Content for Worker -->
+      <!-- Input from Worker -->
+      <div class="form-group"><label for="surveycode">Provide the survey code here:</label> <input class="form-control"
+          id="surveycode" name="surveycode" placeholder="e.g. 123456" required="" type="text" /></div>
+      <!-- End input from Worker -->
+    </div>
+  </div>
+  <!-- End Survey Link Layout -->
+</section>
+<!-- Please note that Bootstrap CSS/JS and JQuery are 3rd party libraries that may update their url/code at any time. Amazon Mechanical Turk (MTurk) is including these libraries as a default option for you, but is not responsible for any changes to the external libraries -->
+<!-- External CSS references -->
+<link crossorigin="anonymous" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css"
+  integrity="sha384-IS73LIqjtYesmURkDE9MXKbXqYA8rvKEp/ghicjem7Vc3mGRdQRptJSz60tvrB6+" rel="stylesheet" />
+<!-- Open internal style sheet -->
+<style type="text/css">
+  #collapseTrigger {
+    color: #fff;
+    display: block;
+    text-decoration: none;
+  }
+
+  #submitButton {
+    white-space: normal;
+  }
+
+  .image {
+    margin-bottom: 15px;
+  }
+
+  /* CSS for breaking long words/urls */
+  .dont-break-out {
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    -ms-word-break: break-all;
+    word-break: break-all;
+    word-break: break-word;
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+  }
+</style>
+<!-- Close internal style sheet -->
+<!-- External JS references -->
+<script src="https://code.jquery.com/jquery-3.1.0.min.js"
+  integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"
+  integrity="sha384-s1ITto93iSMDxlp/79qhWHi+LsIi9Gx6yL+cOKDuymvihkfol83TYbLbOw+W/wv4" crossorigin="anonymous"></script>
+<!-- Open internal javascript -->
+<script>
+  $(document).ready(function () {
+    // Instructions expand/collapse
+    var content = $('#instructionBody');
+    var trigger = $('#collapseTrigger');
+    //content.hide();
+    $('.collapse-text').text('(Click to collapse)');
+    trigger.click(function () {
+      content.toggle();
+      var isVisible = content.is(':visible');
+      if (isVisible) {
+        $('.collapse-text').text('(Click to collapse)');
+      } else {
+        $('.collapse-text').text('(Click to expand)');
+      }
+    });
+    // end expand/collapse
+  });
+</script><!-- Close internal javascript -->
