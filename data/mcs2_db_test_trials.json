@@ -1,0 +1,2361 @@
+[{
+  "_id": {
+    "$oid": "5f6ccba31a3d6df052688701"
+  },
+  "input": "worker1_assignment1_1_11",
+  "output": true,
+  "label": true,
+  "pair_id": "assignment1_1_s1",
+  "group_id": "s1",
+  "within_group_idx": "1",
+  "optional": "",
+  "time_stamp": "2020-09-24T09:38:59.116403",
+  "hit_id": "hit1",
+  "assignment_id": "assignment1_1",
+  "code": "worker1_assignment1_1",
+  "scenario": "test",
+  "domain": "test",
+  "worker_id": "worker1",
+  "need_validate": true,
+  "num_val": 0
+},{
+  "_id": {
+    "$oid": "5f6ccba31a3d6df052688702"
+  },
+  "input": "worker1_assignment1_1_12",
+  "output": true,
+  "label": false,
+  "pair_id": "assignment1_1_s1",
+  "group_id": "s1",
+  "within_group_idx": "2",
+  "optional": "",
+  "time_stamp": "2020-09-24T09:38:59.128040",
+  "hit_id": "hit1",
+  "assignment_id": "assignment1_1",
+  "code": "worker1_assignment1_1",
+  "scenario": "test",
+  "domain": "test",
+  "worker_id": "worker1",
+  "need_validate": true,
+  "num_val": 0
+},{
+  "_id": {
+    "$oid": "5f6ccba31a3d6df052688703"
+  },
+  "input": "worker1_assignment1_1_21",
+  "output": true,
+  "label": false,
+  "pair_id": "assignment1_1_s2",
+  "group_id": "s2",
+  "within_group_idx": "1",
+  "optional": "",
+  "time_stamp": "2020-09-24T09:38:59.128497",
+  "hit_id": "hit1",
+  "assignment_id": "assignment1_1",
+  "code": "worker1_assignment1_1",
+  "scenario": "test",
+  "domain": "test",
+  "worker_id": "worker1",
+  "need_validate": true,
+  "num_val": 0
+},{
+  "_id": {
+    "$oid": "5f6ccba31a3d6df052688704"
+  },
+  "input": "worker1_assignment1_1_22",
+  "output": true,
+  "label": true,
+  "pair_id": "assignment1_1_s2",
+  "group_id": "s2",
+  "within_group_idx": "2",
+  "optional": "",
+  "time_stamp": "2020-09-24T09:38:59.128880",
+  "hit_id": "hit1",
+  "assignment_id": "assignment1_1",
+  "code": "worker1_assignment1_1",
+  "scenario": "test",
+  "domain": "test",
+  "worker_id": "worker1",
+  "need_validate": true,
+  "num_val": 0
+},{
+  "_id": {
+    "$oid": "5f6ccba31a3d6df052688705"
+  },
+  "input": "worker1_assignment1_1_31",
+  "output": true,
+  "label": true,
+  "pair_id": "assignment1_1_s3",
+  "group_id": "s3",
+  "within_group_idx": "1",
+  "optional": "",
+  "time_stamp": "2020-09-24T09:38:59.129227",
+  "hit_id": "hit1",
+  "assignment_id": "assignment1_1",
+  "code": "worker1_assignment1_1",
+  "scenario": "test",
+  "domain": "test",
+  "worker_id": "worker1",
+  "need_validate": true,
+  "num_val": 0
+},{
+  "_id": {
+    "$oid": "5f6ccba31a3d6df052688706"
+  },
+  "input": "worker1_assignment1_1_32",
+  "output": true,
+  "label": false,
+  "pair_id": "assignment1_1_s3",
+  "group_id": "s3",
+  "within_group_idx": "2",
+  "optional": "",
+  "time_stamp": "2020-09-24T09:38:59.129549",
+  "hit_id": "hit1",
+  "assignment_id": "assignment1_1",
+  "code": "worker1_assignment1_1",
+  "scenario": "test",
+  "domain": "test",
+  "worker_id": "worker1",
+  "need_validate": true,
+  "num_val": 0
+},{
+  "_id": {
+    "$oid": "5f6cccec8b0076595c688900"
+  },
+  "input": "worker1_assignment2_1_11",
+  "output": true,
+  "label": false,
+  "pair_id": "assignment2_1_s1",
+  "group_id": "s1",
+  "within_group_idx": "1",
+  "optional": "",
+  "time_stamp": "2020-09-24T09:44:28.956207",
+  "hit_id": "hit2",
+  "assignment_id": "assignment2_1",
+  "code": "worker1_assignment2_1",
+  "scenario": "test",
+  "domain": "test",
+  "worker_id": "worker1",
+  "need_validate": true,
+  "num_val": 0
+},{
+  "_id": {
+    "$oid": "5f6cccec8b0076595c688901"
+  },
+  "input": "worker1_assignment2_1_12",
+  "output": true,
+  "label": true,
+  "pair_id": "assignment2_1_s1",
+  "group_id": "s1",
+  "within_group_idx": "2",
+  "optional": "",
+  "time_stamp": "2020-09-24T09:44:28.957403",
+  "hit_id": "hit2",
+  "assignment_id": "assignment2_1",
+  "code": "worker1_assignment2_1",
+  "scenario": "test",
+  "domain": "test",
+  "worker_id": "worker1",
+  "need_validate": true,
+  "num_val": 0
+},{
+  "_id": {
+    "$oid": "5f6cccec8b0076595c688902"
+  },
+  "input": "worker1_assignment2_1_21",
+  "output": true,
+  "label": true,
+  "pair_id": "assignment2_1_s2",
+  "group_id": "s2",
+  "within_group_idx": "1",
+  "optional": "",
+  "time_stamp": "2020-09-24T09:44:28.957821",
+  "hit_id": "hit2",
+  "assignment_id": "assignment2_1",
+  "code": "worker1_assignment2_1",
+  "scenario": "test",
+  "domain": "test",
+  "worker_id": "worker1",
+  "need_validate": true,
+  "num_val": 0
+},{
+  "_id": {
+    "$oid": "5f6cccec8b0076595c688903"
+  },
+  "input": "worker1_assignment2_1_22",
+  "output": true,
+  "label": false,
+  "pair_id": "assignment2_1_s2",
+  "group_id": "s2",
+  "within_group_idx": "2",
+  "optional": "",
+  "time_stamp": "2020-09-24T09:44:28.958193",
+  "hit_id": "hit2",
+  "assignment_id": "assignment2_1",
+  "code": "worker1_assignment2_1",
+  "scenario": "test",
+  "domain": "test",
+  "worker_id": "worker1",
+  "need_validate": true,
+  "num_val": 0
+},{
+  "_id": {
+    "$oid": "5f6cccec8b0076595c688904"
+  },
+  "input": "worker1_assignment2_1_31",
+  "output": true,
+  "label": true,
+  "pair_id": "assignment2_1_s3",
+  "group_id": "s3",
+  "within_group_idx": "1",
+  "optional": "",
+  "time_stamp": "2020-09-24T09:44:28.958525",
+  "hit_id": "hit2",
+  "assignment_id": "assignment2_1",
+  "code": "worker1_assignment2_1",
+  "scenario": "test",
+  "domain": "test",
+  "worker_id": "worker1",
+  "need_validate": true,
+  "num_val": 0
+},{
+  "_id": {
+    "$oid": "5f6cccec8b0076595c688905"
+  },
+  "input": "worker1_assignment2_1_32",
+  "output": true,
+  "label": false,
+  "pair_id": "assignment2_1_s3",
+  "group_id": "s3",
+  "within_group_idx": "2",
+  "optional": "",
+  "time_stamp": "2020-09-24T09:44:28.958884",
+  "hit_id": "hit2",
+  "assignment_id": "assignment2_1",
+  "code": "worker1_assignment2_1",
+  "scenario": "test",
+  "domain": "test",
+  "worker_id": "worker1",
+  "need_validate": true,
+  "num_val": 0
+},{
+  "_id": {
+    "$oid": "5f6ccd71f3c54045fbdee8af"
+  },
+  "input": "worker1_assignment3_1_11",
+  "output": true,
+  "label": true,
+  "pair_id": "assignment3_1_s1",
+  "group_id": "s1",
+  "within_group_idx": "1",
+  "optional": "",
+  "time_stamp": "2020-09-24T09:46:41.355574",
+  "hit_id": "hit3",
+  "assignment_id": "assignment3_1",
+  "code": "worker1_assignment3_1",
+  "scenario": "test",
+  "domain": "test",
+  "worker_id": "worker1",
+  "need_validate": true,
+  "num_val": 0
+},{
+  "_id": {
+    "$oid": "5f6ccd71f3c54045fbdee8b0"
+  },
+  "input": "worker1_assignment3_1_12",
+  "output": true,
+  "label": false,
+  "pair_id": "assignment3_1_s1",
+  "group_id": "s1",
+  "within_group_idx": "2",
+  "optional": "",
+  "time_stamp": "2020-09-24T09:46:41.358341",
+  "hit_id": "hit3",
+  "assignment_id": "assignment3_1",
+  "code": "worker1_assignment3_1",
+  "scenario": "test",
+  "domain": "test",
+  "worker_id": "worker1",
+  "need_validate": true,
+  "num_val": 0
+},{
+  "_id": {
+    "$oid": "5f6ccd71f3c54045fbdee8b1"
+  },
+  "input": "worker1_assignment3_1_21",
+  "output": true,
+  "label": false,
+  "pair_id": "assignment3_1_s2",
+  "group_id": "s2",
+  "within_group_idx": "1",
+  "optional": "",
+  "time_stamp": "2020-09-24T09:46:41.358787",
+  "hit_id": "hit3",
+  "assignment_id": "assignment3_1",
+  "code": "worker1_assignment3_1",
+  "scenario": "test",
+  "domain": "test",
+  "worker_id": "worker1",
+  "need_validate": true,
+  "num_val": 0
+},{
+  "_id": {
+    "$oid": "5f6ccd71f3c54045fbdee8b2"
+  },
+  "input": "worker1_assignment3_1_22",
+  "output": true,
+  "label": true,
+  "pair_id": "assignment3_1_s2",
+  "group_id": "s2",
+  "within_group_idx": "2",
+  "optional": "",
+  "time_stamp": "2020-09-24T09:46:41.359160",
+  "hit_id": "hit3",
+  "assignment_id": "assignment3_1",
+  "code": "worker1_assignment3_1",
+  "scenario": "test",
+  "domain": "test",
+  "worker_id": "worker1",
+  "need_validate": true,
+  "num_val": 0
+},{
+  "_id": {
+    "$oid": "5f6ccd71f3c54045fbdee8b3"
+  },
+  "input": "worker1_assignment3_1_31",
+  "output": true,
+  "label": true,
+  "pair_id": "assignment3_1_s3",
+  "group_id": "s3",
+  "within_group_idx": "1",
+  "optional": "",
+  "time_stamp": "2020-09-24T09:46:41.359517",
+  "hit_id": "hit3",
+  "assignment_id": "assignment3_1",
+  "code": "worker1_assignment3_1",
+  "scenario": "test",
+  "domain": "test",
+  "worker_id": "worker1",
+  "need_validate": true,
+  "num_val": 0
+},{
+  "_id": {
+    "$oid": "5f6ccd71f3c54045fbdee8b4"
+  },
+  "input": "worker1_assignment3_1_32",
+  "output": true,
+  "label": false,
+  "pair_id": "assignment3_1_s3",
+  "group_id": "s3",
+  "within_group_idx": "2",
+  "optional": "",
+  "time_stamp": "2020-09-24T09:46:41.359880",
+  "hit_id": "hit3",
+  "assignment_id": "assignment3_1",
+  "code": "worker1_assignment3_1",
+  "scenario": "test",
+  "domain": "test",
+  "worker_id": "worker1",
+  "need_validate": true,
+  "num_val": 0
+},{
+  "_id": {
+    "$oid": "5f6cce9b29afd2f28d6662ae"
+  },
+  "input": "worker2_assignment1_2_11_test",
+  "output": true,
+  "label": false,
+  "pair_id": "assignment1_2_s1",
+  "group_id": "s1",
+  "within_group_idx": "1",
+  "optional": "",
+  "time_stamp": "2020-09-24T09:51:39.912793",
+  "hit_id": "hit1",
+  "assignment_id": "assignment1_2",
+  "code": "worker2_assignment1_2",
+  "scenario": "test",
+  "domain": "test",
+  "worker_id": "worker2",
+  "need_validate": false,
+  "num_val": 0
+},{
+  "_id": {
+    "$oid": "5f6cce9b29afd2f28d6662af"
+  },
+  "input": "worker2_assignment1_2_12_test",
+  "output": true,
+  "label": true,
+  "pair_id": "assignment1_2_s1",
+  "group_id": "s1",
+  "within_group_idx": "2",
+  "optional": "",
+  "time_stamp": "2020-09-24T09:51:39.913968",
+  "hit_id": "hit1",
+  "assignment_id": "assignment1_2",
+  "code": "worker2_assignment1_2",
+  "scenario": "test",
+  "domain": "test",
+  "worker_id": "worker2",
+  "need_validate": false,
+  "num_val": 0
+},{
+  "_id": {
+    "$oid": "5f6cceaf29afd2f28d6662b0"
+  },
+  "input": "worker2_assignment1_2_11",
+  "output": true,
+  "label": false,
+  "pair_id": "assignment1_2_s1",
+  "group_id": "s1",
+  "within_group_idx": "1",
+  "optional": "",
+  "time_stamp": "2020-09-24T09:51:59.535362",
+  "hit_id": "hit1",
+  "assignment_id": "assignment1_2",
+  "code": "worker2_assignment1_2",
+  "scenario": "test",
+  "domain": "test",
+  "worker_id": "worker2",
+  "need_validate": true,
+  "num_val": 0
+},{
+  "_id": {
+    "$oid": "5f6cceaf29afd2f28d6662b1"
+  },
+  "input": "worker2_assignment1_2_12",
+  "output": true,
+  "label": true,
+  "pair_id": "assignment1_2_s1",
+  "group_id": "s1",
+  "within_group_idx": "2",
+  "optional": "",
+  "time_stamp": "2020-09-24T09:51:59.537243",
+  "hit_id": "hit1",
+  "assignment_id": "assignment1_2",
+  "code": "worker2_assignment1_2",
+  "scenario": "test",
+  "domain": "test",
+  "worker_id": "worker2",
+  "need_validate": true,
+  "num_val": 0
+},{
+  "_id": {
+    "$oid": "5f6cceaf29afd2f28d6662b2"
+  },
+  "input": "worker2_assignment1_2_21",
+  "output": true,
+  "label": true,
+  "pair_id": "assignment1_2_s2",
+  "group_id": "s2",
+  "within_group_idx": "1",
+  "optional": "",
+  "time_stamp": "2020-09-24T09:51:59.537642",
+  "hit_id": "hit1",
+  "assignment_id": "assignment1_2",
+  "code": "worker2_assignment1_2",
+  "scenario": "test",
+  "domain": "test",
+  "worker_id": "worker2",
+  "need_validate": true,
+  "num_val": 0
+},{
+  "_id": {
+    "$oid": "5f6cceaf29afd2f28d6662b3"
+  },
+  "input": "worker2_assignment1_2_22",
+  "output": true,
+  "label": false,
+  "pair_id": "assignment1_2_s2",
+  "group_id": "s2",
+  "within_group_idx": "2",
+  "optional": "",
+  "time_stamp": "2020-09-24T09:51:59.538040",
+  "hit_id": "hit1",
+  "assignment_id": "assignment1_2",
+  "code": "worker2_assignment1_2",
+  "scenario": "test",
+  "domain": "test",
+  "worker_id": "worker2",
+  "need_validate": true,
+  "num_val": 0
+},{
+  "_id": {
+    "$oid": "5f6cceaf29afd2f28d6662b4"
+  },
+  "input": "worker2_assignment1_2_31",
+  "output": true,
+  "label": true,
+  "pair_id": "assignment1_2_s3",
+  "group_id": "s3",
+  "within_group_idx": "1",
+  "optional": "",
+  "time_stamp": "2020-09-24T09:51:59.538395",
+  "hit_id": "hit1",
+  "assignment_id": "assignment1_2",
+  "code": "worker2_assignment1_2",
+  "scenario": "test",
+  "domain": "test",
+  "worker_id": "worker2",
+  "need_validate": true,
+  "num_val": 0
+},{
+  "_id": {
+    "$oid": "5f6cceaf29afd2f28d6662b5"
+  },
+  "input": "worker2_assignment1_2_32",
+  "output": true,
+  "label": false,
+  "pair_id": "assignment1_2_s3",
+  "group_id": "s3",
+  "within_group_idx": "2",
+  "optional": "",
+  "time_stamp": "2020-09-24T09:51:59.538730",
+  "hit_id": "hit1",
+  "assignment_id": "assignment1_2",
+  "code": "worker2_assignment1_2",
+  "scenario": "test",
+  "domain": "test",
+  "worker_id": "worker2",
+  "need_validate": true,
+  "num_val": 0
+},{
+  "_id": {
+    "$oid": "5f6ccf10760767a03f9bd936"
+  },
+  "input": "worker2_assignment2_2_31_test",
+  "output": true,
+  "label": true,
+  "pair_id": "assignment2_2_s3",
+  "group_id": "s3",
+  "within_group_idx": "1",
+  "optional": "",
+  "time_stamp": "2020-09-24T09:53:36.158786",
+  "hit_id": "hit2",
+  "assignment_id": "assignment2_2",
+  "code": "worker2_assignment2_2",
+  "scenario": "test",
+  "domain": "test",
+  "worker_id": "worker2",
+  "need_validate": false,
+  "num_val": 0
+},{
+  "_id": {
+    "$oid": "5f6ccf10760767a03f9bd937"
+  },
+  "input": "worker2_assignment2_2_32_test",
+  "output": true,
+  "label": false,
+  "pair_id": "assignment2_2_s3",
+  "group_id": "s3",
+  "within_group_idx": "2",
+  "optional": "",
+  "time_stamp": "2020-09-24T09:53:36.176284",
+  "hit_id": "hit2",
+  "assignment_id": "assignment2_2",
+  "code": "worker2_assignment2_2",
+  "scenario": "test",
+  "domain": "test",
+  "worker_id": "worker2",
+  "need_validate": false,
+  "num_val": 0
+},{
+  "_id": {
+    "$oid": "5f6ccf21760767a03f9bd938"
+  },
+  "input": "worker2_assignment2_2_11",
+  "output": true,
+  "label": false,
+  "pair_id": "assignment2_2_s1",
+  "group_id": "s1",
+  "within_group_idx": "1",
+  "optional": "",
+  "time_stamp": "2020-09-24T09:53:53.871358",
+  "hit_id": "hit2",
+  "assignment_id": "assignment2_2",
+  "code": "worker2_assignment2_2",
+  "scenario": "test",
+  "domain": "test",
+  "worker_id": "worker2",
+  "need_validate": true,
+  "num_val": 0
+},{
+  "_id": {
+    "$oid": "5f6ccf21760767a03f9bd939"
+  },
+  "input": "worker2_assignment2_2_12",
+  "output": true,
+  "label": true,
+  "pair_id": "assignment2_2_s1",
+  "group_id": "s1",
+  "within_group_idx": "2",
+  "optional": "",
+  "time_stamp": "2020-09-24T09:53:53.873177",
+  "hit_id": "hit2",
+  "assignment_id": "assignment2_2",
+  "code": "worker2_assignment2_2",
+  "scenario": "test",
+  "domain": "test",
+  "worker_id": "worker2",
+  "need_validate": true,
+  "num_val": 0
+},{
+  "_id": {
+    "$oid": "5f6ccf21760767a03f9bd93a"
+  },
+  "input": "worker2_assignment2_2_21",
+  "output": true,
+  "label": true,
+  "pair_id": "assignment2_2_s2",
+  "group_id": "s2",
+  "within_group_idx": "1",
+  "optional": "",
+  "time_stamp": "2020-09-24T09:53:53.873667",
+  "hit_id": "hit2",
+  "assignment_id": "assignment2_2",
+  "code": "worker2_assignment2_2",
+  "scenario": "test",
+  "domain": "test",
+  "worker_id": "worker2",
+  "need_validate": true,
+  "num_val": 0
+},{
+  "_id": {
+    "$oid": "5f6ccf21760767a03f9bd93b"
+  },
+  "input": "worker2_assignment2_2_22",
+  "output": true,
+  "label": false,
+  "pair_id": "assignment2_2_s2",
+  "group_id": "s2",
+  "within_group_idx": "2",
+  "optional": "",
+  "time_stamp": "2020-09-24T09:53:53.874042",
+  "hit_id": "hit2",
+  "assignment_id": "assignment2_2",
+  "code": "worker2_assignment2_2",
+  "scenario": "test",
+  "domain": "test",
+  "worker_id": "worker2",
+  "need_validate": true,
+  "num_val": 0
+},{
+  "_id": {
+    "$oid": "5f6ccf21760767a03f9bd93c"
+  },
+  "input": "worker2_assignment2_2_31",
+  "output": true,
+  "label": true,
+  "pair_id": "assignment2_2_s3",
+  "group_id": "s3",
+  "within_group_idx": "1",
+  "optional": "",
+  "time_stamp": "2020-09-24T09:53:53.874424",
+  "hit_id": "hit2",
+  "assignment_id": "assignment2_2",
+  "code": "worker2_assignment2_2",
+  "scenario": "test",
+  "domain": "test",
+  "worker_id": "worker2",
+  "need_validate": true,
+  "num_val": 0
+},{
+  "_id": {
+    "$oid": "5f6ccf21760767a03f9bd93d"
+  },
+  "input": "worker2_assignment2_2_32",
+  "output": true,
+  "label": false,
+  "pair_id": "assignment2_2_s3",
+  "group_id": "s3",
+  "within_group_idx": "2",
+  "optional": "",
+  "time_stamp": "2020-09-24T09:53:53.874911",
+  "hit_id": "hit2",
+  "assignment_id": "assignment2_2",
+  "code": "worker2_assignment2_2",
+  "scenario": "test",
+  "domain": "test",
+  "worker_id": "worker2",
+  "need_validate": true,
+  "num_val": 0
+},{
+  "_id": {
+    "$oid": "5f6ccf81768940c2cecaf38c"
+  },
+  "input": "worker2_assignment3_2_11",
+  "output": true,
+  "label": true,
+  "pair_id": "assignment3_2_s1",
+  "group_id": "s1",
+  "within_group_idx": "1",
+  "optional": "",
+  "time_stamp": "2020-09-24T09:55:29.394482",
+  "hit_id": "hit3",
+  "assignment_id": "assignment3_2",
+  "code": "worker2_assignment3_2",
+  "scenario": "test",
+  "domain": "test",
+  "worker_id": "worker2",
+  "need_validate": true,
+  "num_val": 0
+},{
+  "_id": {
+    "$oid": "5f6ccf81768940c2cecaf38d"
+  },
+  "input": "worker2_assignment3_2_12",
+  "output": true,
+  "label": false,
+  "pair_id": "assignment3_2_s1",
+  "group_id": "s1",
+  "within_group_idx": "2",
+  "optional": "",
+  "time_stamp": "2020-09-24T09:55:29.395458",
+  "hit_id": "hit3",
+  "assignment_id": "assignment3_2",
+  "code": "worker2_assignment3_2",
+  "scenario": "test",
+  "domain": "test",
+  "worker_id": "worker2",
+  "need_validate": true,
+  "num_val": 0
+},{
+  "_id": {
+    "$oid": "5f6ccf81768940c2cecaf38e"
+  },
+  "input": "worker2_assignment3_2_21",
+  "output": true,
+  "label": true,
+  "pair_id": "assignment3_2_s2",
+  "group_id": "s2",
+  "within_group_idx": "1",
+  "optional": "",
+  "time_stamp": "2020-09-24T09:55:29.395902",
+  "hit_id": "hit3",
+  "assignment_id": "assignment3_2",
+  "code": "worker2_assignment3_2",
+  "scenario": "test",
+  "domain": "test",
+  "worker_id": "worker2",
+  "need_validate": true,
+  "num_val": 0
+},{
+  "_id": {
+    "$oid": "5f6ccf81768940c2cecaf38f"
+  },
+  "input": "worker2_assignment3_2_22",
+  "output": true,
+  "label": false,
+  "pair_id": "assignment3_2_s2",
+  "group_id": "s2",
+  "within_group_idx": "2",
+  "optional": "",
+  "time_stamp": "2020-09-24T09:55:29.396247",
+  "hit_id": "hit3",
+  "assignment_id": "assignment3_2",
+  "code": "worker2_assignment3_2",
+  "scenario": "test",
+  "domain": "test",
+  "worker_id": "worker2",
+  "need_validate": true,
+  "num_val": 0
+},{
+  "_id": {
+    "$oid": "5f6ccf81768940c2cecaf390"
+  },
+  "input": "worker2_assignment3_2_31",
+  "output": true,
+  "label": false,
+  "pair_id": "assignment3_2_s3",
+  "group_id": "s3",
+  "within_group_idx": "1",
+  "optional": "",
+  "time_stamp": "2020-09-24T09:55:29.396635",
+  "hit_id": "hit3",
+  "assignment_id": "assignment3_2",
+  "code": "worker2_assignment3_2",
+  "scenario": "test",
+  "domain": "test",
+  "worker_id": "worker2",
+  "need_validate": true,
+  "num_val": 0
+},{
+  "_id": {
+    "$oid": "5f6ccf81768940c2cecaf391"
+  },
+  "input": "worker2_assignment3_2_32",
+  "output": true,
+  "label": true,
+  "pair_id": "assignment3_2_s3",
+  "group_id": "s3",
+  "within_group_idx": "2",
+  "optional": "",
+  "time_stamp": "2020-09-24T09:55:29.397051",
+  "hit_id": "hit3",
+  "assignment_id": "assignment3_2",
+  "code": "worker2_assignment3_2",
+  "scenario": "test",
+  "domain": "test",
+  "worker_id": "worker2",
+  "need_validate": true,
+  "num_val": 0
+},{
+  "_id": {
+    "$oid": "5f6cd01ccc67f3114415316e"
+  },
+  "input": "worker3_assignment1_3_11",
+  "output": true,
+  "label": false,
+  "pair_id": "assignment1_3_s1",
+  "group_id": "s1",
+  "within_group_idx": "1",
+  "optional": "",
+  "time_stamp": "2020-09-24T09:58:04.870223",
+  "hit_id": "hit1",
+  "assignment_id": "assignment1_3",
+  "code": "worker3_assignment1_3",
+  "scenario": "test",
+  "domain": "test",
+  "worker_id": "worker3",
+  "need_validate": true,
+  "num_val": 0
+},{
+  "_id": {
+    "$oid": "5f6cd01ccc67f3114415316f"
+  },
+  "input": "worker3_assignment1_3_12",
+  "output": true,
+  "label": true,
+  "pair_id": "assignment1_3_s1",
+  "group_id": "s1",
+  "within_group_idx": "2",
+  "optional": "",
+  "time_stamp": "2020-09-24T09:58:04.884899",
+  "hit_id": "hit1",
+  "assignment_id": "assignment1_3",
+  "code": "worker3_assignment1_3",
+  "scenario": "test",
+  "domain": "test",
+  "worker_id": "worker3",
+  "need_validate": true,
+  "num_val": 0
+},{
+  "_id": {
+    "$oid": "5f6cd01ccc67f31144153170"
+  },
+  "input": "worker3_assignment1_3_21",
+  "output": true,
+  "label": true,
+  "pair_id": "assignment1_3_s2",
+  "group_id": "s2",
+  "within_group_idx": "1",
+  "optional": "",
+  "time_stamp": "2020-09-24T09:58:04.885365",
+  "hit_id": "hit1",
+  "assignment_id": "assignment1_3",
+  "code": "worker3_assignment1_3",
+  "scenario": "test",
+  "domain": "test",
+  "worker_id": "worker3",
+  "need_validate": true,
+  "num_val": 0
+},{
+  "_id": {
+    "$oid": "5f6cd01ccc67f31144153171"
+  },
+  "input": "worker3_assignment1_3_22",
+  "output": true,
+  "label": false,
+  "pair_id": "assignment1_3_s2",
+  "group_id": "s2",
+  "within_group_idx": "2",
+  "optional": "",
+  "time_stamp": "2020-09-24T09:58:04.885764",
+  "hit_id": "hit1",
+  "assignment_id": "assignment1_3",
+  "code": "worker3_assignment1_3",
+  "scenario": "test",
+  "domain": "test",
+  "worker_id": "worker3",
+  "need_validate": true,
+  "num_val": 0
+},{
+  "_id": {
+    "$oid": "5f6cd01ccc67f31144153172"
+  },
+  "input": "worker3_assignment1_3_31",
+  "output": true,
+  "label": false,
+  "pair_id": "assignment1_3_s3",
+  "group_id": "s3",
+  "within_group_idx": "1",
+  "optional": "",
+  "time_stamp": "2020-09-24T09:58:04.886144",
+  "hit_id": "hit1",
+  "assignment_id": "assignment1_3",
+  "code": "worker3_assignment1_3",
+  "scenario": "test",
+  "domain": "test",
+  "worker_id": "worker3",
+  "need_validate": true,
+  "num_val": 0
+},{
+  "_id": {
+    "$oid": "5f6cd01ccc67f31144153173"
+  },
+  "input": "worker3_assignment1_3_32",
+  "output": true,
+  "label": true,
+  "pair_id": "assignment1_3_s3",
+  "group_id": "s3",
+  "within_group_idx": "2",
+  "optional": "",
+  "time_stamp": "2020-09-24T09:58:04.886476",
+  "hit_id": "hit1",
+  "assignment_id": "assignment1_3",
+  "code": "worker3_assignment1_3",
+  "scenario": "test",
+  "domain": "test",
+  "worker_id": "worker3",
+  "need_validate": true,
+  "num_val": 0
+},{
+  "_id": {
+    "$oid": "5f6cd063b6baacbde198d04c"
+  },
+  "input": "worker3_assignment2_3_11",
+  "output": true,
+  "label": true,
+  "pair_id": "assignment2_3_s1",
+  "group_id": "s1",
+  "within_group_idx": "1",
+  "optional": "",
+  "time_stamp": "2020-09-24T09:59:15.208948",
+  "hit_id": "hit2",
+  "assignment_id": "assignment2_3",
+  "code": "worker3_assignment2_3",
+  "scenario": "test",
+  "domain": "test",
+  "worker_id": "worker3",
+  "need_validate": true,
+  "num_val": 0
+},{
+  "_id": {
+    "$oid": "5f6cd063b6baacbde198d04d"
+  },
+  "input": "worker3_assignment2_3_12",
+  "output": true,
+  "label": false,
+  "pair_id": "assignment2_3_s1",
+  "group_id": "s1",
+  "within_group_idx": "2",
+  "optional": "",
+  "time_stamp": "2020-09-24T09:59:15.211442",
+  "hit_id": "hit2",
+  "assignment_id": "assignment2_3",
+  "code": "worker3_assignment2_3",
+  "scenario": "test",
+  "domain": "test",
+  "worker_id": "worker3",
+  "need_validate": true,
+  "num_val": 0
+},{
+  "_id": {
+    "$oid": "5f6cd063b6baacbde198d04e"
+  },
+  "input": "worker3_assignment2_3_21",
+  "output": true,
+  "label": false,
+  "pair_id": "assignment2_3_s2",
+  "group_id": "s2",
+  "within_group_idx": "1",
+  "optional": "",
+  "time_stamp": "2020-09-24T09:59:15.211931",
+  "hit_id": "hit2",
+  "assignment_id": "assignment2_3",
+  "code": "worker3_assignment2_3",
+  "scenario": "test",
+  "domain": "test",
+  "worker_id": "worker3",
+  "need_validate": true,
+  "num_val": 0
+},{
+  "_id": {
+    "$oid": "5f6cd063b6baacbde198d04f"
+  },
+  "input": "worker3_assignment2_3_22",
+  "output": true,
+  "label": true,
+  "pair_id": "assignment2_3_s2",
+  "group_id": "s2",
+  "within_group_idx": "2",
+  "optional": "",
+  "time_stamp": "2020-09-24T09:59:15.212360",
+  "hit_id": "hit2",
+  "assignment_id": "assignment2_3",
+  "code": "worker3_assignment2_3",
+  "scenario": "test",
+  "domain": "test",
+  "worker_id": "worker3",
+  "need_validate": true,
+  "num_val": 0
+},{
+  "_id": {
+    "$oid": "5f6cd063b6baacbde198d050"
+  },
+  "input": "worker3_assignment2_3_31",
+  "output": true,
+  "label": true,
+  "pair_id": "assignment2_3_s3",
+  "group_id": "s3",
+  "within_group_idx": "1",
+  "optional": "",
+  "time_stamp": "2020-09-24T09:59:15.212780",
+  "hit_id": "hit2",
+  "assignment_id": "assignment2_3",
+  "code": "worker3_assignment2_3",
+  "scenario": "test",
+  "domain": "test",
+  "worker_id": "worker3",
+  "need_validate": true,
+  "num_val": 0
+},{
+  "_id": {
+    "$oid": "5f6cd063b6baacbde198d051"
+  },
+  "input": "worker3_assignment2_3_32",
+  "output": true,
+  "label": false,
+  "pair_id": "assignment2_3_s3",
+  "group_id": "s3",
+  "within_group_idx": "2",
+  "optional": "",
+  "time_stamp": "2020-09-24T09:59:15.213156",
+  "hit_id": "hit2",
+  "assignment_id": "assignment2_3",
+  "code": "worker3_assignment2_3",
+  "scenario": "test",
+  "domain": "test",
+  "worker_id": "worker3",
+  "need_validate": true,
+  "num_val": 0
+},{
+  "_id": {
+    "$oid": "5f6cd0b965316faea9389079"
+  },
+  "input": "worker3_assignment3_3_11",
+  "output": true,
+  "label": true,
+  "pair_id": "assignment3_3_s1",
+  "group_id": "s1",
+  "within_group_idx": "1",
+  "optional": "",
+  "time_stamp": "2020-09-24T10:00:41.474089",
+  "hit_id": "hit3",
+  "assignment_id": "assignment3_3",
+  "code": "worker3_assignment3_3",
+  "scenario": "test",
+  "domain": "test",
+  "worker_id": "worker3",
+  "need_validate": false,
+  "num_val": 0
+},{
+  "_id": {
+    "$oid": "5f6cd0b965316faea938907a"
+  },
+  "input": "worker3_assignment3_3_12",
+  "output": true,
+  "label": false,
+  "pair_id": "assignment3_3_s1",
+  "group_id": "s1",
+  "within_group_idx": "2",
+  "optional": "",
+  "time_stamp": "2020-09-24T10:00:41.476198",
+  "hit_id": "hit3",
+  "assignment_id": "assignment3_3",
+  "code": "worker3_assignment3_3",
+  "scenario": "test",
+  "domain": "test",
+  "worker_id": "worker3",
+  "need_validate": false,
+  "num_val": 0
+},{
+  "_id": {
+    "$oid": "5f6cd0b965316faea938907b"
+  },
+  "input": "worker3_assignment3_3_21_test",
+  "output": true,
+  "label": false,
+  "pair_id": "assignment3_3_s2",
+  "group_id": "s2",
+  "within_group_idx": "1",
+  "optional": "",
+  "time_stamp": "2020-09-24T10:00:41.476641",
+  "hit_id": "hit3",
+  "assignment_id": "assignment3_3",
+  "code": "worker3_assignment3_3",
+  "scenario": "test",
+  "domain": "test",
+  "worker_id": "worker3",
+  "need_validate": false,
+  "num_val": 0
+},{
+  "_id": {
+    "$oid": "5f6cd0b965316faea938907c"
+  },
+  "input": "worker3_assignment3_3_22_test",
+  "output": true,
+  "label": true,
+  "pair_id": "assignment3_3_s2",
+  "group_id": "s2",
+  "within_group_idx": "2",
+  "optional": "",
+  "time_stamp": "2020-09-24T10:00:41.477065",
+  "hit_id": "hit3",
+  "assignment_id": "assignment3_3",
+  "code": "worker3_assignment3_3",
+  "scenario": "test",
+  "domain": "test",
+  "worker_id": "worker3",
+  "need_validate": false,
+  "num_val": 0
+},{
+  "_id": {
+    "$oid": "5f6cd0b965316faea938907d"
+  },
+  "input": "worker3_assignment3_3_31_test",
+  "output": true,
+  "label": true,
+  "pair_id": "assignment3_3_s3",
+  "group_id": "s3",
+  "within_group_idx": "1",
+  "optional": "",
+  "time_stamp": "2020-09-24T10:00:41.477521",
+  "hit_id": "hit3",
+  "assignment_id": "assignment3_3",
+  "code": "worker3_assignment3_3",
+  "scenario": "test",
+  "domain": "test",
+  "worker_id": "worker3",
+  "need_validate": false,
+  "num_val": 0
+},{
+  "_id": {
+    "$oid": "5f6cd0b965316faea938907e"
+  },
+  "input": "worker3_assignment3_3_32_test",
+  "output": true,
+  "label": false,
+  "pair_id": "assignment3_3_s3",
+  "group_id": "s3",
+  "within_group_idx": "2",
+  "optional": "",
+  "time_stamp": "2020-09-24T10:00:41.477962",
+  "hit_id": "hit3",
+  "assignment_id": "assignment3_3",
+  "code": "worker3_assignment3_3",
+  "scenario": "test",
+  "domain": "test",
+  "worker_id": "worker3",
+  "need_validate": false,
+  "num_val": 0
+},{
+  "_id": {
+    "$oid": "5f6cd0c665316faea938907f"
+  },
+  "input": "worker3_assignment3_3_11",
+  "output": true,
+  "label": true,
+  "pair_id": "assignment3_3_s1",
+  "group_id": "s1",
+  "within_group_idx": "1",
+  "optional": "",
+  "time_stamp": "2020-09-24T10:00:54.105016",
+  "hit_id": "hit3",
+  "assignment_id": "assignment3_3",
+  "code": "worker3_assignment3_3",
+  "scenario": "test",
+  "domain": "test",
+  "worker_id": "worker3",
+  "need_validate": true,
+  "num_val": 0
+},{
+  "_id": {
+    "$oid": "5f6cd0c665316faea9389080"
+  },
+  "input": "worker3_assignment3_3_12",
+  "output": true,
+  "label": false,
+  "pair_id": "assignment3_3_s1",
+  "group_id": "s1",
+  "within_group_idx": "2",
+  "optional": "",
+  "time_stamp": "2020-09-24T10:00:54.106524",
+  "hit_id": "hit3",
+  "assignment_id": "assignment3_3",
+  "code": "worker3_assignment3_3",
+  "scenario": "test",
+  "domain": "test",
+  "worker_id": "worker3",
+  "need_validate": true,
+  "num_val": 0
+},{
+  "_id": {
+    "$oid": "5f6cd0c665316faea9389081"
+  },
+  "input": "worker3_assignment3_3_21",
+  "output": true,
+  "label": false,
+  "pair_id": "assignment3_3_s2",
+  "group_id": "s2",
+  "within_group_idx": "1",
+  "optional": "",
+  "time_stamp": "2020-09-24T10:00:54.106905",
+  "hit_id": "hit3",
+  "assignment_id": "assignment3_3",
+  "code": "worker3_assignment3_3",
+  "scenario": "test",
+  "domain": "test",
+  "worker_id": "worker3",
+  "need_validate": true,
+  "num_val": 0
+},{
+  "_id": {
+    "$oid": "5f6cd0c665316faea9389082"
+  },
+  "input": "worker3_assignment3_3_22",
+  "output": true,
+  "label": true,
+  "pair_id": "assignment3_3_s2",
+  "group_id": "s2",
+  "within_group_idx": "2",
+  "optional": "",
+  "time_stamp": "2020-09-24T10:00:54.107242",
+  "hit_id": "hit3",
+  "assignment_id": "assignment3_3",
+  "code": "worker3_assignment3_3",
+  "scenario": "test",
+  "domain": "test",
+  "worker_id": "worker3",
+  "need_validate": true,
+  "num_val": 0
+},{
+  "_id": {
+    "$oid": "5f6cd0c665316faea9389083"
+  },
+  "input": "worker3_assignment3_3_31",
+  "output": true,
+  "label": true,
+  "pair_id": "assignment3_3_s3",
+  "group_id": "s3",
+  "within_group_idx": "1",
+  "optional": "",
+  "time_stamp": "2020-09-24T10:00:54.107613",
+  "hit_id": "hit3",
+  "assignment_id": "assignment3_3",
+  "code": "worker3_assignment3_3",
+  "scenario": "test",
+  "domain": "test",
+  "worker_id": "worker3",
+  "need_validate": true,
+  "num_val": 0
+},{
+  "_id": {
+    "$oid": "5f6cd0c665316faea9389084"
+  },
+  "input": "worker3_assignment3_3_32",
+  "output": true,
+  "label": false,
+  "pair_id": "assignment3_3_s3",
+  "group_id": "s3",
+  "within_group_idx": "2",
+  "optional": "",
+  "time_stamp": "2020-09-24T10:00:54.108076",
+  "hit_id": "hit3",
+  "assignment_id": "assignment3_3",
+  "code": "worker3_assignment3_3",
+  "scenario": "test",
+  "domain": "test",
+  "worker_id": "worker3",
+  "need_validate": true,
+  "num_val": 0
+},{
+  "_id": {
+    "$oid": "5f6cd182f8eb71e9939fd938"
+  },
+  "input": "worker4_assignment4_11",
+  "output": true,
+  "label": true,
+  "pair_id": "assignment4_s1",
+  "group_id": "s1",
+  "within_group_idx": "1",
+  "optional": "",
+  "time_stamp": "2020-09-24T10:04:02.290275",
+  "hit_id": "hit1",
+  "assignment_id": "assignment4",
+  "code": "worker4_assignment4",
+  "scenario": "test",
+  "domain": "test",
+  "worker_id": "worker4",
+  "need_validate": true,
+  "num_val": 0
+},{
+  "_id": {
+    "$oid": "5f6cd182f8eb71e9939fd939"
+  },
+  "input": "worker4_assignment4_12",
+  "output": true,
+  "label": false,
+  "pair_id": "assignment4_s1",
+  "group_id": "s1",
+  "within_group_idx": "2",
+  "optional": "",
+  "time_stamp": "2020-09-24T10:04:02.292559",
+  "hit_id": "hit1",
+  "assignment_id": "assignment4",
+  "code": "worker4_assignment4",
+  "scenario": "test",
+  "domain": "test",
+  "worker_id": "worker4",
+  "need_validate": true,
+  "num_val": 0
+},{
+  "_id": {
+    "$oid": "5f6cd182f8eb71e9939fd93a"
+  },
+  "input": "worker4_assignment4_21",
+  "output": true,
+  "label": false,
+  "pair_id": "assignment4_s2",
+  "group_id": "s2",
+  "within_group_idx": "1",
+  "optional": "",
+  "time_stamp": "2020-09-24T10:04:02.292965",
+  "hit_id": "hit1",
+  "assignment_id": "assignment4",
+  "code": "worker4_assignment4",
+  "scenario": "test",
+  "domain": "test",
+  "worker_id": "worker4",
+  "need_validate": true,
+  "num_val": 0
+},{
+  "_id": {
+    "$oid": "5f6cd182f8eb71e9939fd93b"
+  },
+  "input": "worker4_assignment4_22",
+  "output": true,
+  "label": true,
+  "pair_id": "assignment4_s2",
+  "group_id": "s2",
+  "within_group_idx": "2",
+  "optional": "",
+  "time_stamp": "2020-09-24T10:04:02.293355",
+  "hit_id": "hit1",
+  "assignment_id": "assignment4",
+  "code": "worker4_assignment4",
+  "scenario": "test",
+  "domain": "test",
+  "worker_id": "worker4",
+  "need_validate": true,
+  "num_val": 0
+},{
+  "_id": {
+    "$oid": "5f6cd182f8eb71e9939fd93c"
+  },
+  "input": "worker4_assignment4_31",
+  "output": true,
+  "label": true,
+  "pair_id": "assignment4_s3",
+  "group_id": "s3",
+  "within_group_idx": "1",
+  "optional": "",
+  "time_stamp": "2020-09-24T10:04:02.293713",
+  "hit_id": "hit1",
+  "assignment_id": "assignment4",
+  "code": "worker4_assignment4",
+  "scenario": "test",
+  "domain": "test",
+  "worker_id": "worker4",
+  "need_validate": true,
+  "num_val": 0
+},{
+  "_id": {
+    "$oid": "5f6cd182f8eb71e9939fd93d"
+  },
+  "input": "worker4_assignment4_32",
+  "output": true,
+  "label": false,
+  "pair_id": "assignment4_s3",
+  "group_id": "s3",
+  "within_group_idx": "2",
+  "optional": "",
+  "time_stamp": "2020-09-24T10:04:02.294072",
+  "hit_id": "hit1",
+  "assignment_id": "assignment4",
+  "code": "worker4_assignment4",
+  "scenario": "test",
+  "domain": "test",
+  "worker_id": "worker4",
+  "need_validate": true,
+  "num_val": 0
+},{
+  "_id": {
+    "$oid": "5f6cd1c84d88f0d66a24007d"
+  },
+  "input": "worker5_assignment5_11",
+  "output": true,
+  "label": true,
+  "pair_id": "assignment5_s1",
+  "group_id": "s1",
+  "within_group_idx": "1",
+  "optional": "",
+  "time_stamp": "2020-09-24T10:05:12.588400",
+  "hit_id": "hit1",
+  "assignment_id": "assignment5",
+  "code": "worker5_assignment5",
+  "scenario": "test",
+  "domain": "test",
+  "worker_id": "worker5",
+  "need_validate": true,
+  "num_val": 0
+},{
+  "_id": {
+    "$oid": "5f6cd1c84d88f0d66a24007e"
+  },
+  "input": "worker5_assignment5_12",
+  "output": true,
+  "label": false,
+  "pair_id": "assignment5_s1",
+  "group_id": "s1",
+  "within_group_idx": "2",
+  "optional": "",
+  "time_stamp": "2020-09-24T10:05:12.590710",
+  "hit_id": "hit1",
+  "assignment_id": "assignment5",
+  "code": "worker5_assignment5",
+  "scenario": "test",
+  "domain": "test",
+  "worker_id": "worker5",
+  "need_validate": true,
+  "num_val": 0
+},{
+  "_id": {
+    "$oid": "5f6cd1c84d88f0d66a24007f"
+  },
+  "input": "worker5_assignment5_21",
+  "output": true,
+  "label": true,
+  "pair_id": "assignment5_s2",
+  "group_id": "s2",
+  "within_group_idx": "1",
+  "optional": "",
+  "time_stamp": "2020-09-24T10:05:12.591183",
+  "hit_id": "hit1",
+  "assignment_id": "assignment5",
+  "code": "worker5_assignment5",
+  "scenario": "test",
+  "domain": "test",
+  "worker_id": "worker5",
+  "need_validate": true,
+  "num_val": 0
+},{
+  "_id": {
+    "$oid": "5f6cd1c84d88f0d66a240080"
+  },
+  "input": "worker5_assignment5_22",
+  "output": true,
+  "label": false,
+  "pair_id": "assignment5_s2",
+  "group_id": "s2",
+  "within_group_idx": "2",
+  "optional": "",
+  "time_stamp": "2020-09-24T10:05:12.591636",
+  "hit_id": "hit1",
+  "assignment_id": "assignment5",
+  "code": "worker5_assignment5",
+  "scenario": "test",
+  "domain": "test",
+  "worker_id": "worker5",
+  "need_validate": true,
+  "num_val": 0
+},{
+  "_id": {
+    "$oid": "5f6cd1c84d88f0d66a240081"
+  },
+  "input": "worker5_assignment5_31",
+  "output": true,
+  "label": false,
+  "pair_id": "assignment5_s3",
+  "group_id": "s3",
+  "within_group_idx": "1",
+  "optional": "",
+  "time_stamp": "2020-09-24T10:05:12.592006",
+  "hit_id": "hit1",
+  "assignment_id": "assignment5",
+  "code": "worker5_assignment5",
+  "scenario": "test",
+  "domain": "test",
+  "worker_id": "worker5",
+  "need_validate": true,
+  "num_val": 0
+},{
+  "_id": {
+    "$oid": "5f6cd1c84d88f0d66a240082"
+  },
+  "input": "worker5_assignment5_32",
+  "output": true,
+  "label": true,
+  "pair_id": "assignment5_s3",
+  "group_id": "s3",
+  "within_group_idx": "2",
+  "optional": "",
+  "time_stamp": "2020-09-24T10:05:12.592384",
+  "hit_id": "hit1",
+  "assignment_id": "assignment5",
+  "code": "worker5_assignment5",
+  "scenario": "test",
+  "domain": "test",
+  "worker_id": "worker5",
+  "need_validate": true,
+  "num_val": 0
+},{
+  "_id": {
+    "$oid": "5f6cd209bdafec1ff41c76b3"
+  },
+  "input": "worker6_assignment6_11",
+  "output": true,
+  "label": true,
+  "pair_id": "assignment6_s1",
+  "group_id": "s1",
+  "within_group_idx": "1",
+  "optional": "",
+  "time_stamp": "2020-09-24T10:06:17.220403",
+  "hit_id": "hit1",
+  "assignment_id": "assignment6",
+  "code": "worker6_assignment6",
+  "scenario": "test",
+  "domain": "test",
+  "worker_id": "worker6",
+  "need_validate": true,
+  "num_val": 0
+},{
+  "_id": {
+    "$oid": "5f6cd209bdafec1ff41c76b4"
+  },
+  "input": "worker6_assignment6_12",
+  "output": true,
+  "label": false,
+  "pair_id": "assignment6_s1",
+  "group_id": "s1",
+  "within_group_idx": "2",
+  "optional": "",
+  "time_stamp": "2020-09-24T10:06:17.222693",
+  "hit_id": "hit1",
+  "assignment_id": "assignment6",
+  "code": "worker6_assignment6",
+  "scenario": "test",
+  "domain": "test",
+  "worker_id": "worker6",
+  "need_validate": true,
+  "num_val": 0
+},{
+  "_id": {
+    "$oid": "5f6cd209bdafec1ff41c76b5"
+  },
+  "input": "worker6_assignment6_21",
+  "output": true,
+  "label": false,
+  "pair_id": "assignment6_s2",
+  "group_id": "s2",
+  "within_group_idx": "1",
+  "optional": "",
+  "time_stamp": "2020-09-24T10:06:17.223148",
+  "hit_id": "hit1",
+  "assignment_id": "assignment6",
+  "code": "worker6_assignment6",
+  "scenario": "test",
+  "domain": "test",
+  "worker_id": "worker6",
+  "need_validate": true,
+  "num_val": 0
+},{
+  "_id": {
+    "$oid": "5f6cd209bdafec1ff41c76b6"
+  },
+  "input": "worker6_assignment6_22",
+  "output": true,
+  "label": true,
+  "pair_id": "assignment6_s2",
+  "group_id": "s2",
+  "within_group_idx": "2",
+  "optional": "",
+  "time_stamp": "2020-09-24T10:06:17.223525",
+  "hit_id": "hit1",
+  "assignment_id": "assignment6",
+  "code": "worker6_assignment6",
+  "scenario": "test",
+  "domain": "test",
+  "worker_id": "worker6",
+  "need_validate": true,
+  "num_val": 0
+},{
+  "_id": {
+    "$oid": "5f6cd209bdafec1ff41c76b7"
+  },
+  "input": "worker6_assignment6_31",
+  "output": true,
+  "label": true,
+  "pair_id": "assignment6_s3",
+  "group_id": "s3",
+  "within_group_idx": "1",
+  "optional": "",
+  "time_stamp": "2020-09-24T10:06:17.223892",
+  "hit_id": "hit1",
+  "assignment_id": "assignment6",
+  "code": "worker6_assignment6",
+  "scenario": "test",
+  "domain": "test",
+  "worker_id": "worker6",
+  "need_validate": true,
+  "num_val": 0
+},{
+  "_id": {
+    "$oid": "5f6cd209bdafec1ff41c76b8"
+  },
+  "input": "worker6_assignment6_32",
+  "output": true,
+  "label": false,
+  "pair_id": "assignment6_s3",
+  "group_id": "s3",
+  "within_group_idx": "2",
+  "optional": "",
+  "time_stamp": "2020-09-24T10:06:17.224292",
+  "hit_id": "hit1",
+  "assignment_id": "assignment6",
+  "code": "worker6_assignment6",
+  "scenario": "test",
+  "domain": "test",
+  "worker_id": "worker6",
+  "need_validate": true,
+  "num_val": 0
+},{
+  "_id": {
+    "$oid": "5f6cd25fdf563e7ded4791d6"
+  },
+  "input": "worker7_assignment7_11",
+  "output": false,
+  "label": true,
+  "pair_id": "assignment7_s1",
+  "group_id": "s1",
+  "within_group_idx": "1",
+  "optional": "",
+  "time_stamp": "2020-09-24T10:07:43.453062",
+  "hit_id": "hit1",
+  "assignment_id": "assignment7",
+  "code": "worker7_assignment7",
+  "scenario": "test",
+  "domain": "test",
+  "worker_id": "worker7",
+  "need_validate": true,
+  "num_val": 0
+},{
+  "_id": {
+    "$oid": "5f6cd25fdf563e7ded4791d7"
+  },
+  "input": "worker7_assignment7_12",
+  "output": true,
+  "label": false,
+  "pair_id": "assignment7_s1",
+  "group_id": "s1",
+  "within_group_idx": "2",
+  "optional": "",
+  "time_stamp": "2020-09-24T10:07:43.455429",
+  "hit_id": "hit1",
+  "assignment_id": "assignment7",
+  "code": "worker7_assignment7",
+  "scenario": "test",
+  "domain": "test",
+  "worker_id": "worker7",
+  "need_validate": true,
+  "num_val": 0
+},{
+  "_id": {
+    "$oid": "5f6cd25fdf563e7ded4791d8"
+  },
+  "input": "worker7_assignment7_21",
+  "output": true,
+  "label": false,
+  "pair_id": "assignment7_s2",
+  "group_id": "s2",
+  "within_group_idx": "1",
+  "optional": "",
+  "time_stamp": "2020-09-24T10:07:43.455853",
+  "hit_id": "hit1",
+  "assignment_id": "assignment7",
+  "code": "worker7_assignment7",
+  "scenario": "test",
+  "domain": "test",
+  "worker_id": "worker7",
+  "need_validate": true,
+  "num_val": 0
+},{
+  "_id": {
+    "$oid": "5f6cd25fdf563e7ded4791d9"
+  },
+  "input": "worker7_assignment7_22",
+  "output": true,
+  "label": true,
+  "pair_id": "assignment7_s2",
+  "group_id": "s2",
+  "within_group_idx": "2",
+  "optional": "",
+  "time_stamp": "2020-09-24T10:07:43.456296",
+  "hit_id": "hit1",
+  "assignment_id": "assignment7",
+  "code": "worker7_assignment7",
+  "scenario": "test",
+  "domain": "test",
+  "worker_id": "worker7",
+  "need_validate": true,
+  "num_val": 0
+},{
+  "_id": {
+    "$oid": "5f6cd25fdf563e7ded4791da"
+  },
+  "input": "worker7_assignment7_31",
+  "output": true,
+  "label": true,
+  "pair_id": "assignment7_s3",
+  "group_id": "s3",
+  "within_group_idx": "1",
+  "optional": "",
+  "time_stamp": "2020-09-24T10:07:43.456731",
+  "hit_id": "hit1",
+  "assignment_id": "assignment7",
+  "code": "worker7_assignment7",
+  "scenario": "test",
+  "domain": "test",
+  "worker_id": "worker7",
+  "need_validate": true,
+  "num_val": 0
+},{
+  "_id": {
+    "$oid": "5f6cd25fdf563e7ded4791db"
+  },
+  "input": "worker7_assignment7_32",
+  "output": true,
+  "label": false,
+  "pair_id": "assignment7_s3",
+  "group_id": "s3",
+  "within_group_idx": "2",
+  "optional": "",
+  "time_stamp": "2020-09-24T10:07:43.457108",
+  "hit_id": "hit1",
+  "assignment_id": "assignment7",
+  "code": "worker7_assignment7",
+  "scenario": "test",
+  "domain": "test",
+  "worker_id": "worker7",
+  "need_validate": true,
+  "num_val": 0
+},{
+  "_id": {
+    "$oid": "5f6cd2afc7121d2391091b25"
+  },
+  "input": "worker8_assignment8_11",
+  "output": false,
+  "label": true,
+  "pair_id": "assignment8_s1",
+  "group_id": "s1",
+  "within_group_idx": "1",
+  "optional": "",
+  "time_stamp": "2020-09-24T10:09:03.804064",
+  "hit_id": "hit1",
+  "assignment_id": "assignment8",
+  "code": "worker8_assignment8",
+  "scenario": "test",
+  "domain": "test",
+  "worker_id": "worker8",
+  "need_validate": true,
+  "num_val": 0
+},{
+  "_id": {
+    "$oid": "5f6cd2afc7121d2391091b26"
+  },
+  "input": "worker8_assignment8_12",
+  "output": true,
+  "label": false,
+  "pair_id": "assignment8_s1",
+  "group_id": "s1",
+  "within_group_idx": "2",
+  "optional": "",
+  "time_stamp": "2020-09-24T10:09:03.823559",
+  "hit_id": "hit1",
+  "assignment_id": "assignment8",
+  "code": "worker8_assignment8",
+  "scenario": "test",
+  "domain": "test",
+  "worker_id": "worker8",
+  "need_validate": true,
+  "num_val": 0
+},{
+  "_id": {
+    "$oid": "5f6cd2afc7121d2391091b27"
+  },
+  "input": "worker8_assignment8_21",
+  "output": true,
+  "label": false,
+  "pair_id": "assignment8_s2",
+  "group_id": "s2",
+  "within_group_idx": "1",
+  "optional": "",
+  "time_stamp": "2020-09-24T10:09:03.824023",
+  "hit_id": "hit1",
+  "assignment_id": "assignment8",
+  "code": "worker8_assignment8",
+  "scenario": "test",
+  "domain": "test",
+  "worker_id": "worker8",
+  "need_validate": true,
+  "num_val": 0
+},{
+  "_id": {
+    "$oid": "5f6cd2afc7121d2391091b28"
+  },
+  "input": "worker8_assignment8_22",
+  "output": true,
+  "label": true,
+  "pair_id": "assignment8_s2",
+  "group_id": "s2",
+  "within_group_idx": "2",
+  "optional": "",
+  "time_stamp": "2020-09-24T10:09:03.824413",
+  "hit_id": "hit1",
+  "assignment_id": "assignment8",
+  "code": "worker8_assignment8",
+  "scenario": "test",
+  "domain": "test",
+  "worker_id": "worker8",
+  "need_validate": true,
+  "num_val": 0
+},{
+  "_id": {
+    "$oid": "5f6cd2afc7121d2391091b29"
+  },
+  "input": "worker8_assignment8_31",
+  "output": true,
+  "label": true,
+  "pair_id": "assignment8_s3",
+  "group_id": "s3",
+  "within_group_idx": "1",
+  "optional": "",
+  "time_stamp": "2020-09-24T10:09:03.824809",
+  "hit_id": "hit1",
+  "assignment_id": "assignment8",
+  "code": "worker8_assignment8",
+  "scenario": "test",
+  "domain": "test",
+  "worker_id": "worker8",
+  "need_validate": true,
+  "num_val": 0
+},{
+  "_id": {
+    "$oid": "5f6cd2afc7121d2391091b2a"
+  },
+  "input": "worker8_assignment8_32",
+  "output": false,
+  "label": false,
+  "pair_id": "assignment8_s3",
+  "group_id": "s3",
+  "within_group_idx": "2",
+  "optional": "",
+  "time_stamp": "2020-09-24T10:09:03.825180",
+  "hit_id": "hit1",
+  "assignment_id": "assignment8",
+  "code": "worker8_assignment8",
+  "scenario": "test",
+  "domain": "test",
+  "worker_id": "worker8",
+  "need_validate": true,
+  "num_val": 0
+},{
+  "_id": {
+    "$oid": "5f6cd2effcb06661b333c506"
+  },
+  "input": "worker9_assignment9_11",
+  "output": false,
+  "label": true,
+  "pair_id": "assignment9_s1",
+  "group_id": "s1",
+  "within_group_idx": "1",
+  "optional": "",
+  "time_stamp": "2020-09-24T10:10:07.547911",
+  "hit_id": "hit1",
+  "assignment_id": "assignment9",
+  "code": "worker9_assignment9",
+  "scenario": "test",
+  "domain": "test",
+  "worker_id": "worker9",
+  "need_validate": true,
+  "num_val": 0
+},{
+  "_id": {
+    "$oid": "5f6cd2effcb06661b333c507"
+  },
+  "input": "worker9_assignment9_12",
+  "output": true,
+  "label": false,
+  "pair_id": "assignment9_s1",
+  "group_id": "s1",
+  "within_group_idx": "2",
+  "optional": "",
+  "time_stamp": "2020-09-24T10:10:07.550295",
+  "hit_id": "hit1",
+  "assignment_id": "assignment9",
+  "code": "worker9_assignment9",
+  "scenario": "test",
+  "domain": "test",
+  "worker_id": "worker9",
+  "need_validate": true,
+  "num_val": 0
+},{
+  "_id": {
+    "$oid": "5f6cd2effcb06661b333c508"
+  },
+  "input": "worker9_assignment9_21",
+  "output": true,
+  "label": false,
+  "pair_id": "assignment9_s2",
+  "group_id": "s2",
+  "within_group_idx": "1",
+  "optional": "",
+  "time_stamp": "2020-09-24T10:10:07.550726",
+  "hit_id": "hit1",
+  "assignment_id": "assignment9",
+  "code": "worker9_assignment9",
+  "scenario": "test",
+  "domain": "test",
+  "worker_id": "worker9",
+  "need_validate": true,
+  "num_val": 0
+},{
+  "_id": {
+    "$oid": "5f6cd2effcb06661b333c509"
+  },
+  "input": "worker9_assignment9_22",
+  "output": true,
+  "label": true,
+  "pair_id": "assignment9_s2",
+  "group_id": "s2",
+  "within_group_idx": "2",
+  "optional": "",
+  "time_stamp": "2020-09-24T10:10:07.551108",
+  "hit_id": "hit1",
+  "assignment_id": "assignment9",
+  "code": "worker9_assignment9",
+  "scenario": "test",
+  "domain": "test",
+  "worker_id": "worker9",
+  "need_validate": true,
+  "num_val": 0
+},{
+  "_id": {
+    "$oid": "5f6cd2effcb06661b333c50a"
+  },
+  "input": "worker9_assignment9_31",
+  "output": true,
+  "label": true,
+  "pair_id": "assignment9_s3",
+  "group_id": "s3",
+  "within_group_idx": "1",
+  "optional": "",
+  "time_stamp": "2020-09-24T10:10:07.551441",
+  "hit_id": "hit1",
+  "assignment_id": "assignment9",
+  "code": "worker9_assignment9",
+  "scenario": "test",
+  "domain": "test",
+  "worker_id": "worker9",
+  "need_validate": true,
+  "num_val": 0
+},{
+  "_id": {
+    "$oid": "5f6cd2effcb06661b333c50b"
+  },
+  "input": "worker9_assignment9_32",
+  "output": true,
+  "label": false,
+  "pair_id": "assignment9_s3",
+  "group_id": "s3",
+  "within_group_idx": "2",
+  "optional": "",
+  "time_stamp": "2020-09-24T10:10:07.551796",
+  "hit_id": "hit1",
+  "assignment_id": "assignment9",
+  "code": "worker9_assignment9",
+  "scenario": "test",
+  "domain": "test",
+  "worker_id": "worker9",
+  "need_validate": true,
+  "num_val": 0
+},{
+  "_id": {
+    "$oid": "5f6cd32a3bf81ada17085d68"
+  },
+  "input": "worker10_assignment10_11",
+  "output": false,
+  "label": true,
+  "pair_id": "assignment10_s1",
+  "group_id": "s1",
+  "within_group_idx": "1",
+  "optional": "",
+  "time_stamp": "2020-09-24T10:11:06.183616",
+  "hit_id": "hit1",
+  "assignment_id": "assignment10",
+  "code": "worker10_assignment10",
+  "scenario": "test",
+  "domain": "test",
+  "worker_id": "worker10",
+  "need_validate": true,
+  "num_val": 0
+},{
+  "_id": {
+    "$oid": "5f6cd32a3bf81ada17085d69"
+  },
+  "input": "worker10_assignment10_12",
+  "output": true,
+  "label": false,
+  "pair_id": "assignment10_s1",
+  "group_id": "s1",
+  "within_group_idx": "2",
+  "optional": "",
+  "time_stamp": "2020-09-24T10:11:06.185418",
+  "hit_id": "hit1",
+  "assignment_id": "assignment10",
+  "code": "worker10_assignment10",
+  "scenario": "test",
+  "domain": "test",
+  "worker_id": "worker10",
+  "need_validate": true,
+  "num_val": 0
+},{
+  "_id": {
+    "$oid": "5f6cd32a3bf81ada17085d6a"
+  },
+  "input": "worker10_assignment10_21",
+  "output": false,
+  "label": false,
+  "pair_id": "assignment10_s2",
+  "group_id": "s2",
+  "within_group_idx": "1",
+  "optional": "",
+  "time_stamp": "2020-09-24T10:11:06.185846",
+  "hit_id": "hit1",
+  "assignment_id": "assignment10",
+  "code": "worker10_assignment10",
+  "scenario": "test",
+  "domain": "test",
+  "worker_id": "worker10",
+  "need_validate": true,
+  "num_val": 0
+},{
+  "_id": {
+    "$oid": "5f6cd32a3bf81ada17085d6b"
+  },
+  "input": "worker10_assignment10_22",
+  "output": false,
+  "label": true,
+  "pair_id": "assignment10_s2",
+  "group_id": "s2",
+  "within_group_idx": "2",
+  "optional": "",
+  "time_stamp": "2020-09-24T10:11:06.186259",
+  "hit_id": "hit1",
+  "assignment_id": "assignment10",
+  "code": "worker10_assignment10",
+  "scenario": "test",
+  "domain": "test",
+  "worker_id": "worker10",
+  "need_validate": true,
+  "num_val": 0
+},{
+  "_id": {
+    "$oid": "5f6cd32a3bf81ada17085d6c"
+  },
+  "input": "worker10_assignment10_31",
+  "output": false,
+  "label": true,
+  "pair_id": "assignment10_s3",
+  "group_id": "s3",
+  "within_group_idx": "1",
+  "optional": "",
+  "time_stamp": "2020-09-24T10:11:06.186622",
+  "hit_id": "hit1",
+  "assignment_id": "assignment10",
+  "code": "worker10_assignment10",
+  "scenario": "test",
+  "domain": "test",
+  "worker_id": "worker10",
+  "need_validate": true,
+  "num_val": 0
+},{
+  "_id": {
+    "$oid": "5f6cd32a3bf81ada17085d6d"
+  },
+  "input": "worker10_assignment10_32",
+  "output": false,
+  "label": false,
+  "pair_id": "assignment10_s3",
+  "group_id": "s3",
+  "within_group_idx": "2",
+  "optional": "",
+  "time_stamp": "2020-09-24T10:11:06.186986",
+  "hit_id": "hit1",
+  "assignment_id": "assignment10",
+  "code": "worker10_assignment10",
+  "scenario": "test",
+  "domain": "test",
+  "worker_id": "worker10",
+  "need_validate": true,
+  "num_val": 0
+},{
+  "_id": {
+    "$oid": "5f6cd3669f67860fdaa58f80"
+  },
+  "input": "worker11_assignment11_11",
+  "output": true,
+  "label": false,
+  "pair_id": "assignment11_s1",
+  "group_id": "s1",
+  "within_group_idx": "1",
+  "optional": "",
+  "time_stamp": "2020-09-24T10:12:06.873270",
+  "hit_id": "hit1",
+  "assignment_id": "assignment11",
+  "code": "worker11_assignment11",
+  "scenario": "test",
+  "domain": "test",
+  "worker_id": "worker11",
+  "need_validate": true,
+  "num_val": 0
+},{
+  "_id": {
+    "$oid": "5f6cd3669f67860fdaa58f81"
+  },
+  "input": "worker11_assignment11_12",
+  "output": true,
+  "label": true,
+  "pair_id": "assignment11_s1",
+  "group_id": "s1",
+  "within_group_idx": "2",
+  "optional": "",
+  "time_stamp": "2020-09-24T10:12:06.875466",
+  "hit_id": "hit1",
+  "assignment_id": "assignment11",
+  "code": "worker11_assignment11",
+  "scenario": "test",
+  "domain": "test",
+  "worker_id": "worker11",
+  "need_validate": true,
+  "num_val": 0
+},{
+  "_id": {
+    "$oid": "5f6cd3669f67860fdaa58f82"
+  },
+  "input": "worker11_assignment11_21",
+  "output": true,
+  "label": true,
+  "pair_id": "assignment11_s2",
+  "group_id": "s2",
+  "within_group_idx": "1",
+  "optional": "",
+  "time_stamp": "2020-09-24T10:12:06.875892",
+  "hit_id": "hit1",
+  "assignment_id": "assignment11",
+  "code": "worker11_assignment11",
+  "scenario": "test",
+  "domain": "test",
+  "worker_id": "worker11",
+  "need_validate": true,
+  "num_val": 0
+},{
+  "_id": {
+    "$oid": "5f6cd3669f67860fdaa58f83"
+  },
+  "input": "worker11_assignment11_22",
+  "output": true,
+  "label": false,
+  "pair_id": "assignment11_s2",
+  "group_id": "s2",
+  "within_group_idx": "2",
+  "optional": "",
+  "time_stamp": "2020-09-24T10:12:06.876293",
+  "hit_id": "hit1",
+  "assignment_id": "assignment11",
+  "code": "worker11_assignment11",
+  "scenario": "test",
+  "domain": "test",
+  "worker_id": "worker11",
+  "need_validate": true,
+  "num_val": 0
+},{
+  "_id": {
+    "$oid": "5f6cd3669f67860fdaa58f84"
+  },
+  "input": "worker11_assignment11_31",
+  "output": true,
+  "label": false,
+  "pair_id": "assignment11_s3",
+  "group_id": "s3",
+  "within_group_idx": "1",
+  "optional": "",
+  "time_stamp": "2020-09-24T10:12:06.876661",
+  "hit_id": "hit1",
+  "assignment_id": "assignment11",
+  "code": "worker11_assignment11",
+  "scenario": "test",
+  "domain": "test",
+  "worker_id": "worker11",
+  "need_validate": true,
+  "num_val": 0
+},{
+  "_id": {
+    "$oid": "5f6cd3669f67860fdaa58f85"
+  },
+  "input": "worker11_assignment11_32",
+  "output": true,
+  "label": true,
+  "pair_id": "assignment11_s3",
+  "group_id": "s3",
+  "within_group_idx": "2",
+  "optional": "",
+  "time_stamp": "2020-09-24T10:12:06.876991",
+  "hit_id": "hit1",
+  "assignment_id": "assignment11",
+  "code": "worker11_assignment11",
+  "scenario": "test",
+  "domain": "test",
+  "worker_id": "worker11",
+  "need_validate": true,
+  "num_val": 0
+},{
+  "_id": {
+    "$oid": "5f6cd3b7e2bd1f0e37ac99ae"
+  },
+  "input": "worker12_assignment12_11",
+  "output": true,
+  "label": true,
+  "pair_id": "assignment12_s1",
+  "group_id": "s1",
+  "within_group_idx": "1",
+  "optional": "",
+  "time_stamp": "2020-09-24T10:13:27.310795",
+  "hit_id": "hit1",
+  "assignment_id": "assignment12",
+  "code": "worker12_assignment12",
+  "scenario": "test",
+  "domain": "test",
+  "worker_id": "worker12",
+  "need_validate": true,
+  "num_val": 0
+},{
+  "_id": {
+    "$oid": "5f6cd3b7e2bd1f0e37ac99af"
+  },
+  "input": "worker12_assignment12_12",
+  "output": true,
+  "label": false,
+  "pair_id": "assignment12_s1",
+  "group_id": "s1",
+  "within_group_idx": "2",
+  "optional": "",
+  "time_stamp": "2020-09-24T10:13:27.313233",
+  "hit_id": "hit1",
+  "assignment_id": "assignment12",
+  "code": "worker12_assignment12",
+  "scenario": "test",
+  "domain": "test",
+  "worker_id": "worker12",
+  "need_validate": true,
+  "num_val": 0
+},{
+  "_id": {
+    "$oid": "5f6cd3b7e2bd1f0e37ac99b0"
+  },
+  "input": "worker12_assignment12_21",
+  "output": false,
+  "label": false,
+  "pair_id": "assignment12_s2",
+  "group_id": "s2",
+  "within_group_idx": "1",
+  "optional": "",
+  "time_stamp": "2020-09-24T10:13:27.313730",
+  "hit_id": "hit1",
+  "assignment_id": "assignment12",
+  "code": "worker12_assignment12",
+  "scenario": "test",
+  "domain": "test",
+  "worker_id": "worker12",
+  "need_validate": true,
+  "num_val": 0
+},{
+  "_id": {
+    "$oid": "5f6cd3b7e2bd1f0e37ac99b1"
+  },
+  "input": "worker12_assignment12_22",
+  "output": true,
+  "label": true,
+  "pair_id": "assignment12_s2",
+  "group_id": "s2",
+  "within_group_idx": "2",
+  "optional": "",
+  "time_stamp": "2020-09-24T10:13:27.314276",
+  "hit_id": "hit1",
+  "assignment_id": "assignment12",
+  "code": "worker12_assignment12",
+  "scenario": "test",
+  "domain": "test",
+  "worker_id": "worker12",
+  "need_validate": true,
+  "num_val": 0
+},{
+  "_id": {
+    "$oid": "5f6cd3b7e2bd1f0e37ac99b2"
+  },
+  "input": "worker12_assignment12_31",
+  "output": true,
+  "label": true,
+  "pair_id": "assignment12_s3",
+  "group_id": "s3",
+  "within_group_idx": "1",
+  "optional": "",
+  "time_stamp": "2020-09-24T10:13:27.314810",
+  "hit_id": "hit1",
+  "assignment_id": "assignment12",
+  "code": "worker12_assignment12",
+  "scenario": "test",
+  "domain": "test",
+  "worker_id": "worker12",
+  "need_validate": true,
+  "num_val": 0
+},{
+  "_id": {
+    "$oid": "5f6cd3b7e2bd1f0e37ac99b3"
+  },
+  "input": "worker12_assignment12_32",
+  "output": true,
+  "label": false,
+  "pair_id": "assignment12_s3",
+  "group_id": "s3",
+  "within_group_idx": "2",
+  "optional": "",
+  "time_stamp": "2020-09-24T10:13:27.315322",
+  "hit_id": "hit1",
+  "assignment_id": "assignment12",
+  "code": "worker12_assignment12",
+  "scenario": "test",
+  "domain": "test",
+  "worker_id": "worker12",
+  "need_validate": true,
+  "num_val": 0
+}]

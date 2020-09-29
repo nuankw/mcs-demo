@@ -79,7 +79,8 @@ INTRA_PAIR_MAX_SAFE_SIMILARITY_SCORE = 0.9
 INTER_PAIR_MAX_SAFE_SIMILARITY_SCORE = 0.4
 
 # LOCAL TEST ONLY - Start
-LOCAL = True
+# LOCAL = True
+LOCAL = False
 DUMMY_INFO = {
     'uid': 'asdf',
     'hit_id': 'asdf',
@@ -510,8 +511,8 @@ def classify():
                     'input': data[key][idx]['input'],
                     'output': data[key][idx]['output'],
                     'label': data[key][idx]['label'],
-                    'pair_id': str(assignment_id) + '_' + key,
-                    'pair_idx': idx,
+                    'group_id': key,
+                    'within_group_idx': idx,
                     'optional': data[key]['3']['input'],
                     'time_stamp': ts,
                     'hit_id': hit_id,
@@ -521,6 +522,7 @@ def classify():
                     'domain': domain,
                     'worker_id': worker_id,
                     'need_validate': False,
+                    'num_val': 0
                 })
                 # data[key][idx]["id"] = str(new_entry.inserted_id)
 
@@ -606,9 +608,7 @@ def submit():
             for idx in ['1', '2', '3']:
                 data = mongo.db.trials.find_one({
                     'worker_id': worker_id,
-                    "pair_id": str(assignment_id) + '_' + key,
                     'hit_id': hit_id,
-                    'pair_idx': idx,
                 }, sort=[('time_stamp', DESCENDING)])
 
                 if not data:
@@ -621,7 +621,6 @@ def submit():
                         {"_id": data["_id"]},  # data["_id"] is ObjectID("xxx")
                         {'$set': {
                             'need_validate': True,
-                            'num_val': 0,
                         }}
                     )
                     input_length_check(data)
@@ -685,18 +684,43 @@ def get_eval():
         assignment_id = DUMMY_INFO['assignment_id']
     # LOCAL TEST ONLY - End
 
-    # return cursor (can only return once #)
-    worker_validated = mongo.db.validations.find({'worker_id': worker_id, 'status': True})
-    validated_unique_pairs = list(set([i['pair_id'] for i in worker_validated]))
+    # get a list of previously validated trials by this user
+    validated_trial_ids = list(map(lambda x: x['trial'],
+        mongo.db.validations.find({
+            'worker_id': worker_id,
+            'status': True,
+        },
+        {'_id': 0, 'trial': 1})
+    ))
+
+    # get a list of previously validated trials
+    # (pairs of assignment ids and input group keys)
+    validated_trials = list(
+        mongo.db.trials.find({
+            '_id': {'$in': validated_trial_ids}},
+            {'_id': 0, 'assignment_id': 1, 'group_id': 1},
+        )
+    )
+
+    # get a list of trial ids to exclude from future validations
+    exclude_trials = []
+    for trial in validated_trials:
+        exclude_trials.extend(list(map(lambda x: x['_id'],
+            mongo.db.trials.find({
+                'assignment_id': trial['assignment_id'],
+                'group_id': trial['group_id']},
+                {},
+            )
+        )))
 
     data = mongo.db.trials.find_one({
         "$and": [
+            {'_id': {
+                "$nin": exclude_trials,
+            }},
             {'need_validate': True},
             {'num_val': {
                 "$lt": MAX_VAL_VALUE,  # <
-            }},
-            {'pair_id': {
-                "$nin": validated_unique_pairs
             }},
             # if local:
             # comment out following filters since session does not work on local
@@ -713,23 +737,23 @@ def get_eval():
         ]
     }, sort=[('num_val', ASCENDING), ('time_stamp', DESCENDING)])
 
-    if data:
-        mongo.db.validations.insert_one({
-            'trial': data['_id'],
-            'pair_id': data['pair_id'],
-            'hit_id': hit_id,  # since we have separate HIT for validation
-            'worker_id': worker_id,
-            'assignment_id': assignment_id,
-            'status': False
-        })
-        return jsonify({
-            'status': 'ok',
-            'id': str(data['_id']),
-            'input': data['input'],
-            'output': data['output'],
-            'optional': data['optional'],
-        })
-    return jsonify({'status': 'not ok'})
+    if not data:
+        return jsonify({'status': 'not ok'})
+
+    mongo.db.validations.insert_one({
+        'trial': data['_id'],
+        'hit_id': hit_id,  # since we have separate HIT for validation
+        'worker_id': worker_id,
+        'assignment_id': assignment_id,
+        'status': False,
+    })
+    return jsonify({
+        'status': 'ok',
+        'id': str(data['_id']),
+        'input': data['input'],
+        'output': data['output'],
+        'optional': data['optional'],
+    })
 
 
 @app.route('/set_eval', methods=['POST'])
@@ -788,5 +812,4 @@ if __name__ == "__main__":
     host = os.environ.get('MCS_SERVER_HOST', '0.0.0.0')
     port = int(os.environ.get('MCS_SERVER_PORT', '5005'))
 
-    app.run(host=host, port=port, debug=True)  # local (don't forget change global LOCAL = True)
-    # app.run(host=host, port=port, debug=False)  # server
+    app.run(host=host, port=port, debug=False)
