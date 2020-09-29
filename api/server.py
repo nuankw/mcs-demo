@@ -79,18 +79,19 @@ INTRA_PAIR_MAX_SAFE_SIMILARITY_SCORE = 0.9
 INTER_PAIR_MAX_SAFE_SIMILARITY_SCORE = 0.4
 
 # LOCAL TEST ONLY - Start
-# LOCAL = True
-LOCAL = False
+LOCAL = os.environ['MCS2_HOST'].lower() == "localhost"
 DUMMY_INFO = {
-    'uid': 'asdf',
-    'hit_id': 'asdf',
-    'worker_id': 'asdf',
-    'assignment_id': 'asdf',
-    'scenario': 'test',
-    'domain': 'test',
+    'uid': 'uidX',
+    'hit_id': 'hitX',
+    'worker_id': 'workerX',
+    'assignment_id': 'assignmentX',
+    'scenario': 'sX',
+    'domain': 'dX',
     'mode': 'creation'
 }
 app.secret_key = 'asdf'
+if LOCAL:
+    print("LOCAL TESTING, dummy variables:", DUMMY_INFO)
 # LOCAL TEST ONLY - End
 
 def tokenize(raw_sentence):
@@ -132,7 +133,6 @@ def get_all_n_grams_sentences(worker_id, domain, scenario, N=2):
         "worker_id": worker_id,
         "domain": domain,
         "scenario": scenario,
-        # "length_flag": False, # ignore already flagged entires
         "within_group_idx": { "$in": ['1', '2']}, # skip optional
         "need_validation": True
     }, {"assignment_id": 1, "group_id": 1, "within_group_idx": 1, "input": 1})
@@ -503,7 +503,7 @@ def classify():
                 if data[key][idx]["label"] != data[key][idx]["output"]:
                     num_fool_model += 1
 
-                # Get a new timestamp and session id
+                # Get a new timestamp
                 ts = datetime.now().isoformat()
 
                 # store trial data in the mongo db
