@@ -29,6 +29,14 @@ from datetime import datetime
 import logging
 import os
 
+from slack import WebClient
+from slack.errors import SlackApiError
+
+# Bot User OAuth Access Token
+# get it at https://api.slack.com/apps/A01AUV60P3R/oauth?success=1
+slack_token=os.environ['SLACK_API_TOKEN']
+slack_client = WebClient(slack_token)
+
 logger = logging.getLogger(__name__)
 
 app = Flask(__name__, static_url_path='')
@@ -279,6 +287,148 @@ def get_system_output(system, all_statements):
     return results
 
 
+def slack_notify(text="see blocks", blocks=None):
+    try:
+        response = slack_client.chat_postMessage(
+            channel = '#cs-data-monitor',
+            text = text,
+            blocks = blocks)
+        assert response["message"]["text"] == text
+    except SlackApiError as e:
+        # You will get a SlackApiError if "ok" is False
+        assert e.response["ok"] is False
+        assert e.response["error"]  # str like 'invalid_auth', 'channel_not_found'
+        print(f"Got an error sending slack message {text}: {e.response}")
+
+
+def warn_suspicious_intra_similarity(suspicious_intra_pairs):
+    for data in suspicious_intra_pairs:
+        message_in_block = "*WARNING: sentence pair not alike or too alike*\nassignment_id: *{}*\ngroup_id: *{}*\nscenario: *{}*\ndomain: *{}*\nworker: *{}*\nsent1: *{}*\nsent2: *{}*\nsimilarity score: *{}*".format(
+                data["assignment_id"], data["group_id"], data["scenario"], data["domain"], data["worker_id"], data["sent1"], data["sent2"], data["score"])
+        action_elements = [
+                {
+                    "type": "button",
+                    "text": {
+                        "type": "plain_text",
+                        "text": "Flag it"
+                    },
+                    "value": "intra_flag"
+                },
+                {
+                    "type": "button",
+                    "text": {
+                        "type": "plain_text",
+                        "text": "False alarm"
+                    },
+                    "value": "intra_ok"
+                }
+            ]
+        blocks = [
+            {
+                "type": "section",
+                "text": {
+                    "type": "mrkdwn",
+                    "text": message_in_block,
+                }
+            },
+            {
+                "type": "actions",
+                "elements": action_elements,
+            }
+        ]
+        slack_notify(blocks=blocks)
+
+
+def warn_suspicious_inter_similarity(suspicious_intra_pairs):
+    for data in suspicious_intra_pairs:
+
+        message_in_block_1 = "*WARNING: input too similar*\nscenario: *{}*\ndomain: *{}*\nworker: *{}*\nSimilarity score: *{}*\n".format(
+            data["scenario"], data["domain"], data["worker_id"], data["score"])
+
+        message_in_block_2 = "*First group input*\nassignment_id: *{}*\ngroup_id: *{}*\nsent1: *{}*\nsent2: *{}*".format(
+                data["input_group_1"]["assignment_id"], data["input_group_1"]["group_id"], data["input_group_1"]["sent1"], data["input_group_1"]["sent2"])
+
+        message_in_block_3 = "*Second group input*\nassignment_id: *{}*\ngroup_id: *{}*\nsent1: *{}*\nsent2: *{}*".format(
+                data["input_group_2"]["assignment_id"], data["input_group_2"]["group_id"], data["input_group_2"]["sent1"], data["input_group_2"]["sent2"])
+
+        action_elements = [
+                {
+                    "type": "button",
+                    "text": {
+                        "type": "plain_text",
+                        "text": "Flag it"
+                    },
+                    "value": "inter_flag"
+                },
+                {
+                    "type": "button",
+                    "text": {
+                        "type": "plain_text",
+                        "text": "False alarm"
+                    },
+                    "value": "inter_ok"
+                }
+            ]
+        blocks = [
+            {
+                "type": "section",
+                "text": {
+                    "type": "mrkdwn",
+                    "text": message_in_block_1,
+                }
+            }, {
+			    "type": "divider"
+		    }, {
+                "type": "section",
+                "text": {
+                    "type": "mrkdwn",
+                    "text": message_in_block_2,
+                }
+            }, {
+			    "type": "divider"
+		    }, {
+                "type": "section",
+                "text": {
+                    "type": "mrkdwn",
+                    "text": message_in_block_3,
+                }
+            }, {
+                "type": "actions",
+                "elements": action_elements,
+            }
+        ]
+        slack_notify(blocks=blocks)
+
+
+def similarity_check(worker_id, domain, scenario, N=2):
+    """
+        n-gram + jaccard/cosine distance check to detect possible duplication
+        will flag and notify the team in slack
+    """
+
+    # get n_grams as:
+    # {(assignment_id, group_id): ['1': ngram_list_1, '2': ngram_list_2]}
+    input_ngrams, input_sentences = get_all_n_grams(worker_id, domain, scenario, N)
+
+    # check intra-pair similarity (should be similar but not the same)
+    suspicious_intra_pairs = get_suspicious_intra_pairs(worker_id, domain, scenario, input_ngrams, input_sentences)
+    warn_suspicious_intra_similarity(suspicious_intra_pairs)
+
+    # check inter-pair similarity (should not be similar)
+    suspicious_intra_pairs = get_suspicious_inter_pairs(worker_id, domain, scenario, input_ngrams, input_sentences)
+    warn_suspicious_inter_similarity(suspicious_intra_pairs)
+
+
+@app.route('/slack_response', methods=['POST'])
+def slack_interactive_process(): # TODO
+    """
+        handle interactive slack rejection to update document:
+            if repeated: add repeated id (make sure to count repetitions right)
+            if too_short: add flag
+    """
+    pass
+
+
 @app.route('/classify', methods=['POST'])
 def classify():
     worker_id = session.get('worker_id')
@@ -397,10 +547,11 @@ def submit():
         assignment_id = DUMMY_INFO['assignment_id']
         uid = DUMMY_INFO['uid']
         mode = DUMMY_INFO['mode']
+        domain = DUMMY_INFO['domain']
+        scenario = DUMMY_INFO['scenario']
     # LOCAL TEST ONLY - End
 
     if mode == 'creation':
-        quality_checks_notify_via_slack()
         for key in ['s1', 's2', 's3']:
             for idx in ['1', '2', '3']:
                 data = mongo.db.trials.find_one({
@@ -413,6 +564,8 @@ def submit():
                 if not data:
                     if idx in ['1', '2']:
                         return jsonify({'status': 'not ok'})
+                        # user shouldn't be able to submit without giving inputs 1 or 2
+                        # if returned: buggy
                 else:
                     mongo.db.trials.update_one(
                         {"_id": data["_id"]},  # data["_id"] is ObjectID("xxx")
@@ -421,6 +574,8 @@ def submit():
                             'num_val': 0,
                         }}
                     )
+                    input_length_check(data)
+        similarity_check(worker_id, domain, scenario, N)
     elif mode == 'validation':
         mongo.db.validations.update_many(
             {
@@ -437,13 +592,6 @@ def submit():
 
     return jsonify({'code': uid})  # return code in both mode
 
-# TODO
-def quality_checks_notify_via_slack():
-    # checks:
-    # 1. length
-    # 2. minor changes (n-gram check)
-    # 3. full duplication check
-    pass
 
 @app.route('/survey', methods=['POST'])
 def survey():
