@@ -37,18 +37,22 @@ const styles = theme => ({
   },
   buttonTrue: {
     '&:hover': {
-      background: 'rgba(0, 255, 0, 0.5)',
+      background: 'rgba(0, 80, 0, 0.8)',
+      color: 'snow',
     },
     '&.selected': {
-      background: 'rgba(0, 255, 0, 0.5)',
+      background: 'rgba(0, 80, 0, 0.8)',
+      color: 'snow',
     },
   },
   buttonFalse: {
     '&:hover': {
-      background: 'rgba(255, 0, 0, 0.5)',
+      background: 'rgba(140, 0, 0, 0.8)',
+      color: 'snow',
     },
     '&.selected': {
-      background: 'rgba(255, 0, 0, 0.5)',
+      background: 'rgba(140, 0, 0, 0.8)',
+      color: 'snow',
     },
   },
 })
@@ -85,51 +89,60 @@ class InputGroup extends React.Component {
       <Paper component="div" className={classes.paper} square>
         <Grid container spacing={3}>
           <Grid item xs={10} className={classes.inputWrapper}>
-            {inputs[1].output != null && !loading && <Output output={inputs[1].output} />}
             <Input
-              label={'Please provide the first sentence of your input pair:'}
+              className={classes.input}
+              label={'Please provide the first sentence of your input pair and whether it is True/False:'}
               text={inputs[1].input}
               autoFocus={false}
               disabled={false}
               passInputRef={this.getInputRef.bind(this)}
               updateText={(text) => this.handleUpdate(1, text)} />
           </Grid>
-          <Grid item xs={2} className={classes.buttonWrapper}>
+
+          <Grid item xs={1} className={classes.buttonWrapper}>
             <ButtonGroup className={classes.buttonGroup}>
               <Button
                 className={classNames(classes.buttonTrue, {
                   'selected': inputs[1].label === true,
                 })}
-                onClick={() => this.select(1, true)}>True</Button>
+                onClick={() => this.select(1, true)}>T</Button>
               <Button
                 className={classNames(classes.buttonFalse, {
                   'selected': inputs[1].label === false,
                 })}
-                onClick={() => this.select(1, false)}>False</Button>
+                onClick={() => this.select(1, false)}>F</Button>
             </ButtonGroup>
           </Grid>
 
+          <Grid item xs={1} className={classes.resultWrapper}>
+            {inputs[1].output != null && !inputs[1].input_change_not_tested && !loading && <Output output={inputs[1].output !== inputs[1].label} />}
+          </Grid>
+
           <Grid item xs={10} className={classes.inputWrapper}>
-            {inputs[2].output != null && !loading && <Output output={inputs[2].output} />}
             <Input
-              label={'and the other sentence of the pair:'}
+              label={'and the other sentence of the pair with opposite True/False:'}
               text={inputs[2].input}
               disabled={false}
               updateText={(text) => this.handleUpdate(2, text)} />
           </Grid>
-          <Grid item xs={2} className={classes.buttonWrapper}>
+
+          <Grid item xs={1} className={classes.buttonWrapper}>
             <ButtonGroup className={classes.buttonGroup}>
               <Button
                 className={classNames(classes.buttonTrue, {
                   'selected': inputs[2].label === true,
                 })}
-                onClick={() => this.select(2, true)}>True</Button>
+                onClick={() => this.select(2, true)}>T</Button>
               <Button
                 className={classNames(classes.buttonFalse, {
                   'selected': inputs[2].label === false,
                 })}
-                onClick={() => this.select(2, false)}>False</Button>
+                onClick={() => this.select(2, false)}>F</Button>
             </ButtonGroup>
+          </Grid>
+
+          <Grid item xs={1} className={classes.resultWrapper}>
+            {inputs[2].output != null && !loading && !inputs[2].input_change_not_tested && <Output output={inputs[2].output !== inputs[2].label} />}
           </Grid>
 
           {/* <Grid item xs={12}>

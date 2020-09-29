@@ -9,16 +9,17 @@ const CustomTextField = withStyles({
   root: {
     '& .MuiFormLabel-root': {
       '@media (min-width:600px)': {
-        fontSize: '1.25rem',
+        fontSize: '1rem',
         opacity: 0.85,
       },
     },
     '& .MuiInput-input': {
       '@media (min-width:600px)': {
-        fontSize: '2rem',
+        fontSize: '1.2rem',
       },
       color: '#000000',
       transition: 'background 0.3s ease',
+      fontSize: '1.2rem',
     },
     '& label.Mui-focused': {
       color: '#000000',
