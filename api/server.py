@@ -409,15 +409,17 @@ def similarity_check(worker_id, domain, scenario, N=2):
 
     # get n_grams as:
     # {(assignment_id, group_id): ['1': ngram_list_1, '2': ngram_list_2]}
-    input_ngrams, input_sentences = get_all_n_grams(worker_id, domain, scenario, N)
+    input_ngrams, input_sentences = get_all_n_grams_sentences(worker_id, domain, scenario, N)
 
     # check intra-pair similarity (should be similar but not the same)
     suspicious_intra_pairs = get_suspicious_intra_pairs(worker_id, domain, scenario, input_ngrams, input_sentences)
+    print("suspicious_intra_pairs:", suspicious_intra_pairs)
     warn_suspicious_intra_similarity(suspicious_intra_pairs)
 
     # check inter-pair similarity (should not be similar)
-    suspicious_intra_pairs = get_suspicious_inter_pairs(worker_id, domain, scenario, input_ngrams, input_sentences)
-    warn_suspicious_inter_similarity(suspicious_intra_pairs)
+    suspicious_inter_pairs = get_suspicious_inter_pairs(worker_id, domain, scenario, input_ngrams, input_sentences)
+    print("suspicious_inter_pairs:", suspicious_inter_pairs)
+    warn_suspicious_inter_similarity(suspicious_inter_pairs)
 
 
 @app.route('/slack_response', methods=['POST'])
@@ -604,27 +606,30 @@ def submit():
     # LOCAL TEST ONLY - End
 
     if mode == 'creation':
+        # similarity_check(worker_id, domain, scenario, N) # TODO: test this
         for key in ['s1', 's2', 's3']:
             for idx in ['1', '2', '3']:
                 data = mongo.db.trials.find_one({
                     'worker_id': worker_id,
-                    'hit_id': hit_id,
+                    'assignment_id': assignment_id,
+                    'group_id': key,
+                    'within_group_idx': idx
                 }, sort=[('time_stamp', DESCENDING)])
 
-                if not data:
-                    if idx in ['1', '2']:
+                if idx in ['1', '2']:
+                    if not data:
                         return jsonify({'status': 'not ok'})
                         # user shouldn't be able to submit without giving inputs 1 or 2
                         # if returned: buggy
-                else:
-                    mongo.db.trials.update_one(
-                        {"_id": data["_id"]},  # data["_id"] is ObjectID("xxx")
-                        {'$set': {
-                            'need_validate': True,
-                        }}
-                    )
-                    input_length_check(data)
-        similarity_check(worker_id, domain, scenario, N)
+                    else:
+                        mongo.db.trials.update_one(
+                            {"_id": data["_id"]},  # data["_id"] is ObjectID("xxx")
+                            {'$set': {
+                                'need_validate': True,
+                            }}
+                        )
+                        input_length_check(data)
+
     elif mode == 'validation':
         mongo.db.validations.update_many(
             {
