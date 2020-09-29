@@ -532,6 +532,56 @@ def classify():
     return jsonify(data)
 
 
+def input_length_check(data):
+    words = tokenize(data['input'])
+    mongo.db.trials.update_one(
+                {"_id": data["_id"]},
+                {'$set': {
+                    'length': len(words),
+                }}
+            )
+    if len(words) < MIN_SENTENCE_LENGTH:
+        warn_suspicious_input_length(data)
+
+
+def warn_suspicious_input_length(data):
+    message_in_block = "Warning: input sentence too short\nassignment_id: *{}*\ngroup_id: *{}*\nscenario: *{}*\ndomain: *{}*\nworker: *{}*\nlabel: *{}*\nprediction: *{}*\ninput: *{}*".format(
+            data["assignment_id"], data["group_id"], data["scenario"], data["domain"], data["worker_id"], data["label"], data["output"], data["input"])
+    action_elements = [
+            {
+                "type": "button",
+                "text": {
+                    "type": "plain_text",
+                    "text": "Flag it"
+                },
+                "value": "length_flag"
+            },
+            {
+                "type": "button",
+                "text": {
+                    "type": "plain_text",
+                    "text": "False warning"
+                },
+                "value": "length_ok"
+            }
+        ]
+    blocks = [
+        {
+            "type": "section",
+            "text": {
+                "type": "mrkdwn",
+                "text": message_in_block,
+            }
+        },
+        {
+            "type": "actions",
+            "elements": action_elements,
+        }
+    ]
+    slack_notify(blocks=blocks)
+
+
+
 @app.route('/submit', methods=['POST'])
 def submit():
     worker_id = session.get('worker_id')
