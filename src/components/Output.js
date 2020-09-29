@@ -14,11 +14,13 @@ const styles = theme => ({
 class Output extends React.Component {
 
   render() {
-    const { classes, output } = this.props
+    const { classes, output, tested } = this.props
+    // the output here is a boolean indicating whether model prediciton == label
     return (
       <div className={classes.output}>
-        {output && <Winning />}
-        {!output && <Losing />}
+        {/* {!tested && <TestingNeeded />} */}
+        {tested && output && <Winning />}
+        {tested && !output && <Losing />}
       </div>
     )
   }
