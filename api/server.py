@@ -34,7 +34,7 @@ from slack.errors import SlackApiError
 
 # Bot User OAuth Access Token
 # get it at https://api.slack.com/apps/A01AUV60P3R/oauth?success=1
-slack_token=os.environ['SLACK_API_TOKEN']
+slack_token = os.environ.get('SLACK_API_TOKEN', '')
 slack_client = WebClient(slack_token)
 
 logger = logging.getLogger(__name__)
@@ -79,7 +79,7 @@ INTRA_PAIR_MAX_SAFE_SIMILARITY_SCORE = 0.9
 INTER_PAIR_MAX_SAFE_SIMILARITY_SCORE = 0.4
 
 # LOCAL TEST ONLY - Start
-LOCAL = os.environ['MCS2_HOST'].lower() == "localhost"
+LOCAL = os.environ.get('MCS2_HOST', '').lower() == 'localhost'
 DUMMY_INFO = {
     'uid': 'uidX',
     'hit_id': 'hitX',
