@@ -13,10 +13,10 @@ import classNames from '../utils/classes'
 const styles = theme => ({
   paper: {
     marginTop: theme.spacing(3),
-    paddingTop: theme.spacing(6),
-    paddingLeft: theme.spacing(4),
-    paddingRight: theme.spacing(4),
-    paddingBottom: theme.spacing(6),
+    paddingTop: theme.spacing(4),
+    paddingLeft: theme.spacing(6),
+    paddingRight: theme.spacing(6),
+    paddingBottom: theme.spacing(2),
     backgroundColor: 'rgba(254, 254, 254, 0.2)',
     display: 'flex',
     flexDirection: 'column',
@@ -25,14 +25,10 @@ const styles = theme => ({
   },
   inputWrapper: {
     display: 'flex',
-    justifyContent: 'flex-start',
     height: theme.spacing(12),
   },
   buttonWrapper: {
     display: 'flex',
-    alignItems: 'center',
-    alignContent: 'space-around',
-    justifyContent: 'center',
     height: theme.spacing(12),
   },
   buttonTrue: {
@@ -44,6 +40,13 @@ const styles = theme => ({
       background: 'rgba(0, 80, 0, 0.8)',
       color: 'snow',
     },
+    width: theme.spacing(5),
+    height: theme.spacing(5),
+    fontSize: theme.spacing(2.2),
+    letterSpacing: 1.5,
+    textTransform: "none",
+    marginTop: theme.spacing(1),
+    marginBotton: theme.spacing(1),
   },
   buttonFalse: {
     '&:hover': {
@@ -54,6 +57,14 @@ const styles = theme => ({
       background: 'rgba(140, 0, 0, 0.8)',
       color: 'snow',
     },
+    width: theme.spacing(5),
+    height: theme.spacing(5),
+    fontSize: theme.spacing(2.2),
+    letterSpacing: 1.5,
+    textTransform: "none",
+    marginTop: theme.spacing(1),
+    marginBotton: theme.spacing(1),
+    marginRight: theme.spacing(1),
   },
 })
 
