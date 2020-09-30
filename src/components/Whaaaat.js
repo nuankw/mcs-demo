@@ -1,17 +1,17 @@
 import React from 'react'
 import Popover from '@material-ui/core/Popover'
 import Typography from '@material-ui/core/Typography'
-import HelpOutlineIcon from '@material-ui/icons/HelpOutline'
+import HelpOutlinedIcon from '@material-ui/icons/HelpOutlined'
 import { makeStyles } from '@material-ui/core/styles'
 
 
 const useStyles = makeStyles((theme) => ({
   icon: {
-    position: "relative",
-    top: theme.spacing(2),
-    right: theme.spacing(1),
-    color: 'lightgoldenrodyellow',
-    fontSize: theme.spacing(5),
+    position: "flex",
+    margin: theme.spacing(1),
+    marginTop: theme.spacing(2),
+    fontSize: theme.spacing(3),
+    color: 'darkslategray',
     cursor: 'pointer',
   },
   popover: {
@@ -39,7 +39,7 @@ export default function Whaaaat() {
 
   return (
     <React.Fragment>
-      <HelpOutlineIcon
+      <HelpOutlinedIcon
         className={classes.icon}
         aria-owns={open ? 'mouse-over-popover' : undefined}
         aria-haspopup="true"
@@ -63,7 +63,7 @@ export default function Whaaaat() {
         }}
         onClose={handlePopoverClose}
         disableRestoreFocus>
-        <Typography>asdfasdfasfdasdfasfdasdf</Typography>
+        <Typography>Please enter and test your input.</Typography>
       </Popover>
     </React.Fragment>
   )

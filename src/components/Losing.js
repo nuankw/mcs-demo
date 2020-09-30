@@ -1,41 +1,70 @@
 import React from 'react'
+import Popover from '@material-ui/core/Popover'
+import Typography from '@material-ui/core/Typography'
 import CancelIcon from '@material-ui/icons/Cancel'
-import { Typography } from '@material-ui/core/'
-import { withStyles } from '@material-ui/core/styles'
+import { makeStyles } from '@material-ui/core/styles'
 
 
-const styles = theme => ({
+const useStyles = makeStyles((theme) => ({
   icon: {
-    position: "relative",
-    top: theme.spacing(2),
-    right: theme.spacing(1),
-    color: 'darkred',
+    position: "flex",
+    margin: theme.spacing(1),
+    marginTop: theme.spacing(2),
     fontSize: theme.spacing(3),
-  },
-  message: {
-    position: "relative",
-    top: theme.spacing(2),
-    right: theme.spacing(2),
-    width: theme.spacing(10),
-    fontSize: theme.spacing(1.5),
-    fontWeight: 'bolder',
     color: 'darkred',
+    cursor: 'pointer',
   },
-})
+  popover: {
+    pointerEvents: 'none',
+  },
+  paper: {
+    padding: theme.spacing(1),
+  },
+}))
 
 
-class False extends React.Component {
+export default function False() {
+  const classes = useStyles()
+  const [anchorEl, setAnchorEl] = React.useState(null)
 
-  render() {
-    const { classes } = this.props
-    return (
-      <span>
-        <CancelIcon className={classes.icon} />
-        <Typography component="h1" variant="h4" className={classes.message}>Model not fooled</Typography>
-      </span>
-    )
-  }
+  const handlePopoverOpen = (event) => {
+    setAnchorEl(event.currentTarget)
+  };
+
+  const handlePopoverClose = () => {
+    setAnchorEl(null)
+  };
+
+  const open = Boolean(anchorEl)
+
+  return (
+    <React.Fragment>
+      <CancelIcon
+        className={classes.icon}
+        aria-owns={open ? 'mouse-over-popover' : undefined}
+        aria-haspopup="true"
+        onMouseEnter={handlePopoverOpen}
+        onMouseLeave={handlePopoverClose} />
+      <Popover
+        id="mouse-over-popover"
+        className={classes.popover}
+        classes={{
+          paper: classes.paper,
+        }}
+        open={open}
+        anchorEl={anchorEl}
+        anchorOrigin={{
+          vertical: 'bottom',
+          horizontal: 'left',
+        }}
+        transformOrigin={{
+          vertical: 'top',
+          horizontal: 'left',
+        }}
+        onClose={handlePopoverClose}
+        disableRestoreFocus>
+        <Typography>Model not fooled!</Typography>
+      </Popover>
+    </React.Fragment>
+  )
 }
-
-
-export default withStyles(styles)(False)
