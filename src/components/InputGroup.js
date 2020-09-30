@@ -115,7 +115,7 @@ class InputGroup extends React.Component {
           </Grid>
 
           <Grid item xs={1} className={classes.resultWrapper}>
-            {inputs[1].output != null && !inputs[1].input_change_not_tested && !loading && <Output output={inputs[1].output !== inputs[1].label} />}
+            {!inputs[1].input_change_not_tested && !loading && <Output output={inputs[1].output} />}
           </Grid>
 
           <Grid item xs={10} className={classes.inputWrapper}>
@@ -142,7 +142,7 @@ class InputGroup extends React.Component {
           </Grid>
 
           <Grid item xs={1} className={classes.resultWrapper}>
-            {inputs[2].output != null && !loading && !inputs[2].input_change_not_tested && <Output output={inputs[2].output !== inputs[2].label} />}
+            {!loading && !inputs[2].input_change_not_tested && <Output output={inputs[2].output} />}
           </Grid>
 
           {/* <Grid item xs={12}>

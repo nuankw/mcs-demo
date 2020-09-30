@@ -18,9 +18,8 @@ class Output extends React.Component {
     // the output here is a boolean indicating whether model prediciton == label
     return (
       <div className={classes.output}>
-        {/* {!tested && <TestingNeeded />} */}
-        {tested && output && <Winning />}
-        {tested && !output && <Losing />}
+        {output === true && <Winning />}
+        {output === false && <Losing />}
       </div>
     )
   }
