@@ -1,6 +1,7 @@
 import React from 'react'
 import { withStyles } from '@material-ui/core/styles'
 import Winning from './Winning'
+import Whaaaat from './Whaaaat'
 import Losing from './Losing'
 
 
@@ -18,6 +19,7 @@ class Output extends React.Component {
     // the output here is a boolean indicating whether model prediciton == label
     return (
       <div className={classes.output}>
+        {output === null && <Whaaaat />}
         {output === true && <Winning />}
         {output === false && <Losing />}
       </div>
