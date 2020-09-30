@@ -84,11 +84,11 @@ class InputGroup extends React.Component {
   }
 
   render () {
-    const { classes, inputs, loading } = this.props
+    const { classes, inputs } = this.props
     return (
       <Paper component="div" className={classes.paper} square>
         <Grid container spacing={3}>
-          <Grid item xs={10} className={classes.inputWrapper}>
+          <Grid item xs={11} className={classes.inputWrapper}>
             <Input
               className={classes.input}
               label={'Please provide the first sentence of your input pair and whether it is True/False:'}
@@ -100,6 +100,11 @@ class InputGroup extends React.Component {
           </Grid>
 
           <Grid item xs={1} className={classes.buttonWrapper}>
+
+            <Output
+              fooled={inputs[1].output !== inputs[1].label}
+              hideResult={inputs[1].input_change_not_tested || inputs[1].input === ""}/>
+
             <ButtonGroup className={classes.buttonGroup}>
               <Button
                 className={classNames(classes.buttonTrue, {
@@ -112,13 +117,10 @@ class InputGroup extends React.Component {
                 })}
                 onClick={() => this.select(1, false)}>F</Button>
             </ButtonGroup>
+
           </Grid>
 
-          <Grid item xs={1} className={classes.resultWrapper}>
-            {!inputs[1].input_change_not_tested && !loading && <Output output={inputs[1].output} />}
-          </Grid>
-
-          <Grid item xs={10} className={classes.inputWrapper}>
+          <Grid item xs={11} className={classes.inputWrapper}>
             <Input
               label={'and the other sentence of the pair with opposite True/False:'}
               text={inputs[2].input}
@@ -127,6 +129,11 @@ class InputGroup extends React.Component {
           </Grid>
 
           <Grid item xs={1} className={classes.buttonWrapper}>
+
+            <Output
+              fooled={inputs[2].output !== inputs[2].label}
+              hideResult={inputs[2].input_change_not_tested || inputs[2].input === ""}/>
+
             <ButtonGroup className={classes.buttonGroup}>
               <Button
                 className={classNames(classes.buttonTrue, {
@@ -141,12 +148,7 @@ class InputGroup extends React.Component {
             </ButtonGroup>
           </Grid>
 
-          <Grid item xs={1} className={classes.resultWrapper}>
-            {!loading && !inputs[2].input_change_not_tested && <Output output={inputs[2].output} />}
-          </Grid>
-
           {/* <Grid item xs={12}>
-            {inputs[3].output != null && !loading && <Output output={inputs[3].output} />}
             <Input
               label='(optional, please leave it blank if no input) the common sense knowledge piece you used to create the above sentence pair:'
               text={inputs[3].input}

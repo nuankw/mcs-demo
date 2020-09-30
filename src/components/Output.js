@@ -6,8 +6,9 @@ import Losing from './Losing'
 
 
 const styles = theme => ({
-  output: {
-    position: 'relative',
+  fooled: {
+    position: 'flex',
+    marginLeft: theme.spacing(-3),
   },
 })
 
@@ -15,13 +16,17 @@ const styles = theme => ({
 class Output extends React.Component {
 
   render() {
-    const { classes, output, tested } = this.props
-    // the output here is a boolean indicating whether model prediciton == label
+    const { classes, hideResult, fooled } = this.props
+    // we will show the help icon (Whaaaat) when the model prediction is:
+    //      1. null, or
+    //      2. it does not reflect T/F of most recent input
+
+    // the fooled here is a boolean indicating whether model prediciton == label
     return (
-      <div className={classes.output}>
-        {output === null && <Whaaaat />}
-        {output === true && <Winning />}
-        {output === false && <Losing />}
+      <div className={classes.fooled}>
+        {hideResult && <Whaaaat />}
+        {!hideResult && fooled && <Winning />}
+        {!hideResult && !fooled && <Losing />}
       </div>
     )
   }
