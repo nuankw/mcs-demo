@@ -41,9 +41,13 @@ const styles = theme => ({
     textDecoration: 'underline',
   },
   title: {
-    marginBottom: "10px",
-    align: "center",
     color: "black",
+  },
+  subtitle: {
+    align: "center",
+    color: "#00000096",
+    paddingLeft: theme.spacing(8),
+    fontSize: theme.spacing(3.5),
   },
   note: {
     fontSize: theme.spacing(2.8),
@@ -169,7 +173,7 @@ class Creation extends React.Component {
 
   render() {
     const { inputs, loading } = this.state
-    const { classes, scenario, domain, onSubmit, cost_per_assignment, samples_per_assignment } = this.props
+    const { classes, scenario, domain, onSubmit } = this.props
 
     const testBtnDisabled = !this.checkInputs()
     const submitBtnDisabled = !this.checkOutputs()
@@ -181,15 +185,15 @@ class Creation extends React.Component {
           component="h3"
           variant="h3"
           className={classes.header}>
-          <span className={classes.title}>[Common Sense Reasoning] Creation HIT {!!scenario && !!domain && `on ${scenario} scenario and ${domain} domain`}</span>
+          <span className={classes.title}>Common Sense Reasoning -- Creation HIT </span>
+          <br/>
+          <span className={classes.subtitle}> For <u>{domain}</u> domain and <u>{scenario}</u> scenario </span>
           <p className={classes.note}>NOTE: Please take 5 minutes to read this instruction carefully.
             We will have another user to examine your inputs and will reject your HITs
             if you fail to provide inputs that are compliant with the instruction.</p>
           <CreationInstruction
             scenario={scenario}
-            domain={domain}
-            cost_per_assignment={cost_per_assignment}
-            samples_per_assignment={samples_per_assignment}/>
+            domain={domain} />
         </Typography>
 
         <form className={classes.form} noValidate onSubmit={this.submit.bind(this)}>

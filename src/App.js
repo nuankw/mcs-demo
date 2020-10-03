@@ -14,8 +14,8 @@ theme = responsiveFontSizes(theme);
 
 
 const SCENARIOS = {
-  'null': 'causality',
-  's1': 'causality',
+  'null': 'cause-and-effect',
+  's1': 'cause-and-effect',
   's2': 'comparison',
   's3': 'numeracy',
 }
@@ -24,7 +24,7 @@ const DOMAINS = {
   'null': 'physical',
   'd1': 'physical',
   'd2': 'social',
-  'd3': 'temporal'
+  'd3': 'time'
 }
 
 const styles = theme => ({
