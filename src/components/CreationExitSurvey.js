@@ -56,8 +56,8 @@ class CreationExitSurvey extends React.Component {
     super(props)
 
     this.state = {
-      commonsense: null,
-      challenging: null,
+      clear_instruction: null,
+      challenging_creation: null,
     }
   }
 
@@ -65,13 +65,13 @@ class CreationExitSurvey extends React.Component {
     let update = {}
     update[question] = value
     this.setState({...update}, () => {
-      const {commonsense, challenging} = this.state
+      const {clear_instruction, challenging_creation} = this.state
       fetch('/survey', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({commonsense, challenging}),
+        body: JSON.stringify({clear_instruction, challenging_creation}),
       })
       .then((response) => response.json())
       .then((data) => {
@@ -84,8 +84,8 @@ class CreationExitSurvey extends React.Component {
   }
 
   render() {
-    const { classes, open, code} = this.props
-    const { commonsense, challenging} = this.state
+    const { classes, open, code, max_pay} = this.props
+    const { clear_instruction, challenging_creation} = this.state
 
     // disable the radio button and add a submit
     return (
@@ -99,43 +99,36 @@ class CreationExitSurvey extends React.Component {
               <Typography component="h5" variant="h5" className={classes.code}>
                 {code}
               </Typography>
+              <Typography component="h5" variant="h5" className={classes.header}>
+                The max payment you can receive if all entries are valid is: ${max_pay}.
+              </Typography>
             </div>
             <span className={classes.divider} />
             <div className={classes.content}>
               <Typography component="h5" variant="h5" className={classes.header}>
                 Exit Survey
               </Typography>
-              <p>How good do you think our model is at commonsense reasoning based on the model prediction you see?</p>
-              <p>(from 1 being not good at all to 10 very good)</p>
-              <RadioGroup name="q1" className={classes.radioGroup} onChange={(e, val) => this.handleAnswer('commonsense', val)}>
+              <p>How easy to follow do you find our instruction to be?</p>
+              <p>(from 1 being not easy at all to 5 very easy)</p>
+              <RadioGroup name="q1" className={classes.radioGroup} onChange={(e, val) => this.handleAnswer('clear_instruction', val)}>
                 <FormControlLabel value="1" control={<RadioButton />} label="1" />
                 <FormControlLabel value="2" control={<RadioButton />} label="2" />
                 <FormControlLabel value="3" control={<RadioButton />} label="3" />
                 <FormControlLabel value="4" control={<RadioButton />} label="4" />
                 <FormControlLabel value="5" control={<RadioButton />} label="5" />
-                <FormControlLabel value="6" control={<RadioButton />} label="6" />
-                <FormControlLabel value="7" control={<RadioButton />} label="7" />
-                <FormControlLabel value="8" control={<RadioButton />} label="8" />
-                <FormControlLabel value="9" control={<RadioButton />} label="9" />
-                <FormControlLabel value="10" control={<RadioButton />} label="10" />
-              </RadioGroup>
+             </RadioGroup>
               <br/>
               <p>How challenging was it to fool the model?</p>
-              <p>(from 1 being not challenging at all to 10 being very challenging)</p>
-              <RadioGroup name="q1" className={classes.radioGroup}  onChange={(e, val) => this.handleAnswer('challenging', val)}>
+              <p>(from 1 being not challenging at all to 5 being very challenging)</p>
+              <RadioGroup name="q1" className={classes.radioGroup}  onChange={(e, val) => this.handleAnswer('challenging_creation', val)}>
                 <FormControlLabel value="1" control={<RadioButton />} label="1" />
                 <FormControlLabel value="2" control={<RadioButton />} label="2" />
                 <FormControlLabel value="3" control={<RadioButton />} label="3" />
                 <FormControlLabel value="4" control={<RadioButton />} label="4" />
                 <FormControlLabel value="5" control={<RadioButton />} label="5" />
-                <FormControlLabel value="6" control={<RadioButton />} label="6" />
-                <FormControlLabel value="7" control={<RadioButton />} label="7" />
-                <FormControlLabel value="8" control={<RadioButton />} label="8" />
-                <FormControlLabel value="9" control={<RadioButton />} label="9" />
-                <FormControlLabel value="10" control={<RadioButton />} label="10" />
-              </RadioGroup>
+            </RadioGroup>
               <br/>
-              {(challenging !== null) && (commonsense !== null) && <p>Thanks! You may close this entire page and return back to the MTurk page now.</p> }
+              {(challenging_creation !== null) && (clear_instruction !== null) && <p>Thanks for the feedback!</p> }
             </div>
           </Grid>
         </Grid>

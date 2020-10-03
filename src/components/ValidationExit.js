@@ -81,8 +81,7 @@ class ValidationExit extends React.Component {
   }
 
   render() {
-    const { classes, open, code} = this.props
-
+    const { classes, open, code, max_pay} = this.props
     // disable the radio button and add a submit
     return (
       <Modal open={open}>
@@ -94,6 +93,9 @@ class ValidationExit extends React.Component {
               </Typography>
               <Typography component="h5" variant="h5" className={classes.code}>
                 {code}
+              </Typography>
+              <Typography component="h5" variant="h5" className={classes.header}>
+                The max payment you can receive if all entries are valid is: ${max_pay}.
               </Typography>
             </div>
             <span className={classes.divider} />

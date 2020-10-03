@@ -78,6 +78,15 @@ INTRA_PAIR_MIN_SAFE_SIMILARITY_SCORE = 0.7
 INTRA_PAIR_MAX_SAFE_SIMILARITY_SCORE = 0.9
 INTER_PAIR_MAX_SAFE_SIMILARITY_SCORE = 0.4
 
+# Bonus calculation
+
+BONUS_PER_SENTENCE_FOOLED = 0.5
+BASE_PER_SENTENCE_CREATED = 0.25
+REQUIRED_NUM_SENTENCES_TO_CREATE = 6 # 10
+
+REQUIRED_NUM_SENTENCES_TO_VALIDATE = 10
+BASE_PER_SENTENCE_TO_VALIDATE = 0.1
+
 # LOCAL TEST ONLY - Start
 LOCAL = os.environ.get('MCS2_HOST', '').lower() == 'localhost'
 DUMMY_INFO = {
@@ -142,7 +151,7 @@ def get_all_n_grams_sentences(worker_id, domain, scenario, N=2):
     # initialize
     input_ngrams = {id_tuple: {'1': [], '2': []} for id_tuple in id_tuples}
     input_sentences = {id_tuple: {'1': '', '2': ''} for id_tuple in id_tuples}
-    # store n-grams into input_ngrams
+    # store n-grams into input_ngrams, raw sentences into input_sentences
     for data in all_data:
         curr_words = tokenize(data['input'])
         curr_n_grams = list(ngrams(curr_words, N))
@@ -156,7 +165,7 @@ def get_all_n_grams_sentences(worker_id, domain, scenario, N=2):
 
 def get_suspicious_intra_pairs(worker_id, domain, scenario, input_ngrams, input_sentences, scoring=jaccard_distance):
     """
-        return paired input that are either too irrelavant or the same
+        return paired input(s) that are either too irrelavant or the same
     """
     suspicious_intra_pairs = []
     for id_tuple, pair in input_ngrams.items():
@@ -593,6 +602,8 @@ def submit():
     assignment_id = session.get('assignment_id')
     uid = session.get('uid')
     mode = session.get('mode')
+    max_possible_pay = 0
+    num_sentence_fooled = 0
 
     # LOCAL TEST ONLY - Start
     if LOCAL:
@@ -618,18 +629,21 @@ def submit():
 
                 if idx in ['1', '2']:
                     if not data:
-                        return jsonify({'status': 'not ok'})
+                        return jsonify({'status': 'not ok, no data fetched'})
                         # user shouldn't be able to submit without giving inputs 1 or 2
                         # if returned: buggy
                     else:
+                        if data['label'] != data['output']:
+                            num_sentence_fooled += 1
                         mongo.db.trials.update_one(
                             {"_id": data["_id"]},  # data["_id"] is ObjectID("xxx")
                             {'$set': {
                                 'need_validate': True,
                             }}
                         )
-                        input_length_check(data)
-
+                        # input_length_check(data)
+        max_possible_pay = BONUS_PER_SENTENCE_FOOLED * num_sentence_fooled \
+            + BASE_PER_SENTENCE_CREATED * REQUIRED_NUM_SENTENCES_TO_CREATE
     elif mode == 'validation':
         mongo.db.validations.update_many(
             {
@@ -640,11 +654,12 @@ def submit():
                 'code': uid
             }}
         )
+        max_possible_pay = REQUIRED_NUM_SENTENCES_TO_VALIDATE * BASE_PER_SENTENCE_TO_VALIDATE
     else:
         print("ERROR: check mode!")
-        return jsonify({'status': 'not ok'})
+        return jsonify({'status': 'not ok, check mode!'})
 
-    return jsonify({'code': uid})  # return code in both mode
+    return jsonify({'code': uid, 'max_pay': '{:.2f}'.format(max_possible_pay)})
 
 
 @app.route('/survey', methods=['POST'])
@@ -657,8 +672,8 @@ def survey():
     uid = session.get('uid')
 
     # Get survey values from the request body
-    commonsense = request.json.get('commonsense', None)
-    challenging = request.json.get('challenging', None)
+    clear_instruction = request.json.get('clear_instruction', None)
+    challenging_creation = request.json.get('challenging_creation', None)
 
     # store trial data in the mongo db
     mongo.db.survey.update_one(  # new database collection
@@ -669,11 +684,12 @@ def survey():
             'hit_id': hit_id,
             'worker_id': worker_id,
             'assignment_id': assignment_id,
-            'commonsense': commonsense,
-            'challenging': challenging,
+            'clear_instruction': clear_instruction,
+            'challenging_creation': challenging_creation,
         }}, upsert=True
     )
-    return jsonify({'commonsense': commonsense, 'challenging': challenging})
+    return jsonify({'clear_instruction': clear_instruction,
+        'challenging_creation': challenging_creation})
 
 
 @app.route('/get_eval', methods=['GET'])

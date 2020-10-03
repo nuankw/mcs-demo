@@ -50,20 +50,17 @@ class App extends React.Component {
     const domain = locationQuery.get('domain')
 
     this.state = {
-      code: '',
+      code: '[ERROR: display code]',
       openSurvey: false,
       mode: mode,
       scenario: scenario,
       domain: domain,
+      max_pay: "[ERROR: display max_possible_pay]",
     }
   }
 
   handleCloseSurvey() {
     this.setState({openSurvey: false})
-  }
-
-  handleOnSwitch(mode) {
-    this.setState({mode})
   }
 
   submit() {
@@ -94,6 +91,7 @@ class App extends React.Component {
       scenario,
       domain,
       openSurvey,
+      max_pay,
     } = this.state
 
     return (
@@ -103,10 +101,16 @@ class App extends React.Component {
           <CssBaseline />
 
           {mode === 'validation' ? (
-            <ValidationExit open={openSurvey} code={code}
+            <ValidationExit
+              open={openSurvey}
+              code={code}
+              max_pay={max_pay}
               onClose={this.handleCloseSurvey.bind(this)} />
           ) : (
-            <CreationExitSurvey open={openSurvey} code={code}
+            <CreationExitSurvey
+              open={openSurvey}
+              code={code}
+              max_pay={max_pay}
               onClose={this.handleCloseSurvey.bind(this)} />
           )}
 
