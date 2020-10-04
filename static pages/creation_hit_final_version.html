@@ -21,103 +21,123 @@
           </div>
 
           <div>
-            <h3>Task description</h3>
-            <p style="font-size: 1.2em;">
-              In this HIT, we ask you to help us test and challenge the ability
-              of common sense reasoning for our AI agent, NAME,
-              by constructing sentence pairs under scenario <span id="scenario">${scenario}</span>
-              and domain <span id="domain">${domain}</span>.
+            <h3>Task Overview</h3>
+            <p style="font-size: 1.2em; padding-left: 2em;">
+              In this HIT, we ask you to test the
+              common sense reasoning for our AI agent -- <b>Leo</b>,
+              by developing sentence pairs for the combination of
+              <b><mark style="background-color: cyan;"><span id="domain">${domain}</span></mark></b>
+              domain and <b><mark style="background-color: cyan;"><span id="scenario">${scenario}</span></mark></b>
+              scenario.
             </p>
 
-            <div style="padding-left: 1em;">
-              <p>
-                Consider the following example,
-                for Scenario = ${scenario} and domain = ${domain}:
-              </p>
-              <p>e.g. ${eg_true}. [True]</p>
-              <p>e.g. ${eg_false}. [False]</p>
+            <div style="font-size: 1.2em; padding-left: 4em;">
+              <p>Consider the following example:</p>
+              <p style="padding-left: 2em;"><i>${eg_true}. <b style="color: darkgreen;">[True]</b></p></i>
+              <p>We can write its complement and change the correctness:</p>
+              <p style="padding-left: 2em;"><i>${eg_false}. <b style="color: darkred;">[False]</b></p></i>
             </div>
+
+            <p style="font-size: 1.2em; padding-left: 2em;"><mark>
+              Your goal is to write challenging pairs that are easily understood by people,
+              but are more likely to fool <b>Leo</b> into judging them incorrectly.</mark>
+            </p>
+
+
 
           </div>
 
+
           <div>
+            <h3>Payment</h3>
+            <p style="font-size: 1.2em; padding-left: 2em;">
+              Your final earnings including bonus will depend on your <b>score</b>.
+              Your <b>score</b> is the number of sentences where you were able to
+              successfully fool our agent <b>Leo</b>.
+            </p>
 
-            <h3>Screenshots walkthrough</h3>
+            <p style="font-size: 1.2em; padding-left: 2em;">
+              The base pay for completing this task is <b>$0.90</b>
+              (<b>$0.15</b> / sentence),
+              but we also provide a bonus of <b>$0.70</b>
+              per sentence based on the <b>score</b>.
+              You can try to fool the model in all 6 sentences,
+              but in our internal study we usually find ourselves
+              able to fool once in each pair, i.e. our score = 3.
+            </p>
+            <p style="font-size: 1.2em; padding-left: 2em;"><mark>
+              We estimate this task to be completed in <b>15-20</b>
+              minutes with earnings around <b>$3.00</b>.</mark>
+            </p>
+
+            <p style="font-size: 1.2em; padding-left: 2em; color:brown"><i>
+              Note: You can expect to receive the full payment (base + bonus) by Oct 9th.
+              <br/>Kindly ensure that all the sentences abide by our instructions (website),
+              <br/>else your submission may not be eligible for a bonus,
+              or could be completely rejected. </i></p>
+
+
+          </div>
+
+
+          <div>
+            <h3>Task Details</h3>
             <ol style="font-size: 1.2em;">
-              <li>
-                To begin this task, click the link below.
-                Do not change the url as doing so will disable proper recording of your annotation.
-                <br />
-                <p><img src="${image1}" style="" alt="placeholder"></p>
+              <li syle="padding-bottom: 3em">
+                To begin this task, click the link below on this page.
+                <br/><i>Note: Do not change the url as doing so will interfere
+                  with a proper recording of your HIT.</i>
+                <p style="height: 2px;"></p>
               </li>
 
-              <li>
-                Read the instruction carefully
-                as it provides necessary detailed guidance
-                and inspirations on how to construct qualified sentences.
+              <li syle="padding-bottom: 3em;">
+                Read the instructions carefully on our website as they provide
+                the definitions and examples needed to construct valid sentences.
                 <br />
-                <p><img src="${image2}" style="" alt="placeholder"></p>
+                <p><img src="https://cs-ddev.isi.edu/images/screenshot_1.png" style="width: 70%; padding-top: 0.7em;" alt="screenshot_1.png"></p>
               </li>
 
-              <li>
-                Enter sentence pairs which require common sense
-                only related to ${domain} and ${scenario} to
-                judge whether they are True/False,
-                and select the T/F labels accordingly.
+              <li syle="padding-bottom: 3em">
+                Enter sentence pairs
+                strictly related to <b>${domain}</b> and <b>${scenario}</b>
+                and select the <b>True/False (T/F)</b> labels accordingly</b>.
                 <br />
-                <p><img src="${image3}" style="" alt="placeholder"></p>
+                <p><img src="https://cs-ddev.isi.edu/images/screenshot_2.png" style="width: 70%; padding-top: 0.7em;" alt="screenshot_2.png"></p>
               </li>
 
-              <li>
-                To see if you successfully tricked our AI agent NAME,
-                click on the TEST button at the bottom.
-                The result will show up near the input fields.
-                You can choose to revise the sentences,
-                and click the button to test them again.
-                <br />
-                <p><img src="${image4}" style="" alt="placeholder"></p>
+              <li syle="padding-bottom: 3em">
+                To see if you successfully fooled our AI agent <b>Leo</b>,
+                click on the <b>"Test Leo with what I have!"</b> button.
+                The result will show up next to the input fields
+                (hover over the icon to see result).
+                <br/><i>Note that you can change and test your inputs
+                as many times as you like.</i>
+                <p><img src="https://cs-ddev.isi.edu/images/screenshot_3.jpg" style="width: 70%; padding-top: 0.7em;" alt="screenshot_3.png"></p>
               </li>
 
-              <li>
-                After you enter all {num_pairs} pairs
-                and have tested all your revision,
-                you can click SUBMIT.
-                A pop-up window will be displayed as below.
-                Notice you cannot go back to edit your inputs!!
-                <br />
-                <p><img src="${image5}" style="" alt="placeholder"></p>
+              <li syle="padding-bottom: 3em">
+                After you enter all <b>3</b> sentence pairs
+                and have tested all your revisions,
+                you can click the <b>"Inputs confirmed, submit!"</b>
+                button to finish this HIT.
+                A pop-up window will be displayed similar to the one below.
+                <br/><i>Note that after you submit -
+                you can no longer go back to edit your inputs!</i>
+                <p><img src="https://cs-ddev.isi.edu/images/screenshot_4.png" style="width: 70%; padding-top: 0.7em;" alt="screenshot_4.png"></p>
               </li>
 
-              <li>
-                To complete this HIT, please copy and paste the code.
-                Please kindly fill out the optional short survey if possible.
+              <li syle="padding-bottom: 3em">
+                To complete your HIT, please copy and paste the completion code on MTurk.
+                Please fill out the optional survey to help us improve the study.
                 We appreciate your feedback!
-                <br />
-                <p><img src="${image6}" style="" alt="placeholder"></p>
               </li>
 
-              <li>
-                For any uncovered questions or other assistance,
-                please don’t hesitate to reach out.
-                <br />
-                <p><img src="${image7}" style="" alt="placeholder"></p>
+              <li syle="padding-bottom: 3em">
+                For any questions or assistance,
+                kindly reach out to us via <a target="_blank" href="mailto: mcspluslab@gmail.com">mcspluslab@gmail.com</a> with your worker ID.
               </li>
             </ol>
           </div>
-
-          <div></div>
-          <h3>Dos and Don’ts</h3>
-          <ul style="font-size: 1.2em;">
-            <li>All generated statement pairs should be grammatically correct </li>
-            <li>All generated statement pairs should be of a common sense nature (i.e. things that are shared by
-              (‘common to’) nearly all people and can reasonably be expected of nearly all people without need for
-              debate)</li>
-            <li>For all generated common sense statement pairs, one should be true and one false</li>
-            <li>Do not include any personal information about yourself or others in any of the generated statement pairs
-            </li>
-            <li>Please do not repeat any of your own statements -- we have to reject assignment or reduce bonus if you do so!</li>
-            <li>Each generated pair should be about the same subject</li>
-          </ul>
 
         </div>
       </div>
@@ -172,9 +192,8 @@
                   assignment_id_field.innerHTML = '<a target="_blank" href="https://cs-ddev.isi.edu?mode=creation&hit_id=' + ids[
                     'hitId'] + '&worker_id=' + ids['workerId'] + '&assignment_id=' + ids['assignmentId']
                     + '&domain=' + domain_str_2_idx[domain] + '&scenario=' + scenario_str_2_idx[scenario] +
-                    '"><h1><span style="color: rgb(255, 0, 0);"><span style="font-family: Courier New;"><b>Click here to begin!</b></span></span></h1></a>';
+                    '"><span style="color: rgb(255, 0, 0);font-size: 1.2em;"><span style="font-family: Courier New;"><b>Click here to begin!</b></span></span></a>';
                 }
-                //
                 -->
               </script>
               <div class="link" id="linkDiv">&nbsp;</div>
@@ -184,7 +203,7 @@
       </table>
       <!-- End Content for Worker -->
       <!-- Input from Worker -->
-      <div class="form-group"><label for="surveycode">Provide the survey code here:</label> <input class="form-control"
+      <div class="form-group"><label for="surveycode">Provide the completion code here:</label> <input class="form-control"
           id="surveycode" name="surveycode" placeholder="e.g. 123456" required="" type="text" /></div>
       <!-- End input from Worker -->
     </div>
