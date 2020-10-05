@@ -4,12 +4,6 @@ This demo presents an interactive system for common sense reasoning that takes a
 
 Visit http://<TBA>.isi.edu/ for a live preview of the demo!
 
-# Demo Instructions
-
-1. Enter two common sense statements (one true and one false) and hit the submit button
-2. Evaluate machine output, to examine the different systems click on `show model scores`
-3. Click `Yes` if the machine output was correct or `No` if it was not
-
 # Development Instructions
 
 To run a local development version of the demo:
