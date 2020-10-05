@@ -63,7 +63,7 @@ export default function Winning() {
         }}
         onClose={handlePopoverClose}
         disableRestoreFocus>
-        <Typography>Model fooled!</Typography>
+        <Typography>Leo missed it. You win!</Typography>
       </Popover>
     </React.Fragment>
   )

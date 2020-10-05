@@ -63,7 +63,7 @@ export default function False() {
         }}
         onClose={handlePopoverClose}
         disableRestoreFocus>
-        <Typography>Model not fooled!</Typography>
+        <Typography>Leo got it. You lose!</Typography>
       </Popover>
     </React.Fragment>
   )

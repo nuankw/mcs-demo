@@ -34,7 +34,7 @@ class PhysicalComparisonInstruction extends React.Component {
           <Typography component={'div'} className={classes.instructions}>
             <ul>
               <li className={classes.head}>
-                  Domain and Scenario Recap
+                  Domain & Scenario Recap
               </li>
               <ul>
               <li><b>Physical</b>: Key aspects include the
@@ -47,41 +47,51 @@ class PhysicalComparisonInstruction extends React.Component {
                   Examples
               </li>
               <ul>
-                <li>
-                  <b><i>[True]</i></b> A steel bottle might be more suitable than a wooden box for hammering. <br/>
-                  <b><i>[False]</i></b> A steel bottle might be less suitable than a wooden box for hammering.
+                <li style={{'paddingBottom': '0.3em'}}>
+                  <b style={{'color': 'darkgreen'}}>[True]</b>&nbsp;&nbsp;
+                  <u>A steel bottle</u> might be <b>more</b> suitable than <u>a wooden box</u> for hammering.
+                  <br/><b style={{'color': 'darkred'}}>[False]</b>&nbsp;
+                  <u>A steel bottle</u> might be <b>less</b> suitable than <u>a wooden box</u> for hammering.
                 </li>
-                <li>
-                  <b><i>[True]</i></b> It's more convenient to use a shirt rather than a tie, as a dusting cloth. <br/>
-                  <b><i>[False]</i></b> It's more convenient to use a tie rather than a shirt, as a dusting cloth.
+
+
+                <li style={{'paddingBottom': '0.3em'}}>
+                  <b style={{'color': 'darkgreen'}}>[True]</b>&nbsp;&nbsp;
+                    If you don't have a bowl, it's better to serve soup <u>in a cup</u> <b>rather than</b> <u>on a plate</u>.
+                  <br/><b style={{'color': 'darkred'}}>[False]</b>&nbsp;
+                    If you don't have a bowl, it's better to serve soup <u>on a plate</u> <b>rather than</b> <u>in a cup</u>.
+                </li>
+
+                <li style={{'paddingBottom': '0.3em'}}>
+                  <b style={{'color': 'darkgreen'}}>[True]</b>&nbsp;&nbsp;
+                    It's <b>more</b> convenient to use <u>a shirt</u> rather than <u>a tie</u>, as a dusting cloth.
+                  <br/><b style={{'color': 'darkred'}}>[False]</b>&nbsp;
+                    It's <b>less</b> convenient to use <u>a shirt</u> rather than <u>a tie</u>, as a dusting cloth.
+                </li>
+
+                <li style={{'paddingBottom': '0.3em'}}>
+                  <b style={{'color': 'darkgreen'}}>[True]</b>&nbsp;&nbsp;
+                    To reduce exhaustion, they choose to carry <u>the <b>lighter</b> boxes</u>.
+                  <br/><b style={{'color': 'darkred'}}>[False]</b>&nbsp;
+                    To reduce exhaustion, they choose to carry <u>the <b>heavier</b> boxes</u>.
                 </li>
               </ul>
 
+
               <li className={classes.head}>
-                  Tips and Tricks
+                  Tips & Tricks
               </li>
 
               <ul>
-                <li className={classes.headExplanation}>
-                  To break the system as well as generate complementary samples,
-                  we can modify the sentence with:
-                </li>
-                <ul>
-                  <li>Negation</li>
-                  <li>Swap</li>
-                  <li>Plausibility-Qualifiers (e.g. sometimes, likely, rarely)</li>
-                  <li>Contrasting-Conjuncts (e.g. unless, despite)</li>
-                  <li>Distractors</li>
-                </ul>
 
                 <li>
-                  To generate complements, you can simply swap the entities
-                  or reverse the comparison words.
+                  To generate complements, you can simply <u>swap the
+                  entities</u> or <b>reverse/negate the comparison words</b>.
                 </li>
 
                 <li>
-                  For a given pair, it’s usually challenging to get a win
-                  on both the sentences.
+                  Aim to fool one sentence in each pair,
+                  as it’s usually challenging to do so for both.
                 </li>
               </ul>
 

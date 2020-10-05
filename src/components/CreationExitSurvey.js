@@ -100,7 +100,7 @@ class CreationExitSurvey extends React.Component {
                 {code}
               </Typography>
               <Typography component="h5" variant="h5" className={classes.header}>
-                The max payment you can receive if all entries are valid is: ${max_pay}.
+                Your estimated earning is ${max_pay} if all input is valid.
               </Typography>
             </div>
             <span className={classes.divider} />
@@ -108,8 +108,8 @@ class CreationExitSurvey extends React.Component {
               <Typography component="h5" variant="h5" className={classes.header}>
                 Exit Survey
               </Typography>
-              <p>How easy to follow do you find our instruction to be?</p>
-              <p>(from 1 being not easy at all to 5 very easy)</p>
+              <p style={{'fontSize': '20px', 'color': 'white'}}>Did you find our instructions to be helpful?</p>
+              <p style={{'fontSize': '16px', 'color': 'gray'}}>(from 1 being not easy at all to 5 very easy)</p>
               <RadioGroup name="q1" className={classes.radioGroup} onChange={(e, val) => this.handleAnswer('clear_instruction', val)}>
                 <FormControlLabel value="1" control={<RadioButton />} label="1" />
                 <FormControlLabel value="2" control={<RadioButton />} label="2" />
@@ -118,8 +118,8 @@ class CreationExitSurvey extends React.Component {
                 <FormControlLabel value="5" control={<RadioButton />} label="5" />
              </RadioGroup>
               <br/>
-              <p>How challenging was it to fool the model?</p>
-              <p>(from 1 being not challenging at all to 5 being very challenging)</p>
+              <p style={{'fontSize': '20px', 'color': 'white'}}>How challenging was it to fool the model?</p>
+              <p style={{'fontSize': '16px', 'color': 'gray'}}>(from 1 being not challenging at all to 5 very challenging)</p>
               <RadioGroup name="q1" className={classes.radioGroup}  onChange={(e, val) => this.handleAnswer('challenging_creation', val)}>
                 <FormControlLabel value="1" control={<RadioButton />} label="1" />
                 <FormControlLabel value="2" control={<RadioButton />} label="2" />

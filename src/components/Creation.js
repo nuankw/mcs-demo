@@ -187,10 +187,9 @@ class Creation extends React.Component {
           className={classes.header}>
           <span className={classes.title}>Common Sense Reasoning -- Creation HIT </span>
           <br/>
-          <span className={classes.subtitle}> For <u>{domain}</u> domain and <u>{scenario}</u> scenario </span>
-          <p className={classes.note}>NOTE: Please take 5 minutes to read this instruction carefully.
-            We will have another user to examine your inputs and will reject your HITs
-            if you fail to provide inputs that are compliant with the instruction.</p>
+          <span className={classes.subtitle}> For <u><b>{domain}</b></u> domain and <u><b>{scenario}</b></u> scenario </span>
+          {/* subtitle margin/paddingBotton does not work when directly above Accordian? */}
+          <p style={{'height': '12px', 'margin': '0px'}}></p>
           <CreationInstruction
             scenario={scenario}
             domain={domain} />
@@ -223,7 +222,7 @@ class Creation extends React.Component {
 
               <Grid container>
                 <Grid item xs={6} align="center">
-                  {<Submit type='submit' text='Test what I got!' disabled={testBtnDisabled} />}
+                  {<Submit type='submit' text='Test Leo with what I have!' disabled={testBtnDisabled} />}
                 </Grid>
                 <Grid item xs={6} align="center">
                   {<Submit type='button' text='Inputs confirmed, submit!' disabled={submitBtnDisabled} onClick={onSubmit}/>}

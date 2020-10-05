@@ -80,8 +80,8 @@ INTER_PAIR_MAX_SAFE_SIMILARITY_SCORE = 0.4
 
 # Bonus calculation
 
-BONUS_PER_SENTENCE_FOOLED = 0.5
-BASE_PER_SENTENCE_CREATED = 0.25
+BONUS_PER_SENTENCE_FOOLED = 0.7
+BASE_PER_SENTENCE_CREATED = 0.15
 REQUIRED_NUM_SENTENCES_TO_CREATE = 6 # 10
 
 REQUIRED_NUM_SENTENCES_TO_VALIDATE = 10
@@ -90,7 +90,7 @@ BASE_PER_SENTENCE_TO_VALIDATE = 0.1
 # LOCAL TEST ONLY - Start
 LOCAL = os.environ.get('MCS2_HOST', '').lower() == 'localhost'
 DUMMY_INFO = {
-    'uid': 'uidX',
+    'uid': str(uuid.uuid4()),
     'hit_id': 'hitX',
     'worker_id': 'workerX',
     'assignment_id': 'assignmentX',

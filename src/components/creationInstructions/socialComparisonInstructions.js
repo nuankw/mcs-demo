@@ -47,32 +47,48 @@ class SocialComparisonInstruction extends React.Component {
                   Examples
               </li>
               <ul>
-                <li>
-                  <b>[True]</b> It's usually acceptable to arrive late to a party, but not for a doctor's appointment. <br/>
-                  <b>[False]</b> It's usually not acceptable to arrive late to a party, but ok for a doctor's appointment.
+                <li style={{'paddingBottom': '0.3em'}}>
+                  <b style={{'color': 'darkgreen'}}>[True]</b>&nbsp;&nbsp;
+                  It's usually acceptable to arrive late to a party,
+                  but not for a doctor's appointment.
+                  <br/><b style={{'color': 'darkred'}}>[False]</b>&nbsp;
+                  It's usually not acceptable to arrive late to a party,
+                  but ok for a doctor's appointment.
                 </li>
-                <li>
-                  <b>[True]</b> In order to educate their children, they would prefer to visit a museum instead of a theme park. <br/>
-                  <b>[False]</b> In order to educate their children, they would prefer to visit a theme park instead of a museum.
+
+
+                <li style={{'paddingBottom': '0.3em'}}>
+                  <b style={{'color': 'darkgreen'}}>[True]</b>&nbsp;&nbsp;
+                    In order to educate their children,
+                    they would prefer to visit a museum instead of a theme park.
+                  <br/><b style={{'color': 'darkred'}}>[False]</b>&nbsp;
+                    In order to educate their children,
+                    they would prefer to visit a theme park instead of a museum.
+
                 </li>
-                <li>
-                  <b>[True]</b> With no clothes left in the closet, they will prioritize visiting laundry instead of the supermarket. <br/>
-                  <b>[False]</b> With no vegetables left at home, they will prioritize visiting laundry instead of the supermarket.
+
+                <li style={{'paddingBottom': '0.3em'}}>
+                  <b style={{'color': 'darkgreen'}}>[True]</b>&nbsp;&nbsp;
+                    With no clean clothes left in the closet, they will prioritize visiting laundry instead of the supermarket.
+                  <br/><b style={{'color': 'darkred'}}>[False]</b>&nbsp;
+                    With no vegetables left at home, they will prioritize visiting laundry instead of the supermarket.
                 </li>
-                <li>
-                  <b>[True]</b> Since they rarely hosts dinner parties, they are likely to rent instead of buying a barbecue grill. <br/>
-                  <b>[False]</b> Since they often hosts dinner parties, they are likely to rent instead of buying a barbecue grill.
+
+                <li style={{'paddingBottom': '0.3em'}}>
+                  <b style={{'color': 'darkgreen'}}>[True]</b>&nbsp;&nbsp;
+                    Since they rarely host dinner parties, they are likely to rent instead of buying a barbecue grill.
+                  <br/><b style={{'color': 'darkred'}}>[False]</b>&nbsp;
+                    Since they often host dinner parties, they are likely to rent instead of buying a barbecue grill.
                 </li>
               </ul>
 
               <li className={classes.head}>
                   Tips and Tricks
               </li>
-
               <ul>
                 <li className={classes.headExplanation}>
                   To break the system as well as generate complementary samples,
-                  we can modify the sentence with:
+                  you can modify the sentence with:
                 </li>
                 <ul>
                   <li>Negation</li>
@@ -87,7 +103,6 @@ class SocialComparisonInstruction extends React.Component {
                 </li>
 
               </ul>
-
             </ul>
           </Typography>
 

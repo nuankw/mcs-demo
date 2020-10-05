@@ -115,34 +115,30 @@ class CreationInstruction extends React.Component {
                   <div className={classes.instructions}>
 
                     <Typography>
-                      <b>Welcome!</b> Here we will provide the details for the Domain & Scenario
-                      with examples, along with other tips to better assist you with this task.
-                      For payment details please refer to the MTurk HIT instruction.
-                      We will display an estimate of earning after you click submit button.
-                      Please notice that once you clicked the "Submit" button,
+                      <b>Welcome!</b>  Here we provide the details for the Domain &
+                      Scenario with examples, along with other tips to better
+                      assist you with this task. We will display an estimate
+                      of earning after you submit. Please notice that once you
+                      click the "Inputs confirmed, submit!" button,
                       you <b>cannot</b> return to further edit your inputs.
                     </Typography>
 
                     {this.renderCategorySpecificInstruction(domain, scenario)}
 
                     <Typography
-                      component="h6"
-                      variant="h6">
+                      component="h8"
+                      variant="h8">
                       <b>Dos and Don'ts</b>:
                     </Typography>
 
                     <div className={classes.doDontsList}>
                       <ul>
-                        <li>All generated statement pairs should be grammatically correct.</li>
-                        <li>All generated statement pairs should be based on a common sense nature,
-                          i.e. can be understood and reasonably infered T/F
-                          by nearly all people without need for debate.</li>
-                        <li>Each generated pair should be about the same subject.</li>
-                        <li>Numeracy Scenario only: Please avoid Arabic numerals
-                          or symbols and use English expressions instead.
-                          e.g. $100 → One hundred dollars.</li>
-                        <li>Please do not repeat any of your own statements
-                          -- we have to reject assignment or reduce bonus if you do so!</li>
+                        <li>Please ensure the sentences are grammatically correct.</li>
+                        <li>Your input sentences should focus on common sense,
+                          and their correctness (T/F) should be determined without any ambiguity.</li>
+                        <li>Each sentence pair should be about the same subject.</li>
+                        <li>Be creative, avoid similar or repetitive sentence pairs.&nbsp;
+                        <u>We have to reduce the bonus if you do so!</u></li>
                       </ul>
                     </div>
                   </div>
