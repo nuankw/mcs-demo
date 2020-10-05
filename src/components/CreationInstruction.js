@@ -105,7 +105,7 @@ class CreationInstruction extends React.Component {
             aria-controls="panel1a-content"
             id="instructions"
             style={{'margin': '0px'}}>
-            <Typography className={classes.heading}>Instruction</Typography>
+            <Typography className={classes.heading}>Instructions</Typography>
           </AccordionSummary>
 
           <AccordionDetails>
@@ -125,20 +125,18 @@ class CreationInstruction extends React.Component {
 
                     {this.renderCategorySpecificInstruction(domain, scenario)}
 
-                    <Typography
-                      component="h8"
-                      variant="h8">
-                      <b>Dos and Don'ts</b>:
+                    <Typography style={{'marginBottom': '0px'}}>
+                      <b>Dos and Don'ts</b>
                     </Typography>
 
                     <div className={classes.doDontsList}>
                       <ul>
-                        <li>Please ensure the sentences are grammatically correct.</li>
-                        <li>Your input sentences should focus on common sense,
-                          and their correctness (T/F) should be determined without any ambiguity.</li>
-                        <li>Each sentence pair should be about the same subject.</li>
-                        <li>Be creative, avoid similar or repetitive sentence pairs.&nbsp;
-                        <u>We have to reduce the bonus if you do so!</u></li>
+                        <li style={{'paddingBottom': '0.4em'}}>Please ensure the sentences are grammatically correct.</li>
+                        <li style={{'paddingBottom': '0.4em'}}>Your input sentences should focus on common sense
+                        such that most people can infer their correctness (T/F) without any ambiguity.</li>
+                        <li style={{'paddingBottom': '0.4em'}}>Each sentence pair should be about the same subject.</li>
+                        <li style={{'paddingBottom': '0.4em'}}>Be creative, avoid similar or repetitive sentence pairs.
+                        <i><u>We have to reduce the bonus if you do so!</u></i></li>
                       </ul>
                     </div>
                   </div>
