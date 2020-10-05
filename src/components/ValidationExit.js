@@ -95,7 +95,7 @@ class ValidationExit extends React.Component {
                 {code}
               </Typography>
               <Typography component="h5" variant="h5" className={classes.header}>
-                The max payment you can receive if all entries are valid is: ${max_pay}.
+                Your estimated earning is ${max_pay} if all input is valid.
               </Typography>
             </div>
             <span className={classes.divider} />
