@@ -109,12 +109,17 @@ class Creation extends React.Component {
     })
   }
 
-  submit(event) {
+  test_optional_submit(event, type) {
     event.preventDefault()
     const { inputs } = this.state
     this.setState({loading: true}, () => {
       this.postData(inputs).then(data => {
         this.setState({loading: false, inputs: {...data}})
+        this.setState({loading: false, inputs: {...data}}, () => {
+          if ( !!type ) {
+            this.props.onSubmit()
+          }
+        })
       })
     })
   }
@@ -173,7 +178,7 @@ class Creation extends React.Component {
 
   render() {
     const { inputs, loading } = this.state
-    const { classes, scenario, domain, onSubmit } = this.props
+    const { classes, scenario, domain } = this.props
 
     const testBtnDisabled = !this.checkInputs()
     const submitBtnDisabled = !this.checkOutputs()
@@ -195,7 +200,7 @@ class Creation extends React.Component {
             domain={domain} />
         </Typography>
 
-        <form className={classes.form} noValidate onSubmit={this.submit.bind(this)}>
+        <form className={classes.form} noValidate onSubmit={this.test_optional_submit.bind(this)}>
           <Grid container spacing={3}>
 
             <Grid item xs={12} align="center">
@@ -225,7 +230,7 @@ class Creation extends React.Component {
                   {<Submit type='submit' text='Test Leo with what I have!' disabled={testBtnDisabled} />}
                 </Grid>
                 <Grid item xs={6} align="center">
-                  {<Submit type='button' text='Inputs confirmed, submit!' disabled={submitBtnDisabled} onClick={onSubmit}/>}
+                  {<Submit type='button' text='Inputs confirmed, submit!' disabled={submitBtnDisabled} onClick={(event) => this.test_optional_submit(event, 'for real submit this time')}/>}
                 </Grid>
               </Grid>
             </Grid>
