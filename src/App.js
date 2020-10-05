@@ -63,14 +63,14 @@ class App extends React.Component {
     this.setState({openSurvey: false})
   }
 
-  submit() {
+  submit(optionalInputs) {
     return new Promise((resolve, reject) => {
       fetch('/submit', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({}),
+        body: JSON.stringify({'creationInputs': optionalInputs}),
       })
       .then(response => response.json())
       .then(data => resolve(data))
@@ -78,8 +78,9 @@ class App extends React.Component {
     })
   }
 
-  handleOnSubmit() {
-    this.submit().then(data => {
+  handleOnSubmit(event, optionalInputs) {
+    event.preventDefault()
+    this.submit(optionalInputs).then(data => {
       this.setState({openSurvey: true, ...data})
     })
   }
