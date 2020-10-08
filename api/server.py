@@ -635,9 +635,13 @@ def submit():
                     else:
                         if data['label'] != data['output']:
                             num_sentence_fooled += 1
+
+                        inputs = request.json.get('creationInputs')
                         mongo.db.trials.update_one(
                             {"_id": data["_id"]},  # data["_id"] is ObjectID("xxx")
                             {'$set': {
+                                'input': inputs[key][idx]['input'],
+                                'label': inputs[key][idx]['label'],
                                 'need_validate': True,
                             }}
                         )
