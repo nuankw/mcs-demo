@@ -49,60 +49,55 @@ class SocialComparisonInstruction extends React.Component {
               <ul>
                 <li style={{'paddingBottom': '0.3em'}}>
                   <b style={{'color': 'darkgreen'}}>[True]</b>&nbsp;&nbsp;
-                  It's usually acceptable to arrive late to a party,
-                  but not for a doctor's appointment.
+                  It's usually <b>acceptable</b> to arrive late to <u>a party</u>,
+                  but <b>not</b> for <u>a doctor's appointment</u>.
                   <br/><b style={{'color': 'darkred'}}>[False]</b>&nbsp;
-                  It's usually not acceptable to arrive late to a party,
-                  but ok for a doctor's appointment.
+                  It's usually <b>not acceptable</b> to arrive late to <u>a party</u>,
+                  but <b>ok</b> for <u>a doctor's appointment</u>.
                 </li>
 
 
                 <li style={{'paddingBottom': '0.3em'}}>
                   <b style={{'color': 'darkgreen'}}>[True]</b>&nbsp;&nbsp;
                     In order to educate their children,
-                    they would prefer to visit a museum instead of a theme park.
+                    they would <b>prefer</b> to visit <u>a museum</u> <b>instead of</b> <u>a theme park</u>.
                   <br/><b style={{'color': 'darkred'}}>[False]</b>&nbsp;
                     In order to educate their children,
-                    they would prefer to visit a theme park instead of a museum.
+                    they would <b>prefer</b> to visit <u>a theme park</u> <b>instead of</b> <u>a museum</u>.
 
                 </li>
 
                 <li style={{'paddingBottom': '0.3em'}}>
                   <b style={{'color': 'darkgreen'}}>[True]</b>&nbsp;&nbsp;
-                    With no clean clothes left in the closet, they will prioritize visiting laundry instead of the supermarket.
+                    With no clean clothes left in the closet, they will <b>prioritize</b> <u>doing the laundry</u> <b>instead of</b> <u>going to the supermarket</u>.
                   <br/><b style={{'color': 'darkred'}}>[False]</b>&nbsp;
-                    With no vegetables left at home, they will prioritize visiting laundry instead of the supermarket.
+                    With no clean clothes left in the closet, they will <b>prioritize</b> <u>going to the supermarket</u> <b>instead of</b> <u>doing the laundry</u>.
                 </li>
 
                 <li style={{'paddingBottom': '0.3em'}}>
                   <b style={{'color': 'darkgreen'}}>[True]</b>&nbsp;&nbsp;
-                    Since they rarely host dinner parties, they are likely to rent instead of buying a barbecue grill.
+                    A person with a monthly income around <u>a thousand dollars</u> <b>cannot afford</b> a rent of <u>two thousand dollars</u>.
                   <br/><b style={{'color': 'darkred'}}>[False]</b>&nbsp;
-                    Since they often host dinner parties, they are likely to rent instead of buying a barbecue grill.
+                    A person with a monthly income around <u>a thousand dollars</u> <b>can afford</b> a rent of <u>two thousand dollars</u>.
                 </li>
               </ul>
 
               <li className={classes.head}>
-                  Tips and Tricks
+                  Tips & Tricks
               </li>
+
               <ul>
-                <li className={classes.headExplanation}>
-                  To break the system as well as generate complementary samples,
-                  you can modify the sentence with:
+                <li>
+                  To generate complements, you can simply <u>swap the
+                  entities</u> or <b>reverse/negate the comparison words</b>.
                 </li>
-                <ul>
-                  <li>Negation</li>
-                  <li>Swap</li>
-                  <li>Plausibility-Qualifiers (e.g. sometimes, likely, rarely)</li>
-                  <li>Contrasting-Conjuncts (e.g. unless, despite)</li>
-                  <li>Distractors</li>
-                </ul>
 
                 <li>
-                For a given pair, it’s usually challenging to get a win on both the sentences.
+                  Aim to fool one sentence in each pair,
+                  as it’s usually challenging to do so for both.
                 </li>
-
               </ul>
+
             </ul>
           </Typography>
 

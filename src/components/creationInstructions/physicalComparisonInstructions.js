@@ -71,9 +71,9 @@ class PhysicalComparisonInstruction extends React.Component {
 
                 <li style={{'paddingBottom': '0.3em'}}>
                   <b style={{'color': 'darkgreen'}}>[True]</b>&nbsp;&nbsp;
-                    To reduce exhaustion, they choose to carry <u>the <b>lighter</b> boxes</u>.
+                    It’s <b>easier</b> to climb over a <u>three feet</u> fence compared to a <u>six feet</u> one.
                   <br/><b style={{'color': 'darkred'}}>[False]</b>&nbsp;
-                    To reduce exhaustion, they choose to carry <u>the <b>heavier</b> boxes</u>.
+                    It’s <b>easier</b> to climb over a <u>six feet</u> fence compared to a <u>three feet</u> one.
                 </li>
               </ul>
 

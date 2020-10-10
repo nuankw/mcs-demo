@@ -100,7 +100,7 @@ class CreationExitSurvey extends React.Component {
                 {code}
               </Typography>
               <Typography component="h5" variant="h5" className={classes.header}>
-                Your estimated earning is ${max_pay} if all input is valid.
+                Your estimated total earning (base + bonus) is ${max_pay} if all input is valid. <br/>
               </Typography>
             </div>
             <span className={classes.divider} />

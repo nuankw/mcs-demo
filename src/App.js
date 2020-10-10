@@ -105,7 +105,6 @@ class App extends React.Component {
             <ValidationExit
               open={openSurvey}
               code={code}
-              max_pay={max_pay}
               onClose={this.handleCloseSurvey.bind(this)} />
           ) : (
             <CreationExitSurvey

@@ -41,7 +41,7 @@ logger = logging.getLogger(__name__)
 
 app = Flask(__name__, static_url_path='')
 CORS(app)
-app.secret_key = os.environ.get('APP_SECRET', '')
+app.secret_key = os.environ.get('APP_SECRET', 'asdf')
 
 # Add mongo db settings for logging
 MONGO_URI = os.environ.get('MONGO_URI', 'mongodb://0.0.0.0:27017/mcs2')
@@ -78,9 +78,12 @@ INTRA_PAIR_MIN_SAFE_SIMILARITY_SCORE = 0.7
 INTRA_PAIR_MAX_SAFE_SIMILARITY_SCORE = 0.9
 INTER_PAIR_MAX_SAFE_SIMILARITY_SCORE = 0.4
 
-# Bonus calculation
-
-BONUS_PER_SENTENCE_FOOLED = 0.7
+# Payment calculation
+EASY_DOMAINS = ['d1', 'd3']
+HARD_DOMAINS = ['d2']
+BASE_PAY = 1.0
+BONUS_PER_SENTENCE_FOOLED_EASY = 0.7
+BONUS_PER_SENTENCE_FOOLED_HARD = 1.0
 BASE_PER_SENTENCE_CREATED = 0.15
 REQUIRED_NUM_SENTENCES_TO_CREATE = 6 # 10
 
@@ -98,7 +101,6 @@ DUMMY_INFO = {
     'domain': 'dX',
     'mode': 'creation'
 }
-app.secret_key = 'asdf'
 if LOCAL:
     print("LOCAL TESTING, dummy variables:", DUMMY_INFO)
 # LOCAL TEST ONLY - End
@@ -602,7 +604,9 @@ def submit():
     assignment_id = session.get('assignment_id')
     uid = session.get('uid')
     mode = session.get('mode')
+    domain = session.get('domain')
     max_possible_pay = 0
+    max_possible_pay_str = ""
     num_sentence_fooled = 0
 
     # LOCAL TEST ONLY - Start
@@ -633,9 +637,6 @@ def submit():
                         # user shouldn't be able to submit without giving inputs 1 or 2
                         # if returned: buggy
                     else:
-                        if data['label'] != data['output']:
-                            num_sentence_fooled += 1
-
                         inputs = request.json.get('creationInputs')
                         mongo.db.trials.update_one(
                             {"_id": data["_id"]},  # data["_id"] is ObjectID("xxx")
@@ -645,9 +646,23 @@ def submit():
                                 'need_validate': True,
                             }}
                         )
+                        if inputs[key][idx]['label'] != data['output']:
+                            num_sentence_fooled += 1
                         # input_length_check(data)
-        max_possible_pay = BONUS_PER_SENTENCE_FOOLED * num_sentence_fooled \
-            + BASE_PER_SENTENCE_CREATED * REQUIRED_NUM_SENTENCES_TO_CREATE
+
+        if domain in HARD_DOMAINS:
+            max_possible_pay = BONUS_PER_SENTENCE_FOOLED_HARD * num_sentence_fooled \
+                + BASE_PER_SENTENCE_CREATED * REQUIRED_NUM_SENTENCES_TO_CREATE \
+                + BASE_PAY
+            max_possible_pay_str = '{:.2f}'.format(max_possible_pay)
+        elif domain in EASY_DOMAINS:
+            max_possible_pay = BONUS_PER_SENTENCE_FOOLED_EASY * num_sentence_fooled \
+                + BASE_PER_SENTENCE_CREATED * REQUIRED_NUM_SENTENCES_TO_CREATE \
+                + BASE_PAY
+            max_possible_pay_str = '{:.2f}'.format(max_possible_pay)
+        else:
+            max_possible_pay_str = 'ERROR_GETTING_DOMAIN'
+
     elif mode == 'validation':
         mongo.db.validations.update_many(
             {
@@ -659,11 +674,12 @@ def submit():
             }}
         )
         max_possible_pay = REQUIRED_NUM_SENTENCES_TO_VALIDATE * BASE_PER_SENTENCE_TO_VALIDATE
+        max_possible_pay_str = '{:.2f}'.format(max_possible_pay)
     else:
         print("ERROR: check mode!")
         return jsonify({'status': 'not ok, check mode!'})
 
-    return jsonify({'code': uid, 'max_pay': '{:.2f}'.format(max_possible_pay)})
+    return jsonify({'code': uid, 'max_pay': max_possible_pay_str})
 
 
 @app.route('/survey', methods=['POST'])

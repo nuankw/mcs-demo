@@ -115,12 +115,13 @@ class CreationInstruction extends React.Component {
                   <div className={classes.instructions}>
 
                     <Typography>
-                      <b>Welcome!</b>  Here we provide the details for the Domain &
+                      <b>Welcome!</b> Here we provide the details for the Domain &
                       Scenario with examples, along with other tips to better
                       assist you with this task. We will display an estimate
-                      of earning after you submit. Please notice that once you
+                      of earning after you submit. <p style={{'color':'darkred'}}>
+                      Please notice that once you
                       click the "Inputs confirmed, submit!" button,
-                      you <b>cannot</b> return to further edit your inputs.
+                      you <b>cannot</b> return to further edit your inputs.</p>
                     </Typography>
 
                     {this.renderCategorySpecificInstruction(domain, scenario)}
@@ -135,7 +136,9 @@ class CreationInstruction extends React.Component {
                         <li style={{'paddingBottom': '0.4em'}}>Your input sentences should focus on common sense
                         such that most people can infer their correctness (T/F) without any ambiguity.</li>
                         <li style={{'paddingBottom': '0.4em'}}>Each sentence pair should be about the same subject.</li>
-                        <li style={{'paddingBottom': '0.4em'}}>Be creative, avoid similar or repetitive sentence pairs.
+                        <li style={{'paddingBottom': '0.4em'}}>For numbers above 1000, please use word expressions
+                        instead of digits (e.g. 15000 → fifteen thousand).</li>
+                        <li style={{'paddingBottom': '0.4em'}}>Be creative, avoid similar or repetitive sentence pairs.&nbsp;
                         <i><u>We have to reduce the bonus if you do so!</u></i></li>
                       </ul>
                     </div>

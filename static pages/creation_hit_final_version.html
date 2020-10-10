@@ -24,7 +24,7 @@
             <h3>Task Overview</h3>
             <p style="font-size: 1.2em; padding-left: 2em;">
               In this HIT, we ask you to test the
-              common sense reasoning for our AI agent -- <b>Leo</b>,
+              common sense reasoning for our AI agent -- <b>Carl</b>,
               by developing sentence pairs for the combination of
               <b><mark style="background-color: cyan;"><span id="domain">${domain}</span></mark></b>
               domain and <b><mark style="background-color: cyan;"><span id="scenario">${scenario}</span></mark></b>
@@ -40,7 +40,7 @@
 
             <p style="font-size: 1.2em; padding-left: 2em;"><mark>
               Your goal is to write challenging pairs that are easily understood by people,
-              but are more likely to fool <b>Leo</b> into judging them incorrectly.</mark>
+              but are more likely to fool <b>Carl</b> into judging them incorrectly.</mark>
             </p>
 
 
@@ -50,30 +50,20 @@
 
           <div>
             <h3>Payment</h3>
-            <p style="font-size: 1.2em; padding-left: 2em;">
-              Your final earnings including bonus will depend on your <b>score</b>.
-              Your <b>score</b> is the number of sentences where you were able to
-              successfully fool our agent <b>Leo</b>.
-            </p>
-
-            <p style="font-size: 1.2em; padding-left: 2em;">
-              The base pay for completing this task is <b>$0.90</b>
-              (<b>$0.15</b> / sentence),
-              but we also provide a bonus of <b>$0.70</b>
-              per sentence based on the <b>score</b>.
-              You can try to fool the model in all 6 sentences,
-              but in our internal study we usually find ourselves
+            <p style="font-size: 1.2em; padding-left: 2em; color: blue;">
+              The base pay for completing this task is <b>${base_pay}</b>,
+              and the bonus pay is <b>${sentence_bonus} * your score</b>.
+              <b>Your score</b> is the number of sentences where you were able to
+              successfully fool our agent <b>Carl</b>.
+              <br/>In our internal study we usually find ourselves
               able to fool once in each pair, i.e. our score = 3.
             </p>
-            <p style="font-size: 1.2em; padding-left: 2em;"><mark>
-              We estimate this task to be completed in <b>15-20</b>
-              minutes with earnings around <b>$3.00</b>.</mark>
-            </p>
+
 
             <p style="font-size: 1.2em; padding-left: 2em; color:brown"><i>
-              Note: You can expect to receive the full payment (base + bonus) by <b>${review_ddl}</b>.
-              <br/>Kindly ensure that all the sentences abide by our instructions (website),
-              <br/>else your submission may not be eligible for a bonus,
+              Note: You can expect to receive the full payment (base + bonus) in <b>${how_many_days}</b> days.
+              Kindly ensure that all the sentences abide by our instructions,
+              else your submission may not be eligible for a bonus,
               or could be completely rejected. </i></p>
 
 
@@ -106,8 +96,8 @@
               </li>
 
               <li syle="padding-bottom: 3em">
-                To see if you successfully fooled our AI agent <b>Leo</b>,
-                click on the <b>"Test Leo with what I have!"</b> button.
+                To see if you successfully fooled our AI agent <b>Carl</b>,
+                click on the <b>"Test Carl with what I have!"</b> button.
                 The result will show up next to the input fields
                 (hover over the icon to see result).
                 <br/><i>Note that you can change and test your inputs

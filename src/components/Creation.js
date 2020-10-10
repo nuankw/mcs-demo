@@ -222,7 +222,7 @@ class Creation extends React.Component {
 
               <Grid container>
                 <Grid item xs={6} align="center">
-                  {<Submit type='submit' text='Test Leo with what I have!' disabled={testBtnDisabled} />}
+                  {<Submit type='submit' text='Test Carl with what I have!' disabled={testBtnDisabled} />}
                 </Grid>
                 <Grid item xs={6} align="center">
                   {<Submit type='button' text='Inputs confirmed, submit!' disabled={submitBtnDisabled} onClick={(event) => onSubmit(event, inputs)}/>}
