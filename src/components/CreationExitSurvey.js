@@ -1,5 +1,5 @@
 import React from 'react'
-import { Grid, Modal, Typography } from '@material-ui/core/'
+import { Grid, Modal, TextField, Typography } from '@material-ui/core/'
 import FormControlLabel from '@material-ui/core/FormControlLabel'
 import RadioGroup from '@material-ui/core/RadioGroup'
 import RadioButton from './RadioButton'
@@ -126,7 +126,15 @@ class CreationExitSurvey extends React.Component {
                 <FormControlLabel value="3" control={<RadioButton />} label="3" />
                 <FormControlLabel value="4" control={<RadioButton />} label="4" />
                 <FormControlLabel value="5" control={<RadioButton />} label="5" />
-            </RadioGroup>
+              </RadioGroup>
+              <br/>
+              <div style={{'fontSize': '20px', 'color': 'white'}}>
+                <p>(optional) any additional comments?</p>
+                <TextField
+                  id="outlined-basic"
+                  label="Outlined"
+                  variant="outlined" />
+              </div>
               <br/>
               {(challenging_creation !== null) && (clear_instruction !== null) && <p>Thanks for the feedback!</p> }
             </div>
