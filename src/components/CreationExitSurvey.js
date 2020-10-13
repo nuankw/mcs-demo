@@ -1,5 +1,5 @@
 import React from 'react'
-import { Grid, Modal, TextField, Typography } from '@material-ui/core/'
+import { Button, Grid, Modal, TextField, Typography } from '@material-ui/core/'
 import FormControlLabel from '@material-ui/core/FormControlLabel'
 import RadioGroup from '@material-ui/core/RadioGroup'
 import RadioButton from './RadioButton'
@@ -169,6 +169,9 @@ class CreationExitSurvey extends React.Component {
                   onChange={(e) => this.handleOnChange(e)} />
               </div>
               <br/>
+              <Button variant="contained">
+                Submit
+              </Button>
               {(challenging_creation !== null) && (clear_instruction !== null) && <p>Thanks for the feedback!</p> }
             </div>
           </Grid>
