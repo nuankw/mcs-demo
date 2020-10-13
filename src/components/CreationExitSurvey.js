@@ -47,6 +47,31 @@ const styles = theme => ({
     color: 'white',
     display: 'inline',
   },
+  input: {
+    color: 'white',
+    '& .MuiFormControl-root.MuiTextField-root': {
+      width: '100%',
+    },
+    '& .MuiFormControl-root.MuiTextField-root label': {
+      color: '#fefefe',
+    },
+    '& .MuiFormControl-root.MuiTextField-root .MuiFormLabel-root': {
+      '@media (min-width:600px)': {
+        fontSize: '1rem',
+        opacity: 0.85,
+      },
+    },
+    '& .MuiFormControl-root.MuiTextField-root .MuiInputBase-root input': {
+      '@media (min-width:600px)': {
+        fontSize: '1.2rem',
+      },
+      color: '#fefefe',
+      fontSize: '1.2rem',
+    },
+    '& .MuiFormControl-root.MuiTextField-root .MuiInputBase-root .MuiOutlinedInput-notchedOutline': {
+      borderColor: '#fefefe',
+    },
+  },
 })
 
 
@@ -128,7 +153,7 @@ class CreationExitSurvey extends React.Component {
                 <FormControlLabel value="5" control={<RadioButton />} label="5" />
               </RadioGroup>
               <br/>
-              <div style={{'fontSize': '20px', 'color': 'white'}}>
+              <div className={classes.input}>
                 <p>(optional) any additional comments?</p>
                 <TextField
                   id="outlined-basic"
