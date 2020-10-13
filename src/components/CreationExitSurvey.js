@@ -114,6 +114,25 @@ class CreationExitSurvey extends React.Component {
     this.setState({comments})
   }
 
+  handleOnSubmit() {
+    const {comments, clear_instruction, challenging_creation} = this.state
+    fetch('/survey', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({clear_instruction, challenging_creation, comments}),
+    })
+    .then((response) => response.json())
+    .then((data) => {
+      this.setState({
+        surveySubmitted: true,
+        surveyComplete: true,
+        ...data,
+      })
+    })
+  }
+
   render() {
     const { classes, open, code, max_pay} = this.props
     const { comments, clear_instruction, challenging_creation} = this.state
@@ -169,7 +188,8 @@ class CreationExitSurvey extends React.Component {
                   onChange={(e) => this.handleOnChange(e)} />
               </div>
               <br/>
-              <Button variant="contained">
+              <Button variant="contained"
+                onClick={() => this.handleOnSubmit()}>
                 Submit
               </Button>
               {(challenging_creation !== null) && (clear_instruction !== null) && <p>Thanks for the feedback!</p> }
