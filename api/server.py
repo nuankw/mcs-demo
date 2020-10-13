@@ -692,6 +692,7 @@ def survey():
     uid = session.get('uid')
 
     # Get survey values from the request body
+    comments = request.json.get('comments', None)
     clear_instruction = request.json.get('clear_instruction', None)
     challenging_creation = request.json.get('challenging_creation', None)
 
@@ -706,10 +707,15 @@ def survey():
             'assignment_id': assignment_id,
             'clear_instruction': clear_instruction,
             'challenging_creation': challenging_creation,
+            'comments': comments,
         }}, upsert=True
     )
-    return jsonify({'clear_instruction': clear_instruction,
-        'challenging_creation': challenging_creation})
+
+    return jsonify({
+        'comments': comments,
+        'clear_instruction': clear_instruction,
+        'challenging_creation': challenging_creation,
+    })
 
 
 @app.route('/get_eval', methods=['GET'])
