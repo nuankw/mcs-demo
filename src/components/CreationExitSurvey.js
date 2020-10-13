@@ -81,6 +81,7 @@ class CreationExitSurvey extends React.Component {
     super(props)
 
     this.state = {
+      comments: '',
       clear_instruction: null,
       challenging_creation: null,
     }
@@ -108,9 +109,14 @@ class CreationExitSurvey extends React.Component {
     })
   }
 
+  handleOnChange(event) {
+    const comments = event.target.value
+    this.setState({comments})
+  }
+
   render() {
     const { classes, open, code, max_pay} = this.props
-    const { clear_instruction, challenging_creation} = this.state
+    const { comments, clear_instruction, challenging_creation} = this.state
 
     // disable the radio button and add a submit
     return (
@@ -157,8 +163,10 @@ class CreationExitSurvey extends React.Component {
                 <p>(optional) any additional comments?</p>
                 <TextField
                   id="outlined-basic"
+                  value={comments}
                   label="Outlined"
-                  variant="outlined" />
+                  variant="outlined"
+                  onChange={(e) => this.handleOnChange(e)} />
               </div>
               <br/>
               {(challenging_creation !== null) && (clear_instruction !== null) && <p>Thanks for the feedback!</p> }
