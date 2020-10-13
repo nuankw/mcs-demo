@@ -135,7 +135,7 @@ class CreationExitSurvey extends React.Component {
 
   render() {
     const { classes, open, code, max_pay} = this.props
-    const { comments, clear_instruction, challenging_creation} = this.state
+    const { comments, clear_instruction, challenging_creation, surveySubmitted } = this.state
 
     // disable the radio button and add a submit
     return (
@@ -192,6 +192,7 @@ class CreationExitSurvey extends React.Component {
                 onClick={() => this.handleOnSubmit()}>
                 Submit
               </Button>
+              {surveySubmitted && <p>Your answers have been recorded.</p> }
               {(challenging_creation !== null) && (clear_instruction !== null) && <p>Thanks for the feedback!</p> }
             </div>
           </Grid>
