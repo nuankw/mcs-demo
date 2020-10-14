@@ -26,6 +26,7 @@ from collections import Counter
 import math
 
 from datetime import datetime
+from pytz import timezone
 import logging
 import os
 
@@ -467,19 +468,19 @@ def classify():
     # initialize response data format
     data = {
         "s1": {
-            "1": {"input": '', "output": None, "label": None, "input_change_not_tested": False},
-            "2": {"input": '', "output": None, "label": None, "input_change_not_tested": False},
-            "3": {"input": '', "output": None, "label": None, "input_change_not_tested": False},
+            "1": {"input": '', "output": None, "score": None, "label": None, "input_change_not_tested": False},
+            "2": {"input": '', "output": None, "score": None, "label": None, "input_change_not_tested": False},
+            "3": {"input": '', "output": None, "score": None, "label": None, "input_change_not_tested": False},
         },
         "s2": {
-            "1": {"input": '', "output": None, "label": None, "input_change_not_tested": False},
-            "2": {"input": '', "output": None, "label": None, "input_change_not_tested": False},
-            "3": {"input": '', "output": None, "label": None, "input_change_not_tested": False},
+            "1": {"input": '', "output": None, "score": None, "label": None, "input_change_not_tested": False},
+            "2": {"input": '', "output": None, "score": None, "label": None, "input_change_not_tested": False},
+            "3": {"input": '', "output": None, "score": None, "label": None, "input_change_not_tested": False},
         },
         "s3": {
-            "1": {"input": '', "output": None, "label": None, "input_change_not_tested": False},
-            "2": {"input": '', "output": None, "label": None, "input_change_not_tested": False},
-            "3": {"input": '', "output": None, "label": None, "input_change_not_tested": False},
+            "1": {"input": '', "output": None, "score": None, "label": None, "input_change_not_tested": False},
+            "2": {"input": '', "output": None, "score": None, "label": None, "input_change_not_tested": False},
+            "3": {"input": '', "output": None, "score": None, "label": None, "input_change_not_tested": False},
         }
     }
 
@@ -492,14 +493,14 @@ def classify():
             if not text and index != '3':
                 continue
 
-            if index != '3':
+            if index != '3' and value['input_change_not_tested']:
                 inputs.append({"_".join([key, index]): text})
 
             data[key][index]["input"] = text
             data[key][index]["label"] = label
 
     # check for the false statement
-    num_fool_model = 0
+    # num_fool_model = 0
     for system_id, system in SYSTEMS.items():
         # model_name = system.get('model_name')
         system_output = get_system_output(system, inputs)  # get predictions
@@ -513,17 +514,21 @@ def classify():
 
                 # data[key][idx]["scores"][model_name] = {**value}
                 data[key][idx]["output"] = (system_output[key][idx]["vote"] == 1)
-                if data[key][idx]["label"] != data[key][idx]["output"]:
-                    num_fool_model += 1
+                data[key][idx]["score"] = str(system_output[key][idx]["prob"])
+                # if data[key][idx]["label"] != data[key][idx]["output"]:
+                #     num_fool_model += 1
 
-                # Get a new timestamp
-                ts = datetime.now().isoformat()
+                # Get a new timestamp depends on server setting
+                ts = datetime.now()
+                # Convert to US/Pacific time zone
+                ts = ts.astimezone(timezone('US/Pacific')).isoformat()
 
                 # store trial data in the mongo db
                 new_entry = mongo.db.trials.insert_one({
                     'input': data[key][idx]['input'],
                     'output': data[key][idx]['output'],
                     'label': data[key][idx]['label'],
+                    'score': data[key][idx]["score"],
                     'group_id': key,
                     'within_group_idx': idx,
                     'optional': data[key]['3']['input'],
@@ -693,7 +698,7 @@ def survey():
 
     # Get survey values from the request body
     comments = request.json.get('comments', None)
-    clear_instruction = request.json.get('clear_instruction', None)
+    helpful_instruction = request.json.get('helpful_instruction', None)
     challenging_creation = request.json.get('challenging_creation', None)
 
     # store trial data in the mongo db
@@ -705,7 +710,7 @@ def survey():
             'hit_id': hit_id,
             'worker_id': worker_id,
             'assignment_id': assignment_id,
-            'clear_instruction': clear_instruction,
+            'helpful_instruction': helpful_instruction,
             'challenging_creation': challenging_creation,
             'comments': comments,
         }}, upsert=True
@@ -713,7 +718,7 @@ def survey():
 
     return jsonify({
         'comments': comments,
-        'clear_instruction': clear_instruction,
+        'helpful_instruction': helpful_instruction,
         'challenging_creation': challenging_creation,
     })
 
