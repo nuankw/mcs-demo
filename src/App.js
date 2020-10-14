@@ -24,7 +24,10 @@ const DOMAINS = {
   'null': 'physical',
   'd1': 'physical',
   'd2': 'social',
-  'd3': 'time'
+  'd3': 'time',
+  'd1_n': 'numerical-physical',
+  'd2_n': 'numerical-social',
+  'd3_n': 'numerical-time'
 }
 
 const styles = theme => ({

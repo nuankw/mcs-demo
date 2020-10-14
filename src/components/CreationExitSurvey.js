@@ -82,7 +82,7 @@ class CreationExitSurvey extends React.Component {
 
     this.state = {
       comments: '',
-      clear_instruction: null,
+      helpful_instruction: null,
       challenging_creation: null,
     }
   }
@@ -90,23 +90,7 @@ class CreationExitSurvey extends React.Component {
   handleAnswer(question, value) {
     let update = {}
     update[question] = value
-    this.setState({...update}, () => {
-      const {clear_instruction, challenging_creation} = this.state
-      fetch('/survey', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({clear_instruction, challenging_creation}),
-      })
-      .then((response) => response.json())
-      .then((data) => {
-        this.setState({
-          surveyComplete: true,
-          ...data,
-        })
-      })
-    })
+    this.setState({...update})
   }
 
   handleOnChange(event) {
@@ -115,13 +99,13 @@ class CreationExitSurvey extends React.Component {
   }
 
   handleOnSubmit() {
-    const {comments, clear_instruction, challenging_creation} = this.state
+    const {comments, helpful_instruction, challenging_creation} = this.state
     fetch('/survey', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({clear_instruction, challenging_creation, comments}),
+      body: JSON.stringify({helpful_instruction, challenging_creation, comments}),
     })
     .then((response) => response.json())
     .then((data) => {
@@ -135,9 +119,8 @@ class CreationExitSurvey extends React.Component {
 
   render() {
     const { classes, open, code, max_pay} = this.props
-    const { comments, clear_instruction, challenging_creation, surveySubmitted } = this.state
+    const { comments, surveySubmitted } = this.state
 
-    // disable the radio button and add a submit
     return (
       <Modal open={open}>
         <Grid container spacing={5} className={classes.root}>
@@ -147,10 +130,10 @@ class CreationExitSurvey extends React.Component {
                 Thank you for participating! <br/>Don't forget to copy this code to complete your HIT:
               </Typography>
               <Typography component="h5" variant="h5" className={classes.code}>
-                {code}
+                <br/>{code}
               </Typography>
               <Typography component="h5" variant="h5" className={classes.header}>
-                Your estimated total earning (base + bonus) is ${max_pay} if all input is valid. <br/>
+                <br/>Your estimated total earning (base + bonus) is ${max_pay} if all input is valid. <br/>
               </Typography>
             </div>
             <span className={classes.divider} />
@@ -159,8 +142,8 @@ class CreationExitSurvey extends React.Component {
                 Exit Survey
               </Typography>
               <p style={{'fontSize': '20px', 'color': 'white'}}>Did you find our instructions to be helpful?</p>
-              <p style={{'fontSize': '16px', 'color': 'gray'}}>(from 1 being not easy at all to 5 very easy)</p>
-              <RadioGroup name="q1" className={classes.radioGroup} onChange={(e, val) => this.handleAnswer('clear_instruction', val)}>
+              <p style={{'fontSize': '16px', 'color': 'gray'}}>(from 1 being not helpful at all to 5 very helpful)</p>
+              <RadioGroup name="q1" className={classes.radioGroup} onChange={(e, val) => this.handleAnswer('helpful_instruction', val)}>
                 <FormControlLabel value="1" control={<RadioButton />} label="1" />
                 <FormControlLabel value="2" control={<RadioButton />} label="2" />
                 <FormControlLabel value="3" control={<RadioButton />} label="3" />
@@ -179,11 +162,11 @@ class CreationExitSurvey extends React.Component {
               </RadioGroup>
               <br/>
               <div className={classes.input}>
-                <p>(optional) any additional comments?</p>
+                <p style={{'fontSize': '20px', 'color': 'white'}}>Any additional feedback? (optional)</p>
                 <TextField
                   id="outlined-basic"
                   value={comments}
-                  label="Outlined"
+                  label="Please enter here or leave it blank:"
                   variant="outlined"
                   onChange={(e) => this.handleOnChange(e)} />
               </div>
@@ -192,8 +175,7 @@ class CreationExitSurvey extends React.Component {
                 onClick={() => this.handleOnSubmit()}>
                 Submit
               </Button>
-              {surveySubmitted && <p>Your answers have been recorded.</p> }
-              {(challenging_creation !== null) && (clear_instruction !== null) && <p>Thanks for the feedback!</p> }
+              {surveySubmitted && <p>Your answers have been recorded. Thanks for the feedback!</p> }
             </div>
           </Grid>
         </Grid>

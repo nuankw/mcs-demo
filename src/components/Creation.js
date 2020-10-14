@@ -70,19 +70,19 @@ class Creation extends React.Component {
     this.state = {
       inputs: {
         s1: {
-          1: { input: '', output: null, label: null, input_change_not_tested: false, },
-          2: { input: '', output: null, label: null, input_change_not_tested: false, },
-          3: { input: '', output: null, label: null, input_change_not_tested: false, },
+          1: { input: '', output: null, label: null, score: null, input_change_not_tested: false, },
+          2: { input: '', output: null, label: null, score: null, input_change_not_tested: false, },
+          3: { input: '', output: null, label: null, score: null, input_change_not_tested: false, },
         },
         s2: {
-          1: { input: '', output: null, label: null, input_change_not_tested: false, },
-          2: { input: '', output: null, label: null, input_change_not_tested: false, },
-          3: { input: '', output: null, label: null, input_change_not_tested: false, },
+          1: { input: '', output: null, label: null, score: null, input_change_not_tested: false, },
+          2: { input: '', output: null, label: null, score: null, input_change_not_tested: false, },
+          3: { input: '', output: null, label: null, score: null, input_change_not_tested: false, },
         },
         s3: {
-          1: { input: '', output: null, label: null, input_change_not_tested: false, },
-          2: { input: '', output: null, label: null, input_change_not_tested: false, },
-          3: { input: '', output: null, label: null, input_change_not_tested: false, },
+          1: { input: '', output: null, label: null, score: null, input_change_not_tested: false, },
+          2: { input: '', output: null, label: null, score: null, input_change_not_tested: false, },
+          3: { input: '', output: null, label: null, score: null, input_change_not_tested: false, },
         },
       },
     }

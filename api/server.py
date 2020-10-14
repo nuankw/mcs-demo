@@ -496,8 +496,6 @@ def classify():
             data[key][index]["input"] = text
             data[key][index]["label"] = label
 
-    # check for the false statement
-    # num_fool_model = 0
     for system_id, system in SYSTEMS.items():
         # model_name = system.get('model_name')
         system_output = get_system_output(system, inputs)  # get predictions
@@ -509,11 +507,8 @@ def classify():
                 if not value:
                     continue
 
-                # data[key][idx]["scores"][model_name] = {**value}
                 data[key][idx]["output"] = (system_output[key][idx]["vote"] == 1)
                 data[key][idx]["score"] = str(system_output[key][idx]["prob"])
-                # if data[key][idx]["label"] != data[key][idx]["output"]:
-                #     num_fool_model += 1
 
                 # Get a new timestamp depends on server setting
                 ts = datetime.now()
@@ -677,31 +672,41 @@ def submit():
 @app.route('/survey', methods=['POST'])
 def survey():
     # Get a new timestamp and session id
-    ts = datetime.now().isoformat()
+    ts = datetime.now().astimezone(timezone('US/Pacific')).isoformat()
     worker_id = session.get('worker_id')
     hit_id = session.get('hit_id')
     assignment_id = session.get('assignment_id')
     uid = session.get('uid')
+    domain = session.get('domain')
+    scenario = session.get('scenario')
+
+    if LOCAL:
+        worker_id = DUMMY_INFO['worker_id']
+        scenario = DUMMY_INFO['scenario']
+        domain = DUMMY_INFO['domain']
+        hit_id = DUMMY_INFO['hit_id']
+        assignment_id = DUMMY_INFO['assignment_id']
+        uid = DUMMY_INFO['uid']
 
     # Get survey values from the request body
     comments = request.json.get('comments', None)
     helpful_instruction = request.json.get('helpful_instruction', None)
     challenging_creation = request.json.get('challenging_creation', None)
 
-    # store trial data in the mongo db
-    mongo.db.survey.update_one(  # new database collection
-        {'hit_id': hit_id, 'worker_id': worker_id},
-        {'$set': {
-            'time_stamp': ts,
-            'code': uid,
-            'hit_id': hit_id,
-            'worker_id': worker_id,
-            'assignment_id': assignment_id,
-            'helpful_instruction': helpful_instruction,
-            'challenging_creation': challenging_creation,
-            'comments': comments,
-        }}, upsert=True
-    )
+    # store data in the mongo db
+    mongo.db.survey.insert_one({
+        'hit_id': hit_id,
+        'worker_id': worker_id,
+        'assignment_id': assignment_id,
+        'hit_id': hit_id,
+        'code': uid,
+        'time_stamp': ts,
+        'domain': domain,
+        'scenario': scenario,
+        'helpful_instruction': helpful_instruction,
+        'challenging_creation': challenging_creation,
+        'comments': comments,
+    })
 
     return jsonify({
         'comments': comments,
@@ -761,9 +766,6 @@ def get_eval():
             {'num_val': {
                 "$lt": MAX_VAL_VALUE,  # <
             }},
-            # if local:
-            # comment out following filters since session does not work on local
-            # or can manually assign a different value to each session.get('xx')
             {"$and": [{
                 'worker_id': {
                     "$ne": "pluslab_testers",
@@ -803,7 +805,7 @@ def set_eval():
         ques_ans[question] = request.json.get(question)
 
     data_id = request.json.get('dataID')
-    ts = datetime.now().isoformat()
+    ts = datetime.now().astimezone(timezone('US/Pacific')).isoformat()
     worker_id = session.get('worker_id')
 
     # LOCAL TEST ONLY - Start
