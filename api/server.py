@@ -79,12 +79,8 @@ INTRA_PAIR_MAX_SAFE_SIMILARITY_SCORE = 0.9
 INTER_PAIR_MAX_SAFE_SIMILARITY_SCORE = 0.4
 
 # Payment calculation
-EASY_DOMAINS = ['d1', 'd3']
-HARD_DOMAINS = ['d2']
-BASE_PAY = 1.0
-BONUS_PER_SENTENCE_FOOLED_EASY = 0.7
-BONUS_PER_SENTENCE_FOOLED_HARD = 1.0
-BASE_PER_SENTENCE_CREATED = 0.15
+BASE_PER_SENTENCE_CREATED = 0.1
+BONUS_PER_SENTENCE = 0.5 # default, read from url session (either 0.5 or 0.8)
 REQUIRED_NUM_SENTENCES_TO_CREATE = 6 # 10
 
 REQUIRED_NUM_SENTENCES_TO_VALIDATE = 10
@@ -99,7 +95,8 @@ DUMMY_INFO = {
     'assignment_id': 'assignmentX',
     'scenario': 'sX',
     'domain': 'dX',
-    'mode': 'creation'
+    'mode': 'creation',
+    'bonus': '0.8',
 }
 if LOCAL:
     print("LOCAL TESTING, dummy variables:", DUMMY_INFO)
@@ -539,11 +536,6 @@ def classify():
                 })
                 # data[key][idx]["id"] = str(new_entry.inserted_id)
 
-    # BONUS_PER_STATEMENT = 1
-    # bonus_payment = round(BONUS_PER_STATEMENT * num_fool_model, 2)
-    # data['bonus_payment'] = bonus_payment
-    # data['num_fool_model'] = num_fool_model
-
     return jsonify(data)
 
 
@@ -605,6 +597,10 @@ def submit():
     uid = session.get('uid')
     mode = session.get('mode')
     domain = session.get('domain')
+    if session.get('bonus'):
+        BONUS_PER_SENTENCE = float(session.get('bonus').split('$')[-1])
+        assert(BONUS_PER_SENTENCE >= 0)
+        assert(BONUS_PER_SENTENCE <= 2)
     max_possible_pay = 0
     max_possible_pay_str = ""
     num_sentence_fooled = 0
@@ -618,6 +614,7 @@ def submit():
         mode = DUMMY_INFO['mode']
         domain = DUMMY_INFO['domain']
         scenario = DUMMY_INFO['scenario']
+        BONUS_PER_SENTENCE = float(DUMMY_INFO['bonus'].split('$')[-1])
     # LOCAL TEST ONLY - End
 
     if mode == 'creation':
@@ -649,19 +646,9 @@ def submit():
                         if inputs[key][idx]['label'] != data['output']:
                             num_sentence_fooled += 1
                         # input_length_check(data)
-
-        if domain in HARD_DOMAINS:
-            max_possible_pay = BONUS_PER_SENTENCE_FOOLED_HARD * num_sentence_fooled \
-                + BASE_PER_SENTENCE_CREATED * REQUIRED_NUM_SENTENCES_TO_CREATE \
-                + BASE_PAY
-            max_possible_pay_str = '{:.2f}'.format(max_possible_pay)
-        elif domain in EASY_DOMAINS:
-            max_possible_pay = BONUS_PER_SENTENCE_FOOLED_EASY * num_sentence_fooled \
-                + BASE_PER_SENTENCE_CREATED * REQUIRED_NUM_SENTENCES_TO_CREATE \
-                + BASE_PAY
-            max_possible_pay_str = '{:.2f}'.format(max_possible_pay)
-        else:
-            max_possible_pay_str = 'ERROR_GETTING_DOMAIN'
+        max_possible_pay = BONUS_PER_SENTENCE * num_sentence_fooled \
+            + BASE_PER_SENTENCE_CREATED * REQUIRED_NUM_SENTENCES_TO_CREATE
+        max_possible_pay_str = '{:.2f}'.format(max_possible_pay)
 
     elif mode == 'validation':
         mongo.db.validations.update_many(
@@ -693,7 +680,7 @@ def survey():
 
     # Get survey values from the request body
     comments = request.json.get('comments', None)
-    clear_instruction = request.json.get('clear_instruction', None)
+    helpful_instruction = request.json.get('helpful_instruction', None)
     challenging_creation = request.json.get('challenging_creation', None)
 
     # store trial data in the mongo db
@@ -705,7 +692,7 @@ def survey():
             'hit_id': hit_id,
             'worker_id': worker_id,
             'assignment_id': assignment_id,
-            'clear_instruction': clear_instruction,
+            'helpful_instruction': helpful_instruction,
             'challenging_creation': challenging_creation,
             'comments': comments,
         }}, upsert=True
@@ -713,7 +700,7 @@ def survey():
 
     return jsonify({
         'comments': comments,
-        'clear_instruction': clear_instruction,
+        'helpful_instruction': helpful_instruction,
         'challenging_creation': challenging_creation,
     })
 
@@ -849,6 +836,7 @@ def index():
     session['scenario'] = request.args.get('scenario')
     session['domain'] = request.args.get('domain')
     session['mode'] = request.args.get('mode')
+    session['bonus'] = request.args.get('bonus')
     return app.send_static_file('index.html')
 
 
