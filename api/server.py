@@ -498,7 +498,7 @@ def classify():
             data[key][index]["input"] = text
             data[key][index]["label"] = label
             data[key][index]["output"] = output
-            data[key][index]["label"] = score
+            data[key][index]["score"] = score
 
 
     for system_id, system in SYSTEMS.items():
