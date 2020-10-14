@@ -488,6 +488,8 @@ def classify():
         for index, value in all_inputs.items():
             label = value["label"]
             text = value['input']
+            score = value['score']
+            output = value['output']
 
             # Skip empty inputs
             if not text and index != '3':
@@ -498,6 +500,9 @@ def classify():
 
             data[key][index]["input"] = text
             data[key][index]["label"] = label
+            data[key][index]["output"] = output
+            data[key][index]["label"] = score
+
 
     # check for the false statement
     # num_fool_model = 0
