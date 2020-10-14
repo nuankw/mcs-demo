@@ -243,7 +243,7 @@ def get_system_output(system, all_statements):
     tokenizer = system['tokenizer']
     device = system['device']
     model = system['model']
-    max_length = 64  # adjust restrictions
+    max_length = 128  # adjust restrictions
 
     results = {
         "s1": {

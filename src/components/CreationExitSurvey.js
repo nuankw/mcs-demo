@@ -127,13 +127,16 @@ class CreationExitSurvey extends React.Component {
           <Grid item xs={12}>
             <div className={classes.content}>
               <Typography component="h5" variant="h5" className={classes.header}>
-                Thank you for participating! <br/>Don't forget to copy this code to complete your HIT:
-              </Typography>
-              <Typography component="h5" variant="h5" className={classes.code}>
-                <br/>{code}
+                Thank you for participating!
               </Typography>
               <Typography component="h5" variant="h5" className={classes.header}>
-                <br/>Your estimated total earning (base + bonus) is ${max_pay} if all input is valid. <br/>
+                Your estimated total earning (base + bonus) is <b>${max_pay}</b> if all input is valid. <br/>
+              </Typography>
+              <Typography component="h5" variant="h5" className={classes.header}>
+                Don't forget to copy this code to complete your HIT:
+              </Typography>
+              <Typography component="h5" variant="h5" className={classes.code}>
+                {code}
               </Typography>
             </div>
             <span className={classes.divider} />
