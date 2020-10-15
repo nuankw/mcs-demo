@@ -13,6 +13,7 @@ const styles = theme => ({
     padding: theme.spacing(3, 3, 15, 3),
     '@media (min-width:600px)': {
       padding: theme.spacing(5),
+      bottom: '10vh',
       width: '60vw',
       left: '20vw',
       top: '10vh',
