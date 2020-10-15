@@ -181,7 +181,7 @@ class CreationExitSurvey extends React.Component {
                 onClick={() => this.handleOnSubmit()}>
                 Submit
               </Button>
-              {surveySubmitted && <p>Your answers have been recorded. Thanks for the feedback!</p> }
+              {surveySubmitted && <p>Thanks for the feedback!</p> }
             </div>
           </Grid>
         </Grid>
