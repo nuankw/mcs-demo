@@ -596,6 +596,7 @@ def warn_suspicious_input_length(data):
 
 @app.route('/submit', methods=['POST'])
 def submit():
+    global BONUS_PER_SENTENCE
     worker_id = session.get('worker_id')
     hit_id = session.get('hit_id')
     assignment_id = session.get('assignment_id')

@@ -1,2 +1,4 @@
 domain,scenario,how_many_days,base_pay,sentence_bonus,eg_true_1,eg_true_2,eg_false_1,eg_false_2
 physical,comparison,7,$0.60,$0.50,If we spill over milk on the floor,it’s better to clean it with a <u><b>mop</b></u> instead of a <u><b>broom</b></u>,If we spill over milk on the floor,it’s better to clean it with a <u><b>broom</b></u> instead of a <u><b>mop</b></u>
+physical,comparison,7,$0.60,$0.50,If we spill over milk on the floor,it’s better to clean it with a <u><b>mop</b></u> instead of a <u><b>broom</b></u>,If we spill over milk on the floor,it’s better to clean it with a <u><b>broom</b></u> instead of a <u><b>mop</b></u>
+physical,comparison,7,$0.60,$0.50,If we spill over milk on the floor,it’s better to clean it with a <u><b>mop</b></u> instead of a <u><b>broom</b></u>,If we spill over milk on the floor,it’s better to clean it with a <u><b>broom</b></u> instead of a <u><b>mop</b></u>
