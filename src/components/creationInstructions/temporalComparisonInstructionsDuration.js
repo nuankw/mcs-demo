@@ -61,31 +61,31 @@ class TimeComparisonInstructionDuration extends React.Component {
               <ul>
                 <li style={{'paddingBottom': '0.3em'}}>
                   <b style={{'color': 'darkgreen'}}>[True]</b>&nbsp;&nbsp;
-                    Since Jim must <span style={{color: "#003c64"}}>in-person meeting <b>in the early afternoon</b></span>, he would reschedule his <u style={{color: "#003c3c"}}>flight at noon</u> instead of his <u style={{color: "#003c3c"}}>morning dentist appointment</u>.
+                    Since Jim must <span style={{color: "#003c64"}}>in-person meeting <b>in the early afternoon</b></span>, he would reschedule his <u style={{color: "#3C7373"}}>flight at noon</u> instead of his <u style={{color: "#3C7373"}}>morning dentist appointment</u>.
                   <br/><b style={{'color': 'darkred'}}>[False]</b>&nbsp;
-                    Since Jim must <span style={{color: "#003c64"}}>in-person meeting <b>in the morning</b></span>, he would reschedule his <u style={{color: "#003c3c"}}>flight at noon</u> instead of his <u style={{color: "#003c3c"}}>morning dentist appointment</u>.
+                    Since Jim must <span style={{color: "#003c64"}}>in-person meeting <b>in the morning</b></span>, he would reschedule his <u style={{color: "#3C7373"}}>flight at noon</u> instead of his <u style={{color: "#3C7373"}}>morning dentist appointment</u>.
                 </li>
 
                 <li style={{'paddingBottom': '0.3em'}}>
                   <b style={{'color': 'darkgreen'}}>[True]</b>&nbsp;&nbsp;
-                    Given that his <span style={{color: "#003c64"}}>favorite TV show is about to broadcast <b>in a few minutes</b></span>, he would go out to <u style={{color: "#003c3c"}}>dispose of trash</u> instead of <u style={{color: "#003c3c"}}>walking the dog</u>.
+                    Given that his <span style={{color: "#003c64"}}>favorite TV show is about to broadcast <b>in a few minutes</b></span>, he would go out to <u style={{color: "#3C7373"}}>dispose of trash</u> instead of <u style={{color: "#3C7373"}}>walking the dog</u>.
                   <br/><b style={{'color': 'darkred'}}>[False]</b>&nbsp;
-                    Given that his <span style={{color: "#003c64"}}>favorite TV show is about to broadcast <b>in a few minutes</b></span>, he would go out to <u style={{color: "#003c3c"}}>walk the dog</u> instead of <u style={{color: "#003c3c"}}>disposing of trash</u>.
+                    Given that his <span style={{color: "#003c64"}}>favorite TV show is about to broadcast <b>in a few minutes</b></span>, he would go out to <u style={{color: "#3C7373"}}>walk the dog</u> instead of <u style={{color: "#3C7373"}}>disposing of trash</u>.
                 </li>
 
                 <li style={{'paddingBottom': '0.3em'}}>
                   <b style={{'color': 'darkgreen'}}>[True]</b>&nbsp;&nbsp;
-                    Since Helen wants to <span style={{color: "#003c64"}}>start earning <b>in the next few months</b></span>, she would prefer to start <u style={{color: "#003c3c"}}>finding a job</u> rather than <u style={{color: "#003c3c"}}>applying for a PhD</u>.
+                    Since Helen wants to <span style={{color: "#003c64"}}>start earning <b>in the next few months</b></span>, she would prefer to start <u style={{color: "#3C7373"}}>finding a job</u> rather than <u style={{color: "#3C7373"}}>applying for a PhD</u>.
                   <br/><b style={{'color': 'darkred'}}>[False]</b>&nbsp;
-                    Since Helen wants to <span style={{color: "#003c64"}}>start earning <b>in the next few months</b></span>, she would prefer to start <u style={{color: "#003c3c"}}>applying for a PhD</u> rather than <u style={{color: "#003c3c"}}>finding a job</u>.
+                    Since Helen wants to <span style={{color: "#003c64"}}>start earning <b>in the next few months</b></span>, she would prefer to start <u style={{color: "#3C7373"}}>applying for a PhD</u> rather than <u style={{color: "#3C7373"}}>finding a job</u>.
                     {/* <hr style={{margin:'2px',height:'1px',borderWidth:'0',backgroundColor:'black'}}/> */}
                 </li>
 
                 <li style={{'paddingBottom': '0.3em'}}>
                   <b style={{'color': 'darkgreen'}}>[True]</b>&nbsp;&nbsp;
-                    With <span style={{color: "#003c64"}}>the gala starting <b>in half an hour</b></span>, Sara will <u style={{color: "#003c3c"}}>do a hairstyle herself</u> rather than <u style={{color: "#003c3c"}}>visit a hairstylist</u>.
+                    With <span style={{color: "#003c64"}}>the gala starting <b>in half an hour</b></span>, Sara will <u style={{color: "#3C7373"}}>do a hairstyle herself</u> rather than <u style={{color: "#3C7373"}}>visit a hairstylist</u>.
                   <br/><b style={{'color': 'darkred'}}>[False]</b>&nbsp;
-                    With <span style={{color: "#003c64"}}>the gala starting <b>in a few hours</b></span>, Sara will <u style={{color: "#003c3c"}}>visit a hairstylist</u> rather than <u style={{color: "#003c3c"}}>do a hairstyle herself</u>.
+                    With <span style={{color: "#003c64"}}>the gala starting <b>in a few hours</b></span>, Sara will <u style={{color: "#3C7373"}}>visit a hairstylist</u> rather than <u style={{color: "#3C7373"}}>do a hairstyle herself</u>.
                 </li>
               </ul>
 
@@ -96,7 +96,7 @@ class TimeComparisonInstructionDuration extends React.Component {
 
               <ul>
                 <li>
-                  To generate complements, you can change <span style={{color: "#003c64"}}><b>the time setting</b> in your specific event or situation</span>, or simply swap the <u style={{color: "#003c3c"}}>entities</u>.
+                  To generate complements, you can change <span style={{color: "#003c64"}}><b>the time setting</b> in your specific event or situation</span>, or simply swap the <u style={{color: "#3C7373"}}>entities</u>.
                   <br/>
                   In general, please keep your specific event or situation consistent in a sentence pair.
                 </li>
