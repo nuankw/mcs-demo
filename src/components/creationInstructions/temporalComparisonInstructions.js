@@ -37,51 +37,62 @@ class TimeComparisonInstruction extends React.Component {
                   Domain and Scenario Recap
               </li>
               <ul>
-                <li><b>Time</b>: Knowledge regarding
-                  scheduling activities and their durations.</li>
-                <li><b>Comparison</b>: Aims to compare two plausible reasons or concepts,
-                  for a given daily event.</li>
+                <li style={{fontSize: '1.2em'}}>
+                  <mark style={{backgroundColor: 'rgb(195, 195, 140)'}}>
+                    <b>Time</b>: For now, we ask you to focus on knowledge
+                    regarding <b><u>scheduling activities and their durations</u></b>.
+                  </mark>
+                </li>
+                <li style={{fontSize: '1.2em'}}>
+                  <mark style={{backgroundColor: 'rgb(195, 195, 140)'}}>
+                    <b>Comparison</b>: Aims to compare <b><u>two plausible
+                    reasons or concepts</u></b>, for a <b><u>given situation</u></b>.
+                  </mark>
+                </li>
+                  <span style={{paddingLeft: '1.5em', color: "brown"}}><b>
+                    Notice that you must *specify a situation* and then
+                    provide *both* comparing
+                    concepts in *each* sentence!</b></span><br/>
               </ul>
 
               <li className={classes.head}>
                   Examples
               </li>
               <ul>
-                <li>
-                  <b><i>[True/False]</i></b> Example 1-1 <br/>
-                  <b><i>[False/True]</i></b> Example 1-2
+
+                <li style={{'paddingBottom': '0.3em'}}>
+                  <b style={{'color': 'darkgreen'}}>[True]</b>&nbsp;&nbsp;
+                    Tim needs to return home <b>before lunch</b>, so he would prefer the <u>gym</u> in the morning rather than go <u>hiking</u>.
+                  <br/><b style={{'color': 'darkred'}}>[False]</b>&nbsp;
+                    Tim needs to return home <b>before lunch</b>, so he would prefer the <u>hiking</u> in the morning rather than going to the <u>gym</u>.
+                    {/* <hr style={{margin:'2px',height:'1px',borderWidth:'0',backgroundColor:'black'}}/> */}
                 </li>
-                <li>
-                  <b><i>[True/False]</i></b> Example 2-1 <br/>
-                  <b><i>[False/True]</i></b> Example 2-2
+                <li style={{'paddingBottom': '0.3em'}}>
+                  <b style={{'color': 'darkgreen'}}>[True]</b>&nbsp;&nbsp;
+                    Since Helen wants to start earning in the <b>next few months</b>, she would prefer to start <u>freelancing</u> rather than a <u>PhD</u>.
+                  <br/><b style={{'color': 'darkred'}}>[False]</b>&nbsp;
+                    Since Helen wants to start earning in the <b>next few months</b>, she would prefer to start a <u>PhD</u> rather than <u>freelancing</u>.
+                    {/* <hr style={{margin:'2px',height:'1px',borderWidth:'0',backgroundColor:'black'}}/> */}
                 </li>
+                <li style={{'paddingBottom': '0.3em'}}>
+                  <b style={{'color': 'darkgreen'}}>[True]</b>&nbsp;&nbsp;
+                    Given that his must-watch TV show is about to broadcast in <b>a few minutes</b>, he would go out to <u>dispose of trash</u> instead of <u>walking the dog</u>.
+                  <br/><b style={{'color': 'darkred'}}>[False]</b>&nbsp;
+                    Given that his must-watch TV show is about to broadcast in <b>a few minutes</b>, he would go out to <u>walk the dog</u> instead of <u>disposing of trash</u>.
+                </li>
+
               </ul>
 
+
               <li className={classes.head}>
-                  Tips and Tricks
+                  Tips & Tricks
               </li>
 
               <ul>
-                <li className={classes.headExplanation}>
-                  To break the system as well as generate complementary samples,
-                  we can modify the sentence with:
-                </li>
-                <ul>
-                  <li>Negation</li>
-                  <li>Swap</li>
-                  <li>Plausibility-Qualifiers (e.g. sometimes, likely, rarely)</li>
-                  <li>Contrasting-Conjuncts (e.g. unless, despite)</li>
-                  <li>Distractors</li>
-                </ul>
-
-                <li>
-                  Tip 2
-                </li>
-
-                <li>
-                  Tip 3
-                </li>
+                <li>For a given pair, it’s usually challenging to get a win on both the sentences.</li>
+                <li>To generate complements, you can simply <u>swap the entities</u>.</li>
               </ul>
+
 
             </ul>
           </Typography>

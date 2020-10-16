@@ -168,11 +168,11 @@ class CreationExitSurvey extends React.Component {
               </RadioGroup>
               <br/>
               <div className={classes.input}>
-                <p style={{'fontSize': '20px', 'color': 'white'}}>Any additional feedback? (optional)</p>
+                <p style={{'fontSize': '20px', 'color': 'white'}}>Any additional feedback? Let us know how we can improve!</p>
                 <TextField
                   id="outlined-basic"
                   value={comments}
-                  label="Please enter here or leave it blank:"
+                  label="(Optional but much appreciated!) Please enter comments here:"
                   variant="outlined"
                   onChange={(e) => this.handleOnChange(e)} />
               </div>

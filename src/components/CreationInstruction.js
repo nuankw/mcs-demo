@@ -86,8 +86,10 @@ class CreationInstruction extends React.Component {
       },
     'time': {
         'cause-and-effect': <TimeCausalInstruction />,
-        'comparison': <TimeComparisonInstruction />,
         'numeracy': <TimeNumeracyInstruction />,
+      },
+    'time-duration': {
+        'comparison': <TimeComparisonInstruction />,
       },
     }
   return domainScenarioInstruction[domain][scenario]
