@@ -130,7 +130,7 @@ class CreationExitSurvey extends React.Component {
           <Grid item xs={12}>
             <div className={classes.content}>
               <Typography component="h5" variant="h5" className={classes.header}>
-                Thank you for participating!
+                Thank you for participating! Your inputs have been recorded.
               </Typography>
               <Typography component="h5" variant="h5" className={classes.header}>
                 Your estimated total earning (base + bonus) is <b>${max_pay}</b> if all input is valid. <br/>
@@ -177,11 +177,11 @@ class CreationExitSurvey extends React.Component {
                   onChange={(e) => this.handleOnChange(e)} />
               </div>
               <br/>
+              {surveySubmitted && <p>Thanks for the feedback! Don't forget to copy the completion code above!</p> }
               <Button variant="contained"
                 onClick={() => this.handleOnSubmit()}>
                 Submit
               </Button>
-              {surveySubmitted && <p>Thanks for the feedback!</p> }
             </div>
           </Grid>
         </Grid>

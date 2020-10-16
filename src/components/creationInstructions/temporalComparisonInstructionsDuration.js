@@ -61,9 +61,9 @@ class TimeComparisonInstructionDuration extends React.Component {
               <ul>
                 <li style={{'paddingBottom': '0.3em'}}>
                   <b style={{'color': 'darkgreen'}}>[True]</b>&nbsp;&nbsp;
-                    Since Jim must <span style={{color: "#003c64"}}>in-person meeting <b>in the early afternoon</b></span>, he would reschedule his <u style={{color: "#3C7373"}}>flight at noon</u> instead of his <u style={{color: "#3C7373"}}>morning dentist appointment</u>.
+                    Since Jim must attend an <span style={{color: "#003c64"}}>in-person meeting <b>in the early afternoon</b></span>, he would reschedule his <u style={{color: "#3C7373"}}>flight at noon</u> instead of his <u style={{color: "#3C7373"}}>morning dentist appointment</u>.
                   <br/><b style={{'color': 'darkred'}}>[False]</b>&nbsp;
-                    Since Jim must <span style={{color: "#003c64"}}>in-person meeting <b>in the morning</b></span>, he would reschedule his <u style={{color: "#3C7373"}}>flight at noon</u> instead of his <u style={{color: "#3C7373"}}>morning dentist appointment</u>.
+                    Since Jim must attend an <span style={{color: "#003c64"}}>in-person meeting <b>in the morning</b></span>, he would reschedule his <u style={{color: "#3C7373"}}>flight at noon</u> instead of his <u style={{color: "#3C7373"}}>morning dentist appointment</u>.
                 </li>
 
                 <li style={{'paddingBottom': '0.3em'}}>
@@ -83,9 +83,9 @@ class TimeComparisonInstructionDuration extends React.Component {
 
                 <li style={{'paddingBottom': '0.3em'}}>
                   <b style={{'color': 'darkgreen'}}>[True]</b>&nbsp;&nbsp;
-                    With <span style={{color: "#003c64"}}>the gala starting <b>in half an hour</b></span>, Sara will <u style={{color: "#3C7373"}}>do a hairstyle herself</u> rather than <u style={{color: "#3C7373"}}>visit a hairstylist</u>.
+                    With <span style={{color: "#003c64"}}>the gala starting <b>in half an hour</b></span>, Sara will <u style={{color: "#3C7373"}}>do a rushed hairstyle herself</u> rather than <u style={{color: "#3C7373"}}>visit a hairstylist</u>.
                   <br/><b style={{'color': 'darkred'}}>[False]</b>&nbsp;
-                    With <span style={{color: "#003c64"}}>the gala starting <b>in a few hours</b></span>, Sara will <u style={{color: "#3C7373"}}>visit a hairstylist</u> rather than <u style={{color: "#3C7373"}}>do a hairstyle herself</u>.
+                    With <span style={{color: "#003c64"}}>the gala starting <b>in a few hours</b></span>, Sara will <u style={{color: "#3C7373"}}>do a rushed hairstyle herself</u> rather than <u style={{color: "#3C7373"}}>visit a hairstylist</u>.
                 </li>
               </ul>
 
