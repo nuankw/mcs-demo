@@ -150,12 +150,6 @@
               <script type="text/javascript" language="JavaScript">
                 <!--
                 var assignment_id_field = document.getElementById('myelementLink');
-                // var domain_scenario_field = document.getElementById('domainScenarioInfo');
-                // var scenario_with_brakets = domain_scenario_field.innerText.split(' X ')[1]
-                // var scenario = scenario_with_brakets.substring(1, scenario_with_brakets.length - 1);
-                // var scenario = domain_scenario_field.innerText.split(' X ')[1]
-                // var domain_with_brakets = domain_scenario_field.innerText.split(' X ')[0].split('Constructing commom sense understanding statements for ')[1]
-                // var domain = domain_with_brakets.substring(1, domain_with_brakets.length - 1);
                 var scenario = document.getElementById('scenario').innerText
                 var domain = document.getElementById('domain').innerText
                 var bonus = document.getElementById('sentence_bonus').innerText
@@ -173,10 +167,11 @@
                   var domain_str_2_idx = {
                     'physical': 'd1',
                     'social': 'd2',
-                    'temporal': 'd3',
+                    'time': 'd3',
+                    'time-duration': 'd3_duration',
                     'numerical-physical': 'd1_n',
                     'numerical-social': 'd2_n',
-                    'numerical-temporal': 'd3_n',
+                    'numerical-time': 'd3_n',
                   }
                   var scenario_str_2_idx = {
                     'cause & effect': 's1',

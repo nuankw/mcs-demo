@@ -15,7 +15,7 @@ import SocialCausalInstruction from './creationInstructions/socialCausalInstruct
 import SocialComparisonInstruction from './creationInstructions/socialComparisonInstructions'
 import SocialNumeracyInstruction from './creationInstructions/socialNumeracyInstructions'
 import TimeCausalInstruction from './creationInstructions/temporalCausalInstructions'
-import TimeComparisonInstruction from './creationInstructions/temporalComparisonInstructions'
+import TimeComparisonInstructionDuration from './creationInstructions/temporalComparisonInstructionsDuration'
 import TimeNumeracyInstruction from './creationInstructions/temporalNumeracyInstructions'
 
 const styles = theme => ({
@@ -89,7 +89,7 @@ class CreationInstruction extends React.Component {
         'numeracy': <TimeNumeracyInstruction />,
       },
     'time-duration': {
-        'comparison': <TimeComparisonInstruction />,
+        'comparison': <TimeComparisonInstructionDuration />,
       },
     }
   return domainScenarioInstruction[domain][scenario]
