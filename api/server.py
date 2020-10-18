@@ -700,19 +700,22 @@ def survey():
     challenging_creation = request.json.get('challenging_creation', None)
 
     # store data in the mongo db
-    mongo.db.survey.insert_one({
-        'hit_id': hit_id,
-        'worker_id': worker_id,
-        'assignment_id': assignment_id,
-        'hit_id': hit_id,
-        'code': uid,
-        'time_stamp': ts,
-        'domain': domain,
-        'scenario': scenario,
-        'helpful_instruction': helpful_instruction,
-        'challenging_creation': challenging_creation,
-        'comments': comments,
-    })
+    mongo.db.survey.update_one(
+        {'assignment_id': assignment_id},
+        {'$set': {
+            'hit_id': hit_id,
+            'worker_id': worker_id,
+            'assignment_id': assignment_id,
+            'hit_id': hit_id,
+            'code': uid,
+            'time_stamp': ts,
+            'domain': domain,
+            'scenario': scenario,
+            'helpful_instruction': helpful_instruction,
+            'challenging_creation': challenging_creation,
+            'comments': comments,
+        }}, upsert=True
+    )
 
     return jsonify({
         'comments': comments,
