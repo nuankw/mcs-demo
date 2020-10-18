@@ -24,8 +24,9 @@ const styles = theme => ({
 })
 
 
-class TimeCausalInstruction extends React.Component {
+class PhysicalCausalInstructions extends React.Component {
 
+  // ONLY A TEMPLATE
   render() {
     const { classes } = this.props
     return (
@@ -37,8 +38,8 @@ class TimeCausalInstruction extends React.Component {
                   Domain and Scenario Recap
               </li>
               <ul>
-                <li><b>Time</b>: Knowledge regarding
-                  scheduling activities and their durations.</li>
+                <li><b>Physical</b>: Key aspects include the
+                  knowledge of daily objects, location, motion, etc.</li>
                 <li><b>Cause & Effect</b>: Answers the “Why” question or predicts what is likely to happen next (effect),
                   given an event that has occurred (cause).</li>
               </ul>
@@ -63,8 +64,7 @@ class TimeCausalInstruction extends React.Component {
 
               <ul>
                 <li className={classes.headExplanation}>
-                  To break the system as well as generate complementary samples,
-                  we can modify the sentence with:
+                To generate both sentences of a pair, you can:
                 </li>
                 <ul>
                   <li>Negation</li>
@@ -93,4 +93,4 @@ class TimeCausalInstruction extends React.Component {
 }
 
 
-export default withStyles(styles)(TimeCausalInstruction)
+export default withStyles(styles)(PhysicalCausalInstructions)

@@ -24,8 +24,9 @@ const styles = theme => ({
 })
 
 
-class SocialCausalInstruction extends React.Component {
+class TemporalCausalInstructions extends React.Component {
 
+  // ONLY A TEMPLATE
   render() {
     const { classes } = this.props
     return (
@@ -37,8 +38,8 @@ class SocialCausalInstruction extends React.Component {
                   Domain and Scenario Recap
               </li>
               <ul>
-                <li><b>Social</b>: Focuses on people and social behavior, particularly attributes like personality,
-                  emotions and actions.</li>
+                <li><b>Time</b>: Knowledge regarding
+                  scheduling activities and their durations.</li>
                 <li><b>Cause & Effect</b>: Answers the “Why” question or predicts what is likely to happen next (effect),
                   given an event that has occurred (cause).</li>
               </ul>
@@ -63,8 +64,7 @@ class SocialCausalInstruction extends React.Component {
 
               <ul>
                 <li className={classes.headExplanation}>
-                  To break the system as well as generate complementary samples,
-                  we can modify the sentence with:
+                  To generate both sentences of a pair, you can:
                 </li>
                 <ul>
                   <li>Negation</li>
@@ -93,4 +93,4 @@ class SocialCausalInstruction extends React.Component {
 }
 
 
-export default withStyles(styles)(SocialCausalInstruction)
+export default withStyles(styles)(TemporalCausalInstructions)

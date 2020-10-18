@@ -24,8 +24,9 @@ const styles = theme => ({
 })
 
 
-class SocialNumeracyInstruction extends React.Component {
+class SocialCausalInstructions extends React.Component {
 
+  // ONLY A TEMPLATE
   render() {
     const { classes } = this.props
     return (
@@ -39,8 +40,8 @@ class SocialNumeracyInstruction extends React.Component {
               <ul>
                 <li><b>Social</b>: Focuses on people and social behavior, particularly attributes like personality,
                   emotions and actions.</li>
-                <li><b>Numeracy</b>: Focuses on simple arithmetic skills (add, multiply, etc.)
-                  and concepts such as rate, percentage, probability, etc.</li>
+                <li><b>Cause & Effect</b>: Answers the “Why” question or predicts what is likely to happen next (effect),
+                  given an event that has occurred (cause).</li>
               </ul>
 
               <li className={classes.head}>
@@ -63,8 +64,7 @@ class SocialNumeracyInstruction extends React.Component {
 
               <ul>
                 <li className={classes.headExplanation}>
-                  To break the system as well as generate complementary samples,
-                  we can modify the sentence with:
+                To generate both sentences of a pair:
                 </li>
                 <ul>
                   <li>Negation</li>
@@ -93,4 +93,4 @@ class SocialNumeracyInstruction extends React.Component {
 }
 
 
-export default withStyles(styles)(SocialNumeracyInstruction)
+export default withStyles(styles)(SocialCausalInstructions)

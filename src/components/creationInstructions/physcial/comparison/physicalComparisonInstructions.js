@@ -24,8 +24,9 @@ const styles = theme => ({
 })
 
 
-class SocialComparisonInstruction extends React.Component {
+class PhysicalComparisonInstructions extends React.Component {
 
+  // PILOT ROUND VERSION
   render() {
     const { classes } = this.props
     return (
@@ -34,11 +35,11 @@ class SocialComparisonInstruction extends React.Component {
           <Typography component={'div'} className={classes.instructions}>
             <ul>
               <li className={classes.head}>
-                  Domain and Scenario Recap
+                  Domain & Scenario Recap
               </li>
               <ul>
-                <li><b>Social</b>: Focuses on people and social behavior, particularly attributes like personality,
-                  emotions and actions.</li>
+              <li><b>Physical</b>: Key aspects include the
+                  knowledge of daily objects, location, motion, etc.</li>
                 <li><b>Comparison</b>: Aims to compare two plausible reasons or concepts,
                   for a given daily event.</li>
               </ul>
@@ -49,46 +50,43 @@ class SocialComparisonInstruction extends React.Component {
               <ul>
                 <li style={{'paddingBottom': '0.3em'}}>
                   <b style={{'color': 'darkgreen'}}>[True]</b>&nbsp;&nbsp;
-                  It's usually <b>acceptable</b> to arrive late to <u>a party</u>,
-                  but <b>not</b> for <u>a doctor's appointment</u>.
+                  <u>A steel bottle</u> might be <b>more</b> suitable than <u>a wooden box</u> for hammering.
                   <br/><b style={{'color': 'darkred'}}>[False]</b>&nbsp;
-                  It's usually <b>not acceptable</b> to arrive late to <u>a party</u>,
-                  but <b>ok</b> for <u>a doctor's appointment</u>.
+                  <u>A steel bottle</u> might be <b>less</b> suitable than <u>a wooden box</u> for hammering.
                 </li>
 
 
                 <li style={{'paddingBottom': '0.3em'}}>
                   <b style={{'color': 'darkgreen'}}>[True]</b>&nbsp;&nbsp;
-                    In order to educate their children,
-                    they would <b>prefer</b> to visit <u>a museum</u> <b>instead of</b> <u>a theme park</u>.
+                    If you don't have a bowl, it's better to serve soup <u>in a cup</u> <b>rather than</b> <u>on a plate</u>.
                   <br/><b style={{'color': 'darkred'}}>[False]</b>&nbsp;
-                    In order to educate their children,
-                    they would <b>prefer</b> to visit <u>a theme park</u> <b>instead of</b> <u>a museum</u>.
-
+                    If you don't have a bowl, it's better to serve soup <u>on a plate</u> <b>rather than</b> <u>in a cup</u>.
                 </li>
 
                 <li style={{'paddingBottom': '0.3em'}}>
                   <b style={{'color': 'darkgreen'}}>[True]</b>&nbsp;&nbsp;
-                    With no clean clothes left in the closet, they will <b>prioritize</b> <u>doing the laundry</u> <b>instead of</b> <u>going to the supermarket</u>.
+                    It's <b>more</b> convenient to use <u>a shirt</u> rather than <u>a tie</u>, as a dusting cloth.
                   <br/><b style={{'color': 'darkred'}}>[False]</b>&nbsp;
-                    With no clean clothes left in the closet, they will <b>prioritize</b> <u>going to the supermarket</u> <b>instead of</b> <u>doing the laundry</u>.
+                    It's <b>less</b> convenient to use <u>a shirt</u> rather than <u>a tie</u>, as a dusting cloth.
                 </li>
 
                 <li style={{'paddingBottom': '0.3em'}}>
                   <b style={{'color': 'darkgreen'}}>[True]</b>&nbsp;&nbsp;
-                    A person with a monthly income around <u>a thousand dollars</u> <b>cannot afford</b> a rent of <u>two thousand dollars</u>.
+                    It’s <b>easier</b> to climb over a <u>three feet</u> fence compared to a <u>six feet</u> one.
                   <br/><b style={{'color': 'darkred'}}>[False]</b>&nbsp;
-                    A person with a monthly income around <u>a thousand dollars</u> <b>can afford</b> a rent of <u>two thousand dollars</u>.
+                    It’s <b>easier</b> to climb over a <u>six feet</u> fence compared to a <u>three feet</u> one.
                 </li>
               </ul>
+
 
               <li className={classes.head}>
                   Tips & Tricks
               </li>
 
               <ul>
+
                 <li>
-                  To generate complements, you can simply <u>swap the
+                  To generate both sentences of a pair, you can simply <u>swap the
                   entities</u> or <b>reverse/negate the comparison words</b>.
                 </li>
 
@@ -108,4 +106,4 @@ class SocialComparisonInstruction extends React.Component {
 }
 
 
-export default withStyles(styles)(SocialComparisonInstruction)
+export default withStyles(styles)(PhysicalComparisonInstructions)

@@ -24,8 +24,9 @@ const styles = theme => ({
 })
 
 
-class TimeComparisonInstructionDuration extends React.Component {
+class TemporalComparisonDurationInstructions extends React.Component {
 
+  // PILOT ROUND VERSION
   render() {
     const { classes } = this.props
     return (
@@ -50,7 +51,7 @@ class TimeComparisonInstructionDuration extends React.Component {
                   </mark>
                 </li>
                   <span style={{paddingLeft: '1.5em', color: "brown"}}><b>
-                    Notice that you must *specify a situation* and then
+                    Notice that you must *specify an event/situation* and then
                     provide *both* comparing
                     concepts in *each* sentence!</b></span><br/>
               </ul>
@@ -96,11 +97,11 @@ class TimeComparisonInstructionDuration extends React.Component {
 
               <ul>
                 <li>
-                  To generate complements, you can change <span style={{color: "#003c64"}}><b>the time setting</b> in your specific event or situation</span>, or simply swap the <u style={{color: "#3C7373"}}>entities</u>.
+                  To generate both sentences of a pair, you can change <span style={{color: "#003c64"}}><b>the time setting</b> in your specific event or situation</span>, or simply swap the <u style={{color: "#3C7373"}}>entities</u>.
                   <br/>
                   In general, please keep your specific event or situation consistent in a sentence pair.
                 </li>
-                <li>For a given pair, it’s usually challenging to get a win on both the sentences.</li>
+                <li>For a given pair, it’s usually challenging to get a win on both sentences.</li>
               </ul>
 
 
@@ -114,4 +115,4 @@ class TimeComparisonInstructionDuration extends React.Component {
 }
 
 
-export default withStyles(styles)(TimeComparisonInstructionDuration)
+export default withStyles(styles)(TemporalComparisonDurationInstructions)

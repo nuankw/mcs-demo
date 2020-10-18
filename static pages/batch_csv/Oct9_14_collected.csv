@@ -1,0 +1,3 @@
+domain,scenario,how_many_days,base_pay,sentence_bonus,eg_true,eg_false
+physical,comparison,7,$1.90,$0.70,If we spill over milk on the floor it’s better to clean it with a <u><b>mop</b></u> instead of a <u><b>broom</b></u>,If we spill over milk on the floor it’s better to clean it with a <u><b>broom</b></u> instead of a <u><b>mop</b></u>
+social,comparison,7,$1.90,$1.00,In order to educate their children they would prefer to visit a <b><u>museum</u></b> instead of a <b><u>theme park</u></b>,In order to educate their children they would prefer to visit a <b><u>theme park</u></b> instead of a <b><u>museum</u></b>

@@ -8,15 +8,16 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
 import { withStyles } from '@material-ui/core/styles'
 import { Grid } from '@material-ui/core'
 
-import PhysicalCausalInstruction from './creationInstructions/physicalCausalInstructions'
-import PhysicalComparisonInstruction from './creationInstructions/physicalComparisonInstructions'
-import PhysicalNumeracyInstruction from './creationInstructions/physicalNumeracyInstructions'
-import SocialCausalInstruction from './creationInstructions/socialCausalInstructions'
-import SocialComparisonInstruction from './creationInstructions/socialComparisonInstructions'
-import SocialNumeracyInstruction from './creationInstructions/socialNumeracyInstructions'
-import TimeCausalInstruction from './creationInstructions/temporalCausalInstructions'
-import TimeComparisonInstructionDuration from './creationInstructions/temporalComparisonInstructionsDuration'
-import TimeNumeracyInstruction from './creationInstructions/temporalNumeracyInstructions'
+import PhysicalCausalInstructions from './creationInstructions/physcial/causal/physicalCausalInstructions'
+import PhysicalComparisonInstructions from './creationInstructions/physcial/comparison/physicalComparisonInstructions'
+
+import SocialCausalInstructions from './creationInstructions/social/causal/socialCausalInstructions'
+import SocialComparisonInstructions from './creationInstructions/social/comparison/socialComparisonInstructions'
+import SocialCausalNumeracyInstructions from './creationInstructions/social/causal/socialCausalNumeracyInstructions'
+import SocialComparisonNumeracyInstructions from './creationInstructions/social/comparison/socialComparisonNumeracyInstructions'
+
+import TimeCausalInstructions from './creationInstructions/temporal/causal/temporalCausalInstructions'
+import TimeComparisonDurationInstructions from './creationInstructions/temporal/comparison/temporalComparisonDurationInstructions'
 
 const styles = theme => ({
   root: {
@@ -57,7 +58,7 @@ const styles = theme => ({
 })
 
 
-class CreationInstruction extends React.Component {
+class CreationInstructions extends React.Component {
 
   constructor(props) {
     super(props)
@@ -73,26 +74,27 @@ class CreationInstruction extends React.Component {
   }
 
   renderCategorySpecificInstruction(domain, scenario) {
-    const domainScenarioInstruction = {
+    const domainScenarioInstructions = {
       'physical': {
-        'cause-and-effect': <PhysicalCausalInstruction />,
-        'comparison': <PhysicalComparisonInstruction />,
-        'numeracy': <PhysicalNumeracyInstruction />,
+        'cause-and-effect': <PhysicalCausalInstructions />,
+        'comparison': <PhysicalComparisonInstructions />,
       },
       'social': {
-        'cause-and-effect': <SocialCausalInstruction />,
-        'comparison': <SocialComparisonInstruction />,
-        'numeracy': <SocialNumeracyInstruction />,
+        'cause-and-effect': <SocialCausalInstructions />,
+        'comparison': <SocialComparisonInstructions />,
       },
-    'time': {
-        'cause-and-effect': <TimeCausalInstruction />,
-        'numeracy': <TimeNumeracyInstruction />,
+      'numerical-social': {
+        'cause-and-effect': <SocialCausalNumeracyInstructions />,
+        'comparison': <SocialComparisonNumeracyInstructions />,
       },
-    'time-duration': {
-        'comparison': <TimeComparisonInstructionDuration />,
+      'time': {
+        'cause-and-effect': <TimeCausalInstructions />,
+      },
+      'time-duration': {
+        'comparison': <TimeComparisonDurationInstructions />,
       },
     }
-  return domainScenarioInstruction[domain][scenario]
+  return domainScenarioInstructions[domain][scenario]
   }
 
   render() {
@@ -117,10 +119,10 @@ class CreationInstruction extends React.Component {
                   <div className={classes.instructions}>
 
                     <Typography>
-                      <b>Welcome!</b> Here we provide the details for the Domain &
-                      Scenario with examples, along with other tips to better
-                      assist you with this task. We will display an estimate
-                      of earning after you submit. <p style={{'color':'darkred'}}>
+                      <b>Welcome!</b> In this section we provide the details for the domain &
+                      scenario along with examples and other tips to better
+                      assist you with this task. We will show an estimate
+                      of your earnings after you submit. <p style={{'color':'darkred'}}>
                       Please notice that once you
                       click the "Inputs confirmed, submit!" button,
                       you <b>cannot</b> return to further edit your inputs.</p>
@@ -140,8 +142,8 @@ class CreationInstruction extends React.Component {
                         <li style={{'paddingBottom': '0.4em'}}>Each sentence pair should be about the same subject.</li>
                         <li style={{'paddingBottom': '0.4em'}}>For numbers above 1000, please use word expressions
                         instead of digits (e.g. 15000 → fifteen thousand).</li>
-                        <li style={{'paddingBottom': '0.4em'}}>Be creative, avoid similar or repetitive sentence pairs.&nbsp;
-                        <i><u>We have to reduce the bonus if you do so!</u></i></li>
+                        <li style={{'paddingBottom': '0.4em'}}>Be creative, avoid similar or repetitive sentence pairs.</li>
+                        <li><i><u>Failure to comply with these requirements could potentially result in a lower bonus payout!</u></i></li>
                       </ul>
                     </div>
                   </div>
@@ -166,4 +168,4 @@ class CreationInstruction extends React.Component {
 }
 
 
-export default withStyles(styles)(CreationInstruction)
+export default withStyles(styles)(CreationInstructions)

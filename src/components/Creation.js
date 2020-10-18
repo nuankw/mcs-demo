@@ -5,7 +5,7 @@ import { withStyles } from '@material-ui/core/styles'
 
 import InputGroup from './InputGroup'
 import Submit from './Submit'
-import CreationInstruction from './CreationInstruction'
+import CreationInstructions from './CreationInstructions'
 
 
 const styles = theme => ({
@@ -190,7 +190,7 @@ class Creation extends React.Component {
           <span className={classes.subtitle}> For <u><b>{domain}</b></u> domain and <u><b>{scenario}</b></u> scenario </span>
           {/* subtitle margin/paddingBotton does not work when directly above Accordian? */}
           <p style={{'height': '12px', 'margin': '0px'}}></p>
-          <CreationInstruction
+          <CreationInstructions
             scenario={scenario}
             domain={domain} />
         </Typography>

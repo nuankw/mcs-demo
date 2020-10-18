@@ -145,7 +145,7 @@ class CreationExitSurvey extends React.Component {
             <span className={classes.divider} />
             <div className={classes.content}>
               <Typography component="h5" variant="h5" className={classes.header}>
-                Exit Survey
+                Exit Survey <span style={{'fontSize': '12px', 'color': 'white'}}><i>Only your last survey entry will be kept in our database.</i></span>
               </Typography>
               <p style={{'fontSize': '20px', 'color': 'white'}}>Did you find our instructions to be helpful?</p>
               <p style={{'fontSize': '16px', 'color': 'gray'}}>(from 1 being not helpful at all to 5 very helpful)</p>
