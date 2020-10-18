@@ -72,9 +72,9 @@ class SocialCausalNumeracyInstructions extends React.Component {
 
                 <li style={{'paddingBottom': '0.3em'}}>
                   <b style={{'color': 'darkgreen'}}>[True]</b>&nbsp;&nbsp;
-                    With <u>fifty</u> dollars in debt, he <b>can</b> plan to buy a new car immediately.
+                    With <u>fifty</u> dollars in debt, he can plan to buy a new car immediately.
                   <br/><b style={{'color': 'darkred'}}>[False]</b>&nbsp;
-                    With <u>fifty thousand</u> dollars in debt, he <b>can</b> plan to buy a new car immediately.
+                    With <u>fifty thousand</u> dollars in debt, he can plan to buy a new car immediately.
                 </li>
 
                 <li style={{'paddingBottom': '0.3em'}}>

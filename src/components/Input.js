@@ -63,6 +63,16 @@ class Input extends React.Component {
     const { autoFocus, disabled, label, text } = this.props
     return (
       <CustomTextField
+        InputProps={{
+          spellCheck: true,
+          lang: 'en'
+        }}
+        inputProps={{
+          spellCheck: true,
+          lang: 'en'
+        }}
+        spellCheck={true}
+        spellcheck={true}
         ref="input"
         label={label}
         value={text}

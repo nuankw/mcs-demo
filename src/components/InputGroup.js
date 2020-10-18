@@ -107,7 +107,8 @@ class InputGroup extends React.Component {
               autoFocus={false}
               disabled={false}
               passInputRef={this.getInputRef.bind(this)}
-              updateText={(text) => this.handleUpdate(1, text)} />
+              updateText={(text) => this.handleUpdate(1, text)}
+            />
           </Grid>
 
           <Grid item xs={1} className={classes.buttonWrapper}>
@@ -136,7 +137,8 @@ class InputGroup extends React.Component {
               label={'and the other sentence of the pair with opposite True/False:'}
               text={inputs[2].input}
               disabled={false}
-              updateText={(text) => this.handleUpdate(2, text)} />
+              updateText={(text) => this.handleUpdate(2, text)}
+            />
           </Grid>
 
           <Grid item xs={1} className={classes.buttonWrapper}>
@@ -164,7 +166,8 @@ class InputGroup extends React.Component {
               label='(optional, please leave it blank if no input) the common sense knowledge piece you used to create the above sentence pair:'
               text={inputs[3].input}
               disabled={false}
-              updateText={(text) => this.handleUpdate(3, text)} />
+              updateText={(text) => this.handleUpdate(3, text)}
+            />
           </Grid> */}
 
         </Grid>

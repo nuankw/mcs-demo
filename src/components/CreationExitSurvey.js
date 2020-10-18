@@ -133,7 +133,7 @@ class CreationExitSurvey extends React.Component {
                 Thank you for participating! Your inputs have been recorded.
               </Typography>
               <Typography component="h5" variant="h5" className={classes.header}>
-                Your estimated total earning (base + bonus) is <b>${max_pay}</b> if all input is valid. <br/>
+                Your estimated total earning (base + bonus) is <b>${max_pay}</b> if all inputs are valid. <br/>
               </Typography>
               <Typography component="h5" variant="h5" className={classes.header}>
                 Don't forget to copy this code to complete your HIT:
