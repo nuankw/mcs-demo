@@ -75,27 +75,31 @@ class InputGroup extends React.Component {
     this.inputField = inputRef
   }
 
-  handleUpdate(id, input) {
-    const inputs = {...this.props.inputs}
-    inputs[id] = {...inputs[id], ...{input}}
-    inputs[id] = {...inputs[id], ...{'input_change_not_tested': true}}
-    this.props.onChange(inputs)
+  handleUpdate(id, input, mode) {
+    if (mode !== 'validation') {
+      const inputs = {...this.props.inputs}
+      inputs[id] = {...inputs[id], ...{input}}
+      inputs[id] = {...inputs[id], ...{'input_change_not_tested': true}}
+      this.props.onChange(inputs)
+    }
   }
 
-  select(id, label) {
-    const inputs = {...this.props.inputs}
-    inputs[id] = {...inputs[id], ...{'label': label}}
-    if ( id === 1 ) {
-      inputs[2] = {...inputs[2], ...{'label': !label}}
+  select(id, label, mode) {
+    if (mode !== 'validation') {
+      const inputs = {...this.props.inputs}
+      inputs[id] = {...inputs[id], ...{'label': label}}
+      if ( id === 1 ) {
+        inputs[2] = {...inputs[2], ...{'label': !label}}
+      }
+      if ( id === 2 ) {
+        inputs[1] = {...inputs[1], ...{'label': !label}}
+      }
+      this.props.onChange(inputs)
     }
-    if ( id === 2 ) {
-      inputs[1] = {...inputs[1], ...{'label': !label}}
-    }
-    this.props.onChange(inputs)
   }
 
   render () {
-    const { classes, inputs } = this.props
+    const { classes, inputs, mode } = this.props
     return (
       <Paper component="div" className={classes.paper} square>
         <Grid container spacing={3}>
@@ -107,7 +111,7 @@ class InputGroup extends React.Component {
               autoFocus={false}
               disabled={false}
               passInputRef={this.getInputRef.bind(this)}
-              updateText={(text) => this.handleUpdate(1, text)}
+              updateText={(text) => this.handleUpdate(1, text, mode)}
             />
           </Grid>
 
@@ -122,12 +126,12 @@ class InputGroup extends React.Component {
                 className={classNames(classes.buttonTrue, {
                   'selected': inputs[1].label === true,
                 })}
-                onClick={() => this.select(1, true)}>T</Button>
+                onClick={() => this.select(1, true, mode)}>T</Button>
               <Button
                 className={classNames(classes.buttonFalse, {
                   'selected': inputs[1].label === false,
                 })}
-                onClick={() => this.select(1, false)}>F</Button>
+                onClick={() => this.select(1, false, mode)}>F</Button>
             </ButtonGroup>
 
           </Grid>
@@ -137,7 +141,7 @@ class InputGroup extends React.Component {
               label={'and the other sentence of the pair with opposite True/False:'}
               text={inputs[2].input}
               disabled={false}
-              updateText={(text) => this.handleUpdate(2, text)}
+              updateText={(text) => this.handleUpdate(2, text, mode)}
             />
           </Grid>
 
@@ -152,12 +156,12 @@ class InputGroup extends React.Component {
                 className={classNames(classes.buttonTrue, {
                   'selected': inputs[2].label === true,
                 })}
-                onClick={() => this.select(2, true)}>T</Button>
+                onClick={() => this.select(2, true, mode)}>T</Button>
               <Button
                 className={classNames(classes.buttonFalse, {
                   'selected': inputs[2].label === false,
                 })}
-                onClick={() => this.select(2, false)}>F</Button>
+                onClick={() => this.select(2, false, mode)}>F</Button>
             </ButtonGroup>
           </Grid>
 
@@ -166,7 +170,7 @@ class InputGroup extends React.Component {
               label='(optional, please leave it blank if no input) the common sense knowledge piece you used to create the above sentence pair:'
               text={inputs[3].input}
               disabled={false}
-              updateText={(text) => this.handleUpdate(3, text)}
+              updateText={(text) => this.handleUpdate(3, text, mode)}
             />
           </Grid> */}
 

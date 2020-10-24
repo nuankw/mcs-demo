@@ -52,6 +52,8 @@ class App extends React.Component {
     const mode = locationQuery.get('mode') // either 'validation' or 'creation'
     const scenario = locationQuery.get('scenario')
     const domain = locationQuery.get('domain')
+    const bonus = locationQuery.get('bonus')
+    // const bonus = Number(locationQuery.get('bonus').replace(/[^0-9.-]+/g,""))
 
     this.state = {
       code: '[ERROR: display code]',
@@ -59,6 +61,7 @@ class App extends React.Component {
       mode: mode,
       scenario: scenario,
       domain: domain,
+      bonus: bonus,
       max_pay: "[ERROR: display max_possible_pay]",
     }
   }
@@ -119,7 +122,11 @@ class App extends React.Component {
           )}
 
           {mode === 'validation' ? (
-            <Validation onSubmit={this.handleOnSubmit.bind(this)} />
+            <Validation
+              scenario={SCENARIOS[scenario]}
+              domain={DOMAINS[domain]}
+              onSubmit={this.handleOnSubmit.bind(this)}
+              mode={mode} />
           ) : (
             <Creation
               scenario={SCENARIOS[scenario]}

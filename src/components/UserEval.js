@@ -1,8 +1,6 @@
 import React from 'react'
-import Button from '@material-ui/core/Button'
-import Typography from '@material-ui/core/Typography'
 import { withStyles } from '@material-ui/core/styles'
-
+import { Button, TextField, Typography } from '@material-ui/core'
 import classNames from '../utils/classes'
 
 const styles = theme => ({
@@ -53,246 +51,371 @@ const styles = theme => ({
     background: 'rgba(41, 28, 51, 0.26)',
     margin: theme.spacing(1,12,1,12),// width: '80%',
     // color: 'white',
-  }
+  },
+  editSuggestion: {
+    display: 'flex',
+    width: '100%',
+    paddingLeft: theme.spacing(6),
+    '& .MuiFormControl-root.MuiTextField-root': {
+    display: 'flex',
+    minWidth: '100%',
+    },
+    '& .MuiFormControl-root.MuiTextField-root label': {
+      color: '#fefefe',
+    },
+    '& .MuiFormControl-root.MuiTextField-root .MuiFormLabel-root': {
+      '@media (min-width:600px)': {
+        fontSize: '1rem',
+        opacity: 0.85,
+      },
+    },
+    '& .MuiFormControl-root.MuiTextField-root .MuiInputBase-root input': {
+      '@media (min-width:600px)': {
+        fontSize: '1.2rem',
+      },
+      color: '#fefefe',
+      fontSize: '1.2rem',
+    },
+    '& .MuiFormControl-root.MuiTextField-root .MuiInputBase-root .MuiOutlinedInput-notchedOutline': {
+      borderColor: '#fefefe',
+    },
+  },
 })
 
 
 class Evaluate extends React.Component {
 
-  renderEvalButtons() {
-    const { classes, optional, questions, onSelect } = this.props
-
+  render() {
+    const { classes, questions, editSuggestion, onSelect, onChange} = this.props
     return (
       <div className={classes.root}>
 
-        {/* Q1 */}
+        {/* Should we keep this input pair? Is editting required? How much bonus? */}
         <div>
           <Typography
               component="h3"
               variant="h3"
               className={classes.question}>
-              1. Do you think this statement requires commonsense to infer True/False?
+              Should we keep this input pair? Is editting required? How much bonus?
           </Typography>
           <div className={classes.buttonRow}>
             <Button
                 variant="contained"
                 className={classNames(classes.button, {
-                  'selected': questions['evalQ1']['answer'] === 'yes',
+                  'selected': questions['keep_edit_bonus']['answer'] === 'no_edit_full_bonus',
                 })}
-                onClick={() => onSelect('evalQ1', 'yes')}>
-                Yes
+                onClick={() => onSelect('keep_edit_bonus', 'no_edit_full_bonus')}>
+                Yes/No/Full
             </Button>
 
             <Button
                 variant="contained"
                 className={classNames(classes.button, {
-                  'selected': questions['evalQ1']['answer'] === 'no',
+                  'selected': questions['keep_edit_bonus']['answer'] === 'need_edit_full_bonus',
                 })}
-                onClick={() => onSelect('evalQ1', 'no')}>
-                No
+                onClick={() => onSelect('keep_edit_bonus', 'need_edit_full_bonus')}>
+                Yes/Yes/Full
             </Button>
+
+            <Button
+                variant="contained"
+                className={classNames(classes.button, {
+                  'selected': questions['keep_edit_bonus']['answer'] === 'need_edit_half_bonus',
+                })}
+                onClick={() => onSelect('keep_edit_bonus', 'need_edit_half_bonus')}>
+                Yes/Yes/Half
+            </Button>
+
+            <Button
+                variant="contained"
+                className={classNames(classes.button, {
+                  'selected': questions['keep_edit_bonus']['answer'] === 'discard_no_bonus',
+                })}
+                onClick={() => onSelect('keep_edit_bonus', 'discard_no_bonus')}>
+                No/No/Zero
+            </Button>
+
           </div>
         </div>
 
-        {/* Q2 */}
-        {questions['evalQ1']['answer'] === 'yes' && (
+        {/* if edit needed */}
+        {(questions['keep_edit_bonus']['answer'] === 'need_edit_half_bonus'
+          || questions['keep_edit_bonus']['answer'] === 'need_edit_full_bonus'
+          ) && (
           <div>
             <Typography
               component="h3"
               variant="h3"
               className={classes.question}>
-              2. Do you think this statement is True?
+              Please provide your suggestion for editing:
+            </Typography>
+            <TextField
+              className={classes.editSuggestion}
+              value={editSuggestion}
+              label=""
+              onChange={(event) => onChange(event.target.value)} />
+          </div>
+        )}
+
+
+        {/* if bonus reduced ask for the reason(s) */}
+        {(questions['keep_edit_bonus']['answer'] === 'need_edit_half_bonus'
+          || questions['keep_edit_bonus']['answer'] === 'discard_no_bonus'
+          ) && (
+          <div>
+            <Typography
+              component="h3"
+              variant="h3"
+              className={classes.question}>
+              What are your reason(s) for bonus reduction?
             </Typography>
 
             <div className={classes.buttonRow}>
               <Button
                 variant="contained"
                 className={classNames(classes.button, {
-                  'selected': questions['evalQ2']['answer'] === 'yes',
+                  'selected': questions['bonus_reduction_reasons']['answer'].indexOf('not_common_sense') >= 0,
                 })}
-                onClick={() => onSelect('evalQ2', 'yes')}>
+                onClick={() => onSelect('bonus_reduction_reasons', 'not_common_sense')}>
+                Not common sense (too specialized or not deterministic)
+              </Button>
+
+              <Button
+                variant="contained"
+                className={classNames(classes.button, {
+                  'selected': questions['bonus_reduction_reasons']['answer'].indexOf('wrong_domain') >= 0,
+                })}
+                onClick={() => onSelect('bonus_reduction_reasons', 'wrong_domain')}>
+                Wrong domain
+              </Button>
+
+              <Button
+                variant="contained"
+                className={classNames(classes.button, {
+                  'selected': questions['bonus_reduction_reasons']['answer'].indexOf('wrong_scenario') >= 0,
+                })}
+                onClick={() => onSelect('bonus_reduction_reasons', 'wrong_scenario')}>
+                Wrong scenario
+              </Button>
+
+              <Button
+                variant="contained"
+                className={classNames(classes.button, {
+                  'selected': questions['bonus_reduction_reasons']['answer'].indexOf('numeracy_not_found') >= 0,
+                })}
+                onClick={() => onSelect('bonus_reduction_reasons', 'numeracy_not_found')}>
+                Numeracy not found
+              </Button>
+
+              <Button
+                variant="contained"
+                className={classNames(classes.button, {
+                  'selected': questions['bonus_reduction_reasons']['answer'].indexOf('grammar_error') >= 0,
+                })}
+                onClick={() => onSelect('bonus_reduction_reasons', 'grammar_error')}>
+                Intolerable grammatical issue(s)
+              </Button>
+
+              <Button
+                variant="contained"
+                className={classNames(classes.button, {
+                  'selected': questions['bonus_reduction_reasons']['answer'].indexOf('other_reasons') >= 0,
+                })}
+                onClick={() => onSelect('bonus_reduction_reasons', 'other_reasons')}>
+                Other(s). Please notify ppl on the channel!!
+              </Button>
+            </div>
+          </div>
+        )}
+
+        {/* if bonus *not* reduced ask whether validator wants to recommand this pair */}
+        {(questions['keep_edit_bonus']['answer'] === 'no_edit_full_bonus'
+          || questions['keep_edit_bonus']['answer'] === 'need_edit_full_bonus'
+          ) && (
+          <div>
+            <Typography
+              component="h3"
+              variant="h3"
+              className={classes.question}>
+              Since you suggested full bonus, this input pair must be valid. How much do you like/recommend it?
+            </Typography>
+
+            <div className={classes.buttonRow}>
+              <Button
+                variant="contained"
+                className={classNames(classes.button, {
+                  'selected': questions['how_much_like']['answer'] === 'very_much',
+                })}
+                onClick={() => onSelect('how_much_like', 'very_much')}>
+                Very much
+              </Button>
+
+              <Button
+                variant="contained"
+                className={classNames(classes.button, {
+                  'selected': questions['how_much_like']['answer'] === 'not_bad',
+                })}
+                onClick={() => onSelect('how_much_like', 'not_bad')}>
+                Not bad
+              </Button>
+
+              <Button
+                variant="contained"
+                className={classNames(classes.button, {
+                  'selected': questions['how_much_like']['answer'] === 'not_really',
+                })}
+                onClick={() => onSelect('how_much_like', 'not_really')}>
+                Not really
+              </Button>
+            </div>
+          </div>
+        )}
+
+        {/* if not discarding (zero bonus): 1. check label */}
+        {!!questions['keep_edit_bonus']['answer'] &&
+          questions['keep_edit_bonus']['answer'] !== 'discard_no_bonus'
+          && (
+          <div>
+            <Typography
+              component="h3"
+              variant="h3"
+              className={classes.question}>
+              Are the labels correct?
+            </Typography>
+
+            <div className={classes.buttonRow}>
+              <Button
+                variant="contained"
+                className={classNames(classes.button, {
+                  'selected': questions['label_check']['answer'] === 'yes',
+                })}
+                onClick={() => onSelect('label_check', 'yes')}>
                 Yes
               </Button>
 
               <Button
                 variant="contained"
                 className={classNames(classes.button, {
-                  'selected': questions['evalQ2']['answer'] === 'no',
+                  'selected': questions['label_check']['answer'] === 'no',
                 })}
-                onClick={() => onSelect('evalQ2', 'no')}>
+                onClick={() => onSelect('label_check', 'no')}>
                 No
               </Button>
             </div>
           </div>
         )}
 
-        {/* Q3 */}
-        {questions['evalQ1']['answer'] === 'yes' && (
+        {/* if not discarding (zero bonus): 2. check domains */}
+        {!!questions['keep_edit_bonus']['answer'] &&
+          questions['keep_edit_bonus']['answer'] !== 'discard_no_bonus'
+          && (
           <div>
             <Typography
               component="h3"
               variant="h3"
               className={classes.question}>
-              3. Please select all the domains that you think this statement can be categorized into:
+              Please select all the domains that you think this input pair can be categorized into (WITHOUT edit):
             </Typography>
 
             <div className={classes.buttonRow}>
               <Button
                 variant="contained"
                 className={classNames(classes.button, {
-                  'selected': questions['evalQ3']['answer'].indexOf('social') >= 0,
+                  'selected': questions['domain_check']['answer'].indexOf('physical') >= 0,
                 })}
-                onClick={() => onSelect('evalQ3', 'social')}>
-                Social
-              </Button>
-
-              <Button
-                variant="contained"
-                className={classNames(classes.button, {
-                  'selected': questions['evalQ3']['answer'].indexOf('physical') >= 0,
-                })}
-                onClick={() => onSelect('evalQ3', 'physical')}>
+                onClick={() => onSelect('domain_check', 'physical')}>
                 Physical
               </Button>
 
               <Button
                 variant="contained"
                 className={classNames(classes.button, {
-                  'selected': questions['evalQ3']['answer'].indexOf('time') >= 0,
+                  'selected': questions['domain_check']['answer'].indexOf('social') >= 0,
                 })}
-                onClick={() => onSelect('evalQ3', 'time')}>
+                onClick={() => onSelect('domain_check', 'social')}>
+                Social
+              </Button>
+
+              <Button
+                variant="contained"
+                className={classNames(classes.button, {
+                  'selected': questions['domain_check']['answer'].indexOf('time') >= 0,
+                })}
+                onClick={() => onSelect('domain_check', 'time')}>
                 Time
               </Button>
-
-              <Button
-                variant="contained"
-                className={classNames(classes.button, {
-                  'selected': questions['evalQ3']['answer'].indexOf('other') >= 0,
-                })}
-                onClick={() => onSelect('evalQ3', 'other')}>
-                Other
-              </Button>
             </div>
           </div>
         )}
 
-        {/* Q4 */}
-        {questions['evalQ1']['answer'] === 'yes' && (
+        {/* if not discarding (zero bonus): 3. check scenarios */}
+        {!!questions['keep_edit_bonus']['answer'] &&
+          questions['keep_edit_bonus']['answer'] !== 'discard_no_bonus'
+          && (
           <div>
             <Typography
               component="h3"
               variant="h3"
               className={classes.question}>
-              4. Please select all the scenarios that you think this statement can be categorized into:
+              Please select all the scenarios that you think this input pair can be categorized into (WITHOUT edit):
             </Typography>
 
             <div className={classes.buttonRow}>
               <Button
                 variant="contained"
                 className={classNames(classes.button, {
-                  'selected': questions['evalQ4']['answer'].indexOf('causal') >= 0,
+                  'selected': questions['scenario_check']['answer'].indexOf('causal') >= 0,
                 })}
-                onClick={() => onSelect('evalQ4', 'causal')}>
-                Cause & Effect
+                onClick={() => onSelect('scenario_check', 'causal')}>
+                Cause & effect
               </Button>
 
               <Button
                 variant="contained"
                 className={classNames(classes.button, {
-                  'selected': questions['evalQ4']['answer'].indexOf('comparison') >= 0,
+                  'selected': questions['scenario_check']['answer'].indexOf('comparison') >= 0,
                 })}
-                onClick={() => onSelect('evalQ4', 'comparison')}>
+                onClick={() => onSelect('scenario_check', 'comparison')}>
                 Comparison
               </Button>
-
-              <Button
-                variant="contained"
-                className={classNames(classes.button, {
-                  'selected': questions['evalQ4']['answer'].indexOf('numeracy') >= 0,
-                })}
-                onClick={() => onSelect('evalQ4', 'numeracy')}>
-                Numeracy
-              </Button>
-
-              <Button
-                variant="contained"
-                className={classNames(classes.button, {
-                  'selected': questions['evalQ4']['answer'].indexOf('other') >= 0,
-                })}
-                onClick={() => onSelect('evalQ4', 'other')}>
-                Other
-              </Button>
             </div>
           </div>
         )}
 
-        {/* Q5 */}
-        {questions['evalQ1']['answer'] === 'yes' && optional !== null && optional !== "" && (
+        {/* if not discarding (zero bonus): 4. check numeracy */}
+        {!!questions['keep_edit_bonus']['answer'] &&
+          questions['keep_edit_bonus']['answer'] !== 'discard_no_bonus'
+          && (
           <div>
             <Typography
               component="h3"
               variant="h3"
               className={classes.question}>
-              5. Will the following knowledge piece help explain the above statement?
+              Does the input pair follow numeracy requirement?
             </Typography>
-            <div className={classes.optional}>{optional}</div>
 
             <div className={classes.buttonRow}>
               <Button
                 variant="contained"
                 className={classNames(classes.button, {
-                  'selected': questions['evalQ5']['answer'] === 'yes',
+                  'selected': questions['numeracy_check']['answer'] === 'yes',
                 })}
-                onClick={() => onSelect('evalQ5', 'yes')}>
+                onClick={() => onSelect('numeracy_check', 'yes')}>
                 Yes
               </Button>
 
               <Button
                 variant="contained"
                 className={classNames(classes.button, {
-                  'selected': questions['evalQ5']['answer'] === 'maybe',
+                  'selected': questions['numeracy_check']['answer'] === 'no',
                 })}
-                onClick={() => onSelect('evalQ5', 'maybe')}>
-                Maybe
-              </Button>
-
-              <Button
-                variant="contained"
-                className={classNames(classes.button, {
-                  'selected': questions['evalQ5']['answer'] === 'no',
-                })}
-                onClick={() => onSelect('evalQ5', 'no')}>
+                onClick={() => onSelect('numeracy_check', 'no')}>
                 No
               </Button>
             </div>
           </div>
         )}
 
-      </div>
-    )
-  }
-
-  renderReset() {
-    const { classes, onReset } = this.props
-    return (
-      <div>
-        <Typography
-          component="h3"
-          variant="h3"
-          className={classes.header}>
-          <div className={classes.link} onClick={() => onReset()}>
-            Let me try one more!
-          </div>
-        </Typography>
-      </div>
-    )
-  }
-
-  render() {
-    const { evaluated } = this.props
-    return (
-      <div>
-        {!!evaluated ? this.renderReset() : this.renderEvalButtons()}
       </div>
     )
   }

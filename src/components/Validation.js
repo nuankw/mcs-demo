@@ -7,6 +7,7 @@ import { withStyles, createMuiTheme, responsiveFontSizes, ThemeProvider } from '
 
 import UserEval from './UserEval'
 import ValidationInstruction from './ValidationInstruction'
+import InputGroup from './InputGroup'
 
 let theme = createMuiTheme();
 theme = responsiveFontSizes(theme);
@@ -83,27 +84,35 @@ const styles = theme => ({
 })
 
 
-const REQUIRED_NUM_EVALUATIONS = 10
+const REQUIRED_NUM_EVALUATIONS = 1000
 
 
 const EVAL_QUESTIONS = {
-  'evalQ1': {
+  'keep_edit_bonus': {
     'type': 'single',
     'answer': '',
   },
-  'evalQ2': {
+  'bonus_reduction_reasons': {
+    'type': 'multiple',
+    'answer': [],
+  },
+  'how_much_like': {
     'type': 'single',
     'answer': '',
   },
-  'evalQ3': {
+  'label_check': {
+    'type': 'single',
+    'answer': '',
+  },
+  'domain_check': {
     'type': 'multiple',
     'answer': [],
   },
-  'evalQ4': {
+  'scenario_check': {
     'type': 'multiple',
     'answer': [],
   },
-  'evalQ5': {
+  'numeracy_check': {
     'type': 'single',
     'answer': '',
   },
@@ -119,11 +128,14 @@ class Validation extends React.Component {
 
     this.state = {
       dataID: null,
-
-      prevInput: '',
-      prevOutput: null,
-      prevOptional: '',
-
+      one_input_pair: {
+        1: { input: '', output: null, label: null, score: null},
+        2: { input: '', output: null, label: null, score: null},
+        3: { input: '', output: null, label: null, score: null},
+      },
+      domain: '',
+      scenario: '',
+      editSuggestion: '',
       evalCount: 1,
       evalQuestions,
     }
@@ -145,9 +157,7 @@ class Validation extends React.Component {
       if ( data['status'] === 'ok' ) {
         this.setState({
           dataID: data['id'],
-          prevInput: data['input'],
-          prevOutput: data['output'],
-          prevOptional: data['optional'], // won't display this ques if null or empty,
+          one_input_pair:data['one_input_pair'],
         })
       }
     })
@@ -195,7 +205,7 @@ class Validation extends React.Component {
   }
 
   handleOnNext() {
-    const { dataID, evalQuestions } = this.state
+    const { dataID, evalQuestions, editSuggestion } = this.state
     fetch('/set_eval', {
       method: 'POST',
       headers: {
@@ -203,11 +213,14 @@ class Validation extends React.Component {
       },
       body: JSON.stringify({
         'dataID': dataID,
-        'evalQ1': evalQuestions['evalQ1']['answer'],
-        'evalQ2': evalQuestions['evalQ2']['answer'],
-        'evalQ3': evalQuestions['evalQ3']['answer'],
-        'evalQ4': evalQuestions['evalQ4']['answer'],
-        'evalQ5': evalQuestions['evalQ5']['answer'],
+        'keep_edit_bonus': evalQuestions['keep_edit_bonus']['answer'],
+        'bonus_reduction_reasons': evalQuestions['bonus_reduction_reasons']['answer'],
+        'how_much_like': evalQuestions['how_much_like']['answer'],
+        'label_check': evalQuestions['label_check']['answer'],
+        'domain_check': evalQuestions['domain_check']['answer'],
+        'scenario_check': evalQuestions['scenario_check']['answer'],
+        'numeracy_check': evalQuestions['numeracy_check']['answer'],
+        'edit_suggestion': editSuggestion,
       }),
     })
     .then(response => response.json())
@@ -222,23 +235,42 @@ class Validation extends React.Component {
     })
   }
 
+  handleOnChangeEditSuggestion(suggestion) {
+    this.setState({editSuggestion: suggestion})
+  }
+
   render() {
-    const { classes } = this.props
+    const { classes, domain, scenario, bonus, mode } = this.props
     const {
       evalCount,
-      prevInput,
-      prevOutput,
-      prevOptional,
+      one_input_pair,
       evalQuestions,
+      editSuggestion,
     } = this.state
 
     const enableNext = (
-      evalQuestions['evalQ1'].answer === 'no'
-      || (evalQuestions['evalQ1'].answer && evalQuestions['evalQ2'].answer && evalQuestions['evalQ5'].answer
-      && evalQuestions['evalQ3'].answer.length >= 1 && evalQuestions['evalQ4'].answer.length >= 1)
-      || (!prevOptional && evalQuestions['evalQ1'].answer && evalQuestions['evalQ2'].answer
-        && evalQuestions['evalQ3'].answer.length >= 1 && evalQuestions['evalQ4'].answer.length >= 1)
+      (
+        (evalQuestions['keep_edit_bonus'].answer === 'no_edit_full_bonus'
+          || (evalQuestions['keep_edit_bonus'].answer === 'need_edit_full_bonus'
+              && !!editSuggestion))
+        && !!evalQuestions['how_much_like'].answer
+        && !!evalQuestions['label_check'].answer
+        && evalQuestions['domain_check'].answer.length >= 1
+        && evalQuestions['scenario_check'].answer.length >= 1
+        && !!evalQuestions['numeracy_check'].answer
+      ) || (
+        evalQuestions['keep_edit_bonus'].answer === 'need_edit_half_bonus'
+         && !!editSuggestion
+         && evalQuestions['bonus_reduction_reasons'].answer.length >= 1
+         && !!evalQuestions['label_check'].answer
+         && evalQuestions['domain_check'].answer.length >= 1
+         && evalQuestions['scenario_check'].answer.length >= 1
+         && !!evalQuestions['numeracy_check'].answer
+      ) || (
+        evalQuestions['keep_edit_bonus'].answer === 'discard_no_bonus'
+         && evalQuestions['bonus_reduction_reasons'].answer.length >= 1
       )
+    )
 
     return (
       <React.Fragment>
@@ -249,15 +281,13 @@ class Validation extends React.Component {
             variant="h3"
             className={classes.header}>
             <span className={classes.title}>Part 1: Validation </span>
-            <p className={classes.note}>Please read the guidelines provided below.
-                We will have another user to examine your inputs and will reject your HITs
-                if you fail to provide inputs that are compliant with the instruction.</p>
+            <p className={classes.note}>Internal use only.</p>
           </Typography>
 
           <ValidationInstruction
-            cost_per_assignment='<$TBD>'
-            samples_per_assignment='<TBD>'
-            number_questions='<TBD: 4/5>'/>
+            domain={domain}
+            scenario={scenario}
+            bonus={bonus}/>
 
           <Typography
             component="h3"
@@ -266,21 +296,19 @@ class Validation extends React.Component {
           </Typography>
 
           <Grid item xs={12}>
-            <Paper component="div" className={classes.paper} square>
-              <Typography
-                component="h4"
-                variant="h4">
-                  {prevInput}
-              </Typography>
-            </Paper>
+            <InputGroup
+              inputs={one_input_pair}
+              mode={mode}/>
           </Grid>
 
           <Grid item xs={12} align="center">
-            {prevOutput != null && (
+            {one_input_pair != null && (
               <UserEval
-                optional={prevOptional}
                 questions={evalQuestions}
-                onSelect={this.handleOnSelect.bind(this)}/>
+                editSuggestion={editSuggestion}
+                onSelect={this.handleOnSelect.bind(this)}
+                onChange={this.handleOnChangeEditSuggestion.bind(this)}
+              />
             )}
           </Grid>
 

@@ -172,7 +172,7 @@ class Creation extends React.Component {
   }
 
   render() {
-    const { inputs, loading } = this.state
+    const { inputs } = this.state
     const { classes, scenario, domain, onSubmit } = this.props
 
     const testBtnDisabled = !this.checkInputs()
@@ -202,19 +202,16 @@ class Creation extends React.Component {
 
               <div>
                 <InputGroup
-                  loading={loading}
                   inputs={inputs['s1']}
                   onChange={(inputs) => this.updateInputs('s1', inputs)}>
                 </InputGroup>
 
                 <InputGroup
-                  loading={loading}
                   inputs={inputs['s2']}
                   onChange={(inputs) => this.updateInputs('s2', inputs)}>
                 </InputGroup>
 
                 <InputGroup
-                  loading={loading}
                   inputs={inputs['s3']}
                   onChange={(inputs) => this.updateInputs('s3', inputs)}>
                 </InputGroup>
