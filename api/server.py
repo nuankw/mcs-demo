@@ -729,49 +729,34 @@ def get_eval():
     worker_id = session.get('worker_id')
     hit_id = session.get('hit_id')
     assignment_id = session.get('assignment_id')
+    domain = session.get('domain')
+    scenario = session.get('scenario')
 
     # LOCAL TEST ONLY - Start
     if LOCAL:
         worker_id = DUMMY_INFO['worker_id']
         hit_id = DUMMY_INFO['hit_id']
         assignment_id = DUMMY_INFO['assignment_id']
+        domain = DUMMY_INFO['domain']
+        scenario = DUMMY_INFO['scenario']
     # LOCAL TEST ONLY - End
 
     # get a list of previously validated trials by this user
     validated_trial_ids = list(map(lambda x: x['trial'],
-        mongo.db.validations.find({
-            'worker_id': worker_id,
-            'status': True,
-        },
-        {'_id': 0, 'trial': 1})
-    ))
-
-    # get a list of previously validated trials
-    # (pairs of assignment ids and input group keys)
-    validated_trials = list(
-        mongo.db.trials.find({
-            '_id': {'$in': validated_trial_ids}},
-            {'_id': 0, 'assignment_id': 1, 'group_id': 1},
-        )
-    )
-
-    # get a list of trial ids to exclude from future validations
-    exclude_trials = []
-    for trial in validated_trials:
-        exclude_trials.extend(list(map(lambda x: x['_id'],
-            mongo.db.trials.find({
-                'assignment_id': trial['assignment_id'],
-                'group_id': trial['group_id']},
-                {},
-            )
-        )))
+                                   mongo.db.validations.find({
+                                       'worker_id': worker_id,
+                                       'status': True,
+                                   }, {'_id': 0, 'trial': 1})
+                                   ))
 
     data = mongo.db.trials.find_one({
         "$and": [
             {'_id': {
-                "$nin": exclude_trials,
+                "$nin": validated_trial_ids,
             }},
             {'need_validate': True},
+            {'domain': domain},
+            {'scenario': scenario},
             {'num_val': {
                 "$lt": MAX_VAL_VALUE,  # <
             }},
@@ -788,32 +773,68 @@ def get_eval():
     }, sort=[('num_val', ASCENDING), ('time_stamp', DESCENDING)])
 
     if not data:
-        return jsonify({'status': 'not ok'})
+        return jsonify({
+                'status': 'ok',
+                'id': '',
+                "one_input_pair": {
+                    1: {"input": "", "output": None, "label": None, "score": ""},
+                    2: {"input": "", "output": None, "label": None, "score": ""},
+                }})
 
+    another_idx = '1' if data['within_group_idx'] == '2' else '2'
+    another_data = mongo.db.trials.find_one(
+        {'need_validate': True,
+         'assignment_id': data['assignment_id'],
+         'group_id': data['group_id'],
+         'within_group_idx': another_idx},
+        {"_id": 1, "input": 1, "output": 1, "label": 1, "score": 1}
+    )
+
+    # put the fetched data pair in validation collection
     mongo.db.validations.insert_one({
         'trial': data['_id'],
-        'hit_id': hit_id,  # since we have separate HIT for validation
-        'worker_id': worker_id,
-        'assignment_id': assignment_id,
+        'hit_id': hit_id,  # validation HIT info
+        'worker_id': worker_id,  # validation HIT info
+        'assignment_id': assignment_id,  # validation HIT info
+        'domain': domain,
+        'scenario': scenario,
         'status': False,
     })
+    mongo.db.validations.insert_one({
+        'trial': another_data['_id'],
+        'hit_id': hit_id,  # validation HIT info
+        'worker_id': worker_id,  # validation HIT info
+        'assignment_id': assignment_id,  # validation HIT info
+        'domain': domain,
+        'scenario': scenario,
+        'status': False,
+    })
+
     return jsonify({
         'status': 'ok',
-        'id': str(data['_id']),
-        'input': data['input'],
-        'output': data['output'],
-        'optional': data['optional'],
-    })
+        'id': '_'.join([str(data['_id']), str(another_data['_id'])]),
+        "one_input_pair": {
+            1: {"input": data['input'], "output": data['output'], "label": data['label'], "score": data['score']},
+            2: {"input": another_data['input'], "output": another_data['output'], "label": another_data['label'],
+                "score": another_data['score']},
+        }})
 
 
 @app.route('/set_eval', methods=['POST'])
 def set_eval():
     ques_ans = {}
-    for i in range(1, NUM_QUESTIONS + 1):
-        question = 'evalQ' + str(i)
+    ques_keys = ['keep_edit_bonus',
+                 'bonus_reduction_reasons',
+                 'how_much_like',
+                 'label_check',
+                 'domain_check',
+                 'scenario_check',
+                 'numeracy_check',
+                 'edit_suggestion']
+    for question in ques_keys:
         ques_ans[question] = request.json.get(question)
 
-    data_id = request.json.get('dataID')
+    data_id_arr = request.json.get('dataID').split('_')
     ts = datetime.now().astimezone(timezone('US/Pacific')).isoformat()
     worker_id = session.get('worker_id')
 
@@ -822,24 +843,41 @@ def set_eval():
         worker_id = DUMMY_INFO['worker_id']
     # LOCAL TEST ONLY - End
 
-    mongo.db.trials.update_one(
-        {"_id": ObjectId(data_id)},
-        {'$inc': {'num_val': 1}}
-    )
+    if data_id_arr:
+        mongo.db.trials.update_one(
+            {"_id": ObjectId(data_id_arr[0])},
+            {'$inc': {'num_val': 1}}
+        )
+        mongo.db.trials.update_one(
+            {"_id": ObjectId(data_id_arr[1])},
+            {'$inc': {'num_val': 1}}
+        )
 
-    mongo.db.validations.update_one(
-        {
-            "trial": ObjectId(data_id),
-            "worker_id": worker_id
-        },
-        {'$set': {
-            **ques_ans,
-            'time_stamp': ts,
-            'status': True
-        }}
-    )
+        mongo.db.validations.update_one(
+            {
+                "trial": ObjectId(data_id_arr[0]),
+                "worker_id": worker_id
+            },
+            {'$set': {
+                **ques_ans,
+                'time_stamp': ts,
+                'status': True
+            }}
+        )
+        mongo.db.validations.update_one(
+            {
+                "trial": ObjectId(data_id_arr[1]),
+                "worker_id": worker_id
+            },
+            {'$set': {
+                **ques_ans,
+                'time_stamp': ts,
+                'status': True
+            }}
+        )
+        return jsonify({'status': 'ok'})
 
-    return jsonify({'status': 'ok'})
+    return jsonify({'status': 'not ok'})
 
 
 @app.route('/')
