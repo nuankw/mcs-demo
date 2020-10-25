@@ -131,7 +131,6 @@ class Validation extends React.Component {
       one_input_pair: {
         1: { input: '', output: null, label: null, score: null},
         2: { input: '', output: null, label: null, score: null},
-        3: { input: '', output: null, label: null, score: null},
       },
       domain: '',
       scenario: '',
@@ -173,6 +172,7 @@ class Validation extends React.Component {
         this.setState({
           evalQuestions: JSON.parse(JSON.stringify(EVAL_QUESTIONS)),
           evalCount: evalCount + 1,
+          editSuggestion: '',
         })
       )
     }
