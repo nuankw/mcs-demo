@@ -741,36 +741,59 @@ def get_eval():
         scenario = DUMMY_INFO['scenario']
     # LOCAL TEST ONLY - End
 
-    # get a list of previously validated trials by this user
-    validated_trial_ids = list(map(lambda x: x['trial'],
+    fetch_new = False
+    # if validation status is False & still need validation, i.e. finish the unfinished pairs first
+    unfinished_trial_ids = list(map(lambda x: x['trial'],
                                    mongo.db.validations.find({
                                        'worker_id': worker_id,
-                                       'status': True,
+                                       'status': False,
                                    }, {'_id': 0, 'trial': 1})
                                    ))
 
     data = mongo.db.trials.find_one({
         "$and": [
             {'_id': {
-                "$nin": validated_trial_ids,
+                "$in": unfinished_trial_ids,
             }},
-            {'need_validate': True},
             {'domain': domain},
             {'scenario': scenario},
             {'num_val': {
                 "$lt": MAX_VAL_VALUE,  # <
-            }},
-            {"$and": [{
-                'worker_id': {
-                    "$ne": "pluslab_testers",
-                },
-            }, {
-                'worker_id': {
-                    "$ne": worker_id,
-                }
-            }]}
-        ]
+            }}]
     }, sort=[('num_val', ASCENDING), ('time_stamp', DESCENDING)])
+
+    if not data:
+        fetch_new = True
+        # get a list of previously validated trials by this user
+        validated_trial_ids = list(map(lambda x: x['trial'],
+                                       mongo.db.validations.find({
+                                           'worker_id': worker_id,
+                                           'status': True,
+                                       }, {'_id': 0, 'trial': 1})
+                                       ))
+
+        data = mongo.db.trials.find_one({
+            "$and": [
+                {'_id': {
+                    "$nin": validated_trial_ids,
+                }},
+                {'need_validate': True},
+                {'domain': domain},
+                {'scenario': scenario},
+                {'num_val': {
+                    "$lt": MAX_VAL_VALUE,  # <
+                }},
+                {"$and": [{
+                    'worker_id': {
+                        "$ne": "pluslab_testers",
+                    },
+                }, {
+                    'worker_id': {
+                        "$ne": worker_id,
+                    }
+                }]}
+            ]
+        }, sort=[('num_val', ASCENDING), ('time_stamp', DESCENDING)])
 
     if not data:
         return jsonify({
@@ -790,33 +813,37 @@ def get_eval():
         {"_id": 1, "input": 1, "output": 1, "label": 1, "score": 1}
     )
 
-    # put the fetched data pair in validation collection
-    mongo.db.validations.insert_one({
-        'trial': data['_id'],
-        'hit_id': hit_id,  # validation HIT info
-        'worker_id': worker_id,  # validation HIT info
-        'assignment_id': assignment_id,  # validation HIT info
-        'domain': domain,
-        'scenario': scenario,
-        'status': False,
-    })
-    mongo.db.validations.insert_one({
-        'trial': another_data['_id'],
-        'hit_id': hit_id,  # validation HIT info
-        'worker_id': worker_id,  # validation HIT info
-        'assignment_id': assignment_id,  # validation HIT info
-        'domain': domain,
-        'scenario': scenario,
-        'status': False,
-    })
+    if fetch_new:
+        ts = datetime.now().astimezone(timezone('US/Pacific')).isoformat()
+        # put the fetched data pair in validation collection
+        mongo.db.validations.insert_one({
+            'trial': data['_id'],
+            'hit_id': hit_id,  # validation HIT info
+            'worker_id': worker_id,  # validation HIT info
+            'assignment_id': assignment_id,  # validation HIT info
+            'domain': domain,
+            'scenario': scenario,
+            'status': False,
+            'time_stamp': ts
+        })
+        mongo.db.validations.insert_one({
+            'trial': another_data['_id'],
+            'hit_id': hit_id,  # validation HIT info
+            'worker_id': worker_id,  # validation HIT info
+            'assignment_id': assignment_id,  # validation HIT info
+            'domain': domain,
+            'scenario': scenario,
+            'status': False,
+            'time_stamp': ts
+        })
 
     return jsonify({
         'status': 'ok',
         'id': '_'.join([str(data['_id']), str(another_data['_id'])]),
         "one_input_pair": {
-            1: {"input": data['input'], "output": data['output'], "label": data['label'], "score": data['score']},
-            2: {"input": another_data['input'], "output": another_data['output'], "label": another_data['label'],
+            1: {"input": another_data['input'], "output": another_data['output'], "label": another_data['label'],
                 "score": another_data['score']},
+            2: {"input": data['input'], "output": data['output'], "label": data['label'], "score": data['score']},
         }})
 
 
