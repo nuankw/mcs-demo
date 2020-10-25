@@ -1,6 +1,5 @@
 import React from 'react'
 import Grid from '@material-ui/core/Grid'
-import Paper from '@material-ui/core/Paper'
 import Button from '@material-ui/core/Button'
 import Typography from '@material-ui/core/Typography'
 import { withStyles, createMuiTheme, responsiveFontSizes, ThemeProvider } from '@material-ui/core/styles'
@@ -25,18 +24,6 @@ const styles = theme => ({
   header: {
     color: '#fefefe',
     marginTop: theme.spacing(3),
-  },
-  paper: {
-    marginTop: theme.spacing(3),
-    paddingTop: theme.spacing(6),
-    paddingLeft: theme.spacing(4),
-    paddingRight: theme.spacing(4),
-    paddingBottom: theme.spacing(6),
-    backgroundColor: 'rgba(254, 254, 254, 0.2)',
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    position: 'relative',
   },
   form: {
     width: '100%', // Fix IE 11 issue.
