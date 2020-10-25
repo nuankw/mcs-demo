@@ -72,7 +72,6 @@ class Input extends React.Component {
           lang: 'en'
         }}
         spellCheck={true}
-        spellcheck={true}
         ref="input"
         label={label}
         value={text}
