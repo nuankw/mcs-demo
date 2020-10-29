@@ -448,7 +448,6 @@ def classify():
     domain = session.get('domain')
     hit_id = session.get('hit_id')
     assignment_id = session.get('assignment_id')
-    uid = session.get('uid')
 
     # LOCAL TEST ONLY - Start
     if LOCAL:
@@ -457,7 +456,6 @@ def classify():
         domain = DUMMY_INFO['domain']
         hit_id = DUMMY_INFO['hit_id']
         assignment_id = DUMMY_INFO['assignment_id']
-        uid = DUMMY_INFO['uid']
     # LOCAL TEST ONLY - End
 
     inputs = []  # [{s1_1: "statement 1"}, {s1_2: "statement 2"}...]
@@ -500,7 +498,6 @@ def classify():
             data[key][index]["output"] = output
             data[key][index]["score"] = score
 
-
     for system_id, system in SYSTEMS.items():
         # model_name = system.get('model_name')
         system_output = get_system_output(system, inputs)  # get predictions
@@ -532,7 +529,7 @@ def classify():
                     'time_stamp': ts,
                     'hit_id': hit_id,
                     'assignment_id': assignment_id,
-                    'code': uid,
+                    'code': '',
                     'scenario': scenario,
                     'domain': domain,
                     'worker_id': worker_id,
@@ -623,6 +620,8 @@ def submit():
         BONUS_PER_SENTENCE = float(DUMMY_INFO['bonus'].split('$')[-1])
     # LOCAL TEST ONLY - End
 
+    code = str(uuid.uuid4())
+
     if mode == 'creation':
         # similarity_check(worker_id, domain, scenario, N) # TODO: test this
         for key in ['s1', 's2', 's3']:
@@ -663,7 +662,7 @@ def submit():
                 "worker_id": worker_id
             },
             {'$set': {
-                'code': uid
+                'code': code
             }}
         )
         max_possible_pay = REQUIRED_NUM_SENTENCES_TO_VALIDATE * BASE_PER_SENTENCE_TO_VALIDATE
@@ -672,7 +671,7 @@ def submit():
         print("ERROR: check mode!")
         return jsonify({'status': 'not ok, check mode!'})
 
-    return jsonify({'code': uid, 'max_pay': max_possible_pay_str})
+    return jsonify({'code': code, 'max_pay': max_possible_pay_str})
 
 
 @app.route('/survey', methods=['POST'])
