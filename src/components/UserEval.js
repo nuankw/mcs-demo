@@ -219,10 +219,10 @@ class Evaluate extends React.Component {
               <Button
                 variant="contained"
                 className={classNames(classes.button, {
-                  'selected': questions['bonus_reduction_reasons']['answer'].indexOf('other_reasons') >= 0,
+                  'selected': questions['bonus_reduction_reasons']['answer'].indexOf('too_similar_to_example') >= 0,
                 })}
-                onClick={() => onSelect('bonus_reduction_reasons', 'other_reasons')}>
-                Other(s). Please notify ppl on the channel!!
+                onClick={() => onSelect('bonus_reduction_reasons', 'too_similar_to_example')}>
+                Too similar to our example
               </Button>
             </div>
           </div>
@@ -321,27 +321,27 @@ class Evaluate extends React.Component {
               <Button
                 variant="contained"
                 className={classNames(classes.button, {
-                  'selected': questions['domain_check']['answer'].indexOf('physical') >= 0,
+                  'selected': questions['domain_check']['answer'].indexOf('d1') >= 0,
                 })}
-                onClick={() => onSelect('domain_check', 'physical')}>
+                onClick={() => onSelect('domain_check', 'd1')}>
                 Physical
               </Button>
 
               <Button
                 variant="contained"
                 className={classNames(classes.button, {
-                  'selected': questions['domain_check']['answer'].indexOf('social') >= 0,
+                  'selected': questions['domain_check']['answer'].indexOf('d2') >= 0,
                 })}
-                onClick={() => onSelect('domain_check', 'social')}>
+                onClick={() => onSelect('domain_check', 'd2')}>
                 Social
               </Button>
 
               <Button
                 variant="contained"
                 className={classNames(classes.button, {
-                  'selected': questions['domain_check']['answer'].indexOf('time') >= 0,
+                  'selected': questions['domain_check']['answer'].indexOf('d3') >= 0,
                 })}
-                onClick={() => onSelect('domain_check', 'time')}>
+                onClick={() => onSelect('domain_check', 'd3')}>
                 Time
               </Button>
             </div>
@@ -364,18 +364,18 @@ class Evaluate extends React.Component {
               <Button
                 variant="contained"
                 className={classNames(classes.button, {
-                  'selected': questions['scenario_check']['answer'].indexOf('causal') >= 0,
+                  'selected': questions['scenario_check']['answer'].indexOf('s1') >= 0,
                 })}
-                onClick={() => onSelect('scenario_check', 'causal')}>
+                onClick={() => onSelect('scenario_check', 's1')}>
                 Cause & effect
               </Button>
 
               <Button
                 variant="contained"
                 className={classNames(classes.button, {
-                  'selected': questions['scenario_check']['answer'].indexOf('comparison') >= 0,
+                  'selected': questions['scenario_check']['answer'].indexOf('s2') >= 0,
                 })}
-                onClick={() => onSelect('scenario_check', 'comparison')}>
+                onClick={() => onSelect('scenario_check', 's2')}>
                 Comparison
               </Button>
             </div>
