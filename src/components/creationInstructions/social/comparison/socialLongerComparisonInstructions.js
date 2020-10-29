@@ -91,11 +91,11 @@ class SocialLongerComparisonInstructions extends React.Component {
                   <b style={{'color': 'darkgreen'}}>[True]</b>&nbsp;&nbsp;
                   Chad and Tom live in adjacent apartments.
                   Unlike Tom, Chad throws house parties every other night.
-                  The house cleaning staff will probably find it easier working for <b>Tom</b>.
+                  The house cleaning staff will probably find it easier to work for <b>Tom</b>.
                   <br/><b style={{'color': 'darkred'}}>[False]</b>&nbsp;
                   Chad and Tom live in adjacent apartments.
                   Unlike Tom, Chad throws house parties every other night.
-                  The house cleaning staff will probably find it easier working for <b>Chad</b>.
+                  The house cleaning staff will probably find it easier to work for <b>Chad</b>.
                 </li>
 
                 <hr style={{border: "1px solid rgb(128, 128, 128)"}}/>
@@ -129,7 +129,7 @@ class SocialLongerComparisonInstructions extends React.Component {
                 </li>
 
                 <li>
-                  Writing <b>detailed & nuanced context</b>, makes it easier to fool.
+                  Writing <b>detailed & nuanced context</b> makes it easier to fool.
                 </li>
 
                 <li>
