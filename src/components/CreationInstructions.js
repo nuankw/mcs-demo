@@ -12,9 +12,10 @@ import PhysicalCausalInstructions from './creationInstructions/physcial/causal/p
 import PhysicalComparisonInstructions from './creationInstructions/physcial/comparison/physicalComparisonInstructions'
 
 import SocialCausalInstructions from './creationInstructions/social/causal/socialCausalInstructions'
-import SocialComparisonInstructions from './creationInstructions/social/comparison/socialComparisonInstructions'
+// import SocialComparisonInstructions from './creationInstructions/social/comparison/socialComparisonInstructions'
 import SocialCausalNumeracyInstructions from './creationInstructions/social/causal/socialCausalNumeracyInstructions'
 import SocialComparisonNumeracyInstructions from './creationInstructions/social/comparison/socialComparisonNumeracyInstructions'
+import SocialLongerComparisonInstructions from './creationInstructions/social/comparison/socialLongerComparisonInstructions'
 
 import TimeCausalInstructions from './creationInstructions/temporal/causal/temporalCausalInstructions'
 import TimeComparisonDurationInstructions from './creationInstructions/temporal/comparison/temporalComparisonDurationInstructions'
@@ -81,7 +82,7 @@ class CreationInstructions extends React.Component {
       },
       'social': {
         'cause-and-effect': <SocialCausalInstructions />,
-        'comparison': <SocialComparisonInstructions />,
+        'comparison': <SocialLongerComparisonInstructions />,
       },
       'numerical-social': {
         'cause-and-effect': <SocialCausalNumeracyInstructions />,

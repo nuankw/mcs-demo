@@ -35,7 +35,7 @@ class SocialComparisonInstructions extends React.Component {
           <Typography component={'div'} className={classes.instructions}>
             <ul>
               <li className={classes.head}>
-                  Domain and Scenario Recap
+                  Domain & Scenario Recap
               </li>
               <ul>
                 <li><b>Social</b>: Focuses on people and social behavior, particularly attributes like personality,

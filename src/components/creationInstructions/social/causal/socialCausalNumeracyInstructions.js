@@ -35,7 +35,7 @@ class SocialCausalNumeracyInstructions extends React.Component {
           <Typography component={'div'} className={classes.instructions}>
             <ul>
               <li className={classes.head}>
-                  Domain and Scenario Recap
+                  Domain & Scenario Recap
               </li>
               <ul>
                 <li style={{fontSize: '1.1em'}}>
