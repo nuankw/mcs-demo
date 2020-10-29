@@ -54,10 +54,10 @@ class PhysicalCausalInstructions extends React.Component {
               <ul>
                 <li style={{'paddingBottom': '0.3em'}}>
                   <b style={{'color': 'darkgreen'}}>[True]</b>&nbsp;&nbsp;
-                    Since she didn't had a safety pin,
+                    Since she didn't have a safety pin,
                     she could try to pierce the wrapper with a <b>pen</b>.
                   <br/><b style={{'color': 'darkred'}}>[False]</b>&nbsp;
-                    Since she didn't had a safety pin,
+                    Since she didn't have a safety pin,
                     she could try to pierce the wrapper with a <b>bottle</b>.
                 </li>
 
