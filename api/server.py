@@ -646,13 +646,14 @@ def submit():
                                 'input': inputs[key][idx]['input'],
                                 'label': inputs[key][idx]['label'],
                                 'need_validate': True,
+                                'code': code
                             }}
                         )
                         if inputs[key][idx]['label'] != data['output']:
                             num_sentence_fooled += 1
                         # input_length_check(data)
         max_possible_pay = BONUS_PER_SENTENCE * num_sentence_fooled \
-            + BASE_PER_SENTENCE_CREATED * REQUIRED_NUM_SENTENCES_TO_CREATE
+                           + BASE_PER_SENTENCE_CREATED * REQUIRED_NUM_SENTENCES_TO_CREATE
         max_possible_pay_str = '{:.2f}'.format(max_possible_pay)
 
     elif mode == 'validation':
