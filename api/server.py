@@ -760,7 +760,7 @@ def get_eval():
             {'num_val': {
                 "$lt": MAX_VAL_VALUE,  # <
             }}]
-    }, sort=[('num_val', ASCENDING), ('time_stamp', DESCENDING)])
+    }, sort=[('num_val', ASCENDING), ('time_stamp', ASCENDING)])
 
     if not data:
         fetch_new = True
@@ -793,7 +793,7 @@ def get_eval():
                     }
                 }]}
             ]
-        }, sort=[('num_val', ASCENDING), ('time_stamp', DESCENDING)])
+        }, sort=[('num_val', ASCENDING), ('time_stamp', ASCENDING)])
 
     if not data:
         return jsonify({
