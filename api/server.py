@@ -20,6 +20,7 @@ import re
 import string
 import nltk
 from nltk.util import ngrams
+
 nltk.download('punkt')
 
 from collections import Counter
@@ -117,7 +118,7 @@ def jaccard_distance(a, b):
     """Calculate the jaccard distance between n-gram lists A and B"""
     a = set(a)
     b = set(b)
-    return 1.0 * len(a&b)/len(a|b)
+    return 1.0 * len(a & b) / len(a | b)
 
 
 def cosine_distance(a, b):
@@ -127,8 +128,8 @@ def cosine_distance(a, b):
     intersection = set(vec1.keys()) & set(vec2.keys())
     numerator = sum([vec1[x] * vec2[x] for x in intersection])
 
-    sum1 = sum([vec1[x]**2 for x in vec1.keys()])
-    sum2 = sum([vec2[x]**2 for x in vec2.keys()])
+    sum1 = sum([vec1[x] ** 2 for x in vec1.keys()])
+    sum2 = sum([vec2[x] ** 2 for x in vec2.keys()])
     denominator = math.sqrt(sum1) * math.sqrt(sum2)
 
     if not denominator:
@@ -142,7 +143,7 @@ def get_all_n_grams_sentences(worker_id, domain, scenario, N=2):
         "worker_id": worker_id,
         "domain": domain,
         "scenario": scenario,
-        "within_group_idx": { "$in": ['1', '2']}, # skip optional
+        "within_group_idx": {"$in": ['1', '2']},  # skip optional
         "need_validation": True
     }, {"assignment_id": 1, "group_id": 1, "within_group_idx": 1, "input": 1})
 
@@ -300,9 +301,9 @@ def get_system_output(system, all_statements):
 def slack_notify(text="see blocks", blocks=None):
     try:
         response = slack_client.chat_postMessage(
-            channel = '#cs-data-monitor',
-            text = text,
-            blocks = blocks)
+            channel='#cs-data-monitor',
+            text=text,
+            blocks=blocks)
         assert response["message"]["text"] == text
     except SlackApiError as e:
         # You will get a SlackApiError if "ok" is False
@@ -314,25 +315,26 @@ def slack_notify(text="see blocks", blocks=None):
 def warn_suspicious_intra_similarity(suspicious_intra_pairs):
     for data in suspicious_intra_pairs:
         message_in_block = "*WARNING: sentence pair not alike or too alike*\nassignment_id: *{}*\ngroup_id: *{}*\nscenario: *{}*\ndomain: *{}*\nworker: *{}*\nsent1: *{}*\nsent2: *{}*\nsimilarity score: *{}*".format(
-                data["assignment_id"], data["group_id"], data["scenario"], data["domain"], data["worker_id"], data["sent1"], data["sent2"], data["score"])
+            data["assignment_id"], data["group_id"], data["scenario"], data["domain"], data["worker_id"], data["sent1"],
+            data["sent2"], data["score"])
         action_elements = [
-                {
-                    "type": "button",
-                    "text": {
-                        "type": "plain_text",
-                        "text": "Flag it"
-                    },
-                    "value": "intra_flag"
+            {
+                "type": "button",
+                "text": {
+                    "type": "plain_text",
+                    "text": "Flag it"
                 },
-                {
-                    "type": "button",
-                    "text": {
-                        "type": "plain_text",
-                        "text": "False alarm"
-                    },
-                    "value": "intra_ok"
-                }
-            ]
+                "value": "intra_flag"
+            },
+            {
+                "type": "button",
+                "text": {
+                    "type": "plain_text",
+                    "text": "False alarm"
+                },
+                "value": "intra_ok"
+            }
+        ]
         blocks = [
             {
                 "type": "section",
@@ -351,34 +353,35 @@ def warn_suspicious_intra_similarity(suspicious_intra_pairs):
 
 def warn_suspicious_inter_similarity(suspicious_intra_pairs):
     for data in suspicious_intra_pairs:
-
         message_in_block_1 = "*WARNING: input too similar*\nscenario: *{}*\ndomain: *{}*\nworker: *{}*\nSimilarity score: *{}*\n".format(
             data["scenario"], data["domain"], data["worker_id"], data["score"])
 
         message_in_block_2 = "*First group input*\nassignment_id: *{}*\ngroup_id: *{}*\nsent1: *{}*\nsent2: *{}*".format(
-                data["input_group_1"]["assignment_id"], data["input_group_1"]["group_id"], data["input_group_1"]["sent1"], data["input_group_1"]["sent2"])
+            data["input_group_1"]["assignment_id"], data["input_group_1"]["group_id"], data["input_group_1"]["sent1"],
+            data["input_group_1"]["sent2"])
 
         message_in_block_3 = "*Second group input*\nassignment_id: *{}*\ngroup_id: *{}*\nsent1: *{}*\nsent2: *{}*".format(
-                data["input_group_2"]["assignment_id"], data["input_group_2"]["group_id"], data["input_group_2"]["sent1"], data["input_group_2"]["sent2"])
+            data["input_group_2"]["assignment_id"], data["input_group_2"]["group_id"], data["input_group_2"]["sent1"],
+            data["input_group_2"]["sent2"])
 
         action_elements = [
-                {
-                    "type": "button",
-                    "text": {
-                        "type": "plain_text",
-                        "text": "Flag it"
-                    },
-                    "value": "inter_flag"
+            {
+                "type": "button",
+                "text": {
+                    "type": "plain_text",
+                    "text": "Flag it"
                 },
-                {
-                    "type": "button",
-                    "text": {
-                        "type": "plain_text",
-                        "text": "False alarm"
-                    },
-                    "value": "inter_ok"
-                }
-            ]
+                "value": "inter_flag"
+            },
+            {
+                "type": "button",
+                "text": {
+                    "type": "plain_text",
+                    "text": "False alarm"
+                },
+                "value": "inter_ok"
+            }
+        ]
         blocks = [
             {
                 "type": "section",
@@ -387,16 +390,16 @@ def warn_suspicious_inter_similarity(suspicious_intra_pairs):
                     "text": message_in_block_1,
                 }
             }, {
-			    "type": "divider"
-		    }, {
+                "type": "divider"
+            }, {
                 "type": "section",
                 "text": {
                     "type": "mrkdwn",
                     "text": message_in_block_2,
                 }
             }, {
-			    "type": "divider"
-		    }, {
+                "type": "divider"
+            }, {
                 "type": "section",
                 "text": {
                     "type": "mrkdwn",
@@ -432,7 +435,7 @@ def similarity_check(worker_id, domain, scenario, N=2):
 
 
 @app.route('/slack_response', methods=['POST'])
-def slack_interactive_process(): # TODO
+def slack_interactive_process():  # TODO
     """
         handle interactive slack rejection to update document:
             if repeated: add repeated id (make sure to count repetitions right)
@@ -544,36 +547,37 @@ def classify():
 def input_length_check(data):
     words = tokenize(data['input'])
     mongo.db.trials.update_one(
-                {"_id": data["_id"]},
-                {'$set': {
-                    'length': len(words),
-                }}
-            )
+        {"_id": data["_id"]},
+        {'$set': {
+            'length': len(words),
+        }}
+    )
     if len(words) < MIN_SENTENCE_LENGTH:
         warn_suspicious_input_length(data)
 
 
 def warn_suspicious_input_length(data):
     message_in_block = "Warning: input sentence too short\nassignment_id: *{}*\ngroup_id: *{}*\nscenario: *{}*\ndomain: *{}*\nworker: *{}*\nlabel: *{}*\nprediction: *{}*\ninput: *{}*".format(
-            data["assignment_id"], data["group_id"], data["scenario"], data["domain"], data["worker_id"], data["label"], data["output"], data["input"])
+        data["assignment_id"], data["group_id"], data["scenario"], data["domain"], data["worker_id"], data["label"],
+        data["output"], data["input"])
     action_elements = [
-            {
-                "type": "button",
-                "text": {
-                    "type": "plain_text",
-                    "text": "Flag it"
-                },
-                "value": "length_flag"
+        {
+            "type": "button",
+            "text": {
+                "type": "plain_text",
+                "text": "Flag it"
             },
-            {
-                "type": "button",
-                "text": {
-                    "type": "plain_text",
-                    "text": "False warning"
-                },
-                "value": "length_ok"
-            }
-        ]
+            "value": "length_flag"
+        },
+        {
+            "type": "button",
+            "text": {
+                "type": "plain_text",
+                "text": "False warning"
+            },
+            "value": "length_ok"
+        }
+    ]
     blocks = [
         {
             "type": "section",
@@ -590,7 +594,6 @@ def warn_suspicious_input_length(data):
     slack_notify(blocks=blocks)
 
 
-
 @app.route('/submit', methods=['POST'])
 def submit():
     global BONUS_PER_SENTENCE
@@ -602,8 +605,8 @@ def submit():
     domain = session.get('domain')
     if session.get('bonus'):
         BONUS_PER_SENTENCE = float(session.get('bonus').split('$')[-1])
-        assert(BONUS_PER_SENTENCE >= 0)
-        assert(BONUS_PER_SENTENCE <= 2)
+        assert (BONUS_PER_SENTENCE >= 0)
+        assert (BONUS_PER_SENTENCE <= 2)
     max_possible_pay = 0
     max_possible_pay_str = ""
     num_sentence_fooled = 0
@@ -744,11 +747,11 @@ def get_eval():
     fetch_new = False
     # if validation status is False & still need validation, i.e. finish the unfinished pairs first
     unfinished_trial_ids = list(map(lambda x: x['trial'],
-                                   mongo.db.validations.find({
-                                       'worker_id': worker_id,
-                                       'status': False,
-                                   }, {'_id': 0, 'trial': 1})
-                                   ))
+                                    mongo.db.validations.find({
+                                        'worker_id': worker_id,
+                                        'status': False,
+                                    }, {'_id': 0, 'trial': 1})
+                                    ))
 
     data = mongo.db.trials.find_one({
         "$and": [
@@ -797,12 +800,12 @@ def get_eval():
 
     if not data:
         return jsonify({
-                'status': 'ok',
-                'id': '',
-                "one_input_pair": {
-                    1: {"input": "", "output": None, "label": None, "score": ""},
-                    2: {"input": "", "output": None, "label": None, "score": ""},
-                }})
+            'status': 'ok',
+            'id': '',
+            "one_input_pair": {
+                1: {"input": "", "output": None, "label": None, "score": ""},
+                2: {"input": "", "output": None, "label": None, "score": ""},
+            }})
 
     another_idx = '1' if data['within_group_idx'] == '2' else '2'
     another_data = mongo.db.trials.find_one(
