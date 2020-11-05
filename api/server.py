@@ -102,6 +102,8 @@ DUMMY_INFO = {
 }
 if LOCAL:
     print("LOCAL TESTING, dummy variables:", DUMMY_INFO)
+
+
 # LOCAL TEST ONLY - End
 
 def tokenize(raw_sentence):
@@ -598,11 +600,8 @@ def warn_suspicious_input_length(data):
 def submit():
     global BONUS_PER_SENTENCE
     worker_id = session.get('worker_id')
-    hit_id = session.get('hit_id')
     assignment_id = session.get('assignment_id')
-    uid = session.get('uid')
     mode = session.get('mode')
-    domain = session.get('domain')
     if session.get('bonus'):
         BONUS_PER_SENTENCE = float(session.get('bonus').split('$')[-1])
         assert (BONUS_PER_SENTENCE >= 0)
@@ -614,12 +613,8 @@ def submit():
     # LOCAL TEST ONLY - Start
     if LOCAL:
         worker_id = DUMMY_INFO['worker_id']
-        hit_id = DUMMY_INFO['hit_id']
         assignment_id = DUMMY_INFO['assignment_id']
-        uid = DUMMY_INFO['uid']
         mode = DUMMY_INFO['mode']
-        domain = DUMMY_INFO['domain']
-        scenario = DUMMY_INFO['scenario']
         BONUS_PER_SENTENCE = float(DUMMY_INFO['bonus'].split('$')[-1])
     # LOCAL TEST ONLY - End
 
@@ -810,7 +805,7 @@ def get_eval():
     another_idx = '1' if data['within_group_idx'] == '2' else '2'
     another_data = mongo.db.trials.find_one(
         {'need_validate': True,
-         'assignment_id': data['assignment_id'],
+         'code': data['code'],
          'group_id': data['group_id'],
          'within_group_idx': another_idx},
         {"_id": 1, "input": 1, "output": 1, "label": 1, "score": 1}
