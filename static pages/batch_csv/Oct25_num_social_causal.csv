@@ -1,0 +1,2 @@
+domain,scenario,how_many_days,base_pay,sentence_bonus,eg_true_1,eg_true_2,eg_false_1,eg_false_2
+numerical-social,cause & effect,7,$0.60,$0.50,Having invited <u>twenty</u> guests over for dinner,he would be <b>overwhelmed</b> if they <u>all brought a plus one</u>,Having invited <u>twenty</u> guests over for dinner,he would be <b>comfortable</b> if they <u>all brought a plus one</u>

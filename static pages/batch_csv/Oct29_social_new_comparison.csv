@@ -1,0 +1,2 @@
+domain,scenario,how_many_days,base_pay,sentence_bonus,eg_true_1,eg_true_2,eg_false_1,eg_false_2
+social,comparison,10,$0.60,$0.80,Sara's son is in preschool whereas Jane's daughter is in college,so <b>Sara</b> is more likely to send her child to daycare,Sara's son is in preschool whereas Jane's daughter is in college,so <b>Jane</b> is more likely to send her child to daycare

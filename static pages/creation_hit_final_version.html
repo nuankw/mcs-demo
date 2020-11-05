@@ -7,132 +7,121 @@
   <div class="row">
     <div class="col-xs-12 col-md-12">
       <div class="panel panel-primary">
-        <!-- WARNING: the ids "collapseTrigger" and "instructionBody" are being used to enable expand/collapse feature -->
-        <a class="panel-heading" href="javascript:void(0);" id="collapseTrigger">
-          <strong>Instruction for ${domain} X ${scenario} creation</strong>
-          <span class="collapse-text">(Click to collapse)</span>
-        </a>
+        <!-- WARNING: the ids "collapseTrigger" and "instructionBody" are being used to enable expand/collapse feature --><a
+          class="panel-heading" href="javascript:void(0);" id="collapseTrigger"><strong>Instruction for ${domain} X
+            ${scenario} creation</strong> <span class="collapse-text">(Click to collapse)</span> </a>
         <div class="panel-body" id="instructionBody">
-
           <div>
             <h1>Common Sense Reasoning HIT - Creation</h1>
+
             <p style="font-size: 1.2em; color: darkred;"><b>Welcome! Please read this guideline carefully.</b></p>
-            <hr style="text-align:left;margin-left:0;height:1px;border-width:0;color:lightgray;background-color:lightgray">
+
+            <hr
+              style="text-align:left;margin-left:0;height:1px;border-width:0;color:lightgray;background-color:lightgray" />
           </div>
-          <p style="font-size: 1.2em;"><b><u>Our instructions are the same for all HIT assignments in this task. Please at least read them once carefully. Thanks!</u></b></p>
+          <!--
+<p style="font-size: 1.2em;"><b><u>Our instructions are the same for all&nbsp;HIT assignment(s) in this task. Please at least read them once carefully. Thanks!</u></b></p>
+-->
 
           <div>
             <h3>Task Overview</h3>
-            <p style="font-size: 1.2em; padding-left: 2em;">
-              In this HIT, we ask you to test the
-              common sense reasoning for our AI agent -- <b>Carl</b>,
-              by developing sentence pairs for the combination of
-              <b><mark style="background-color: cyan;"><span id="domain">${domain}</span></mark></b>
-              domain and <b><mark style="background-color: cyan;"><span id="scenario">${scenario}</span></mark></b>
-              scenario.
-            </p>
+
+            <p style="font-size: 1.2em; padding-left: 2em;">In this HIT, we ask you to test the common sense reasoning
+              for our AI agent -- <b>Carl</b>, by developing sentence pairs for the combination of <b><mark
+                  style="background-color: cyan;"><span id="domain">${domain}</span></mark></b> domain and <b><mark
+                  style="background-color: cyan;"><span id="scenario">${scenario}</span></mark></b> scenario.</p>
+
             <div style="font-size: 1.2em; padding-left: 4em;">
               <p>Consider the following example:</p>
-              <p style="padding-left: 2em;"><i>${eg_true_1}, ${eg_true_2}. <b style="color: darkgreen;">[True]</b></p></i>
+
+              <p style="padding-left: 2em;"><i>${eg_true_1}, ${eg_true_2}. <b style="color: darkgreen;">[True]</b></i>
+              </p>
+
               <p>We can write its complement and change the correctness:</p>
-              <p style="padding-left: 2em;"><i>${eg_false_1}, ${eg_false_2}. <b style="color: darkred;">[False]</b></p></i>
+
+              <p style="padding-left: 2em;"><i>${eg_false_1}, ${eg_false_2}. <b style="color: darkred;">[False]</b></i>
+              </p>
             </div>
 
-            <p style="font-size: 1.2em; padding-left: 2em;"><mark>
-              Your goal is to write challenging pairs that are easily understood by people
-              but are more likely to fool <b>Carl</b> into judging them incorrectly.</mark>
-            </p>
-
-
-
+            <p style="font-size: 1.2em; padding-left: 2em;"><mark>Your goal is to write challenging pairs that are
+                easily understood by people&nbsp;but are more likely to fool <b>Carl</b> into judging them
+                incorrectly.</mark></p>
           </div>
-
 
           <div>
             <h3>Payment</h3>
-            <p style="font-size: 1.2em; padding-left: 2em; color: blue;">
-              The base pay for completing this task is <b>${base_pay}</b>,
-              and the bonus pay is <b><span id="sentence_bonus">${sentence_bonus}</span> * your score</b>.
-              <b>Your score</b> is the number of sentences where you were able to
-              successfully fool our agent <b>Carl</b>.
-              <br/>In our internal study, we usually find ourselves
-              able to fool once in each pair, i.e. our score = 3.
-            </p>
 
+            <p style="font-size: 1.2em; padding-left: 2em; color: blue;">The base pay for completing this task is
+              <b>${base_pay}</b>, and the bonus pay is <b><span id="sentence_bonus">${sentence_bonus}</span> * your
+                score</b>. <b>Your score</b> is the number of sentences where you were able to successfully fool our
+              agent <b>Carl</b>.<br />
+              In our internal study, we usually find ourselves able to fool once in each pair, i.e. our score = 3.</p>
 
-            <p style="font-size: 1.2em; padding-left: 2em; color:brown"><i>
-              Note: You can expect to receive the full payment (base + bonus) in <b>${how_many_days}</b> days.
-              Kindly ensure that all the sentences abide by our instructions,
-              else your submission may not be eligible for a bonus,
-              or could be completely rejected. </i></p>
-
-
+            <p style="font-size: 1.2em; padding-left: 2em; color:brown"><i>Note: You can expect to receive the full
+                payment (base + bonus) in <b>${how_many_days}</b> days (we will validate and pay&nbsp;ASAP). Kindly
+                ensure that all the sentences abide by our instructions, else your submission may not be eligible for a
+                bonus, or could be completely rejected. </i></p>
           </div>
-
 
           <div>
             <h3>Task Details</h3>
+
             <ol style="font-size: 1.2em;">
-              <li syle="padding-bottom: 3em">
-                To begin this task, click the link below on this page.
-                <br/><i>Note: Do not change the URL as doing so will interfere
-                  with a proper recording of your HIT.</i>
-                <p style="height: 2px;"></p>
-              </li>
+              <li syle="padding-bottom: 3em">To begin this task, click the link below on this page.<br />
+                <i>Note: Do not change the URL as doing so will interfere with a proper recording of your HIT.</i>
 
-              <li syle="padding-bottom: 3em;">
-                Read the instructions carefully on our website as they provide
-                the definitions and examples needed to construct valid sentences.
-                <br />
-                <p><img src="https://cs-ddev.isi.edu/images/screenshot_1.png" style="width: 70%; padding-top: 0.7em;" alt="screenshot_1.png"></p>
+                <p style="height: 2px;">&nbsp;</p>
               </li>
-
-              <li syle="padding-bottom: 3em">
-                Enter sentence pairs
-                strictly related to <b>${domain}</b> and <b>${scenario}</b>
-                and select the <b>True/False (T/F)</b> labels accordingly</b>.
-                <br />
-                <p><img src="https://cs-ddev.isi.edu/images/screenshot_2.png" style="width: 70%; padding-top: 0.7em;" alt="screenshot_2.png"></p>
+              <li syle="padding-bottom: 3em;">Read the instructions carefully on our website as they provide the
+                definitions and examples needed to construct valid sentences.
+                <p><img alt="screenshot_1.png" src="https://cs-ddev.isi.edu/images/screenshot_1.png"
+                    style="width: 70%; padding-top: 0.7em;" /></p>
               </li>
-
-              <li syle="padding-bottom: 3em">
-                To see if you successfully fooled our AI agent <b>Carl</b>,
-                click on the <b>"Test Carl with what I have!"</b> button.
-                The result will show up next to the input fields
-                (hover over the icon to see the result).
-                <br/><i>Note that you can change and test your inputs
-                as many times as you like.</i>
-                <p><img src="https://cs-ddev.isi.edu/images/screenshot_3.jpg" style="width: 70%; padding-top: 0.7em;" alt="screenshot_3.png"></p>
+              <li syle="padding-bottom: 3em">Enter sentence pairs strictly related to <b>${domain}</b> and
+                <b>${scenario}</b> and select the <b>True/False (T/F)</b> labels accordingly.
+                <p><img alt="screenshot_2.png" src="https://cs-ddev.isi.edu/images/screenshot_2.png"
+                    style="width: 70%; padding-top: 0.7em;" /></p>
               </li>
-
-              <li syle="padding-bottom: 3em">
-                After you enter all <b>3</b> sentence pairs
-                and have tested all your revisions,
-                you can click the <b>"Inputs confirmed, submit!"</b>
-                button to finish this HIT.
-                A pop-up window will be displayed similar to the one below.
-                <br/><i>Note that after you submit -
-                you can no longer go back to edit your inputs!</i>
-                <p><img src="https://cs-ddev.isi.edu/images/screenshot_4.png" style="width: 70%; padding-top: 0.7em;" alt="screenshot_4.png"></p>
+              <li syle="padding-bottom: 3em">To see if you successfully fooled our AI agent <b>Carl</b>, click on the
+                <b>&quot;Test Carl with what I have!&quot;</b> button. The result will show up next to the input fields
+                (hover over the icon to see the result).<br />
+                <i>Note that you can change and test your inputs as many times as you like.</i>
+                <p><img alt="screenshot_3.png" src="https://cs-ddev.isi.edu/images/screenshot_3.jpg"
+                    style="width: 70%; padding-top: 0.7em;" /></p>
               </li>
-
-              <li syle="padding-bottom: 3em">
-                To complete your HIT, please copy and paste the completion code on MTurk.
-                Please fill out the optional survey to help us improve the study.
-                We appreciate your feedback!
+              <li syle="padding-bottom: 3em">After you enter all <b>3</b> sentence pairs and have tested all your
+                revisions, you can click the <b>&quot;Inputs confirmed, submit!&quot;</b> button to finish this HIT. A
+                pop-up window will be displayed similar to the one below.<br />
+                <i>Note that after you submit - you can no longer go back to edit your inputs!</i>
+                <p><img alt="screenshot_4.png" src="https://cs-ddev.isi.edu/images/screenshot_4.png"
+                    style="width: 70%; padding-top: 0.7em;" /></p>
               </li>
-
-              <li syle="padding-bottom: 3em">
-                For any questions or assistance,
-                kindly reach out to us via <a target="_blank" href="mailto: mcspluslab@gmail.com">mcspluslab@gmail.com</a> with your worker ID.
-              </li>
+              <li syle="padding-bottom: 3em">To complete your HIT, please copy and paste the completion code on MTurk.
+                Please fill out the optional survey to help us improve the study. We appreciate your feedback!</li>
+              <li syle="padding-bottom: 3em">For any questions or assistance, kindly reach out to us via <a
+                  href="mailto: mcspluslab@gmail.com" target="_blank">mcspluslab@gmail.com</a> with your worker ID.</li>
             </ol>
-          </div>
 
+            <p>&nbsp;</p>
+
+            <pre>
+Updated (Oct 29th):
+
+<u><strong><span style="color:#800000;">Notice:</span></strong></u>
+1. If you ever find <u>the domain and scenario on our website not matching the domain and scenario as described on this page</u>, please try to either <strong>refresh</strong> our website page (link below), <strong>clear</strong> your <strong>cache</strong> or use the <strong>incognito/private mode</strong> of your browser. Please <u>make sure you work on the right domain and scenario</u>. Otherwise, the system will record your inputs under the wrong domain and scenario and <strong>could lead to bonus reduction</strong>.
+
+2. Please be creative! The examples are provided to inspire you. We will have to <strong>reduce your bonus if your inputs are too similar to the example </strong>(e.g. same social/physical/temporal events with only change of the character name).
+
+<u><strong><span style="color:#800000;">Our messages to all of you:</span></strong></u>
+We really enjoy many of your smart inputs and please keep up the good work! #thumbsup
+<u>We are collecting a list of creative MTurkers and preparing more tasks for them</u>. Stay tuned!
+Have fun fooling Carl! </pre>
+          </div>
         </div>
       </div>
     </div>
   </div>
+
   <div class="row" id="workContent">
     <div class="col-xs-12 col-md-6 col-md-offset-3">
       <table class="table table-condensed table-bordered">
@@ -148,7 +137,7 @@
                   an error with Javascript on your computer. To perform this HIT, you must have Javascript and cookies
                   enabled on your browser.</tt></div>
               <script type="text/javascript" language="JavaScript">
-                <!--
+                < !--
                 var assignment_id_field = document.getElementById('myelementLink');
                 var scenario = document.getElementById('scenario').innerText
                 var domain = document.getElementById('domain').innerText
@@ -186,6 +175,7 @@
                 }
                 -->
               </script>
+
               <div class="link" id="linkDiv">&nbsp;</div>
             </td>
           </tr>
@@ -193,8 +183,10 @@
       </table>
       <!-- End Content for Worker -->
       <!-- Input from Worker -->
-      <div class="form-group"><label for="surveycode">Provide the completion code here:</label> <input class="form-control"
-          id="surveycode" name="surveycode" placeholder="e.g. 123456" required="" type="text" /></div>
+
+      <div class="form-group"><label for="surveycode">Provide the completion code here:</label> <input
+          class="form-control" id="surveycode" name="surveycode" placeholder="e.g. 123456" required="" type="text" />
+      </div>
       <!-- End input from Worker -->
     </div>
   </div>
@@ -241,21 +233,21 @@
   integrity="sha384-s1ITto93iSMDxlp/79qhWHi+LsIi9Gx6yL+cOKDuymvihkfol83TYbLbOw+W/wv4" crossorigin="anonymous"></script>
 <!-- Open internal javascript -->
 <script>
-  $(document).ready(function () {
-    // Instructions expand/collapse
-    var content = $('#instructionBody');
-    var trigger = $('#collapseTrigger');
-    //content.hide();
-    $('.collapse-text').text('(Click to collapse)');
-    trigger.click(function () {
-      content.toggle();
-      var isVisible = content.is(':visible');
-      if (isVisible) {
-        $('.collapse-text').text('(Click to collapse)');
-      } else {
-        $('.collapse-text').text('(Click to expand)');
-      }
+    $(document).ready(function () {
+      // Instructions expand/collapse
+      var content = $('#instructionBody');
+      var trigger = $('#collapseTrigger');
+      //content.hide();
+      $('.collapse-text').text('(Click to collapse)');
+      trigger.click(function () {
+        content.toggle();
+        var isVisible = content.is(':visible');
+        if (isVisible) {
+          $('.collapse-text').text('(Click to collapse)');
+        } else {
+          $('.collapse-text').text('(Click to expand)');
+        }
+      });
+      // end expand/collapse
     });
-    // end expand/collapse
-  });
 </script><!-- Close internal javascript -->
