@@ -14,7 +14,7 @@ import PhysicalCausalInstructions from './creationInstructions/physcial/causal/p
 import PhysicalComparisonInstructions from './creationInstructions/physcial/comparison/physicalComparisonInstructions'
 
 import SocialCausalInstructions from './creationInstructions/social/causal/socialCausalInstructions'
-import SocialComparisonInstructions from './creationInstructions/social/comparison/socialComparisonInstructions'
+import SocialLongerComparisonInstructions from './creationInstructions/social/comparison/socialLongerComparisonInstructions'
 import SocialCausalNumeracyInstructions from './creationInstructions/social/causal/socialCausalNumeracyInstructions'
 import SocialComparisonNumeracyInstructions from './creationInstructions/social/comparison/socialComparisonNumeracyInstructions'
 
@@ -77,7 +77,7 @@ class ValidationInstruction extends React.Component {
         },
         'social': {
           'cause-and-effect': <SocialCausalInstructions />,
-          'comparison': <SocialComparisonInstructions />,
+          'comparison': <SocialLongerComparisonInstructions />,
         },
         'numerical-social': {
           'cause-and-effect': <SocialCausalNumeracyInstructions />,

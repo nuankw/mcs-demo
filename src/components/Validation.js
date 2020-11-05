@@ -96,8 +96,8 @@ const EVAL_QUESTIONS = {
     'answer': [],
   },
   'scenario_check': {
-    'type': 'multiple',
-    'answer': [],
+    'type': 'single',
+    'answer': '',
   },
   'numeracy_check': {
     'type': 'single',
@@ -246,7 +246,7 @@ class Validation extends React.Component {
         && evalQuestions['scenario_check'].answer.length >= 1
         && !!evalQuestions['numeracy_check'].answer
       ) || (
-        evalQuestions['keep_edit_bonus'].answer === 'need_edit_half_bonus'
+        evalQuestions['keep_edit_bonus'].answer === 'need_edit_zero_bonus'
          && !!editSuggestion
          && evalQuestions['bonus_reduction_reasons'].answer.length >= 1
          && !!evalQuestions['label_check'].answer

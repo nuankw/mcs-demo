@@ -109,14 +109,6 @@ class SocialLongerComparisonInstructions extends React.Component {
                   so <b>Rick's work</b> is more likely to include foreign travel.
                 </li>
 
-                <li style={{'paddingBottom': '0.3em'}}>
-                  <b style={{'color': 'darkgreen'}}>[True]</b>&nbsp;&nbsp;
-                  Sara's son is in preschool whereas Jane's daughter is in college,
-                  so <b>Sara</b> is more likely to send her child to daycare.
-                  <br/><b style={{'color': 'darkred'}}>[False]</b>&nbsp;
-                  Sara's son is in preschool whereas Jane's daughter is in college,
-                  so <b>Jane</b> is more likely to send her child to daycare.
-                </li>
               </ul>
 
               <li className={classes.head}>

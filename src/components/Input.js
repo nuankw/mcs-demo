@@ -15,11 +15,11 @@ const CustomTextField = withStyles({
     },
     '& .MuiInput-input': {
       '@media (min-width:600px)': {
-        fontSize: '1.2rem',
+        fontSize: '1.1rem',
       },
       color: '#000000',
       transition: 'background 0.3s ease',
-      fontSize: '1.2rem',
+      fontSize: '1.1rem',
     },
     '& label.Mui-focused': {
       color: '#000000',

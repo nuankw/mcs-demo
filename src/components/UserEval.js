@@ -120,10 +120,10 @@ class Evaluate extends React.Component {
             <Button
                 variant="contained"
                 className={classNames(classes.button, {
-                  'selected': questions['keep_edit_bonus']['answer'] === 'need_edit_half_bonus',
+                  'selected': questions['keep_edit_bonus']['answer'] === 'need_edit_zero_bonus',
                 })}
-                onClick={() => onSelect('keep_edit_bonus', 'need_edit_half_bonus')}>
-                Yes/Yes/Half
+                onClick={() => onSelect('keep_edit_bonus', 'need_edit_zero_bonus')}>
+                Yes/Yes/Zero
             </Button>
 
             <Button
@@ -139,15 +139,14 @@ class Evaluate extends React.Component {
         </div>
 
         {/* if edit needed */}
-        {(questions['keep_edit_bonus']['answer'] === 'need_edit_half_bonus'
-          || questions['keep_edit_bonus']['answer'] === 'need_edit_full_bonus'
+        {(!!questions['keep_edit_bonus']['answer']
           ) && (
           <div>
             <Typography
               component="h3"
               variant="h3"
               className={classes.question}>
-              Please provide your suggestion for editing:
+              Your comment(s) or edit suggestion(s):
             </Typography>
             <TextField
               className={classes.editSuggestion}
@@ -159,7 +158,7 @@ class Evaluate extends React.Component {
 
 
         {/* if bonus reduced ask for the reason(s) */}
-        {(questions['keep_edit_bonus']['answer'] === 'need_edit_half_bonus'
+        {(questions['keep_edit_bonus']['answer'] === 'need_edit_zero_bonus'
           || questions['keep_edit_bonus']['answer'] === 'discard_no_bonus'
           ) && (
           <div>
@@ -223,6 +222,15 @@ class Evaluate extends React.Component {
                 })}
                 onClick={() => onSelect('bonus_reduction_reasons', 'too_similar_to_example')}>
                 Too similar to our example
+              </Button>
+
+              <Button
+                variant="contained"
+                className={classNames(classes.button, {
+                  'selected': questions['bonus_reduction_reasons']['answer'].indexOf('others (see comments)') >= 0,
+                })}
+                onClick={() => onSelect('bonus_reduction_reasons', 'others (see comments)')}>
+                Others (see comments)
               </Button>
             </div>
           </div>
@@ -391,7 +399,7 @@ class Evaluate extends React.Component {
               component="h3"
               variant="h3"
               className={classes.question}>
-              Does the input pair follow numeracy requirement?
+              Does the input pair follow numeracy requirement? (for time domain: select yes)
             </Typography>
 
             <div className={classes.buttonRow}>
