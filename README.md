@@ -1,6 +1,6 @@
-# Machine Common Sense Demo
+# Machine Common Sense Collection Web App
 
-This demo presents an interactive system for common sense reasoning that takes a pair of common sense statements (one true and one false) and determines which one is correct.
+This webapp is an interactive system for common sense reasoning that takes a pair of common sense statements (one true and one false) and determines which one is correct.
 
 Visit http://<TBA>.isi.edu/ for a live preview of the demo!
 
