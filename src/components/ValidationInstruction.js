@@ -12,6 +12,7 @@ import { Grid } from '@material-ui/core'
 
 import PhysicalCausalInstructions from './creationInstructions/physcial/causal/physicalCausalInstructions'
 import PhysicalComparisonInstructions from './creationInstructions/physcial/comparison/physicalComparisonInstructions'
+import PhysicalRelaxedNumeracyInstructions from './creationInstructions/physcial/physicalRelaxedNumeracyInstructions'
 
 import SocialCausalInstructions from './creationInstructions/social/causal/socialCausalInstructions'
 import SocialLongerComparisonInstructions from './creationInstructions/social/comparison/socialLongerComparisonInstructions'
@@ -74,6 +75,9 @@ class ValidationInstruction extends React.Component {
         'physical': {
           'cause-and-effect': <PhysicalCausalInstructions />,
           'comparison': <PhysicalComparisonInstructions />,
+        },
+        'numerical-physical': {
+          'relaxed': <PhysicalRelaxedNumeracyInstructions/>,
         },
         'social': {
           'cause-and-effect': <SocialCausalInstructions />,

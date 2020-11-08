@@ -17,7 +17,7 @@ const SCENARIOS = {
   'null': 'cause-and-effect',
   's1': 'cause-and-effect',
   's2': 'comparison',
-  's3': 'numeracy',
+  's3': 'relaxed',
 }
 
 const DOMAINS = {

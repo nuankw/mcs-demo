@@ -10,12 +10,12 @@ import { Grid } from '@material-ui/core'
 
 import PhysicalCausalInstructions from './creationInstructions/physcial/causal/physicalCausalInstructions'
 import PhysicalComparisonInstructions from './creationInstructions/physcial/comparison/physicalComparisonInstructions'
+import PhysicalRelaxedNumeracyInstructions from './creationInstructions/physcial/physicalRelaxedNumeracyInstructions'
 
 import SocialCausalInstructions from './creationInstructions/social/causal/socialCausalInstructions'
-// import SocialComparisonInstructions from './creationInstructions/social/comparison/socialComparisonInstructions'
+import SocialLongerComparisonInstructions from './creationInstructions/social/comparison/socialLongerComparisonInstructions'
 import SocialCausalNumeracyInstructions from './creationInstructions/social/causal/socialCausalNumeracyInstructions'
 import SocialComparisonNumeracyInstructions from './creationInstructions/social/comparison/socialComparisonNumeracyInstructions'
-import SocialLongerComparisonInstructions from './creationInstructions/social/comparison/socialLongerComparisonInstructions'
 
 import TimeCausalInstructions from './creationInstructions/temporal/causal/temporalCausalInstructions'
 import TimeComparisonDurationInstructions from './creationInstructions/temporal/comparison/temporalComparisonDurationInstructions'
@@ -76,26 +76,29 @@ class CreationInstructions extends React.Component {
 
   renderCategorySpecificInstruction(domain, scenario) {
     const domainScenarioInstructions = {
-      'physical': {
-        'cause-and-effect': <PhysicalCausalInstructions />,
-        'comparison': <PhysicalComparisonInstructions />,
-      },
-      'social': {
-        'cause-and-effect': <SocialCausalInstructions />,
-        'comparison': <SocialLongerComparisonInstructions />,
-      },
-      'numerical-social': {
-        'cause-and-effect': <SocialCausalNumeracyInstructions />,
-        'comparison': <SocialComparisonNumeracyInstructions />,
-      },
-      'time': {
-        'cause-and-effect': <TimeCausalInstructions />,
-      },
-      'time-duration': {
-        'comparison': <TimeComparisonDurationInstructions />,
-      },
-    }
-  return domainScenarioInstructions[domain][scenario]
+        'physical': {
+          'cause-and-effect': <PhysicalCausalInstructions />,
+          'comparison': <PhysicalComparisonInstructions />,
+        },
+        'numerical-physical': {
+          'relaxed': <PhysicalRelaxedNumeracyInstructions/>,
+        },
+        'social': {
+          'cause-and-effect': <SocialCausalInstructions />,
+          'comparison': <SocialLongerComparisonInstructions />,
+        },
+        'numerical-social': {
+          'cause-and-effect': <SocialCausalNumeracyInstructions />,
+          'comparison': <SocialComparisonNumeracyInstructions />,
+        },
+        'time': {
+          'cause-and-effect': <TimeCausalInstructions />,
+        },
+        'time-duration': {
+          'comparison': <TimeComparisonDurationInstructions />,
+        },
+      }
+    return domainScenarioInstructions[domain][scenario]
   }
 
   render() {
@@ -120,7 +123,7 @@ class CreationInstructions extends React.Component {
                   <div className={classes.instructions}>
 
                     <Typography>
-                      <b>Welcome!</b> In this section we provide the details for the domain &
+                      <b>Welcome!</b> In this section, we provide the details for the domain &
                       scenario along with examples and other tips to better
                       assist you with this task. We will show an estimate
                       of your earnings after you submit. <p style={{'color':'darkred'}}>
