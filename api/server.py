@@ -791,7 +791,7 @@ def get_eval():
                     }
                 }]}
             ]
-        }, sort=[('num_val', ASCENDING), ('time_stamp', ASCENDING)])
+        }, sort=[('time_stamp', ASCENDING), ('num_val', ASCENDING)])
 
     if not data:
         return jsonify({
