@@ -1,0 +1,30 @@
+[
+    {
+        "sent_1": "It's probably easier to get a kite to fly in the air than a small dog",
+        "sent_2": "It's probably easier to get a small dog to fly in the air than a kite",
+        "label_1": "True",
+        "label_2": "False",
+        "pred_1": "True",
+        "pred_2": "True",
+        "domain": "physical",
+        "scenario": "comparison"
+    }, {
+        "sent_1": "If you lose your right arm, it is better to use your left arm to open a box.",
+        "sent_2": "If you lose your left arm, it is better to use your left arm to open a box.",
+        "label_1": "True",
+        "label_2": "False",
+        "pred_1": "False",
+        "pred_2": "False",
+        "domain": "physical",
+        "scenario": "comparison"
+    }, {
+        "sent_1": "It is easier to open a door with a key than with a hammer.",
+        "sent_2": "It is easier to open a door with a hammer than with a key.",
+        "label_1": "True",
+        "label_2": "False",
+        "pred_1": "True",
+        "pred_2": "True",
+        "domain": "physical",
+        "scenario": "comparison"
+    }
+]

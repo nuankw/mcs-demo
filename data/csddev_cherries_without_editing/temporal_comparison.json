@@ -1,0 +1,30 @@
+[
+    {
+        "sent_1": "Since the reception will start in a few hours, Austin decides to improvise his best man speech instead of writing some notes. ",
+        "sent_2": "Since the reception will start in a few hours, Austin decides to writing some notes instead of improvising his best man speech.  ",
+        "label_1": "False",
+        "label_2": "True",
+        "pred_1": "True",
+        "pred_2": "True",
+        "domain": "time",
+        "scenario": "comparison"
+    }, {
+        "sent_1": "Because the sunflowers are meant to bloom in the month of July, I will plant the seeds in March to give them time to grow.",
+        "sent_2": "Because the sunflowers are meant to bloom in the month of July, I will plant them in July to give then time to grow.",
+        "label_1": "True",
+        "label_2": "False",
+        "pred_1": "False",
+        "pred_2": "True",
+        "domain": "time",
+        "scenario": "comparison"
+    }, {
+        "sent_1": "As Gina has a date tonight, she will work in her garden in the morning and go to the beauty salon in the afternoon.",
+        "sent_2": "As Gina has a date tonight, she will go to the beauty salon in the morning and work in her garden in the afternoon.",
+        "label_1": "True",
+        "label_2": "False",
+        "pred_1": "False",
+        "pred_2": "False",
+        "domain": "time",
+        "scenario": "comparison"
+    }
+]

@@ -1,0 +1,30 @@
+[
+    {
+        "sent_1": "With all of the apartments rented, she won't be able to move in in 1 month.",
+        "sent_2": "With all of the apartments vacant, she won't be able to move in in 1 month.",
+        "label_1": "True",
+        "label_2": "False",
+        "pred_1": "True",
+        "pred_2": "True",
+        "domain": "social_numeracy",
+        "scenario": "causal"
+    }, {
+        "sent_1": "Being 10 short of her goal, Linda would be delighted to sell 20 more packages of Girl Scout Cookies. ",
+        "sent_2": "Being 10 short or her goal, Linda would be delighted to sell 2 more packages of Girl Scout Cookies.",
+        "label_1": "True",
+        "label_2": "False",
+        "pred_1": "False",
+        "pred_2": "True",
+        "domain": "social_numeracy",
+        "scenario": "causal"
+    }, {
+        "sent_1": "Frank was able to find his favorite socks easily among the other sixty five pairs in his drawer.",
+        "sent_2": "Frank was able to find his favorite socks easily among the other three pairs in his drawer.",
+        "label_1": "False",
+        "label_2": "True",
+        "pred_1": "True",
+        "pred_2": "True",
+        "domain": "social_numeracy",
+        "scenario": "causal"
+    }
+]

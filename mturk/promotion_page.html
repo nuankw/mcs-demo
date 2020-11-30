@@ -1,0 +1,84 @@
+<!-- You must include this JavaScript file -->
+<script src="https://assets.crowd.aws/crowd-html-elements.js"></script>
+
+<!-- For the full list of available Crowd HTML Elements and their input/output documentation,
+      please refer to https://docs.aws.amazon.com/sagemaker/latest/dg/sms-ui-template-reference.html -->
+<style>
+  crowd-radio-button.multi-line {
+    /* margin: 3px; */
+    padding-bottom: 0px;
+  }
+</style>
+
+<!-- You must include crowd-form so that your task submits answers to MTurk -->
+<crowd-form answer-format="flatten-objects">
+
+  <!-- The Head -->
+  <div>
+    <h2 style="padding-left: 0.5em;">Invitation to our Common Sense Reasoning HITs</h2>
+    <h4 style="padding-left: 1em;">
+        Welcome! We'd like to promote our HITs on challenging
+        AI's common sense.
+    </h4>
+    <h3 style="padding-left: 1em;">
+        You may access these HITs here: <a target="_blank" href="https://worker.mturk.com/?filters%5Bsearch_term%5D=violet+peng+common+sense&page_size=100&filters%5Bqualified%5D=false&filters%5Bmasters%5D=false&sort=reward_desc&filters%5Bmin_reward%5D=0">MTurk Page Search Result</a>.
+    </h3>
+    <p style="padding-left: 1em;">
+        According to the feedback we received from previous workers,
+        they think these tasks are fun (the goal is to write sentences that fool the AI)
+        and well-paid (~$2 in 10 mins).
+        <br/><br/>
+        However, as there is a qualification quiz for all our HITs,
+        we found that MTurkers could easily miss
+        the chance to participate if they keep the filter option
+        "I'm qualified to work on" on when searching for HITs to do.
+    </p>
+
+    <div style="padding-left: 3em;">
+        <figure>
+            <img alt="screenshot.png" src="https://i.ibb.co/C00ZvF9/promotion-hit.png" style="width: 70%; padding-top: 0.7em;" />
+            <figcaption>A screenshot of our web interface.</figcaption>
+        </figure>
+    </div>
+
+
+    <hr/>
+
+    <div style="padding-left: 1em;">
+        <p>
+            We sincerely invite you to check out these HITs following the link above. <br/>
+            If you decide to take them, please answer the survey questions below and submit this HIT.
+            <br/>
+            You will receive $0.01 for doing so.
+            Please notice that your answers would not affect any payments you receive from us.
+        </p>
+
+        <p>
+            For any other questions or clarification,
+            please feel free to reach us at <a href="mailto: mcspluslab@gmail.com" target="_blank">mcspluslab@gmail.com</a> with your worker ID.
+        </p>
+
+        <h4>
+            Q1: Please indicate your gender.
+        </h4>
+        <crowd-radio-group>
+            <crowd-radio-button class="multi-line" name="gender-1" value="1"><b>Male</b></crowd-radio-button>
+            <crowd-radio-button class="multi-line" name="gender-2" value="2"><b>Female</b></crowd-radio-button>
+            <crowd-radio-button class="multi-line" name="gender-3" value="3"><b>Other</b></crowd-radio-button>
+            <crowd-radio-button class="multi-line" name="gender-4" value="4"><b>I prefer to not state.</b></crowd-radio-button>
+        </crowd-radio-group>
+
+        <h4>
+            Q2: In the future, we will publish more HITs the same as what you find in the search result link above.
+            <br/>
+            Will you be interested in taking those as well?
+            (please bookmark the search result page if so!)
+        </h4>
+        <crowd-radio-group>
+            <crowd-radio-button class="multi-line" name="more-tasks-1" value="1"><b>Yes, I like these HITs and will do more.</b></crowd-radio-button>
+            <crowd-radio-button class="multi-line" name="more-tasks-2" value="2"><b>Maybe</b></crowd-radio-button>
+            <crowd-radio-button class="multi-line" name="more-tasks-3" value="3"><b>No</b></crowd-radio-button>
+        </crowd-radio-group>
+        <p></p>
+    </div>
+</crowd-form>

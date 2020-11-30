@@ -1,0 +1,30 @@
+[
+    {
+        "sent_1": "If you do not have an ice cube tray you could use a muffin tin to make ice.",
+        "sent_2": "If you did not have an ice cube tray you could use a fork to make ice.",
+        "label_1": "True",
+        "label_2": "False",
+        "pred_1": "False",
+        "pred_2": "False",
+        "domain": "physical",
+        "scenario": "causal"
+    }, {
+        "sent_1": "Jen just finished swimming in her pool so she used a towel to dry herself off.",
+        "sent_2": "Jen just finished swimming in her pool so she used a paper towel to dry herself off.",
+        "label_1": "True",
+        "label_2": "False",
+        "pred_1": "True",
+        "pred_2": "True",
+        "domain": "physical",
+        "scenario": "causal"
+    }, {
+        "sent_1": "If you need paint to dry you can use a fan.",
+        "sent_2": "If you need paint to dry you can use a flashlight.",
+        "label_1": "True",
+        "label_2": "False",
+        "pred_1": "False",
+        "pred_2": "False",
+        "domain": "physical",
+        "scenario": "causal"
+    }
+]

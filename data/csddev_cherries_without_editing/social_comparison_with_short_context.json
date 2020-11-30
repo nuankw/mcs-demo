@@ -1,0 +1,30 @@
+[
+    {
+        "sent_1": "Sonja's family works in the construction industry while Chris's father is an accountant so Sonja is more likely to know more about buildings",
+        "sent_2": "Sonja's family works in the construction industry while Chris's father is an accountant so Chris is more likely to know more about buildings",
+        "label_1": "True",
+        "label_2": "False",
+        "pred_1": "False",
+        "pred_2": "False",
+        "domain": "social",
+        "scenario": "comparison"
+    }, {
+        "sent_1": "Andrew and Tony are roommates. Andrew works from home, while Tony has to commute to work early in the morning. Therefore, Tony is more likely to eat breakfast outside. ",
+        "sent_2": "Andrew and Tony are roommates. Andrew works from home, while Tony has to commute to work early in the morning. Therefore, Tony is less likely to eat breakfast outside. ",
+        "label_1": "True",
+        "label_2": "False",
+        "pred_1": "False",
+        "pred_2": "True",
+        "domain": "social",
+        "scenario": "comparison"
+    }, {
+        "sent_1": "Alice is a neurosurgeon and Cole is a dog walker, so it is more likely that Alice has spent more time in school. ",
+        "sent_2": "Alice is a neurosurgeon and Cole is a dog walker, so it is more likely that Cole has spent more time in school. ",
+        "label_1": "True",
+        "label_2": "False",
+        "pred_1": "False",
+        "pred_2": "False",
+        "domain": "social",
+        "scenario": "comparison"
+    }
+]
