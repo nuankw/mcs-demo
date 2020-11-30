@@ -96,11 +96,11 @@ class TemporalCausalInstructions extends React.Component {
 
                 <li style={{'paddingBottom': '0.3em'}}>
                   <b style={{'color': 'darkgreen'}}>[True]</b>&nbsp;&nbsp;
-                    The GPS shows taking back roads will take <b>20 minutes</b> and I want to stop for food,
-                    so I can make it in time for the game in <b>10 minutes</b>.
-                  <br/><b style={{'color': 'darkred'}}>[False]</b>&nbsp;
                     The GPS shows taking back roads will take <b>5 minutes</b> and I want to stop for food,
                     so I can make it in time for the game in <b>20 minutes</b>.
+                  <br/><b style={{'color': 'darkred'}}>[False]</b>&nbsp;
+                    The GPS shows taking back roads will take <b>20 minutes</b> and I want to stop for food,
+                    so I can make it in time for the game in <b>10 minutes</b>.
                 </li>
 
                 <li style={{'paddingBottom': '0.3em'}}>

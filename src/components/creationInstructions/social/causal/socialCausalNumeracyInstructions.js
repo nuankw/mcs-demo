@@ -83,7 +83,7 @@ class SocialCausalNumeracyInstructions extends React.Component {
                     Sara was <b>thrilled</b> to see <u>forty</u> customers.
                   <br/><b style={{'color': 'darkred'}}>[False]</b>&nbsp;
                     Expecting <u>twenty</u> people at her restaurant's opening,
-                    Sara was <b>disappointed</b> to see <u>two</u> customers.
+                    Sara was <b>thrilled</b> to see <u>two</u> customers.
                 </li>
 
                 <li style={{'paddingBottom': '0.3em'}}>
