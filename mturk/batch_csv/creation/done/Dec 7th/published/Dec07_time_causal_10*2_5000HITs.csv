@@ -1,0 +1,3 @@
+domain,scenario,how_many_days,base_pay,sentence_bonus,eg_true_1,eg_true_2,eg_false_1,eg_false_2
+time,cause & effect,10,$0.60,$0.50,As she has to be at work <b> in 3 minutes</b>,she <b>does not</b> have time for coffee,As she has to be at work <b> in an hour</b>,she <b>does not</b> have time for coffee
+time,cause & effect,10,$0.60,$0.50,As she has to be at work <b> in 3 minutes</b>,she <b>does not</b> have time for coffee,As she has to be at work <b> in an hour</b>,she <b>does not</b> have time for coffee

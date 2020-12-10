@@ -20,7 +20,7 @@ import SocialCausalNumeracyInstructions from './creationInstructions/social/caus
 import SocialComparisonNumeracyInstructions from './creationInstructions/social/comparison/socialComparisonNumeracyInstructions'
 
 import TimeCausalInstructions from './creationInstructions/temporal/causal/temporalCausalInstructions'
-import TimeComparisonDurationInstructions from './creationInstructions/temporal/comparison/temporalComparisonDurationInstructions'
+import TimeComparisonInstructions from './creationInstructions/temporal/comparison/temporalComparisonInstructions'
 
 const styles = theme => ({
   root: {
@@ -89,9 +89,7 @@ class ValidationInstruction extends React.Component {
         },
         'time': {
           'cause-and-effect': <TimeCausalInstructions />,
-        },
-        'time-duration': {
-          'comparison': <TimeComparisonDurationInstructions />,
+          'comparison': <TimeComparisonInstructions />,
         },
       }
     return domainScenarioInstructions[domain][scenario]

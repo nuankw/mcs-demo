@@ -1,0 +1,2 @@
+domain,scenario,how_many_days,base_pay,sentence_bonus,eg_true_1,eg_true_2,eg_false_1,eg_false_2
+physical,cause & effect,10,$0.60,$0.50,Since she didn't have a safety pin,she could try to pierce the wrapper with a <b>pen</b>,Since she didn't have a safety pin,she could try to pierce the wrapper with a <b>bottle</b>

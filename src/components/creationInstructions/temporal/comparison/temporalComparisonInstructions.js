@@ -24,7 +24,7 @@ const styles = theme => ({
 })
 
 
-class TemporalComparisonDurationInstructions extends React.Component {
+class temporalComparisonInstructions extends React.Component {
 
   // PILOT ROUND VERSION
   render() {
@@ -40,8 +40,8 @@ class TemporalComparisonDurationInstructions extends React.Component {
               <ul>
                 <li style={{fontSize: '1.2em'}}>
                   <mark style={{backgroundColor: 'rgb(195, 195, 140)'}}>
-                    <b>Time</b>: For now, we ask you to focus on common sense
-                    regarding <b><u>scheduling activities and their durations</u></b>.
+                    <b>Time</b>: Focuses on common sense
+                    regarding <b><u>scheduling activities</u></b> and <b><u> temporal attributes</u></b> of those activities.
                   </mark>
                 </li>
                 <li style={{fontSize: '1.2em'}}>
@@ -60,6 +60,14 @@ class TemporalComparisonDurationInstructions extends React.Component {
                   Examples
               </li>
               <ul>
+
+                <li style={{'paddingBottom': '0.3em'}}>
+                  <b style={{'color': 'darkgreen'}}>[True]</b>&nbsp;&nbsp;
+                    It is <span style={{color: "#003c64"}}><b>about dinner time</b> and I feel hungry</span>, so I will <u style={{color: "#3C7373"}}>start cooking in a few minutes</u> rather than <u style={{color: "#3C7373"}}>tomorrow</u>.
+                  <br/><b style={{'color': 'darkred'}}>[False]</b>&nbsp;
+                  It is <span style={{color: "#003c64"}}><b>about dinner time</b> and I feel hungry</span>, so I will <u style={{color: "#3C7373"}}>start cooking tomorrow</u> rather than <u style={{color: "#3C7373"}}>in a few minutes</u>.
+                </li>
+
                 <li style={{'paddingBottom': '0.3em'}}>
                   <b style={{'color': 'darkgreen'}}>[True]</b>&nbsp;&nbsp;
                     Since Jim must attend an <span style={{color: "#003c64"}}>in-person meeting <b>in the early afternoon</b></span>, he would reschedule his <u style={{color: "#3C7373"}}>flight at noon</u> instead of his <u style={{color: "#3C7373"}}>morning dentist appointment</u>.
@@ -67,12 +75,6 @@ class TemporalComparisonDurationInstructions extends React.Component {
                     Since Jim must attend an <span style={{color: "#003c64"}}>in-person meeting <b>in the morning</b></span>, he would reschedule his <u style={{color: "#3C7373"}}>flight at noon</u> instead of his <u style={{color: "#3C7373"}}>morning dentist appointment</u>.
                 </li>
 
-                <li style={{'paddingBottom': '0.3em'}}>
-                  <b style={{'color': 'darkgreen'}}>[True]</b>&nbsp;&nbsp;
-                    Given that his <span style={{color: "#003c64"}}>favorite TV show is about to broadcast <b>in a few minutes</b></span>, he would go out to <u style={{color: "#3C7373"}}>dispose of trash</u> instead of <u style={{color: "#3C7373"}}>walking the dog</u>.
-                  <br/><b style={{'color': 'darkred'}}>[False]</b>&nbsp;
-                    Given that his <span style={{color: "#003c64"}}>favorite TV show is about to broadcast <b>in a few minutes</b></span>, he would go out to <u style={{color: "#3C7373"}}>walk the dog</u> instead of <u style={{color: "#3C7373"}}>disposing of trash</u>.
-                </li>
 
                 <li style={{'paddingBottom': '0.3em'}}>
                   <b style={{'color': 'darkgreen'}}>[True]</b>&nbsp;&nbsp;
@@ -87,6 +89,19 @@ class TemporalComparisonDurationInstructions extends React.Component {
                     With <span style={{color: "#003c64"}}>the gala starting <b>in half an hour</b></span>, Sara will <u style={{color: "#3C7373"}}>do a rushed hairstyle herself</u> rather than <u style={{color: "#3C7373"}}>visit a hairstylist</u>.
                   <br/><b style={{'color': 'darkred'}}>[False]</b>&nbsp;
                     With <span style={{color: "#003c64"}}>the gala starting <b>in a few hours</b></span>, Sara will <u style={{color: "#3C7373"}}>do a rushed hairstyle herself</u> rather than <u style={{color: "#3C7373"}}>visit a hairstylist</u>.
+                </li>
+
+                <li style={{'paddingBottom': '0.3em'}}>
+                  <b style={{'color': 'darkgreen'}}>[True]</b>&nbsp;&nbsp;
+                    To <span style={{color: "#003c64"}}>keep the audience interested in the <b>2-hour</b> show</span>,
+                    it is better to <u style={{color: "#3C7373"}}>set
+                    commercial breaks to appear every half an hour</u> than <u style={{color: "#3C7373"}}>every
+                    other minute</u>.
+                  <br/><b style={{'color': 'darkred'}}>[False]</b>&nbsp;
+                    To <span style={{color: "#003c64"}}>keep the audience interested in the <b>2-hour</b> show</span>,
+                    it is better to <u style={{color: "#3C7373"}}>set
+                    commercial breaks to appear every other minute</u> than <u style={{color: "#3C7373"}}>every
+                    half an hour</u>.
                 </li>
               </ul>
 
@@ -115,4 +130,4 @@ class TemporalComparisonDurationInstructions extends React.Component {
 }
 
 
-export default withStyles(styles)(TemporalComparisonDurationInstructions)
+export default withStyles(styles)(temporalComparisonInstructions)
