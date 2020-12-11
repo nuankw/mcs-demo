@@ -838,6 +838,8 @@ def get_eval():
     return jsonify({
         'status': 'ok',
         'id': '_'.join([str(data['_id']), str(another_data['_id'])]),
+        'worker_id': data['worker_id'],
+        'time_stamp': data['time_stamp'],
         "one_input_pair": {
             1: {"input": another_data['input'], "output": another_data['output'], "label": another_data['label'],
                 "score": another_data['score']},

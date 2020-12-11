@@ -58,7 +58,7 @@ const styles = theme => ({
     fontWeight: "bold",
   },
   progress: {
-    fontSize: theme.spacing(4),
+    fontSize: theme.spacing(3),
   },
   linebreak: {
     textAlign: 'left',
@@ -124,6 +124,8 @@ class Validation extends React.Component {
       editSuggestion: '',
       evalCount: 1,
       evalQuestions,
+      worker_id: '',
+      time_stamp: '',
     }
   }
 
@@ -144,6 +146,8 @@ class Validation extends React.Component {
         this.setState({
           dataID: data['id'],
           one_input_pair:data['one_input_pair'],
+          time_stamp: data['time_stamp'],
+          worker_id: data['worker_id'],
         })
       }
     })
@@ -233,6 +237,8 @@ class Validation extends React.Component {
       one_input_pair,
       evalQuestions,
       editSuggestion,
+      time_stamp,
+      worker_id,
     } = this.state
 
     const enableNext = (
@@ -279,7 +285,8 @@ class Validation extends React.Component {
           <Typography
             component="h3"
             variant="h3">
-            <p className={classes.progress}> Reviewing {evalCount} out of {REQUIRED_NUM_EVALUATIONS} statements. </p>
+            <p className={classes.progress}> Reviewing {evalCount} out of {REQUIRED_NUM_EVALUATIONS} statements.
+            <br/>Worker: {worker_id}<br/>Creation Time: {time_stamp}</p>
           </Typography>
 
           <Grid item xs={12}>
