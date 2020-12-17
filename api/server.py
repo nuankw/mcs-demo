@@ -266,14 +266,14 @@ def get_system_output(system, all_statements):
     for statement in all_statements:
         for idx, text in statement.items():  # maybe add pre-processing later
             # Tokenized format: [CLS] [text] [PAD]
-            tokens = [tokenizer.cls_token]
-            tokens += tokenizer.tokenize(text)
-
-            inputs = tokenizer.encode_plus(text=tokens,
-                                           padding='max_length',
-                                           max_length=max_length,
-                                           add_special_tokens=False,
-                                           return_attention_mask=True)
+            # [CLS] token
+            cls = tokenizer.cls_token
+            text = f'{cls} {text}'
+            inputs = tokenizer(text=text,
+                               padding='max_length',
+                               max_length=max_length,
+                               add_special_tokens=False,
+                               return_attention_mask=True)
 
             if 'num_truncated_tokens' in inputs and inputs['num_truncated_tokens'] > 0:
                 logger.info('Attention! you are cropping tokens (swag task is ok).')
