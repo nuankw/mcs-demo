@@ -63,7 +63,7 @@ SYSTEMS = {
     'system_1': {
         'system_name': 'roberta',
         'model_name': 'roberta-large',
-        'model_path': 'models/ep_13_16k_acc_87.2984_roberta_large.pth',
+        'model_path': 'models/ep_41_stp_2.3k_acc_65.5134_roberta_large.pth',
         'num_cls': 2,
         'tokenizer': None,
         'device': None,
