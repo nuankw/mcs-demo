@@ -90,13 +90,13 @@ class Evaluate extends React.Component {
     return (
       <div className={classes.root}>
 
-        {/* Should we keep this input pair? Is editting required? How much bonus? */}
+        {/* Should we keep this input pair? Is editing required? How much bonus? */}
         <div>
           <Typography
               component="h3"
               variant="h3"
               className={classes.question}>
-              Should we keep this input pair? Is editting required? How much bonus?
+              Should we keep this input pair? Is editing required? How much bonus?
           </Typography>
           <div className={classes.buttonRow}>
             <Button
