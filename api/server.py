@@ -855,14 +855,16 @@ def get_eval():
 @app.route('/set_eval', methods=['POST'])
 def set_eval():
     ques_ans = {}
-    ques_keys = ['keep_edit_bonus',
-                 'bonus_reduction_reasons',
-                 'how_much_like',
-                 'label_check',
-                 'domain_check',
-                 'scenario_check',
-                 'numeracy_check',
-                 'edit_suggestion']
+    ques_keys = [
+        'discard',
+        'bonus',
+        'edit',
+        'label_check',
+        'domain_check',
+        'scenario_check',
+        'recommend_reason',
+        'edit_suggestion'
+    ]
     for question in ques_keys:
         ques_ans[question] = request.json.get(question)
 

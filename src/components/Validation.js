@@ -73,33 +73,28 @@ const styles = theme => ({
 
 const REQUIRED_NUM_EVALUATIONS = 1000
 
-
 const EVAL_QUESTIONS = {
-  'keep_edit_bonus': {
+  'discard': {
     'type': 'single',
-    'answer': '',
+    'answer': '', // 'yes' or 'no'
   },
-  'bonus_reduction_reasons': {
-    'type': 'multiple',
-    'answer': [],
-  },
-  'how_much_like': {
+  'bonus': {
     'type': 'single',
-    'answer': '',
+    'answer': '', // 'full', 'basic' or 'zero'
+  },
+  'edit': {
+    'type': 'single',
+    'answer': '', // 'yes' or 'no'
   },
   'label_check': {
     'type': 'single',
-    'answer': '',
+    'answer': '', // 'correct', 'flipped', 'both_true', 'both_false'
   },
   'domain_check': {
     'type': 'multiple',
     'answer': [],
   },
   'scenario_check': {
-    'type': 'single',
-    'answer': '',
-  },
-  'numeracy_check': {
     'type': 'single',
     'answer': '',
   },
@@ -114,7 +109,7 @@ class Validation extends React.Component {
     const evalQuestions = JSON.parse(JSON.stringify(EVAL_QUESTIONS))
 
     this.state = {
-      dataID: null,
+      dataID: '',
       one_input_pair: {
         1: { input: '', output: null, label: null, score: null},
         2: { input: '', output: null, label: null, score: null},
@@ -122,6 +117,7 @@ class Validation extends React.Component {
       domain: '',
       scenario: '',
       editSuggestion: '',
+      recommendReason: '',
       evalCount: 1,
       evalQuestions,
       worker_id: '',
@@ -164,6 +160,7 @@ class Validation extends React.Component {
           evalQuestions: JSON.parse(JSON.stringify(EVAL_QUESTIONS)),
           evalCount: evalCount + 1,
           editSuggestion: '',
+          recommendReason: '',
         })
       )
     }
@@ -196,7 +193,7 @@ class Validation extends React.Component {
   }
 
   handleOnNext() {
-    const { dataID, evalQuestions, editSuggestion } = this.state
+    const { dataID, evalQuestions, editSuggestion, recommendReason } = this.state
     fetch('/set_eval', {
       method: 'POST',
       headers: {
@@ -204,14 +201,14 @@ class Validation extends React.Component {
       },
       body: JSON.stringify({
         'dataID': dataID,
-        'keep_edit_bonus': evalQuestions['keep_edit_bonus']['answer'],
-        'bonus_reduction_reasons': evalQuestions['bonus_reduction_reasons']['answer'],
-        'how_much_like': evalQuestions['how_much_like']['answer'],
+        'discard': evalQuestions['discard']['answer'],// 'yes' or 'no'
+        'bonus': evalQuestions['bonus']['answer'],// 'full', 'basic' or 'zero'
+        'edit': evalQuestions['edit']['answer'],// 'yes' or 'no'
         'label_check': evalQuestions['label_check']['answer'],
         'domain_check': evalQuestions['domain_check']['answer'],
         'scenario_check': evalQuestions['scenario_check']['answer'],
-        'numeracy_check': evalQuestions['numeracy_check']['answer'],
         'edit_suggestion': editSuggestion,
+        'recommend_reason': recommendReason,
       }),
     })
     .then(response => response.json())
@@ -230,6 +227,10 @@ class Validation extends React.Component {
     this.setState({editSuggestion: suggestion})
   }
 
+  handleOnChangeRecommendReason(reason_comment) {
+    this.setState({recommendReason: reason_comment})
+  }
+
   render() {
     const { classes, domain, scenario, bonus, mode } = this.props
     const {
@@ -237,32 +238,27 @@ class Validation extends React.Component {
       one_input_pair,
       evalQuestions,
       editSuggestion,
+      recommendReason,
       time_stamp,
       worker_id,
+      dataID
     } = this.state
 
     const enableNext = (
-      (
-        (evalQuestions['keep_edit_bonus'].answer === 'no_edit_full_bonus'
-          || (evalQuestions['keep_edit_bonus'].answer === 'need_edit_full_bonus'
-              && !!editSuggestion))
-        && !!evalQuestions['how_much_like'].answer
+      // 1. not discard
+      evalQuestions['discard'].answer === 'no'
+      && !!evalQuestions['bonus'].answer
+      && ((
+        evalQuestions['edit'].answer === 'no'
         && !!evalQuestions['label_check'].answer
         && evalQuestions['domain_check'].answer.length >= 1
-        && evalQuestions['scenario_check'].answer.length >= 1
-        && !!evalQuestions['numeracy_check'].answer
+        && !!evalQuestions['scenario_check'].answer
       ) || (
-        evalQuestions['keep_edit_bonus'].answer === 'need_edit_zero_bonus'
-         && !!editSuggestion
-         && evalQuestions['bonus_reduction_reasons'].answer.length >= 1
-         && !!evalQuestions['label_check'].answer
-         && evalQuestions['domain_check'].answer.length >= 1
-         && evalQuestions['scenario_check'].answer.length >= 1
-         && !!evalQuestions['numeracy_check'].answer
-      ) || (
-        evalQuestions['keep_edit_bonus'].answer === 'discard_no_bonus'
-         && evalQuestions['bonus_reduction_reasons'].answer.length >= 1
-      )
+        evalQuestions['edit'].answer === 'yes'
+      ))
+    )|| (
+      // . discard
+      evalQuestions['discard'].answer === 'yes'
     )
 
     return (
@@ -286,7 +282,7 @@ class Validation extends React.Component {
             component="h3"
             variant="h3">
             <p className={classes.progress}> Reviewing {evalCount} out of {REQUIRED_NUM_EVALUATIONS} statements.
-            <br/>Worker: {worker_id}<br/>Creation Time: {time_stamp}</p>
+            <br/>Worker: {worker_id}<br/>Creation Time: {time_stamp}<br/>Data ID: {dataID}</p>
           </Typography>
 
           <Grid item xs={12}>
@@ -300,8 +296,10 @@ class Validation extends React.Component {
               <UserEval
                 questions={evalQuestions}
                 editSuggestion={editSuggestion}
+                recommendReason={recommendReason}
                 onSelect={this.handleOnSelect.bind(this)}
-                onChange={this.handleOnChangeEditSuggestion.bind(this)}
+                onEditSuggestionChange={this.handleOnChangeEditSuggestion.bind(this)}
+                onRecommendReasonChange={this.handleOnChangeRecommendReason.bind(this)}
               />
             )}
           </Grid>

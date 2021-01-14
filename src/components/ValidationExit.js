@@ -10,9 +10,9 @@ const styles = theme => ({
     padding: theme.spacing(3, 3, 15, 3),
     '@media (min-width:600px)': {
       padding: theme.spacing(5),
-      width: '60vw',
-      left: '20vw',
-      top: '20vh',
+      width: '70vw',
+      left: '15vw',
+      top: '15vh',
     },
     boxShadow: '0px 3px 5px -1px rgba(0,0,0,0.2), 0px 6px 10px 0px rgba(0,0,0,0.14), 0px 1px 18px 0px rgba(0,0,0,0.12)',
     background: 'rgb(34 60 95)',

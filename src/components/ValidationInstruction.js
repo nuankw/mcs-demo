@@ -11,12 +11,13 @@ import { Grid } from '@material-ui/core'
 
 
 import PhysicalCausalInstructions from './creationInstructions/physcial/causal/physicalCausalInstructions'
+import PhysicalCausalNumeracyInstructions from './creationInstructions/physcial/causal/physicalCausalNumeracyInstructions'
 import PhysicalComparisonInstructions from './creationInstructions/physcial/comparison/physicalComparisonInstructions'
-import PhysicalRelaxedNumeracyInstructions from './creationInstructions/physcial/physicalRelaxedNumeracyInstructions'
+import PhysicalComparisonlNumeracyInstructions from './creationInstructions/physcial/comparison/physicalComparisonNumeracyInstructions'
 
 import SocialCausalInstructions from './creationInstructions/social/causal/socialCausalInstructions'
-import SocialLongerComparisonInstructions from './creationInstructions/social/comparison/socialLongerComparisonInstructions'
 import SocialCausalNumeracyInstructions from './creationInstructions/social/causal/socialCausalNumeracyInstructions'
+import SocialComparisonInstructions from './creationInstructions/social/comparison/socialComparisonInstructions'
 import SocialComparisonNumeracyInstructions from './creationInstructions/social/comparison/socialComparisonNumeracyInstructions'
 
 import TimeCausalInstructions from './creationInstructions/temporal/causal/temporalCausalInstructions'
@@ -77,11 +78,12 @@ class ValidationInstruction extends React.Component {
           'comparison': <PhysicalComparisonInstructions />,
         },
         'numerical-physical': {
-          'relaxed': <PhysicalRelaxedNumeracyInstructions/>,
+          'cause-and-effect': <PhysicalCausalNumeracyInstructions/>,
+          'comparison': <PhysicalComparisonlNumeracyInstructions/>,
         },
         'social': {
           'cause-and-effect': <SocialCausalInstructions />,
-          'comparison': <SocialLongerComparisonInstructions />,
+          'comparison': <SocialComparisonInstructions />,
         },
         'numerical-social': {
           'cause-and-effect': <SocialCausalNumeracyInstructions />,
