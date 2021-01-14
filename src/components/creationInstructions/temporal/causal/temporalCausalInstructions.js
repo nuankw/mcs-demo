@@ -38,14 +38,15 @@ class TemporalCausalInstructions extends React.Component {
               </li>
               <ul>
                 <li><mark style={{backgroundColor: 'rgb(195, 195, 140)'}}>
-                  <b>Time</b>: Knowledge regarding
+                  <b>Time</b></mark>: Knowledge regarding
                     scheduling activities (<b>"when", "how often", "before/after", etc.</b>) and their typical durations (<b>"how long"</b>).
-                </mark></li>
+                    <br/><i style={{color: "brown"}}>For time domain, it is up to you whether to include numeracy or not.</i>
+                </li>
 
                 <li><mark style={{backgroundColor: 'rgb(195, 195, 140)'}}>
-                  <b>Cause & Effect</b>: <u>Answers the “why” question</u> or <u>predicts what is likely to happen next</u> (<b>effect</b>),
+                  <b>Cause & Effect</b></mark>: <u>Answers the “why” question</u> or <u>predicts what is likely to happen next</u> (<b>effect</b>),
                     given an event that has occurred (<b>cause</b>).
-                </mark></li>
+                </li>
               </ul>
 
               <li className={classes.head}>
@@ -59,75 +60,71 @@ class TemporalCausalInstructions extends React.Component {
               <ul>
                 <li style={{'paddingBottom': '0.3em'}}>
                   <b style={{'color': 'darkgreen'}}>[True]</b>&nbsp;&nbsp;
-                    As she has to be at work <b> in 3 minutes</b>,
-                    she <b>does not</b> have time for coffee.
+                    As the <b>summer</b> is approaching, the nights become shorter.
                   <br/><b style={{'color': 'darkred'}}>[False]</b>&nbsp;
-                    As she has to be at work <b> in an hour</b>,
-                    she <b>does not</b> have time for coffee.
+                    As the <b>winter</b> is approaching, the nights become shorter.
                 </li>
 
                 <li style={{'paddingBottom': '0.3em'}}>
                   <b style={{'color': 'darkgreen'}}>[True]</b>&nbsp;&nbsp;
-                    Since Tim has to pick up his kid <b> in 10 minutes</b>,
-                    he will start cooking dinner <b>when they get home</b>.
+                  I usually wake up around <b>8 am</b>, so I have <b>few</b> chances to see the sunrise.
                   <br/><b style={{'color': 'darkred'}}>[False]</b>&nbsp;
-                    Since Tim has to pick up his kid <b> in 10 minutes</b>,
-                    he will start cooking dinner <b>now</b>.
+                  I usually wake up around <b>8 am</b>, so I have <b>many</b> chances to see the sunrise.
                 </li>
 
                 <li style={{'paddingBottom': '0.3em'}}>
                   <b style={{'color': 'darkgreen'}}>[True]</b>&nbsp;&nbsp;
-                    Because the popcorn has been sitting in the maker <b>for two hours</b>,
-                    it will be <b>cold</b> by the time you eat it.
+                  Peter planned to finish this project by the <b>end of this month</b> but got delayed,
+                  so it's possible for him to set a new deadline to be the <b>end of next month</b>.
                   <br/><b style={{'color': 'darkred'}}>[False]</b>&nbsp;
-                    Because the popcorn has been sitting in the maker <b>for two hours</b>,
-                    it will be <b>hot</b> by the time you eat it.
+                  Peter planned to finish this project by the <b>end of next month</b> but got delayed,
+                  so he set a new deadline to be the <b>end of this month</b>.
+                  <br/>(Yes, this pair falls into cause & effect scenario in our definition. The cause is a project delay and the effect is rescheduling.)
                 </li>
 
                 <li style={{'paddingBottom': '0.3em'}}>
                   <b style={{'color': 'darkgreen'}}>[True]</b>&nbsp;&nbsp;
-                    Sonja had a job interview,
-                    so she dressed up professionally <b>before</b> the interview.
+                  If you planted a bunch of trees with the intention of turning them into paper,
+                  you will have to wait about <b>thirty years</b> for them to be ready.
                   <br/><b style={{'color': 'darkred'}}>[False]</b>&nbsp;
-                    Sonja had a job interview,
-                    so she dressed up professionally <b>after</b> the interview.
+                  If you planted a bunch of trees with the intention of turning them into paper,
+                  you will have to wait about <b>thirty weeks</b> for them to be ready.
                 </li>
 
 
                 <li style={{'paddingBottom': '0.3em'}}>
                   <b style={{'color': 'darkgreen'}}>[True]</b>&nbsp;&nbsp;
-                    The GPS shows taking back roads will take <b>5 minutes</b> and I want to stop for food,
-                    so I can make it in time for the game in <b>20 minutes</b>.
+                  Because it was <b>winter in Antarctica</b>,
+                  I was able to keep my snowball outside on the porch for <b>thirty minutes</b> without melting.
                   <br/><b style={{'color': 'darkred'}}>[False]</b>&nbsp;
-                    The GPS shows taking back roads will take <b>20 minutes</b> and I want to stop for food,
-                    so I can make it in time for the game in <b>10 minutes</b>.
+                  Because it was <b>winter in Kenya</b>,
+                  I was able to keep my snowball outside on the porch for <b>thirty minutes</b> without melting.
                 </li>
 
                 <li style={{'paddingBottom': '0.3em'}}>
                   <b style={{'color': 'darkgreen'}}>[True]</b>&nbsp;&nbsp;
-                    Because the flowers bloom <b>in July</b>,
-                    I will plant the seeds <b>in March</b> to give them time to grow.
+                  <b>Not</b> expecting the <b>dinner to last for four hours</b>, Sally probably booked a taxi that leaves at <b>8 pm</b>.
                   <br/><b style={{'color': 'darkred'}}>[False]</b>&nbsp;
-                    Because the flowers bloom <b>in July</b>,
-                    I will plant the seeds <b>in July</b> to give them time to grow.
+                  Expecting the <b>dinner to last for four hours</b>, Sally probably booked a taxi that leaves at <b>7 pm</b>.
                 </li>
 
 
               </ul>
 
               <li className={classes.head}>
-                  Tips and Tricks
+                  Tip(s)
               </li>
 
               <ul>
                 <li className={classes.headExplanation}>
                   To generate both sentences of a pair, you can: change the <b>time setting</b> in the cause, and/or edit the effect as shown in the examples above.
-
                 </li>
 
                 <li>
-                  For a given pair, it’s usually challenging to get a win on both sentences.
-                  However, for this specific domain + scenario we found ourselves able to fool in both sentences a bit more often.
+                  If you've done tasks on physical and social domains, notice that even though this time domain can heavily involve physical and/or social domain concepts, you have to <b>focus on their time aspects</b>!
+                </li>
+                <li>
+                  The topic and verb lists below can be helpful when you need some inspiration.
                 </li>
               </ul>
 

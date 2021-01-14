@@ -21,12 +21,16 @@ const styles = theme => ({
     marginTop: theme.spacing(0.2),
     marginBottom: theme.spacing(0.2),
   },
+  newScenario: {
+    backgroundColor: 'rgb(195, 195, 140)',
+    fontSize: 'theme.spacing(12)'
+  }
 })
 
 
-class PhysicalComparisonInstructions extends React.Component {
+class PhysicalRelaxedNumeracyInstructions extends React.Component {
 
-  // PILOT ROUND VERSION
+  // ONLY A TEMPLATE
   render() {
     const { classes } = this.props
     return (
@@ -35,14 +39,23 @@ class PhysicalComparisonInstructions extends React.Component {
           <Typography component={'div'} className={classes.instructions}>
             <ul>
               <li className={classes.head}>
-                  Domain & Scenario Recap
+                {/* <span style={{color: 'brown'}}>[Updated!! Please check] </span> */}
+                Domain & Scenario Recap
               </li>
               <ul>
-                <li><mark style={{backgroundColor: 'rgb(195, 195, 140)'}}>
-                  <b>Physical</b></mark>: Key aspects include the
-                    knowledge of <u>daily objects</u> and their <u>physical properties</u> (e.g. weight,
-                    size), <u>location & space</u>, <u>motion</u>, <u>natural
-                    phenomena</u>, <u>physical matter</u>, <u>living creatures</u> and etc.
+                <li>
+                  <mark style={{backgroundColor: 'rgb(195, 195, 140)'}}> <b>Numerical-Physical = Physical + Numeracy</b></mark><br/>
+                  <span style={{paddingLeft: '2em', display: 'inline-block'}}>
+                    <mark style={{backgroundColor: 'rgb(195, 195, 140)'}}><b>Physical</b></mark>: Key aspects include the
+                      knowledge of <u>daily objects</u> and their <u>physical properties</u> (e.g. weight,
+                      size), <u>location & space</u>, <u>motion</u>, <u>natural
+                      phenomena</u>, <u>physical matter</u>, <u>living creatures</u> and etc.
+                  </span>
+                  <span style={{paddingLeft: '2em', display: 'inline-block'}}>
+                    <mark style={{backgroundColor: 'rgb(195, 195, 140)'}}><b>Numeracy</b>:</mark> Knowledge
+                    about <u>numbers</u> (magnitude), <u>simple arithmetic</u> (add, multiply, etc.),
+                    and concepts such as <u>rates, percentages, probabilities, conversions, etc</u>.
+                  </span>
                 </li>
                 <li><mark style={{backgroundColor: 'rgb(195, 195, 140)'}}>
                     <b>Comparison</b></mark>: Aims to compare <b><u>two plausible
@@ -57,44 +70,42 @@ class PhysicalComparisonInstructions extends React.Component {
                   Examples
               </li>
               <ul>
-                <li style={{'paddingBottom': '0.3em'}}>
-                  <b style={{'color': 'darkgreen'}}>[True]</b>&nbsp;&nbsp;
-                  It's <b>better</b> to store ice-cream in a <u>freezer</u> rather than a <u>cooler</u>.
-                  <br/><b style={{'color': 'darkred'}}>[False]</b>&nbsp;
-                  It's <b>better</b> to store ice-cream in a <u>cooler</u> rather than a <u>freezer</u>.
-                </li>
-
 
                 <li style={{'paddingBottom': '0.3em'}}>
                   <b style={{'color': 'darkgreen'}}>[True]</b>&nbsp;&nbsp;
-                    Since he doesn't have a tray, it's better to use a <u>notebook</u> rather than a <u>sheet</u> to balance the glass bottles.
+                    To protect the fragile glass, it is a <b>worse</b> idea to put it <u>half-inch</u> rather than <u>2-inch</u> away from the edge.
                   <br/><b style={{'color': 'darkred'}}>[False]</b>&nbsp;
-                    Since he doesn't have a tray, it's better to use a <u>sheet</u> rather than a <u>notebook</u> to balance the glass bottles.
+                    To protect the fragile glass, it is a <b>better</b> idea to put it <u>half-inch</u> rather than <u>2-inch</u> away from the edge.
                 </li>
 
                 <li style={{'paddingBottom': '0.3em'}}>
                   <b style={{'color': 'darkgreen'}}>[True]</b>&nbsp;&nbsp;
-                    As his roommate is asleep, he would prefer to <u>broom</u> rather than <u>vacuum</u>.
+                    With the wind blowing at 50 mph, it's better they <u>cancel</u> rather than <u>continue</u> the sailing tour.
                   <br/><b style={{'color': 'darkred'}}>[False]</b>&nbsp;
-                    As his roommate is asleep, he would prefer to <u>vacuum</u> rather than <u>broom</u>.
+                    With the wind blowing at 50 mph, it's better they <u>continue</u> rather than <u>cancel</u> the sailing tour.
                 </li>
 
                 <li style={{'paddingBottom': '0.3em'}}>
                   <b style={{'color': 'darkgreen'}}>[True]</b>&nbsp;&nbsp;
-                    It is <b>more dangerous</b> to go <u>inside a tiger enclosure</u> and observe him rather than standing <u>outside of his enclosure</u>.
+                    It is harder to run <u>one mile in 5 minutes</u> than <u>a half mile in 10 minutes</u>.
                   <br/><b style={{'color': 'darkred'}}>[False]</b>&nbsp;
-                    It is <b>safer</b> to go <u>inside a tiger enclosure</u> and observe him rather than standing <u>outside of his enclosure</u>.
+                    It is easier to run <u>one mile in 5 minutes</u> than <u>a half mile in 10 minutes</u>.
                 </li>
 
                 <li style={{'paddingBottom': '0.3em'}}>
                   <b style={{'color': 'darkgreen'}}>[True]</b>&nbsp;&nbsp;
-                    One is <b>less</b> likely to wash their hands after eating a  <u>banana</u> rather than a <u>watermelon</u>.
+                    Evelyn is <b>more</b> likely to drink <u>one cup</u> of milk with her cookie than <u>five cups</u>.
                   <br/><b style={{'color': 'darkred'}}>[False]</b>&nbsp;
-                    One is <b>more</b> likely to wash their hands after eating a <u>banana</u> rather than a <u>watermelon</u>.
+                    Evelyn is <b>less</b> likely to drink <u>one cup</u> of milk with her cookie than <u>five cups</u>.
                 </li>
 
+                <li style={{'paddingBottom': '0.3em'}}>
+                  <b style={{'color': 'darkgreen'}}>[True]</b>&nbsp;&nbsp;
+                    It's easier to clean a <u>one-bedroom apartment</u> compared to a <u>four-bedroom house</u>.
+                  <br/><b style={{'color': 'darkred'}}>[False]</b>&nbsp;
+                    It's easier to clean a <u>four-bedroom house</u> compared to a <u>one-bedroom apartment</u>.
+                </li>
               </ul>
-
 
               <li className={classes.head}>
                   Tips & Tricks
@@ -102,8 +113,11 @@ class PhysicalComparisonInstructions extends React.Component {
 
               <ul>
                 <li>
+                  You may start with simple physical-comparison creation, then add numeracy. Or, attach numeracy to some physical concepts then do comparison.
+                </li>
+                <li>
                   To generate both sentences of a pair, you can simply <u>swap the
-                  entities</u> or <b>reverse/negate the comparison words</b>.
+                  entities</u>, change the numbers, or <b>reverse/negate the comparison words</b>.
                 </li>
                 <li>
                   The topic and verb lists below can be helpful when you need some inspiration.
@@ -120,4 +134,4 @@ class PhysicalComparisonInstructions extends React.Component {
 }
 
 
-export default withStyles(styles)(PhysicalComparisonInstructions)
+export default withStyles(styles)(PhysicalRelaxedNumeracyInstructions)

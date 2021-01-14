@@ -128,8 +128,7 @@ class SocialCausalNumeracyInstructions extends React.Component {
                 </li>
 
                 <li>
-                  For a given pair, it’s usually challenging
-                  to get a win on both sentences.
+                  The topic and verb lists below can be helpful when you need some inspiration.
                 </li>
               </ul>
 

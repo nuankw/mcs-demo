@@ -38,22 +38,18 @@ class temporalComparisonInstructions extends React.Component {
                   Domain and Scenario Recap
               </li>
               <ul>
-                <li style={{fontSize: '1.2em'}}>
-                  <mark style={{backgroundColor: 'rgb(195, 195, 140)'}}>
-                    <b>Time</b>: Focuses on common sense
-                    regarding <b><u>scheduling activities</u></b> and <b><u> temporal attributes</u></b> of those activities.
-                  </mark>
+               <li><mark style={{backgroundColor: 'rgb(195, 195, 140)'}}>
+                  <b>Time</b></mark>: Knowledge regarding
+                    scheduling activities (<b>"when", "how often", "before/after", etc.</b>) and their typical durations (<b>"how long"</b>).
+                    <br/><i style={{color: "brown"}}>For time domain, it is up to you whether to include numeracy or not.</i>
                 </li>
-                <li style={{fontSize: '1.2em'}}>
-                  <mark style={{backgroundColor: 'rgb(195, 195, 140)'}}>
-                    <b>Comparison</b>: Aims to compare <b><u>two plausible
+                <li><mark style={{backgroundColor: 'rgb(195, 195, 140)'}}>
+                    <b>Comparison</b></mark>: Aims to compare <b><u>two plausible
                     reasons or concepts</u></b>, for <b><u>a given event or situation</u></b>.
-                  </mark>
-                </li>
-                  <span style={{paddingLeft: '1.5em', color: "brown"}}><b>
-                    Notice that you must *specify an event/situation* and then
+                    <br/><i style={{color: "brown"}}>Notice that you must *specify an event/situation* and then
                     provide *both* comparing
-                    concepts in *each* sentence!</b></span><br/>
+                    concepts in *each* sentence!</i>
+                </li>
               </ul>
 
               <li className={classes.head}>
@@ -63,62 +59,56 @@ class temporalComparisonInstructions extends React.Component {
 
                 <li style={{'paddingBottom': '0.3em'}}>
                   <b style={{'color': 'darkgreen'}}>[True]</b>&nbsp;&nbsp;
-                    It is <span style={{color: "#003c64"}}><b>about dinner time</b> and I feel hungry</span>, so I will <u style={{color: "#3C7373"}}>start cooking in a few minutes</u> rather than <u style={{color: "#3C7373"}}>tomorrow</u>.
+                    If the movie comes out <b>tomorrow</b>, she can make a plan to watch it <u>2 days</u> from now rather than <u>today</u>.
                   <br/><b style={{'color': 'darkred'}}>[False]</b>&nbsp;
-                  It is <span style={{color: "#003c64"}}><b>about dinner time</b> and I feel hungry</span>, so I will <u style={{color: "#3C7373"}}>start cooking tomorrow</u> rather than <u style={{color: "#3C7373"}}>in a few minutes</u>.
+                    If the movie comes out <b>tomorrow</b>, she can make a plan to watch it <u>today</u> rather than <u>2 days</u> from now.
                 </li>
 
                 <li style={{'paddingBottom': '0.3em'}}>
                   <b style={{'color': 'darkgreen'}}>[True]</b>&nbsp;&nbsp;
-                    Since Jim must attend an <span style={{color: "#003c64"}}>in-person meeting <b>in the early afternoon</b></span>, he would reschedule his <u style={{color: "#3C7373"}}>flight at noon</u> instead of his <u style={{color: "#3C7373"}}>morning dentist appointment</u>.
+                    A building built <u>3 years ago</u> is likely to be more durable than a building that's <u>300 years old</u>.
                   <br/><b style={{'color': 'darkred'}}>[False]</b>&nbsp;
-                    Since Jim must attend an <span style={{color: "#003c64"}}>in-person meeting <b>in the morning</b></span>, he would reschedule his <u style={{color: "#3C7373"}}>flight at noon</u> instead of his <u style={{color: "#3C7373"}}>morning dentist appointment</u>.
+                    A building built <u>300 years ago</u> is likely to be more durable than a building that's <u>3 years old</u>.
                 </li>
 
 
                 <li style={{'paddingBottom': '0.3em'}}>
                   <b style={{'color': 'darkgreen'}}>[True]</b>&nbsp;&nbsp;
-                    Since Helen wants to <span style={{color: "#003c64"}}>start earning <b>in the next few months</b></span>, she would prefer to start <u style={{color: "#3C7373"}}>finding a job</u> rather than <u style={{color: "#3C7373"}}>applying for a PhD</u>.
+                    Amy has a lot to catch-up with her colleague <b>after a long leave</b>, so she requested a <u>one-hour</u> instead of a <u>15-minute</u> slot for their meeting.
                   <br/><b style={{'color': 'darkred'}}>[False]</b>&nbsp;
-                    Since Helen wants to <span style={{color: "#003c64"}}>start earning <b>in the next few months</b></span>, she would prefer to start <u style={{color: "#3C7373"}}>applying for a PhD</u> rather than <u style={{color: "#3C7373"}}>finding a job</u>.
-                    {/* <hr style={{margin:'2px',height:'1px',borderWidth:'0',backgroundColor:'black'}}/> */}
+                    Amy would like to confirm with her colleague <b>on an easy decision</b>, so she requested a <u>one-hour</u> instead of a <u>15-minute</u> slot for their meeting.
                 </li>
 
                 <li style={{'paddingBottom': '0.3em'}}>
                   <b style={{'color': 'darkgreen'}}>[True]</b>&nbsp;&nbsp;
-                    With <span style={{color: "#003c64"}}>the gala starting <b>in half an hour</b></span>, Sara will <u style={{color: "#3C7373"}}>do a rushed hairstyle herself</u> rather than <u style={{color: "#3C7373"}}>visit a hairstylist</u>.
+                  Because Joe is attending a bachelor party <b>Friday night</b>, he wants to have an early breakfast with his mom on <u>Sunday</u> instead of <u>Saturday</u>.
                   <br/><b style={{'color': 'darkred'}}>[False]</b>&nbsp;
-                    With <span style={{color: "#003c64"}}>the gala starting <b>in a few hours</b></span>, Sara will <u style={{color: "#3C7373"}}>do a rushed hairstyle herself</u> rather than <u style={{color: "#3C7373"}}>visit a hairstylist</u>.
+                  Because Joe is attending a bachelor party <b>Friday night</b>, he wants to have an early breakfast with his mom on <u>Saturday</u> instead of <u>Sunday</u>.
                 </li>
 
                 <li style={{'paddingBottom': '0.3em'}}>
                   <b style={{'color': 'darkgreen'}}>[True]</b>&nbsp;&nbsp;
-                    To <span style={{color: "#003c64"}}>keep the audience interested in the <b>2-hour</b> show</span>,
-                    it is better to <u style={{color: "#3C7373"}}>set
-                    commercial breaks to appear every half an hour</u> than <u style={{color: "#3C7373"}}>every
-                    other minute</u>.
+                    Having to teach a <b>night class in thirty minutes</b>, he should heat a <u>frozen meal</u> instead of cooking a <u>three-course dinner</u>.
                   <br/><b style={{'color': 'darkred'}}>[False]</b>&nbsp;
-                    To <span style={{color: "#003c64"}}>keep the audience interested in the <b>2-hour</b> show</span>,
-                    it is better to <u style={{color: "#3C7373"}}>set
-                    commercial breaks to appear every other minute</u> than <u style={{color: "#3C7373"}}>every
-                    half an hour</u>.
+                    Having to teach a <b>night class in thirty minutes</b>, he should cook a <u>three-course dinner</u> instead of heating a <u>frozen meal</u>.
                 </li>
               </ul>
 
-
               <li className={classes.head}>
-                  Tips & Tricks
+                  Tip(s)
               </li>
 
               <ul>
-                <li>
-                  To generate both sentences of a pair, you can change <span style={{color: "#003c64"}}><b>the time setting</b> in your specific event or situation</span>, or simply swap the <u style={{color: "#3C7373"}}>entities</u>.
-                  <br/>
-                  In general, please keep your specific event or situation consistent in a sentence pair.
+                <li className={classes.headExplanation}>
+                  Swap <u>comparison</u> or change the <b>time setting</b>.
                 </li>
-                <li>For a given pair, it’s usually challenging to get a win on both sentences.</li>
+                <li>
+                  If you've done tasks on physical and social domains, notice that even though this time domain can heavily involve physical and/or social domain concepts, you have to <b>focus on their time aspects</b>!
+                </li>
+                <li>
+                  The topic and verb lists below can be helpful when you need some inspiration.
+                </li>
               </ul>
-
 
             </ul>
           </Typography>

@@ -39,13 +39,15 @@ class PhysicalCausalInstructions extends React.Component {
               </li>
               <ul>
                 <li><mark style={{backgroundColor: 'rgb(195, 195, 140)'}}>
-                  <b>Physical</b>: Key aspects include the
-                    knowledge of <u>daily objects</u> and their <u>physical properties</u> (e.g. weight, size), <u>location & space</u>, <u>motion</u>, etc.
-                </mark></li>
+                  <b>Physical</b></mark>: Key aspects include the
+                    knowledge of <u>daily objects</u> and their <u>physical properties</u> (e.g. weight,
+                    size), <u>location & space</u>, <u>motion</u>, <u>natural
+                    phenomena</u>, <u>physical matter</u>, <u>living creatures</u> and etc.
+                </li>
                 <li><mark style={{backgroundColor: 'rgb(195, 195, 140)'}}>
-                  <b>Cause & Effect</b>: Answers the “why” question or predicts what is likely to happen next (effect),
+                  <b>Cause & Effect</b></mark>: Answers the “why” question or predicts what is likely to happen next (effect),
                     given an event that has occurred (cause).
-                </mark></li>
+               </li>
               </ul>
 
               <li className={classes.head}>
@@ -54,67 +56,45 @@ class PhysicalCausalInstructions extends React.Component {
               <ul>
                 <li style={{'paddingBottom': '0.3em'}}>
                   <b style={{'color': 'darkgreen'}}>[True]</b>&nbsp;&nbsp;
-                    Since she didn't have a safety pin,
-                    she could try to pierce the wrapper with a <b>pen</b>.
+                    If you touch a non-LED light bulb that's been turned <b>on</b> for hours, it will feel hot.
                   <br/><b style={{'color': 'darkred'}}>[False]</b>&nbsp;
-                    Since she didn't have a safety pin,
-                    she could try to pierce the wrapper with a <b>bottle</b>.
+                    If you touch a light bulb that's been turned <b>off</b> for hours, it will feel hot.
                 </li>
 
                 <li style={{'paddingBottom': '0.3em'}}>
                   <b style={{'color': 'darkgreen'}}>[True]</b>&nbsp;&nbsp;
-                    If we don't close that fence opening at the bottom,
-                    an intruder could <b>climb over it</b>.
+                    While in a windy rainstorm, you should always point your umbrella <b>into the wind</b>.
                   <br/><b style={{'color': 'darkred'}}>[False]</b>&nbsp;
-                    If we don't close that fence opening at the bottom,
-                    an intruder could <b>pass through it</b>.
+                    While in a windy rainstorm, you should always point your umbrella <b>away from the wind</b>.
                 </li>
 
                 <li style={{'paddingBottom': '0.3em'}}>
                   <b style={{'color': 'darkgreen'}}>[True]</b>&nbsp;&nbsp;
-                    If one can't locate a tissue box,
-                    they can use a <b>newspaper</b> to wipe the litter on the dining table.
+                    If my sink clogs with debris, I might be able to unclog it by twirling a long <b>chopstick</b> in there to dislodge it.
                   <br/><b style={{'color': 'darkred'}}>[False]</b>&nbsp;
-                    If one can't locate a tissue box,
-                    they can use a <b>wooden box</b> to wipe the litter on the dining table.
+                    If my sink clogs with debris, I might be able to unclog it by twirling a long <b>hair</b> in there to dislodge it.
                 </li>
 
                 <li style={{'paddingBottom': '0.3em'}}>
                   <b style={{'color': 'darkgreen'}}>[True]</b>&nbsp;&nbsp;
-                    Because he <b>can</b> lift a bicycle, carrying a three-year-old
-                    should not be difficult.
+                    If it is dark outside, opening the blinds <b>will not</b> help you see.
                   <br/><b style={{'color': 'darkred'}}>[False]</b>&nbsp;
-                    Because he <b>cannot</b> lift a bicycle, carrying a three-year-old
-                    should not be difficult.
+                    If it is dark outside, opening the blinds <b>will</b> help you see.
                 </li>
-
-                <li style={{'paddingBottom': '0.3em'}}>
-                  <b style={{'color': 'darkgreen'}}>[True]</b>&nbsp;&nbsp;
-                    Sam's air conditioner is not working,
-                    he <b>cannot</b> therefore use the refrigerator to keep his room cold.
-                  <br/><b style={{'color': 'darkred'}}>[False]</b>&nbsp;
-                    Sam's air conditioner is not working,
-                    he <b>can</b> therefore use the refrigerator to keep his room cold.
-                </li>
-
               </ul>
 
-              {/* <li className={classes.head}>
-                  Tips & Tricks
+              <li className={classes.head}>
+                  Tip(s)
               </li>
 
               <ul>
                 <li>
-                  Please refer to the examples above to understand how to create samples fit in the
-                  domain and scenario.
+                  To generate both sentences of a pair, you can simply find a <b>contradictory physical concept</b>, or <b>negate the sentence</b>.
                 </li>
-
                 <li>
-                  For a given pair, it’s usually challenging
-                  to get a win on both sentences.
+                  The topic and verb lists below can be helpful when you need some inspiration.
                 </li>
-              </ul> */}
-
+              </ul>
             </ul>
           </Typography>
 

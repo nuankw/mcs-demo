@@ -24,8 +24,7 @@ const styles = theme => ({
 })
 
 
-class SocialComparisonInstructions extends React.Component {
-
+class SocialLongerComparisonInstructions extends React.Component {
   // PILOT ROUND VERSION
   render() {
     const { classes } = this.props
@@ -34,68 +33,78 @@ class SocialComparisonInstructions extends React.Component {
         <Grid item xs={12}>
           <Typography component={'div'} className={classes.instructions}>
             <ul>
-              <li className={classes.head}>
+            <li className={classes.head}>
                   Domain & Scenario Recap
               </li>
               <ul>
-                <li><b>Social</b>: Focuses on people and social behavior, particularly attributes like personality,
-                  emotions and actions.</li>
-                <li><b>Comparison</b>: Aims to compare two plausible reasons or concepts,
-                  for a given daily event.</li>
+                <li><mark style={{backgroundColor: 'rgb(195, 195, 140)'}}>
+                  <b>Social</b></mark>: Focuses on <b><u>humans as social beings</u></b>: how poeple <b><u>think</u></b>, <b><u>feel</u></b>, <b><u>behave</u></b>, <b><u>communicate</u></b> and <b><u>interact</u></b> with each other.
+                </li>
+                <li><mark style={{backgroundColor: 'rgb(195, 195, 140)'}}>
+                    <b>Comparison</b></mark>: Aims to compare <b><u>two plausible
+                    reasons or concepts</u></b>, for <b><u>a given event or situation</u></b>.
+                    <br/><i style={{color: "brown"}}>Notice that you must *specify an event/situation* and then
+                    provide *both* comparing
+                    concepts in *each* sentence!</i>
+                </li>
               </ul>
 
               <li className={classes.head}>
                   Examples
               </li>
               <ul>
+
                 <li style={{'paddingBottom': '0.3em'}}>
                   <b style={{'color': 'darkgreen'}}>[True]</b>&nbsp;&nbsp;
-                  It's usually <b>acceptable</b> to arrive late to <u>a party</u>,
-                  but <b>not</b> for <u>a doctor's appointment</u>.
+                    <u>Susan</u> visits houses to deliver pizza, while <u>Jim</u> visits to fix plumbing, so <u>Jim</u> is more likely to be invited in.
                   <br/><b style={{'color': 'darkred'}}>[False]</b>&nbsp;
-                  It's usually <b>not acceptable</b> to arrive late to <u>a party</u>,
-                  but <b>ok</b> for <u>a doctor's appointment</u>.
+                    <u>Susan</u> visits houses to deliver pizza, while <u>Jim</u> visits to fix plumbing, so <u>Susan</u> is more likely to be invited in.
                 </li>
 
 
                 <li style={{'paddingBottom': '0.3em'}}>
                   <b style={{'color': 'darkgreen'}}>[True]</b>&nbsp;&nbsp;
-                    In order to educate their children,
-                    they would <b>prefer</b> to visit <u>a museum</u> <b>instead of</b> <u>a theme park</u>.
+                    Leo is an animal rights activist, so he is more likely to bring his kids to <u>the natural museum</u> than <u>the dolphin show</u>.
                   <br/><b style={{'color': 'darkred'}}>[False]</b>&nbsp;
-                    In order to educate their children,
-                    they would <b>prefer</b> to visit <u>a theme park</u> <b>instead of</b> <u>a museum</u>.
-
+                    Leo is an animal rights activist, so he is less likely to bring his kids to <u>the natural museum</u> than <u>the dolphin show</u>.
                 </li>
+
 
                 <li style={{'paddingBottom': '0.3em'}}>
                   <b style={{'color': 'darkgreen'}}>[True]</b>&nbsp;&nbsp;
-                    With no clean clothes left in the closet, they will <b>prioritize</b> <u>doing the laundry</u> <b>instead of</b> <u>going to the supermarket</u>.
+                    <u>Sonja</u> is a violinist while <u>Dan</u> is in a rock band, so it makes sense that <u>Dan</u> knows more about guitar than <u>Sonja</u>.
                   <br/><b style={{'color': 'darkred'}}>[False]</b>&nbsp;
-                    With no clean clothes left in the closet, they will <b>prioritize</b> <u>going to the supermarket</u> <b>instead of</b> <u>doing the laundry</u>.
+                    <u>Sonja</u> is a violinist while <u>Dan</u> is in a rock band, so it makes sense that <u>Sonja</u> knows more about guitar than <u>Dan</u>.
                 </li>
+
 
                 <li style={{'paddingBottom': '0.3em'}}>
                   <b style={{'color': 'darkgreen'}}>[True]</b>&nbsp;&nbsp;
-                    A person with a monthly income around <u>a thousand dollars</u> <b>cannot afford</b> a rent of <u>two thousand dollars</u>.
+                  It's more likely for <u>Ben</u> to offer <u>Tim</u> a beverage rather than the other way around because <u>Tim</u> is visiting <u>Ben</u>.
                   <br/><b style={{'color': 'darkred'}}>[False]</b>&nbsp;
-                    A person with a monthly income around <u>a thousand dollars</u> <b>can afford</b> a rent of <u>two thousand dollars</u>.
+                  It's more likely for <u>Tim</u> to offer <u>Ben</u> a beverage rather than the other way around because <u>Tim</u> is visiting <u>Ben</u>.
                 </li>
+
+
+                <li style={{'paddingBottom': '0.3em'}}>
+                  <b style={{'color': 'darkgreen'}}>[True]</b>&nbsp;&nbsp;
+                    <u>Lily</u> and I were friends for years while I didn't know <u>Jane</u> much, so I hugged <u>Lily</u> and shook hands with <u>Jane</u> when we met.
+                  <br/><b style={{'color': 'darkred'}}>[False]</b>&nbsp;
+                    <u>Lily</u> and I were friends for years while I didn't know <u>Jane</u> much, so I shook hands with <u>Lily</u> and hugged <u>Jane</u> when we met.
+                </li>
+
               </ul>
 
               <li className={classes.head}>
-                  Tips & Tricks
+                  Tip(s)
               </li>
-
               <ul>
                 <li>
-                  To generate both sentences of a pair, you can simply <u>swap the
-                  entities</u> or <b>reverse/negate the comparison words</b>.
+                  Think about different social situations and reasons on how people would respond & behavior differently.
                 </li>
 
                 <li>
-                  Aim to fool one sentence in each pair,
-                  as it’s usually challenging to do so for both.
+                  The topic and verb lists below can be helpful when you need some inspiration.
                 </li>
               </ul>
 
@@ -109,4 +118,4 @@ class SocialComparisonInstructions extends React.Component {
 }
 
 
-export default withStyles(styles)(SocialComparisonInstructions)
+export default withStyles(styles)(SocialLongerComparisonInstructions)

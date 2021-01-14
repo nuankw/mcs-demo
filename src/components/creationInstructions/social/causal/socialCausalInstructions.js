@@ -38,48 +38,70 @@ class SocialCausalInstructions extends React.Component {
                   Domain and Scenario Recap
               </li>
               <ul>
-                <li><b>Social</b>: Focuses on people and social behavior, particularly attributes like personality,
-                  emotions and actions.</li>
-                <li><b>Cause & Effect</b>: Answers the “Why” question or predicts what is likely to happen next (effect),
-                  given an event that has occurred (cause).</li>
+              <li><mark style={{backgroundColor: 'rgb(195, 195, 140)'}}>
+                  <b>Social</b></mark>: Focuses on <b><u>humans as social beings</u></b>: how poeple <b><u>think</u></b>, <b><u>feel</u></b>, <b><u>behave</u></b>, <b><u>communicate</u></b> and <b><u>interact</u></b> with each other.
+                </li>
+                <li><mark style={{backgroundColor: 'rgb(195, 195, 140)'}}><b>Cause & Effect</b></mark>: Answers the <b><u>“Why”</u></b> question or <b><u>predicts</u></b> what is likely to happen
+                next (<b><u>effect</u></b>), <b><u>given</u></b> an event that has occurred (<b><u>cause</u></b>).</li>
               </ul>
 
               <li className={classes.head}>
                   Examples
               </li>
               <ul>
-                <li>
-                  <b><i>[True/False]</i></b> Example 1-1 <br/>
-                  <b><i>[False/True]</i></b> Example 1-2
+                <li style={{'paddingBottom': '0.3em'}}>
+                  <b style={{'color': 'darkgreen'}}>[True]</b>&nbsp;&nbsp;
+                  {/* A good driver would step on the <b>break</b>, if he or she saw a puppy crossing the road. */}
+                  Even if there is no stop sign, a good driver should step on the <b>break</b> when there are people seemingly trying to cross over.
+                  <br/><b style={{'color': 'darkred'}}>[False]</b>&nbsp;
+                  {/* A good driver would step on the <b>gas</b>, if he or she saw a puppy crossing the road. */}
+                  Even if there is no stop sign, a good driver should step on the <b>gas</b> when there are people seemingly trying to cross over.
                 </li>
-                <li>
-                  <b><i>[True/False]</i></b> Example 2-1 <br/>
-                  <b><i>[False/True]</i></b> Example 2-2
+
+                <li style={{'paddingBottom': '0.3em'}}>
+                  <b style={{'color': 'darkgreen'}}>[True]</b>&nbsp;&nbsp;
+                  If two strangers often see each other at workplace, they are likely co-workers working in <b>different departments</b>.
+                  <br/><b style={{'color': 'darkred'}}>[False]</b>&nbsp;
+                  If two strangers often see each other at workplace, they are likely co-workers working in the <b>same department</b>.
                 </li>
+
+                <li style={{'paddingBottom': '0.3em'}}>
+                  <b style={{'color': 'darkgreen'}}>[True]</b>&nbsp;&nbsp;
+                  James is <b>reluctant</b> to lend his friends money as they seldom return.
+                  <br/><b style={{'color': 'darkred'}}>[False]</b>&nbsp;
+                  James is <b>willing</b> to lend his friends money as they seldom return.
+                </li>
+
+                <li style={{'paddingBottom': '0.3em'}}>
+                  <b style={{'color': 'darkgreen'}}>[True]</b>&nbsp;&nbsp;
+                  Emily is a shy person so she decided to <b>accept</b> a shot of alcoholic before stepping up to argue with someone.
+                  <br/><b style={{'color': 'darkred'}}>[False]</b>&nbsp;
+                  Emily is a shy person so she decided to <b>refuse</b> a shot of alcoholic before stepping up to argue with someone.
+                </li>
+
+                <li style={{'paddingBottom': '0.3em'}}>
+                  <b style={{'color': 'darkgreen'}}>[True]</b>&nbsp;&nbsp;
+                  As there is a mandatory stay at home order, a traffic jam <b>should not be expected</b>.
+                  <br/><b style={{'color': 'darkred'}}>[False]</b>&nbsp;
+                  As there is a mandatory stay at home order, a traffic jam <b>is well expected</b>.
+                </li>
+
+                <li style={{'paddingBottom': '0.3em'}}>
+                  <b style={{'color': 'darkgreen'}}>[True]</b>&nbsp;&nbsp;
+                  The demand for parenting <b>drops</b> as kids return to on-campus classes from online learning.
+                  <br/><b style={{'color': 'darkred'}}>[False]</b>&nbsp;
+                  The demand for parenting <b>increases</b> as kids return to on-campus classes from online learning.
+                </li>
+
               </ul>
 
               <li className={classes.head}>
-                  Tips and Tricks
+                  Tip(s)
               </li>
 
               <ul>
-                <li className={classes.headExplanation}>
-                To generate both sentences of a pair:
-                </li>
-                <ul>
-                  <li>Negation</li>
-                  <li>Swap</li>
-                  <li>Plausibility-Qualifiers (e.g. sometimes, likely, rarely)</li>
-                  <li>Contrasting-Conjuncts (e.g. unless, despite)</li>
-                  <li>Distractors</li>
-                </ul>
-
                 <li>
-                  Tip 2
-                </li>
-
-                <li>
-                  Tip 3
+                  The above examples and the two docs below (on topics and common verbs) can be helpful when you need some inspiration.
                 </li>
               </ul>
 

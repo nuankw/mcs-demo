@@ -14,8 +14,8 @@ const styles = theme => ({
     '@media (min-width:600px)': {
       padding: theme.spacing(5),
       bottom: '10vh',
-      width: '60vw',
-      left: '20vw',
+      width: '70vw',
+      left: '15vw',
       top: '10vh',
     },
     maxHeight: '100vh',
@@ -130,22 +130,28 @@ class CreationExitSurvey extends React.Component {
           <Grid item xs={12}>
             <div className={classes.content}>
               <Typography component="h5" variant="h5" className={classes.header}>
-                Thank you for participating! Your inputs have been recorded.
+                Thank you for participating! Your input sentences have been recorded.
               </Typography>
               <Typography component="h5" variant="h5" className={classes.header}>
-                Your estimated total earning (base + bonus) is <b>${max_pay}</b> if all inputs are valid. <br/>
+                <br/>Your estimated total earning is at least ${max_pay} (assuming all inputs are valid). <br/>
               </Typography>
               <Typography component="h5" variant="h5" className={classes.header}>
-                Don't forget to copy this code to complete your HIT:
+                You may expect to receive more in bonus if your inputs are well-written and creative. <br/>
+              </Typography>
+              <Typography component="h5" variant="h5" className={classes.header}>
+                <br/>Don't forget to copy this code to complete your HIT:
               </Typography>
               <Typography component="h5" variant="h5" className={classes.code}>
                 {code}
+              </Typography>
+              <Typography component="h5" variant="h5" className={classes.header}>
+                <br/>(Optional) Lastly, if possible, we'd like to ask you to kindly rate us below:
               </Typography>
             </div>
             <span className={classes.divider} />
             <div className={classes.content}>
               <Typography component="h5" variant="h5" className={classes.header}>
-                Exit Survey <span style={{'fontSize': '12px', 'color': 'white'}}><i>Only your last survey entry will be kept in our database.</i></span>
+                Exit Survey
               </Typography>
               <p style={{'fontSize': '20px', 'color': 'white'}}>Did you find our instructions to be helpful?</p>
               <p style={{'fontSize': '16px', 'color': 'gray'}}>(from 1 being not helpful at all to 5 very helpful)</p>
@@ -168,7 +174,7 @@ class CreationExitSurvey extends React.Component {
               </RadioGroup>
               <br/>
               <div className={classes.input}>
-                <p style={{'fontSize': '20px', 'color': 'white'}}>Any additional feedback? Let us know how we can improve!</p>
+                <p style={{'fontSize': '20px', 'color': 'white'}}>Any additional feedback? Have you checked the additional docs linked in the instructions? Were they helpful? Let us know how we can improve!</p>
                 <TextField
                   id="outlined-basic"
                   value={comments}
@@ -177,10 +183,10 @@ class CreationExitSurvey extends React.Component {
                   onChange={(e) => this.handleOnChange(e)} />
               </div>
               <br/>
-              {surveySubmitted && <p>Thanks for the feedback! Don't forget to copy the completion code above!</p> }
+              {surveySubmitted && <p>Latest survey entry recorded. Don't forget to copy the completion code before you leave. Thank you!</p> }
               <Button variant="contained"
                 onClick={() => this.handleOnSubmit()}>
-                Submit
+                Submit My Exit Survey Entry
               </Button>
             </div>
           </Grid>
