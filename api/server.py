@@ -81,8 +81,8 @@ INTRA_PAIR_MAX_SAFE_SIMILARITY_SCORE = 0.9
 INTER_PAIR_MAX_SAFE_SIMILARITY_SCORE = 0.4
 
 # Payment calculation
-BASE_PER_SENTENCE_CREATED = 0.1
-BONUS_PER_SENTENCE = 0.5 # default, read from url session (either 0.5 or 0.8)
+BASE_PER_SENTENCE_CREATED = 0.05
+BASIC_BONUS_PER_PAIR = 0.5
 REQUIRED_NUM_SENTENCES_TO_CREATE = 6 # 10
 
 REQUIRED_NUM_SENTENCES_TO_VALIDATE = 10
@@ -98,7 +98,7 @@ DUMMY_INFO = {
     'scenario': 'sX',
     'domain': 'dX',
     'mode': 'creation',
-    'bonus': '0.8',
+    # 'bonus': '0.8',
 }
 if LOCAL:
     print("LOCAL TESTING, dummy variables:", DUMMY_INFO)
@@ -598,24 +598,25 @@ def warn_suspicious_input_length(data):
 
 @app.route('/submit', methods=['POST'])
 def submit():
-    global BONUS_PER_SENTENCE
+    global BASIC_BONUS_PER_PAIR
     worker_id = session.get('worker_id')
     assignment_id = session.get('assignment_id')
     mode = session.get('mode')
-    if session.get('bonus'):
-        BONUS_PER_SENTENCE = float(session.get('bonus').split('$')[-1])
-        assert (BONUS_PER_SENTENCE >= 0)
-        assert (BONUS_PER_SENTENCE <= 2)
+    # if session.get('bonus'):
+    #     BASIC_BONUS_PER_PAIR = float(session.get('bonus').split('$')[-1])
+    #     assert (BASIC_BONUS_PER_PAIR >= 0)
+    #     assert (BASIC_BONUS_PER_PAIR <= 2)
     max_possible_pay = 0
     max_possible_pay_str = ""
-    num_sentence_fooled = 0
+    num_sentences_fooled_curr_pair = 0
+    num_pairs_fooled = 0
 
     # LOCAL TEST ONLY - Start
     if LOCAL:
         worker_id = DUMMY_INFO['worker_id']
         assignment_id = DUMMY_INFO['assignment_id']
         mode = DUMMY_INFO['mode']
-        BONUS_PER_SENTENCE = float(DUMMY_INFO['bonus'].split('$')[-1])
+        # BASIC_BONUS_PER_PAIR = float(DUMMY_INFO['bonus'].split('$')[-1])
     # LOCAL TEST ONLY - End
 
     code = str(uuid.uuid4())
@@ -648,9 +649,13 @@ def submit():
                             }}
                         )
                         if inputs[key][idx]['label'] != data['output']:
-                            num_sentence_fooled += 1
-                        # input_length_check(data)
-        max_possible_pay = BONUS_PER_SENTENCE * num_sentence_fooled \
+                            num_sentences_fooled_curr_pair += 1
+
+            if num_sentences_fooled_curr_pair > 0:
+                num_pairs_fooled += 1
+                num_sentences_fooled_curr_pair = 0
+        # input_length_check(data)
+        max_possible_pay = BASIC_BONUS_PER_PAIR * num_pairs_fooled \
                            + BASE_PER_SENTENCE_CREATED * REQUIRED_NUM_SENTENCES_TO_CREATE
         max_possible_pay_str = '{:.2f}'.format(max_possible_pay)
 
@@ -917,7 +922,7 @@ def index():
     session['scenario'] = request.args.get('scenario')
     session['domain'] = request.args.get('domain')
     session['mode'] = request.args.get('mode')
-    session['bonus'] = request.args.get('bonus')
+    # session['bonus'] = request.args.get('bonus')
     return app.send_static_file('index.html')
 
 
