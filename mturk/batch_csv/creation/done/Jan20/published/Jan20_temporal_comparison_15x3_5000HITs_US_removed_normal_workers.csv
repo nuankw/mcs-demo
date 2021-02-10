@@ -1,0 +1,4 @@
+domain,scenario,eg_true_1,eg_true_2,eg_false_1,eg_false_2
+time,comparison,If the movie comes out <b>tomorrow</b>,she can make a plan to watch it <u>2 days</u> from now rather than <u>today</u>,If the movie comes out <b>tomorrow</b>,she can make a plan to watch it <u>today</u> rather than <u>2 days</u> from now
+time,comparison,If the movie comes out <b>tomorrow</b>,she can make a plan to watch it <u>2 days</u> from now rather than <u>today</u>,If the movie comes out <b>tomorrow</b>,she can make a plan to watch it <u>today</u> rather than <u>2 days</u> from now
+time,comparison,If the movie comes out <b>tomorrow</b>,she can make a plan to watch it <u>2 days</u> from now rather than <u>today</u>,If the movie comes out <b>tomorrow</b>,she can make a plan to watch it <u>today</u> rather than <u>2 days</u> from now

@@ -1,0 +1,362 @@
+<!-- For help on using this template, see the blog post: https://blog.mturk.com/editing-the-survey-link-project-template-in-the-ui-7c75285105fb#.py7towsdx -->
+<!-- HIT template: SurveyLink-v3.0 -->
+<!-- The following snippet enables the 'responsive' behavior on smaller screens -->
+<meta content="width=device-width,initial-scale=1" name="viewport" />
+<section class="container" id="SurveyLink">
+    <!-- Instructions -->
+    <div class="row">
+        <div class="col-xs-12 col-md-12">
+            <div class="panel panel-primary">
+                <!-- WARNING: the ids "collapseTrigger" and "instructionBody" are being used to enable expand/collapse feature --><a
+                    class="panel-heading" href="javascript:void(0);" id="collapseTrigger"><strong>Instruction for
+                        ${domain} X ${scenario} creation</strong> <span class="collapse-text">(Click to collapse)</span>
+                </a>
+                <div class="panel-body" id="instructionBody">
+                    <div>
+                        <h1>Common Sense Reasoning HIT - General Instruction Page</h1>
+
+                        <p>Top-MTurkers only.</p>
+                        &nbsp;
+
+                        <p style="font-size: 1.2em; color: darkred;"><b>Hi!&nbsp;Welcome back. :)</b></p>
+
+                        <hr
+                            style="text-align:left;margin-left:0;height:1px;border-width:0;color:lightgray;background-color:lightgray" />
+                    </div>
+
+                    <div>
+                        <h3>Task Overview</h3>
+
+                        <p style="font-size: 1.2em; padding-left: 2em;"><b>Your goal is to create True/False sentence
+                                pairs that are easily understood by people under common sense but can fool our AI agent,
+                                Carl, into judging them incorrectly. In this HIT, we ask you to write such sentence
+                                pairs for the following combination of</b><b style="font-size: 15.6px;">&nbsp;<mark
+                                    style="background-color: cyan;"><span
+                                        id="domain">${domain}</span></mark>&nbsp;domain&nbsp;</b><b>x&nbsp;<mark
+                                    style="background-color: cyan;"><span id="scenario">${scenario}</span></mark></b><b
+                                style="font-size: 15.6px;">&nbsp;scenario.</b></p>
+
+                        <div style="padding-left: 4em;">
+                            <p>For example, consider the following True sentence:</p>
+
+                            <p style="padding-left: 2em;"><i>${eg_true_1}, ${eg_true_2}. <b
+                                        style="color: darkgreen;">[True]</b></i></p>
+
+                            <p>We can write its False complement:</p>
+
+                            <p style="padding-left: 2em;"><i>${eg_false_1}, ${eg_false_2}. <b
+                                        style="color: darkred;">[False]</b></i></p>
+
+                            <p><b>The two sentences together form a True/False sentence pair under&nbsp;${domain} domain
+                                    and&nbsp;${scenario} scenario, challenging the common sense reasoning ability of our
+                                    AI agent Carl.</b></p>
+                        </div>
+
+                        <p style="font-size: 1.2em; padding-left: 2em;">Later, you will be redirected to the task page
+                            which contains all the detailed domain/scenario-specific instructions and more
+                            examples.<br />
+                            <b>Now, let us first run you through the general information on the task payment and the
+                                overall task procedure.</b>
+                        </p>
+                    </div>
+
+                    <hr
+                        style="text-align:left;margin-left:0;height:1px;border-width:0;color:lightgray;background-color:lightgray" />
+                    <div>
+                        <h3>Task Payment</h3>
+
+                        <p style="font-size: 1.2em; padding-left: 2em;">In each task (this one included), you will be
+                            asked to create <b>3 sentence pairs</b>.<br />
+                            <b>For each pair</b>, there are <b>3 possible payment outcomes</b> depending on your
+                            creation quality:
+                        </p>
+
+                        <ol style="font-size: 1.2em; padding-left: 4em;">
+                            <li>The base pay is <b>$0.10</b>&nbsp;and will be automatically processed except for
+                                spamming cases.</li>
+                            <li>The basic bonus is <b>$0.50</b> (total: $0.60/pair), and will be paid after validation
+                                if it meets <b>one of the following conditions</b>:
+                                <ul>
+                                    <li>follows the instruction, and <b>at least one of the two sentences in the pair
+                                            fooled Carl</b></li>
+                                    <li>follows the instruction, and regardless of whether Carl is fooled, the pair is
+                                        <b>well-written, includes interesting common sense, and creative enough</b>
+                                        (subject to our internal validation decision)</li>
+                                </ul>
+                            </li>
+                            <li>The full bonus is <b>$0.90</b> (total: $1.00/pair) if it meets <b>both conditions</b>
+                                above.</li>
+                        </ol>
+
+                        <p style="font-size: 1.2em; padding-left: 2em;">Thus, in each task, you can earn at least ($0.10
+                            + $0.50) * 3 = $1.80 and up to ($0.10 + $0.90) * 3 = $3.00 if spending quality time on
+                            creation. Please feel free to take as many tasks as available if you find them interesting
+                            &amp; fairly paid.</p>
+
+                        <p style="font-size: 1.2em; padding-left: 2em; color:brown"><i>Note: You can expect to receive
+                                all payments (base + bonus) in ~10 days.<br />
+                                Feel free to email us at <a href="mailto: mcspluslab@gmail.com"
+                                    target="_blank">mcspluslab@gmail.com</a> with your worker ID if you think there is a
+                                delay or have any other concerns. We will reply ASAP. For non-urgent queries, please use
+                                the exit survey (explained below).</i></p>
+                    </div>
+
+                    <hr
+                        style="text-align:left;margin-left:0;height:1px;border-width:0;color:lightgray;background-color:lightgray" />
+                    <div>
+                        <h3>Overall Task Procedure</h3>
+
+                        <ol style="font-size: 1.2em;">
+                            <li syle="padding-bottom: 3em">After reading all the general instructions provided here,
+                                click the survey link at the bottom of this page, you will be redirected to the task
+                                page. Task-specific instructions and more examples are provided to better assist you
+                                with the creation task. Please follow all the requirements specified in our
+                                instructions.
+                                <p style="height: 2px;">&nbsp;</p>
+                            </li>
+                            <li syle="padding-bottom: 3em">Enter sentence pair(s) and select the True/False (T/F) labels
+                                accordingly.
+                                <p><img alt="screenshot_1.png"
+                                        src="https://i.ibb.co/ZM4fBtq/Screen-Shot-2021-01-04-at-8-54-12-PM.png"
+                                        style="width: 90%; padding-top: 0.7em;" /></p>
+                                <img alt="screenshot_5.png"
+                                    src="https://i.ibb.co/wL8XnX7/Screen-Shot-2021-01-08-at-11-31-24-AM.png"
+                                    style="width: 90%; padding-bottom: 0.4em;" />
+                            </li>
+                            <li syle="padding-bottom: 3em">To see if you successfully fooled our AI agent <b>Carl</b>,
+                                click on the <b>&quot;Test Carl with what I have!&quot;</b> button. The change of icons
+                                next to T/F labels (from <mark
+                                    style="background-color: darkslategray; color: white"><b>gray</b></mark> question
+                                marks to <mark style="background-color: darkgreen; color: white"><b>green</b></mark> or
+                                <mark style="background-color: darkred; color: white"><b>red</b></mark> checkmarks)
+                                indicates whether Carl was fooled by the current sentence (hover over to see the text).
+                                <p><img alt="screenshot_2.png"
+                                        src="https://i.ibb.co/SdqHxWD/Screen-Shot-2021-01-04-at-8-36-37-PM.png"
+                                        style="width: 90%; padding-top: 0.7em;" /></p>
+                                <img alt="screenshot_6.png"
+                                    src="https://i.ibb.co/GTYq7TP/Screen-Shot-2021-01-08-at-11-37-20-AM.png"
+                                    style="width: 90%; padding-bottom: 0.4em;" />
+                                <p style="color:brown">Note that:</p>
+
+                                <ul>
+                                    <li style="color:brown"><b>&quot;Test Carl with what I have!&quot;</b> button will
+                                        only be clickable if there&#39;s any input not tested. You can edit, re-test
+                                        your inputs and play with Carl <b>as many times as you like before the final
+                                            submission</b>.</li>
+                                    <li style="color:brown"><b>&quot;Inputs confirmed, submit!&quot;</b> button will
+                                        only be clickable if all inputs are tested. And <b>only one submission is
+                                            allowed in each task</b>, i.e. you cannot return to the editing page after
+                                        the submission.</li>
+                                </ul>
+                            </li>
+                            <li syle="padding-bottom: 3em">Once fully tested and satisfied with your creation, click the
+                                <b>&quot;Inputs confirmed, submit!&quot;</b> button to submit your inputs (<b>be
+                                    cautious since you cannot undo submit!</b>). A pop-up window will be displayed
+                                <i>similar</i> to the one below. Copy the completion code and enter it below on this
+                                page. Please fill out the exit survey each time you finish a task if you can. We
+                                appreciate your feedback!<br />
+                                <!-- <div class="row">
+                  <div class="column"> --> <img alt="screenshot_3.png"
+                                    src="https://i.ibb.co/bQ303wv/Screen-Shot-2021-01-05-at-10-21-56-AM.png"
+                                    style="width: 60%; padding-top: 0.7em;" /> <!-- </div> -->
+                                <!-- <div class="column"> --> <img alt="screenshot_4.png"
+                                    src="https://i.ibb.co/n3X8mzz/Screen-Shot-2021-01-05-at-11-01-34-AM.png"
+                                    style="width: 60%; padding-top: 0.7em; padding-bottom: 0.5em;" /> <!-- </div> -->
+                                <!-- </div> -->
+                            </li>
+                            <li syle="padding-bottom: 3em">For any questions or assistance, kindly reach out to us via
+                                <a href="mailto: mcspluslab@gmail.com" target="_blank">mcspluslab@gmail.com</a> with
+                                your worker ID.<br />
+                                &nbsp;</li>
+                        </ol>
+
+                        <h4 style="line-height: 1.42857;"><span style="color: rgb(128, 0, 0);"><u><strong>FAQs Collected
+                                        from Exit Survey</strong></u></span></h4>
+
+                        <p style="line-height: 1.42857;"><strong><u>​This part is optional reading, but please skim
+                                    through it if you have time, as we think these are the common questions shared
+                                    across MTurkers.</u></strong></p>
+
+                        <pre>
+<strong>Q1. </strong>&quot;I&rsquo;m wondering <span style="color:#B22222;"><strong>for the comparison scenario, is it necessary to have both options in each of the sentences</strong></span>, or is it okay if the comparison comes from the two sentences as a pair?&quot;
+<strong>Ans: <span style="color:#006400;">&nbsp;To clarify, for the comparison scenario, both options need to be included in each of the sentences. Otherwise, we consider the pair belonging to the causal-and-effect scenario instead.&nbsp;
+
+</span>Q2. </strong>&quot;I&#39;m also curious <span style="color:#B22222;"><strong>whether it is much more common to fool Carl with false statements than true ones</strong></span>, and <span style="color:#A52A2A;"><strong>whether it&#39;s more valuable to you one way or the other.</strong></span>&quot;
+<strong>Ans: <span style="color: rgb(0, 100, 0);">&nbsp;</span>We agree with your observation</strong> that among the data we collected, there are more false sentences which fooled Carl than the true sentences did. <span style="color:#006400;"><strong>However, the fooling rates for both are around 50%</strong></span>.<strong> <span style="color:#006400;">A trick we found to fool Carl in the true sentences is to do some negation,</span></strong> but you can totally use your own strategy.<strong> We don&#39;t have a strong preference, but would like you to equally try fooling Carl with True/False sentence.
+
+Q3. </strong>&quot;More examples on pairs that <span style="color:#B22222;"><strong>couldn&#39;t get bonus</strong></span>.&quot;
+<strong>Ans:  <span style="color:#006400;">Two major reasons for bonus reduction: ambiguity (hard to tell T/F) or being too specific (not common sense to all).​</span></strong><span style="color:#006400;"> </span>We are adding more examples to the <span style="color:#006400;"><strong>bonus reduction doc!</strong></span> (<span style="color:#006400;"><strong>link in the creation instructions</strong></span>)
+
+<strong>Q4.</strong> &quot;Examples of pairs which received <span style="color:#B22222;"><strong>full bonus</strong></span>?&quot;
+<strong>Ans:</strong>&nbsp; <span style="color:#006400;"><strong>All the examples we give on the creation instructions page satisfy the well-written requirement. As to creativity, common instances &amp; topics that are less seen in previous data will have an advantage</strong></span> (subject to internal validators&#39; decision &amp; yes we are aware of the subjectivity, so will be as generous as possible). <span style="color:#006400;"><strong>Please refer to the topic list doc for inspiration. (link in the creation instructions)</strong></span>
+
+<strong>Q5. </strong>&quot;Can you share what fooled Carl exactly or mostly?&quot;
+<strong>Short answer: sorry, we don&#39;t know yet.</strong>
+More study and research is required to give an acceptable answer, and we are only in the initial stage of this long journey (years to go). Thanks again for helping us out!
+
+[The END]</pre>
+
+                        <pre>
+<u><strong><span style="color:#800000;">[PLEASE READ] Notice</span></strong></u>
+1. If you ever find <u>the domain and scenario on our website not matching the domain and scenario as described on this page</u>, please try to either <strong>refresh</strong> our website page (link below), <strong>clear</strong> your <strong>cache</strong> or use the <strong>incognito/private mode</strong> of your browser. Please <u>make sure you work on the right domain and scenario</u>. Otherwise, the system will record your inputs wrong.
+
+2. Please be creative! The examples are provided to inspire you. We will have to <strong>reduce your bonus if your inputs are too similar to the example </strong>(e.g. same social/physical/temporal events with only a change of the character name).
+
+3. If you find anything that we can improve on / want us to know, please don&#39;t hesitate to share them in the exit survey or directly email <strong><u>mcspluslab@gmail.com</u></strong>. We welcome and appreciate all feedback!
+            </pre>
+
+                        <pre style="line-height: 1.42857;">
+<u><strong><span style="color: rgb(128, 0, 0);">Lastly: A Thank-you Letter and Final Round Collection Notice
+
+</span></strong></u>Hi there,
+
+We are delighted to announce that we will soon meet our goal for this project, and so we are currently in the final stages of the data collection HITs. More tasks will be managed and published by different teams in our lab. Please consider &quot;subscribing&quot;!
+
+A big thank-you to everyone for joining us in this 3-month adventure to explore and challenge <strong style="color: rgb(153, 51, 0);">M</strong>achine <strong style="color: rgb(153, 51, 0);">C</strong>ommon <strong style="color: rgb(153, 51, 0);">S</strong>ense (<strong style="color: rgb(153, 51, 0);">MCS</strong>), and sharing all these tiny pieces of your sharp, unique perspectives on what we call &quot;common sense&quot;. You&#39;ve made this project very enjoyable and special to us. We hope you had fun and got a new perspective on text-based AIs too!
+
+As always, please take care of yourselves, stay safe, and be positive and healthy. We wish everyone a better 2021!!!!
+
+A virtual hug from Carl and all MCS team members,
+PlusLab, 1/21/2021
+
+P.S. &nbsp;We are currently validating nights and days. The bonus will be there no worries!
+</pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row" id="workContent">
+        <div class="col-xs-12 col-md-6 col-md-offset-3">
+            <table class="table table-condensed table-bordered">
+                <colgroup>
+                    <col class="col-xs-4 col-md-4" />
+                    <col class="col-xs-8 col-md-8" />
+                </colgroup>
+                <tbody>
+                    <tr>
+                        <td><label>Survey link:</label></td>
+                        <td>
+                            <div id="myelementLink" style="display: inline; font-family: Verdana;"><tt>URL not shown
+                                    because there is an error with Javascript on your computer. To perform this HIT, you
+                                    must have Javascript and cookies enabled on your browser.</tt></div>
+                            <script type="text/javascript" language="JavaScript">
+                                var assignment_id_field = document.getElementById('myelementLink');
+                                var scenario = document.getElementById('scenario').innerText
+                                var domain = document.getElementById('domain').innerText
+                                var paramstr = window.location.search.substring(1);
+                                var parampairs = paramstr.split("&");
+                                var workerID = "";
+                                var ids = {};
+                                for (i in parampairs) {
+                                    var pair = parampairs[i].split("=");
+                                    ids[pair[0]] = pair[1]
+                                }
+                                if (!ids['workerId'] || !ids['assignmentId'] || !ids['hitId']) {
+                                    assignment_id_field.innerHTML = '<tt>The link will appear here only if you accept this HIT.</tt>';
+                                } else {
+                                    var domain_str_2_idx = {
+                                        'physical': 'd1',
+                                        'social': 'd2',
+                                        'time': 'd3',
+                                        'numerical-physical': 'd1_n',
+                                        'numerical-social': 'd2_n',
+                                        'numerical-time': 'd3_n',
+                                    }
+                                    var scenario_str_2_idx = {
+                                        'cause & effect': 's1',
+                                        'comparison': 's2',
+                                    }
+                                    assignment_id_field.innerHTML =
+                                        '<a target="_blank" href="https://cs-ddev.isi.edu?mode=creation&hit_id=' + ids[
+                                        'hitId'] + '&worker_id=' + ids['workerId'] + '&assignment_id=' + ids['assignmentId'] +
+                                        '&domain=' + domain_str_2_idx[domain] + '&scenario=' + scenario_str_2_idx[scenario] +
+                                        '"><span style="color: rgb(255, 0, 0);font-size: 1.2em;"><span style="font-family: Courier New;"><b>Click here to begin!</b></span></span></a>';
+                                }
+                            </script>
+
+                            <div class="link" id="linkDiv">&nbsp;</div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <!-- End Content for Worker -->
+            <!-- Input from Worker -->
+
+            <div class="form-group"><label for="surveycode">Provide the completion code here:</label> <input
+                    class="form-control" id="surveycode" name="surveycode" placeholder="e.g. 123456" required=""
+                    type="text" /></div>
+            <!-- End input from Worker -->
+        </div>
+    </div>
+    <!-- End Survey Link Layout -->
+</section>
+<!-- Please note that Bootstrap CSS/JS and JQuery are 3rd party libraries that may update their url/code at any time. Amazon Mechanical Turk (MTurk) is including these libraries as a default option for you, but is not responsible for any changes to the external libraries -->
+<!-- External CSS references -->
+<link crossorigin="anonymous" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css"
+    integrity="sha384-IS73LIqjtYesmURkDE9MXKbXqYA8rvKEp/ghicjem7Vc3mGRdQRptJSz60tvrB6+" rel="stylesheet" />
+<!-- Open internal style sheet -->
+<style type="text/css">
+    .row {
+        display: flex;
+    }
+
+    .column {
+        flex: 50%;
+        padding: 5px;
+    }
+
+    #collapseTrigger {
+        color: #fff;
+        display: block;
+        text-decoration: none;
+    }
+
+    #submitButton {
+        white-space: normal;
+    }
+
+    .image {
+        margin-bottom: 15px;
+    }
+
+    /* CSS for breaking long words/urls */
+    .dont-break-out {
+        overflow-wrap: break-word;
+        word-wrap: break-word;
+        -ms-word-break: break-all;
+        word-break: break-all;
+        word-break: break-word;
+        -ms-hyphens: auto;
+        -moz-hyphens: auto;
+        -webkit-hyphens: auto;
+        hyphens: auto;
+    }
+</style>
+<!-- Close internal style sheet -->
+<!-- External JS references -->
+<script src="https://code.jquery.com/jquery-3.1.0.min.js"
+    integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"
+    integrity="sha384-s1ITto93iSMDxlp/79qhWHi+LsIi9Gx6yL+cOKDuymvihkfol83TYbLbOw+W/wv4"
+    crossorigin="anonymous"></script><!-- Open internal javascript -->
+<script>
+    $(document).ready(function () {
+        // Instructions expand/collapse
+        var content = $('#instructionBody');
+        var trigger = $('#collapseTrigger');
+        //content.hide();
+        $('.collapse-text').text('(Click to collapse)');
+        trigger.click(function () {
+            content.toggle();
+            var isVisible = content.is(':visible');
+            if (isVisible) {
+                $('.collapse-text').text('(Click to collapse)');
+            } else {
+                $('.collapse-text').text('(Click to expand)');
+            }
+        });
+        // end expand/collapse
+    });
+</script><!-- Close internal javascript -->
